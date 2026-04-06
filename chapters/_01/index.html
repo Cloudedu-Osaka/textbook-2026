@@ -1,0 +1,1113 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Chapter 01: 円を描く — Thales の定理の再創造 &#8212; プログラミングで遡る科学史</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=3c74b3bc" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=fab101a9"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'chapters/_01/index';</script>
+    <link rel="canonical" href="https://cloudedu-osaka.github.io/textbook-2026/chapters/_01/index.html" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../intro.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">プログラミングで遡る科学史</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">2026/04/06</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../01/014_geogebra.html">Introduction to Geometry and Python</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+<a href="https://github.com/Cloudedu-Osaka/textbook-2026" target="_blank"
+   class="btn btn-sm btn-source-repository-button"
+   title="Source repository"
+   data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+
+</a>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/chapters/_01/index.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button pst-navbar-icon"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm pst-navbar-icon" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Chapter 01: 円を描く — Thales の定理の再創造</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">概要</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">歴史的背景と学問的意義</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#diameter">直径（diameter）と古代ギリシア幾何学の転機</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#apollonius-dandelin">古典的な発展と停滞：Apollonius から Dandelin へ</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#kepler">科学的飛躍への転換点：Kepler による楕円の幾何学の発見</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">このカリキュラムの位置付け</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#geogebra-python">双対的対話：GeoGebra と Python の相補的役割</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">学習フロー</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#intro-ipynb">1️⃣ <strong>01_intro.ipynb</strong> — なぜ「円」なのか？</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#draw-circle-ipynb">2️⃣ <strong>01_draw_circle.ipynb</strong> — 黒板で円を描く</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#geogebra-ipynb-geogebra">3️⃣ <strong>01_geogebra.ipynb</strong> — GeoGebra での操作的理解</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#protocol-ipynb-construction-protocol">4️⃣ <strong>01_protocol.ipynb</strong> — Construction Protocol</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#verify-ipynb-ggblab">5️⃣ <strong>01_verify.ipynb</strong> — ggblab による検証</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#theorem-ipynb-thales">6️⃣ <strong>01_theorem.ipynb</strong> — Thales の定理の導出と証明</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id5"><strong>証明 1: 幾何学的証明</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#python"><strong>証明 2: 代数的証明（Python）</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id6"><strong>拡張: 逆定理</strong></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">学習成果の評価</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">知識的評価</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">スキル的評価</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">概念的評価</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">15 週間カリキュラムの全体構成</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#week-1-2-chapter-01-02"><strong>第 1 段階：基礎と直感（Week 1-2, Chapter 01-02）</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#week-3-7-chapter-03-07"><strong>第 2 段階：発展と拡張（Week 3-7, Chapter 03-07）</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#week-8-10-chapter-08-10"><strong>第 3 段階：科学的飛躍（Week 8-10, Chapter 08-10）</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#week-11-13-chapter-11-13"><strong>第 4 段階：古典の再評価（Week 11-13, Chapter 11-13）</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#week-14-15-chapter-14-15"><strong>第 5 段階：現代への連続性（Week 14-15, Chapter 14-15）</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id12"><strong>このカリキュラムの学習パス</strong></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">次のステップ</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id14">本カリキュラムが達成する体験的学習</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="chapter-01-thales">
+<h1>Chapter 01: 円を描く — Thales の定理の再創造<a class="headerlink" href="#chapter-01-thales" title="Link to this heading">#</a></h1>
+<section id="id1">
+<h2>概要<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
+<p>古代ギリシャの数学者 Thales（タレス）は、円に関する最初の幾何学的定理を発見しました：</p>
+<blockquote>
+<div><p><strong>Thales の定理</strong>: 円の直径の上にある円周角は、常に直角（90度）である。</p>
+</div></blockquote>
+<p>このチャプターでは、その発見過程を再現し、以下の学習到達目標を達成します：</p>
+<ol class="arabic simple">
+<li><p><strong>幾何学的直感</strong> — なぜこの定理は真なのか？ビジュアルな理解</p></li>
+<li><p><strong>構造化</strong> — この構築を層ごとに分解し、依存関係を明示</p></li>
+<li><p><strong>計算的検証</strong> — Python で数値的・代数的に証明</p></li>
+<li><p><strong>概念転移</strong> — 幾何学と計算構造の対応関係の理解</p></li>
+</ol>
+</section>
+<section id="id2">
+<h2>歴史的背景と学問的意義<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
+<section id="diameter">
+<h3>直径（diameter）と古代ギリシア幾何学の転機<a class="headerlink" href="#diameter" title="Link to this heading">#</a></h3>
+<p>直径 (diameter) は、古代ギリシアの幾何学において極めて重要な役割を果たしました。Thales が発見した「円の直径の上にある円周角は常に直角である」という数学的事実は、単なる定理に留まりません。それは、円という図形の根本的な対称性の認識であり、<strong>幾何学における測定と証明の方法論の確立</strong>を意味していました。</p>
+</section>
+<section id="apollonius-dandelin">
+<h3>古典的な発展と停滞：Apollonius から Dandelin へ<a class="headerlink" href="#apollonius-dandelin" title="Link to this heading">#</a></h3>
+<p>Thales の発見は、後世の数学者たちへ大きな影響を与えました。特に <strong>Apollonius</strong> は、円錐曲線論の中で、直径がコニック・セクション（楕円、放物線、双曲線）における評価軸であることを認識し、膨大な論証を積み重ねました。しかし、Apollonius の問題設定には本質的な限界がありました。</p>
+<p>円錐の頂点を通る回転軸を中心とした断面は、圓錐曲線論の本質を捉えています。しかし Apollonius が思索した派生的な断面（回転軸に対して傾いた任意の平面による断面）は、真の情報をもたらさず、むしろ複雑性のみを増加させました。結果として、Apollonius の理論は膨大な論証の集積となり、後世、数学的権威として祭り上げられる一方で、その理論体系は新たな学問的進展へは繋がりませんでした。古典的幾何学は、やがて袋小路へ向かうことになります。</p>
+<p>やがて、19世紀に <strong>Gaspard Monge</strong> と <strong>Dandelín</strong> は、円錐曲線論を根本から再構築しました。<strong>Dandelin の球</strong>（Dandelin spheres）の概念により、円錐に内接する二つの球から円錐曲線論を再構築するという優雅な方法が提示されたのです。</p>
+<p>Dandelin による再構築の本質は、一見すると三次元的に見えますが、実は<strong>二次元の断面に帰結</strong>しています。その証明の心臓部は、二つの円の<strong>共通接線</strong>（common tangent）の性質にあります。具体的には：</p>
+<ol class="arabic simple">
+<li><p>円錐に内接する二つの球（上球 <span class="math notranslate nohighlight">\(S_1\)</span>、下球 <span class="math notranslate nohighlight">\(S_2\)</span>）を考える</p></li>
+<li><p>切断平面が球と接する点を <span class="math notranslate nohighlight">\(F_1\)</span>、<span class="math notranslate nohighlight">\(F_2\)</span> とする（焦点）</p></li>
+<li><p>切断平面上の任意の点 <span class="math notranslate nohighlight">\(P\)</span> から母線を引くと、<span class="math notranslate nohighlight">\(P\)</span> における距離 <span class="math notranslate nohighlight">\(|PF_1| + |PF_2|\)</span> は常に一定</p></li>
+<li><p>この不変性は、二つの円（各球と円錐の交線である円）の共通接線性に由来する</p></li>
+</ol>
+<p>この完備な証明は、幾何学的直感と代数的厳密性の統一をもたらしますが、残念ながら、教育的な文脈では語られることがほとんどありません。本カリキュラムは、まさにこのような「忘れられた真理の再発見」をねらいとしています。</p>
+<p><strong>参考</strong>: 共通接線の概念や円への接線の性質については、<a class="reference external" href="https://en.wikipedia.org/wiki/Tangent_lines_to_circles">Tangent lines to circles - Wikipedia</a> を参照してください。</p>
+</section>
+<section id="kepler">
+<h3>科学的飛躍への転換点：Kepler による楕円の幾何学の発見<a class="headerlink" href="#kepler" title="Link to this heading">#</a></h3>
+<p>古代幾何学が静止する中、科学の歴史は大きく転換します。その転換点は、<strong>Johannes Kepler</strong> による楕円軌道の物理学への応用（惑星運動の法則）です。これは単なる応用ではなく、幾何学そのものの本質的な再発見をもたらしました。</p>
+<p>Kepler の最大の洞察は、**楕円の焦点（foci）**の概念の発見にあります。楕円とは、「二つの焦点からの距離の和が常に一定である点の集合」として定義されます。この定義は一見すると直観的ではありません。なぜなら、円の場合、中心からの距離が一定ですが、楕円の場合、焦点という二つの特別な点からの距離の和という、一段階高い複雑性をもつからです。</p>
+<p>Kepler が見抜いた幾何学的洞察は、Dandelin の球による二つの円の接線性にさかのぼります。具体的には：</p>
+<ul class="simple">
+<li><p><strong>外的共通接線</strong> (external common tangent) と <strong>内的共通接線</strong> (internal common tangent) の非対称な外観</p></li>
+<li><p>この一見非対称な構造が、実は楕円の焦点に関する<strong>対称的性質</strong>を隠し持っていること</p></li>
+<li><p>その対称性が、惑星軌道という物理現象の中で初めて顕在化すること</p></li>
+</ul>
+<p>二つの円の接線の性質から出発し、その複雑な非対称性の中に隠された対称性を見抜く必要があります。この見方こそが、古典幾何学から現代数学への転換を可能にしたのです。</p>
+<p>千年以上の時間、円錐曲線論は象牙の塔の中に留まっていましたが、Kepler による楕円の焦点の発見と天体軌道への応用こそが、<strong>科学的進展の本当の転機</strong>となったのです。</p>
+</section>
+<section id="id3">
+<h3>このカリキュラムの位置付け<a class="headerlink" href="#id3" title="Link to this heading">#</a></h3>
+<p>本カリキュラムが Thales の定理を再度学ぶ意義は、単に歴史的な追悼ではなく、以下の三点にあります：</p>
+<ol class="arabic simple">
+<li><p><strong>抽象化の力</strong>：幾何学的事実を記号と層構造で表現する</p></li>
+<li><p><strong>検証の方法論</strong>：コンピュータによる自動検証と数学的証明の対応</p></li>
+<li><p><strong>現代への連続性</strong>：古典的真理がいかに現代の計算科学へ継承されているかの認識</p></li>
+</ol>
+<p>「なぜこの定理は真か」への複数の答え方を学ぶことで、数学的思考そのものの深さを体験することが、今日の学習者にとって必要とされているのです。</p>
+<section id="geogebra-python">
+<h4>双対的対話：GeoGebra と Python の相補的役割<a class="headerlink" href="#geogebra-python" title="Link to this heading">#</a></h4>
+<p>本講義の特徴は、<strong>GeoGebra と Python の双対的対話利用</strong>にあります。これらのツールは単なる計算機ではなく、異なる認識的役割を担います：</p>
+<ul class="simple">
+<li><p><strong>GeoGebra</strong>：動的操作による幾何学的直感の形成</p>
+<ul>
+<li><p>点をドラッグして「何が変わり、何が変わらないか」を観察</p></li>
+<li><p>視覚的な規則性の発見と仮説形成</p></li>
+</ul>
+</li>
+<li><p><strong>Python</strong>：その直感に対する論理的導入と形式化</p>
+<ul>
+<li><p>数値計算による性質の検証</p></li>
+<li><p>依存関係のグラフ化と層構造の明示</p></li>
+<li><p>自動検証による確実性の確保</p></li>
+</ul>
+</li>
+</ul>
+<p>この二つの方法が対話することで、学習者は「観察」から「検証」を経て「証明」へと段階的に上昇できます。古代ギリシアの幾何学者たちが時間をかけて達成した発見のプロセスを、現代の学習環境で圧縮された形で再現することが、本カリキュラムの核心なのです。</p>
+</section>
+</section>
+</section>
+<section id="id4">
+<h2>学習フロー<a class="headerlink" href="#id4" title="Link to this heading">#</a></h2>
+<section id="intro-ipynb">
+<h3>1️⃣ <strong>01_intro.ipynb</strong> — なぜ「円」なのか？<a class="headerlink" href="#intro-ipynb" title="Link to this heading">#</a></h3>
+<p><strong>学習内容</strong>:</p>
+<ul class="simple">
+<li><p>古代ギリシャにおける幾何学の意義</p></li>
+<li><p>Thales の生涯と時代背景</p></li>
+<li><p>なぜ「直径に対する円周角」を問題にしたのか？</p></li>
+<li><p>現代のカリキュラムでこれを学ぶ意味</p></li>
+</ul>
+<p><strong>期待される疑問</strong>:</p>
+<ul class="simple">
+<li><p>「円っていつ発明されたの？」</p></li>
+<li><p>「円周角ってなに？」</p></li>
+<li><p>「直角であることは、何に使うの？」</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="draw-circle-ipynb">
+<h3>2️⃣ <strong>01_draw_circle.ipynb</strong> — 黒板で円を描く<a class="headerlink" href="#draw-circle-ipynb" title="Link to this heading">#</a></h3>
+<p><strong>学習内容</strong>:</p>
+<ul class="simple">
+<li><p>黒板で手作業で円を描く方法</p></li>
+<li><p>「完全な円」を描くことの困難性</p></li>
+<li><p>中心からの「一定距離」という概念の理解</p></li>
+<li><p>視覚的な直感の形成</p></li>
+</ul>
+<p><strong>実践的活動</strong>:</p>
+<ul class="simple">
+<li><p>黒板にコンパスで円を描く</p></li>
+<li><p>直径を引く</p></li>
+<li><p>円周上の点から直径に対する角度を測る</p></li>
+<li><p>「その角度は常に 90 度のように見える」という観察</p></li>
+</ul>
+<p><strong>AI による支援</strong>（Jupyter AI）:</p>
+<ul class="simple">
+<li><p>生徒が描いた円の性質について議論</p></li>
+<li><p>「なぜそう見えるのか？」への仮説形成</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="geogebra-ipynb-geogebra">
+<h3>3️⃣ <strong>01_geogebra.ipynb</strong> — GeoGebra での操作的理解<a class="headerlink" href="#geogebra-ipynb-geogebra" title="Link to this heading">#</a></h3>
+<p><strong>学習内容</strong>:</p>
+<ul class="simple">
+<li><p>GeoGebra の基本操作（点、線、円の作図）</p></li>
+<li><p>動的な操作による理解</p></li>
+<li><p>点をドラッグして「性質の変わらなさ」を観察</p></li>
+</ul>
+<p><strong>操作的活動</strong>:</p>
+<ul class="simple">
+<li><p>単位円 <span class="math notranslate nohighlight">\(x^2 + y^2 = 1\)</span> を定義</p></li>
+<li><p>中心 <span class="math notranslate nohighlight">\(O = (0, 0)\)</span> を配置</p></li>
+<li><p>直径上の点 <span class="math notranslate nohighlight">\(C\)</span> をドラッグ</p></li>
+<li><p>円周上の点 <span class="math notranslate nohighlight">\(P\)</span> を配置</p></li>
+<li><p>角度 <span class="math notranslate nohighlight">\(\angle OPC\)</span> を測定 → 常に 90 度であることを実験的に確認</p></li>
+</ul>
+<p><strong>GeoGebra での作図</strong>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>1. Circle eq1: x² + y² = 1
+2. Point O = (0, 0)
+3. Point P = (1, 0)
+4. Line f: Line[O, P]
+5. Point C = Point[f]  (直径上の自由な点)
+6. Line g: PerpendicularLine[C, f]
+7. Point D = Intersect[eq1, g]  (円との交点)
+8. Angle angle_OPC: Angle[O, P, C]
+</pre></div>
+</div>
+</section>
+<hr class="docutils" />
+<section id="protocol-ipynb-construction-protocol">
+<h3>4️⃣ <strong>01_protocol.ipynb</strong> — Construction Protocol<a class="headerlink" href="#protocol-ipynb-construction-protocol" title="Link to this heading">#</a></h3>
+<p><strong>学習内容</strong>:</p>
+<ul class="simple">
+<li><p>GeoGebra の「Construction Protocol」（作図手順書）の概念</p></li>
+<li><p>幾何学的な「層構造」（Level 0 → 4）</p></li>
+<li><p>依存関係のグラフ化</p></li>
+</ul>
+<p><strong>Construction Protocol テーブル</strong>:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>#</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Definition</p></th>
+<th class="head"><p>Value</p></th>
+<th class="head"><p>Layer</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>1</p></td>
+<td><p>eq1</p></td>
+<td><p>Circle</p></td>
+<td><p><span class="math notranslate nohighlight">\(x^2 + y^2 = 1\)</span></p></td>
+<td><p>Equation</p></td>
+<td><p>0</p></td>
+</tr>
+<tr class="row-odd"><td><p>2</p></td>
+<td><p>O</p></td>
+<td><p>Point</p></td>
+<td><p>Center[eq1]</p></td>
+<td><p>(0, 0)</p></td>
+<td><p>0</p></td>
+</tr>
+<tr class="row-even"><td><p>3</p></td>
+<td><p>P</p></td>
+<td><p>Point</p></td>
+<td><p>Point[eq1]</p></td>
+<td><p>(1, 0)</p></td>
+<td><p>0</p></td>
+</tr>
+<tr class="row-odd"><td><p>4</p></td>
+<td><p>f</p></td>
+<td><p>Line</p></td>
+<td><p>Line[O, P]</p></td>
+<td><p><span class="math notranslate nohighlight">\(y = 0\)</span></p></td>
+<td><p>1</p></td>
+</tr>
+<tr class="row-even"><td><p>5</p></td>
+<td><p>C</p></td>
+<td><p>Point</p></td>
+<td><p>Point[f]</p></td>
+<td><p>(0.5, 0)</p></td>
+<td><p>1</p></td>
+</tr>
+<tr class="row-odd"><td><p>6</p></td>
+<td><p>g</p></td>
+<td><p>Line</p></td>
+<td><p>PerpendicularLine[C, f]</p></td>
+<td><p>…</p></td>
+<td><p>2</p></td>
+</tr>
+<tr class="row-even"><td><p>7</p></td>
+<td><p>D</p></td>
+<td><p>Point</p></td>
+<td><p>Intersect[eq1, g]</p></td>
+<td><p>(0.5, 0.87)</p></td>
+<td><p>2</p></td>
+</tr>
+<tr class="row-odd"><td><p>8</p></td>
+<td><p>E</p></td>
+<td><p>Point</p></td>
+<td><p>Intersect[eq1, g]</p></td>
+<td><p>(0.5, -0.87)</p></td>
+<td><p>2</p></td>
+</tr>
+<tr class="row-even"><td><p>9</p></td>
+<td><p>angle</p></td>
+<td><p>Angle</p></td>
+<td><p>Angle[O, D, E]</p></td>
+<td><p>90°</p></td>
+<td><p>3</p></td>
+</tr>
+<tr class="row-odd"><td><p>10</p></td>
+<td><p>check</p></td>
+<td><p>Boolean</p></td>
+<td><p>AreEqual[angle, 90°]</p></td>
+<td><p>true</p></td>
+<td><p>4</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>層構造の理解</strong>:</p>
+<ul class="simple">
+<li><p><strong>Layer 0</strong>: Free objects（ユーザーが設定）→ Circle, Center, Point on circle</p></li>
+<li><p><strong>Layer 1</strong>: 基本的な派生（直線、基準点）</p></li>
+<li><p><strong>Layer 2</strong>: 交点、副次的な構築</p></li>
+<li><p><strong>Layer 3</strong>: 測定（角度、距離）</p></li>
+<li><p><strong>Layer 4</strong>: 検証（ブール値、等式チェック）</p></li>
+</ul>
+<p><strong>Python での依存グラフ可視化</strong>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">ggblab_extra</span><span class="w"> </span><span class="kn">import</span> <span class="n">ggb_parser</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">networkx</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">nx</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+
+<span class="n">parser</span> <span class="o">=</span> <span class="n">ggb_parser</span><span class="p">()</span>
+<span class="c1"># (dataframe を populate)</span>
+<span class="n">parser</span><span class="o">.</span><span class="n">parse</span><span class="p">()</span>
+
+<span class="c1"># グラフの可視化</span>
+<span class="n">pos</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">spring_layout</span><span class="p">(</span><span class="n">parser</span><span class="o">.</span><span class="n">G</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+<span class="n">nx</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">parser</span><span class="o">.</span><span class="n">G</span><span class="p">,</span> <span class="n">pos</span><span class="p">,</span> <span class="n">with_labels</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">node_color</span><span class="o">=</span><span class="s1">&#39;lightblue&#39;</span><span class="p">,</span> <span class="n">arrows</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Thales&#39; Theorem: Dependency Graph&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</section>
+<hr class="docutils" />
+<section id="verify-ipynb-ggblab">
+<h3>5️⃣ <strong>01_verify.ipynb</strong> — ggblab による検証<a class="headerlink" href="#verify-ipynb-ggblab" title="Link to this heading">#</a></h3>
+<p><strong>学習内容</strong>:</p>
+<ul class="simple">
+<li><p>ggblab の <code class="docutils literal notranslate"><span class="pre">SceneVerifier</span></code> を使った自動検証</p></li>
+<li><p>各オブジェクトの有効性確認</p></li>
+<li><p>層ごとの検証結果の解釈</p></li>
+</ul>
+<p><strong>検証コード</strong>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">ggblab</span><span class="w"> </span><span class="kn">import</span> <span class="n">GeoGebra</span><span class="p">,</span> <span class="n">ggb_file</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">ggblab_extra</span><span class="w"> </span><span class="kn">import</span> <span class="n">ggb_parser</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">ggblab_extra.scene_verification</span><span class="w"> </span><span class="kn">import</span> <span class="n">SceneVerifier</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">polars</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pl</span>
+
+<span class="c1"># 初期化</span>
+<span class="n">ggb</span> <span class="o">=</span> <span class="k">await</span> <span class="n">GeoGebra</span><span class="p">()</span><span class="o">.</span><span class="n">init</span><span class="p">()</span>
+
+<span class="c1"># Thales 構築をロード（保存済みの .ggb ファイル）</span>
+<span class="n">c</span> <span class="o">=</span> <span class="n">ggb_construction</span><span class="p">()</span>
+<span class="n">c</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s2">&quot;chapters/01/scenes/thales_scene.ggb&quot;</span><span class="p">)</span>
+<span class="k">await</span> <span class="n">ggb</span><span class="o">.</span><span class="n">function</span><span class="p">(</span><span class="s2">&quot;evalXML&quot;</span><span class="p">,</span> <span class="p">[</span><span class="n">c</span><span class="o">.</span><span class="n">geogebra_xml</span><span class="p">])</span>
+
+<span class="c1"># Construction Protocol をデータフレームに変換</span>
+<span class="n">construction</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="k">for</span> <span class="n">obj</span> <span class="ow">in</span> <span class="k">await</span> <span class="n">ggb</span><span class="o">.</span><span class="n">function</span><span class="p">(</span><span class="s2">&quot;getAllObjectNames&quot;</span><span class="p">):</span>
+    <span class="n">info</span> <span class="o">=</span> <span class="k">await</span> <span class="n">ggb</span><span class="o">.</span><span class="n">function</span><span class="p">(</span>
+        <span class="p">[</span><span class="s2">&quot;getObjectType&quot;</span><span class="p">,</span> <span class="s2">&quot;getCommandString&quot;</span><span class="p">,</span> <span class="s2">&quot;getValueString&quot;</span><span class="p">,</span> <span class="s2">&quot;getCaption&quot;</span><span class="p">,</span> <span class="s2">&quot;getLayer&quot;</span><span class="p">],</span>
+        <span class="p">[</span><span class="n">obj</span><span class="p">]</span>
+    <span class="p">)</span>
+    <span class="n">construction</span><span class="p">[</span><span class="n">obj</span><span class="p">]</span> <span class="o">=</span> <span class="n">info</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">pl</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
+    <span class="s1">&#39;Name&#39;</span><span class="p">:</span> <span class="nb">list</span><span class="p">(</span><span class="n">construction</span><span class="o">.</span><span class="n">keys</span><span class="p">()),</span>
+    <span class="s1">&#39;Type&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">v</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">construction</span><span class="o">.</span><span class="n">values</span><span class="p">()],</span>
+    <span class="s1">&#39;Command&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">v</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">construction</span><span class="o">.</span><span class="n">values</span><span class="p">()],</span>
+    <span class="s1">&#39;Value&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">v</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">construction</span><span class="o">.</span><span class="n">values</span><span class="p">()],</span>
+    <span class="s1">&#39;Caption&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">v</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">construction</span><span class="o">.</span><span class="n">values</span><span class="p">()],</span>
+    <span class="s1">&#39;Layer&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">v</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">construction</span><span class="o">.</span><span class="n">values</span><span class="p">()],</span>
+<span class="p">},</span> <span class="n">strict</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+<span class="c1"># 依存グラフを解析</span>
+<span class="n">parser</span> <span class="o">=</span> <span class="n">ggb_parser</span><span class="p">()</span>
+<span class="n">parser</span><span class="o">.</span><span class="n">initialize_dataframe</span><span class="p">(</span><span class="n">df</span><span class="o">=</span><span class="n">df</span><span class="p">)</span>
+<span class="n">parser</span><span class="o">.</span><span class="n">parse</span><span class="p">()</span>
+
+<span class="c1"># 自動検証</span>
+<span class="n">verifier</span> <span class="o">=</span> <span class="n">SceneVerifier</span><span class="p">(</span><span class="n">ggb</span><span class="p">,</span> <span class="n">parser</span><span class="p">)</span>
+<span class="n">results</span> <span class="o">=</span> <span class="k">await</span> <span class="n">verifier</span><span class="o">.</span><span class="n">verify_all</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">verifier</span><span class="o">.</span><span class="n">summary</span><span class="p">(</span><span class="n">results</span><span class="p">))</span>
+
+<span class="c1"># 期待される出力：</span>
+<span class="c1"># Verification Summary</span>
+<span class="c1"># ==================================================</span>
+<span class="c1"># Total objects: 10</span>
+<span class="c1"># Passed: 10 ✓</span>
+<span class="c1"># Failed: 0 ✗</span>
+<span class="c1"># Pass rate: 100.0%</span>
+</pre></div>
+</div>
+<p><strong>層ごとのチェック</strong>:</p>
+<ul class="simple">
+<li><p>Layer 0 → 「基本的な円と点が定義されているか？」</p></li>
+<li><p>Layer 1 → 「直線と基準点が正しく導出されているか？」</p></li>
+<li><p>Layer 2 → 「交点が正しく計算されているか？」</p></li>
+<li><p>Layer 3 → 「角度が 90 度に近いか？」(許容誤差 &lt; 1e-6)</p></li>
+<li><p>Layer 4 → 「Thales の定理が真か？」(Boolean チェック)</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="theorem-ipynb-thales">
+<h3>6️⃣ <strong>01_theorem.ipynb</strong> — Thales の定理の導出と証明<a class="headerlink" href="#theorem-ipynb-thales" title="Link to this heading">#</a></h3>
+<p><strong>学習内容</strong>:</p>
+<ul class="simple">
+<li><p>Thales の定理の数学的証明</p></li>
+<li><p>複数の証明方法（幾何学的、代数的、ベクトル的）</p></li>
+<li><p>定理の一般化と拡張</p></li>
+</ul>
+<section id="id5">
+<h4><strong>証明 1: 幾何学的証明</strong><a class="headerlink" href="#id5" title="Link to this heading">#</a></h4>
+<p>円の中心を <span class="math notranslate nohighlight">\(O\)</span>、直径の端点を <span class="math notranslate nohighlight">\(A\)</span>, <span class="math notranslate nohighlight">\(B\)</span>、円周上の任意の点を <span class="math notranslate nohighlight">\(P\)</span> とする。</p>
+<ol class="arabic simple">
+<li><p><span class="math notranslate nohighlight">\(|OA| = |OB| = |OP| = r\)</span> (半径)</p></li>
+<li><p>△OAP は二等辺三角形 → <span class="math notranslate nohighlight">\(\angle OAP = \angle OPA\)</span> (= α)</p></li>
+<li><p>△OBP は二等辺三角形 → <span class="math notranslate nohighlight">\(\angle OBP = \angle OPB\)</span> (= β)</p></li>
+<li><p>△ABP の内角の和: <span class="math notranslate nohighlight">\(\angle PAB + \angle ABP + \angle APB = 180°\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(α + β + (α + β) = 180°\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(2(α + β) = 180°\)</span> → <span class="math notranslate nohighlight">\(α + β = 90°\)</span> = <span class="math notranslate nohighlight">\(\angle APB\)</span></p></li>
+</ol>
+</section>
+<section id="python">
+<h4><strong>証明 2: 代数的証明（Python）</strong><a class="headerlink" href="#python" title="Link to this heading">#</a></h4>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+
+<span class="c1"># 単位円上の点</span>
+<span class="n">O</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span>
+<span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span>
+<span class="n">B</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span>
+<span class="n">P</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">theta</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">theta</span><span class="p">)])</span>  <span class="c1"># theta ∈ (0, π)</span>
+
+<span class="c1"># ベクトル</span>
+<span class="n">PA</span> <span class="o">=</span> <span class="n">A</span> <span class="o">-</span> <span class="n">P</span>
+<span class="n">PB</span> <span class="o">=</span> <span class="n">B</span> <span class="o">-</span> <span class="n">P</span>
+
+<span class="c1"># 内積</span>
+<span class="n">dot_product</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">PA</span><span class="p">,</span> <span class="n">PB</span><span class="p">)</span>
+
+<span class="c1"># 垂直ならば内積 = 0</span>
+<span class="k">assert</span> <span class="nb">abs</span><span class="p">(</span><span class="n">dot_product</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mf">1e-10</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;Not perpendicular: </span><span class="si">{</span><span class="n">dot_product</span><span class="si">}</span><span class="s2">&quot;</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;✓ Thales&#39; theorem verified: PA · PB = </span><span class="si">{</span><span class="n">dot_product</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="id6">
+<h4><strong>拡張: 逆定理</strong><a class="headerlink" href="#id6" title="Link to this heading">#</a></h4>
+<blockquote>
+<div><p><strong>Thales の逆定理</strong>: 直径の上にある点から見た円周角が 90 度なら、その点は円周上にある。</p>
+</div></blockquote>
+<p>この逆定理も ggblab で検証可能：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 角度が 90 度の点が、常に円周上にあるか？</span>
+<span class="k">for</span> <span class="n">theta</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span> <span class="mi">360</span><span class="p">):</span>
+    <span class="n">P</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">theta</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">theta</span><span class="p">)])</span>
+    <span class="c1"># (検証コード)</span>
+    <span class="k">assert</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">P</span><span class="p">)</span> <span class="o">==</span> <span class="mf">1.0</span>  <span class="c1"># 円周上</span>
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+<hr class="docutils" />
+<section id="id7">
+<h2>学習成果の評価<a class="headerlink" href="#id7" title="Link to this heading">#</a></h2>
+<section id="id8">
+<h3>知識的評価<a class="headerlink" href="#id8" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Thales の定理を説明できるか？</p></li>
+<li><p>なぜそれが真なのか、複数の方法で証明できるか？</p></li>
+</ul>
+</section>
+<section id="id9">
+<h3>スキル的評価<a class="headerlink" href="#id9" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>GeoGebra で自由に作図できるか？</p></li>
+<li><p>ggblab を使ってコンピュータで検証できるか？</p></li>
+<li><p>Python で数値計算・グラフ化できるか？</p></li>
+</ul>
+</section>
+<section id="id10">
+<h3>概念的評価<a class="headerlink" href="#id10" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>幾何学の依存構造が、プログラミングのスコープに対応していることを理解したか？</p></li>
+<li><p>ビジュアルと記号の対応関係を認識しているか？</p></li>
+</ul>
+</section>
+</section>
+<hr class="docutils" />
+<section id="id11">
+<h2>15 週間カリキュラムの全体構成<a class="headerlink" href="#id11" title="Link to this heading">#</a></h2>
+<p>textbook-2026 は、大学初年次向け少人数ゼミナールの <strong>15 週間（約 4 ヶ月）の完全カリキュラム</strong>です。以下の段階的構成により、古代ギリシア幾何学から現代計算科学への連続性を体験的に理解します：</p>
+<section id="week-1-2-chapter-01-02">
+<h3><strong>第 1 段階：基礎と直感（Week 1-2, Chapter 01-02）</strong><a class="headerlink" href="#week-1-2-chapter-01-02" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>Week 1 — Chapter 01（本章）</strong>: Thales の定理の再創造</p>
+<ul>
+<li><p>古代幾何学の転機：直径（diameter）の本質</p></li>
+<li><p>GeoGebra と Python による双対的対話</p></li>
+<li><p>視覚的直感から論理的形式化への上昇</p></li>
+</ul>
+</li>
+<li><p><strong>Week 2 — Chapter 02</strong>: 円の層構造</p>
+<ul>
+<li><p>円の「見方」の多様性（幾何学的、代数的、パラメトリック）</p></li>
+<li><p>Construction Protocol による依存関係の明示</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="week-3-7-chapter-03-07">
+<h3><strong>第 2 段階：発展と拡張（Week 3-7, Chapter 03-07）</strong><a class="headerlink" href="#week-3-7-chapter-03-07" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>Week 3-4 — Chapter 03-04</strong>: 公式から図形へ</p>
+<ul>
+<li><p>代数表現と幾何図形の対応関係</p></li>
+<li><p>幾何平均と相似の定理</p></li>
+</ul>
+</li>
+<li><p><strong>Week 5-6 — Chapter 05-06</strong>: 楕円と円錐曲線</p>
+<ul>
+<li><p>楕円の焦点と距離和の不変性</p></li>
+<li><p>円錐截断としての楕円、放物線、双曲線</p></li>
+<li><p><strong>Dandelin の球による再構築の本質</strong>（二つの円の接線性）</p></li>
+</ul>
+</li>
+<li><p><strong>Week 7 — Chapter 07</strong>: 接線と共通接線</p>
+<ul>
+<li><p>円への接線（Tangent lines）</p></li>
+<li><p>二つの円の外的・内的共通接線</p></li>
+<li><p>楕円の焦点性への隠された対称性</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="week-8-10-chapter-08-10">
+<h3><strong>第 3 段階：科学的飛躍（Week 8-10, Chapter 08-10）</strong><a class="headerlink" href="#week-8-10-chapter-08-10" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>Week 8 — Chapter 08</strong>: 観測者の変化（Tycho Brahe → Kepler）</p>
+<ul>
+<li><p>天体観測の精密化</p></li>
+<li><p>円形軌道から楕円軌道への転換</p></li>
+</ul>
+</li>
+<li><p><strong>Week 9 — Chapter 09</strong>: Kepler の法則</p>
+<ul>
+<li><p>楕円軌道における焦点の動的意義</p></li>
+<li><p>物理学への適用による幾何学の再評価</p></li>
+</ul>
+</li>
+<li><p><strong>Week 10 — Chapter 10</strong>: Apollonius から Kepler へ</p>
+<ul>
+<li><p>Apollonius の直径論の限界</p></li>
+<li><p>Kepler による楕円焦点の発見</p></li>
+<li><p>古典幾何学と物理科学の統合</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="week-11-13-chapter-11-13">
+<h3><strong>第 4 段階：古典の再評価（Week 11-13, Chapter 11-13）</strong><a class="headerlink" href="#week-11-13-chapter-11-13" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>Week 11 — Chapter 11</strong>: Archimedes の方法論</p>
+<ul>
+<li><p>穎尽法（Method of Exhaustion）</p></li>
+<li><p>π の計算と極限の概念</p></li>
+</ul>
+</li>
+<li><p><strong>Week 12 — Chapter 12</strong>: Descartes と Newton</p>
+<ul>
+<li><p>座標系による幾何学の代数化</p></li>
+<li><p>微分・積分の萌芽</p></li>
+</ul>
+</li>
+<li><p><strong>Week 13 — Chapter 13</strong>: 投影と変換</p>
+<ul>
+<li><p>射影幾何学の基礎</p></li>
+<li><p>円錐曲線の統一的理解</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="week-14-15-chapter-14-15">
+<h3><strong>第 5 段階：現代への連続性（Week 14-15, Chapter 14-15）</strong><a class="headerlink" href="#week-14-15-chapter-14-15" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>Week 14 — Chapter 14</strong>: 曲率と微分幾何</p>
+<ul>
+<li><p>局所的な「曲がり具合」の定量化</p></li>
+<li><p>Archimedes から微分幾何学へ</p></li>
+</ul>
+</li>
+<li><p><strong>Week 15 — Chapter 15</strong>: 球面上の幾何学</p>
+<ul>
+<li><p>非ユークリッド幾何学への入り口</p></li>
+<li><p>古典から現代数学への展望</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="id12">
+<h3><strong>このカリキュラムの学習パス</strong><a class="headerlink" href="#id12" title="Link to this heading">#</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Week 1: なぜ円か？ → Thales の定理の再創造
+        ↓
+Week 2-4: 円とは何か？ → 層構造、相似、公式と図形
+        ↓
+Week 5-7: 円を超える → 楕円、円錐曲線、接線（Dandelin の再構築）
+        ↓
+Week 8-10: 天体物理への飛躍 → Kepler、物理現象による幾何学の検証
+        ↓
+Week 11-13: 古典の再評価 → Archimedes, Descartes, Newton の方法論
+        ↓
+Week 14-15: 現代への展開 → 微分幾何、非ユークリッド幾何学
+        ↓
+学習成果: 古代幾何学から現代計算科学への連続性を体験的に理解
+</pre></div>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="id13">
+<h2>次のステップ<a class="headerlink" href="#id13" title="Link to this heading">#</a></h2>
+<p><strong>Chapter 02（Week 2）</strong> では、Thales の定理で学んだ「層構造」を、より一般的な円の性質へ拡張します：</p>
+<ul class="simple">
+<li><p>円の「見方」の多様性：幾何学的 vs 代数的 vs パラメトリック</p></li>
+<li><p>Construction Protocol による依存関係グラフの詳細分析</p></li>
+<li><p>複数の円の相互関係（交点、接線、相似）</p></li>
+<li><p>ggblab による自動検証の実装パターン</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="id14">
+<h2>本カリキュラムが達成する体験的学習<a class="headerlink" href="#id14" title="Link to this heading">#</a></h2>
+<ol class="arabic simple">
+<li><p><strong>Week 1-7</strong>: 直感から形式化へ</p>
+<ul class="simple">
+<li><p>Thales の定理を起点に、古代幾何学の思考体系を再現</p></li>
+<li><p>Dandelin の球による「隠された対称性」の発見</p></li>
+</ul>
+</li>
+<li><p><strong>Week 8-10</strong>: 現象から真理へ</p>
+<ul class="simple">
+<li><p>天体観測がいかに幾何学の理解を変えたかを体験</p></li>
+<li><p>Kepler の楕円焦点の発見の必然性を理解</p></li>
+</ul>
+</li>
+<li><p><strong>Week 11-15</strong>: 古典から現代へ</p>
+<ul class="simple">
+<li><p>Archimedes から Newton、そして微分幾何学への連続性</p></li>
+<li><p>形式化の進化が、問題解決の精密性をもたらすことを認識</p></li>
+</ul>
+</li>
+</ol>
+<hr class="docutils" />
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./chapters/_01"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item"><div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">概要</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">歴史的背景と学問的意義</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#diameter">直径（diameter）と古代ギリシア幾何学の転機</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#apollonius-dandelin">古典的な発展と停滞：Apollonius から Dandelin へ</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#kepler">科学的飛躍への転換点：Kepler による楕円の幾何学の発見</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">このカリキュラムの位置付け</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#geogebra-python">双対的対話：GeoGebra と Python の相補的役割</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">学習フロー</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#intro-ipynb">1️⃣ <strong>01_intro.ipynb</strong> — なぜ「円」なのか？</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#draw-circle-ipynb">2️⃣ <strong>01_draw_circle.ipynb</strong> — 黒板で円を描く</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#geogebra-ipynb-geogebra">3️⃣ <strong>01_geogebra.ipynb</strong> — GeoGebra での操作的理解</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#protocol-ipynb-construction-protocol">4️⃣ <strong>01_protocol.ipynb</strong> — Construction Protocol</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#verify-ipynb-ggblab">5️⃣ <strong>01_verify.ipynb</strong> — ggblab による検証</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#theorem-ipynb-thales">6️⃣ <strong>01_theorem.ipynb</strong> — Thales の定理の導出と証明</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id5"><strong>証明 1: 幾何学的証明</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#python"><strong>証明 2: 代数的証明（Python）</strong></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id6"><strong>拡張: 逆定理</strong></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">学習成果の評価</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">知識的評価</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">スキル的評価</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">概念的評価</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">15 週間カリキュラムの全体構成</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#week-1-2-chapter-01-02"><strong>第 1 段階：基礎と直感（Week 1-2, Chapter 01-02）</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#week-3-7-chapter-03-07"><strong>第 2 段階：発展と拡張（Week 3-7, Chapter 03-07）</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#week-8-10-chapter-08-10"><strong>第 3 段階：科学的飛躍（Week 8-10, Chapter 08-10）</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#week-11-13-chapter-11-13"><strong>第 4 段階：古典の再評価（Week 11-13, Chapter 11-13）</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#week-14-15-chapter-14-15"><strong>第 5 段階：現代への連続性（Week 14-15, Chapter 14-15）</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id12"><strong>このカリキュラムの学習パス</strong></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">次のステップ</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id14">本カリキュラムが達成する体験的学習</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Manabu Higashida, D3 Center, Osaka University, Japan
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2026.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
