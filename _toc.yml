@@ -6,7 +6,7 @@ parts:
 - caption: 2026/04/15
   numbered: false
   chapters:
-  - file: chapters/01/010_intro.ipynb
+  - file: chapters/01/01_00_intro.ipynb
     title: How to connect and use JupyterHub
   - file: chapters/01/01_01.ipynb
     title: 入試問題を解く (その1) 記述する 1
