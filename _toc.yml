@@ -1,19 +1,26 @@
 # Table of Contents for textbook-2026
 
 format: jb-book
-chapters:
-  - file: intro.md
-  - file: chapters/01/index.md
-    sections:
-      - file: chapters/01/01_intro.ipynb
-      - file: chapters/01/01_draw_circle.ipynb
-      - file: chapters/01/01_geogebra.ipynb
-      - file: chapters/01/01_protocol.ipynb
-      - file: chapters/01/01_verify.ipynb
-      - file: chapters/01/01_theorem.ipynb
-
-# Additional chapters can be added here as they are developed
-# - file: chapters/02/index.md
-#   sections:
-#     - file: chapters/02/02_intro.ipynb
-#     - ...
+root: intro.md
+parts:
+- caption: 2026/04/15
+  numbered: false
+  chapters:
+  - file: chapters/01/010_intro.ipynb
+    title: How to connect and use JupyterHub
+  - file: chapters/01/01_01.ipynb
+    title: 入試問題を解く (その1) 記述する 1
+  - file: chapters/01/01_02.ipynb
+    title: 入試問題を解く (その1) 記述する 2
+  - file: chapters/01/01_03.ipynb
+    title: 入試問題を解く (その1) 記述する 3
+  - file: chapters/01/01_04.ipynb
+    title: 入試問題を解く (その1) 記述する 4
+  - file: chapters/01/01_05.ipynb
+    title: 入試問題を解く (その1) 記述する 5
+  - file: chapters/01/01_11.ipynb
+    title: 入試問題を解く (その1) 記述する 6
+  - file: chapters/01/01_12.ipynb
+    title: 入試問題を解く (その1) 記述する 7
+  - file: chapters/01/01_13.ipynb
+    title: 入試問題を解く (その1) 記述する 8

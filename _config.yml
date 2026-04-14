@@ -1,32 +1,57 @@
 # Jupyter Book Configuration for textbook-2026
 # 次年度（2026年度）授業向けテキストブック
 
-title: 幾何学と計算思考 2026
-author: Manabu Higashida
-copyright: "2026"
+title: プログラミングで遡る科学史
+author: Manabu Higashida, D3 Center, Osaka University, Japan
+email: 'manabu.higashida.cmc@osaka-u.ac.jp'
+copyright: '2026'
+logo                        : "vioras-logo.png"  # A path to the book logo
+exclude_patterns            : ["README.md"]  # Patterns to skip when building the book. Can be glob-style (e.g. "*skip.ipynb")
 
-# Book settings
+# Force re-execution of notebooks on each build.
+# See https://jupyterbook.org/content/execute.html
 execute:
-  execute_notebooks: force
-  allow_errors: true
-  timeout: 300
+  execute_notebooks         : 'off'  # Whether to execute notebooks at build time. Must be one of ("auto", "force", "cache", "off")
+  timeout                   : 600    # The maximum time (in seconds) each notebook cell is allowed to run.
 
+#######################################################################################
 # HTML-specific settings
 html:
-  home_page_in_navbar: true
-  use_issues_button: true
-  use_repository_button: true
-  repository_url: https://github.com/moyhig-ecs/ggblab
-  repository_branch: main
+  favicon                   : "favicon.png"  # A path to a favicon image
+  navbar_number_sections    : True  # Add a number to each section in your left navbar
+  #google_analytics_id       : "UA-148221575-1"  # A GA id that can be used to track book views.
+  home_page_in_navbar       : false  # Whether to include your home page in the left Navigation Bar
+  baseurl                   : "https://cloudedu-osaka.github.io/textbook-2026"  # The base URL where your book will be hosted. Used for creating image previews and social links. e.g.: https://mypage.com/mybook/
+  use_repository_button     : true
+  use_edit_page_button      : false
+  use_issues_button         : false
 
-# LaTeX output
-latex:
-  latex_documents:
-    targetname: textbook-2026.tex
-  latex_engine: xelatex
+#######################################################################################
+# Launch button settings
+launch_buttons:
+  notebook_interface        : "jupyterlab"
+  jupyterhub_url            : https://vioras-jh2500.japaneast.cloudapp.azure.com
+# binderhub_url             : https://mybinder.org  # The URL of the BinderHub (e.g., https://mybinder.org)
 
-# Sphinx configuration
-sphinx:
-  config:
-    language: ja
-    mathjax_path: https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
+# Information about where the book exists on the web
+repository:
+  url: https://github.com/Cloudedu-Osaka/textbook-2026   # Online location of your book
+  #path_to_book: docs  # Optional path to your book, relative to the repository root
+  branch: main  # Which branch of the repository should be used when creating links (optional)
+
+parse:
+  myst_enable_extensions:
+    # don't forget to list any other extensions you want enabled,
+    # including those that are enabled by default!
+    - amsmath
+    - colon_fence
+    # - deflist
+    - dollarmath
+    # - html_admonition
+    # - html_image
+    - linkify
+    # - replacements
+    # - smartquotes
+    - substitution
+    - tasklist
+  myst_dmath_double_inline: true
