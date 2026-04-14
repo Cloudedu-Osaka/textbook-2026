@@ -1,0 +1,614 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>第一回: 入試問題を解く (その1) 記述する &#8212; プログラミングで遡る科学史</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=3c74b3bc" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css?v=8cd3d715" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=fab101a9"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'chapters/01/01_05';</script>
+    <link rel="canonical" href="https://cloudedu-osaka.github.io/textbook-2026/chapters/01/01_05.html" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="第一回: 入試問題を解く (その1) 記述する" href="01_11.html" />
+    <link rel="prev" title="第一回: 入試問題を解く (その1) 記述する" href="01_04.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../intro.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">プログラミングで遡る科学史</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">2026/04/15</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="01_01.html">入試問題を解く (その1) 記述する 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="01_02.html">入試問題を解く (その1) 記述する 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="01_03.html">入試問題を解く (その1) 記述する 3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="01_04.html">入試問題を解く (その1) 記述する 4</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">入試問題を解く (その1) 記述する 5</a></li>
+<li class="toctree-l1"><a class="reference internal" href="01_11.html">入試問題を解く (その1) 記述する 6</a></li>
+<li class="toctree-l1"><a class="reference internal" href="01_12.html">入試問題を解く (その1) 記述する 7</a></li>
+<li class="toctree-l1"><a class="reference internal" href="01_13.html">入試問題を解く (その1) 記述する 8</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://vioras-jh2500.japaneast.cloudapp.azure.com/hub/user-redirect/git-pull?repo=https%3A//github.com/Cloudedu-Osaka/textbook-2026&urlpath=lab/tree/textbook-2026/chapters/01/01_05.ipynb&branch=main" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on JupyterHub"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="JupyterHub logo" src="../../_static/images/logo_jupyterhub.svg">
+  </span>
+<span class="btn__text-container">JupyterHub</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+<a href="https://github.com/Cloudedu-Osaka/textbook-2026" target="_blank"
+   class="btn btn-sm btn-source-repository-button"
+   title="Source repository"
+   data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+
+</a>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/chapters/01/01_05.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button pst-navbar-icon"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm pst-navbar-icon" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>第一回: 入試問題を解く (その1) 記述する</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dncl2">1.5 DNCL2: 仕様の分類と字句/構文仕様への翻案</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#simple-compound">1.5.1 ペラ一枚の10項目を Simple / Compound に分類</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tokenization">1.5.2 字句解析（Tokenization） — 必要なトークンと前処理</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#grammar-sketch-bnf">1.5.3 構文解析（Grammar sketch / BNF風） — 行単位の文法とブロック扱い</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">1.5.4 実装上・採点上の注意（短く</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="id1">
+<h1>第一回: 入試問題を解く (その1) 記述する<a class="headerlink" href="#id1" title="Link to this heading">#</a></h1>
+<section id="dncl2">
+<h2>1.5 DNCL2: 仕様の分類と字句/構文仕様への翻案<a class="headerlink" href="#dncl2" title="Link to this heading">#</a></h2>
+<p><img alt="image.png" src="chapters/01/attachment:b046ec26-ddb9-4a69-b6ef-73372c39ead6.png" /></p>
+<section id="simple-compound">
+<h3>1.5.1 ペラ一枚の10項目を Simple / Compound に分類<a class="headerlink" href="#simple-compound" title="Link to this heading">#</a></h3>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ul class="simple">
+<li><ol class="arabic simple">
+<li><p>数値リテラル（<code class="docutils literal notranslate"><span class="pre">NUMBER</span></code>）: Simple</p></li>
+</ol>
+</li>
+<li><ol class="arabic simple" start="2">
+<li><p>配列（リスト）表記・添字: Simple（添字代入は単文として扱う）</p></li>
+</ol>
+</li>
+<li><ol class="arabic simple" start="3">
+<li><p>文字列リテラル（<code class="docutils literal notranslate"><span class="pre">STRING</span></code>）: Simple</p></li>
+</ol>
+</li>
+<li><ol class="arabic simple" start="4">
+<li><p>代入文（<code class="docutils literal notranslate"><span class="pre">=</span></code>）: Simple</p></li>
+</ol>
+</li>
+<li><ol class="arabic simple" start="5">
+<li><p>四則演算・式（<code class="docutils literal notranslate"><span class="pre">+</span></code>, <code class="docutils literal notranslate"><span class="pre">-</span></code>, <code class="docutils literal notranslate"><span class="pre">*</span></code>, <code class="docutils literal notranslate"><span class="pre">/</span></code>）: Simple（式）</p></li>
+</ol>
+</li>
+<li><ol class="arabic simple" start="6">
+<li><p>比較演算（<code class="docutils literal notranslate"><span class="pre">&lt;</span></code>, <code class="docutils literal notranslate"><span class="pre">&lt;=</span></code>, <code class="docutils literal notranslate"><span class="pre">&gt;</span></code>, <code class="docutils literal notranslate"><span class="pre">&gt;=</span></code>, <code class="docutils literal notranslate"><span class="pre">==</span></code>, <code class="docutils literal notranslate"><span class="pre">!=</span></code>）: Simple（条件式の構成要素）</p></li>
+</ol>
+</li>
+<li><ol class="arabic simple" start="7">
+<li><p>論理演算（<code class="docutils literal notranslate"><span class="pre">and</span></code>, <code class="docutils literal notranslate"><span class="pre">or</span></code>）: Simple（条件式の結合）</p></li>
+</ol>
+</li>
+<li><ol class="arabic simple" start="8">
+<li><p>繰り返し（“〜の間繰り返す:”, “〜ながら繰り返す:” 等）: Compound（ヘッダ + ブロック）</p></li>
+</ol>
+</li>
+<li><ol class="arabic simple" start="9">
+<li><p>条件分岐（もし … ならば:）: Compound（ヘッダ + ブロック）</p></li>
+</ol>
+</li>
+<li><ol class="arabic simple" start="10">
+<li><p>コメント・表示（表示する）: Simple（コメントは無視、表示は関数呼び出し）</p></li>
+</ol>
+</li>
+</ul>
+</div>
+</section>
+<section id="tokenization">
+<h3>1.5.2 字句解析（Tokenization） — 必要なトークンと前処理<a class="headerlink" href="#tokenization" title="Link to this heading">#</a></h3>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ul class="simple">
+<li><p>ノート: 行頭に付く“(NN)”などの行番号プレフィックスは本来の字句列に含めず除去する（ただし閉じ括弧後の空白はインデントを示すので保持する）。全角数字は半角に正規化する。</p></li>
+<li><p>基本トークン: <code class="docutils literal notranslate"><span class="pre">NUMBER</span></code>, <code class="docutils literal notranslate"><span class="pre">STRING</span></code>, <code class="docutils literal notranslate"><span class="pre">ID</span></code>（識別子）, <code class="docutils literal notranslate"><span class="pre">FUNC</span></code>（組み込み関数名）, <code class="docutils literal notranslate"><span class="pre">=</span></code> , <code class="docutils literal notranslate"><span class="pre">,</span></code> , <code class="docutils literal notranslate"><span class="pre">[</span></code> , <code class="docutils literal notranslate"><span class="pre">]</span></code> , <code class="docutils literal notranslate"><span class="pre">(</span></code> , <code class="docutils literal notranslate"><span class="pre">)</span></code> , <code class="docutils literal notranslate"><span class="pre">:</span></code> , 演算子 <code class="docutils literal notranslate"><span class="pre">+</span> <span class="pre">-</span> <span class="pre">*</span> <span class="pre">/</span></code> , 比較 <code class="docutils literal notranslate"><span class="pre">&lt;</span> <span class="pre">&lt;=</span> <span class="pre">&gt;</span> <span class="pre">&gt;=</span> <span class="pre">==</span> <span class="pre">!=</span></code> , 論理 <code class="docutils literal notranslate"><span class="pre">AND</span></code> <code class="docutils literal notranslate"><span class="pre">OR</span></code>。</p></li>
+<li><p>ヘッダ専用トークン（行単位で検出）: <code class="docutils literal notranslate"><span class="pre">REPEAT_HEADER</span></code>（’の間繰り返す’）, <code class="docutils literal notranslate"><span class="pre">LOOP_HEADER</span></code>（’ながら繰り返す’ 等のループヘッダ）, <code class="docutils literal notranslate"><span class="pre">IF_HEADER</span></code>（’もし … ならば’ の条件部を取り出してIFヘッダへ）。これらは末尾の <code class="docutils literal notranslate"><span class="pre">:</span></code> とともに扱う。</p></li>
+<li><p>レイアウト制御: <code class="docutils literal notranslate"><span class="pre">INDENT</span></code> / <code class="docutils literal notranslate"><span class="pre">DEDENT</span></code> を用いる（ヘッダ行の直後にインデント増を期待）。空行・コメントはスキップ。</p></li>
+</ul>
+</div>
+</section>
+<section id="grammar-sketch-bnf">
+<h3>1.5.3 構文解析（Grammar sketch / BNF風） — 行単位の文法とブロック扱い<a class="headerlink" href="#grammar-sketch-bnf" title="Link to this heading">#</a></h3>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ul class="simple">
+<li><p>文（行）レベル: <code class="docutils literal notranslate"><span class="pre">S</span> <span class="pre">-&gt;</span> <span class="pre">SimpleStmt</span> <span class="pre">|</span> <span class="pre">CompoundHeader</span></code></p></li>
+<li><p>単文: <code class="docutils literal notranslate"><span class="pre">SimpleStmt</span> <span class="pre">-&gt;</span> <span class="pre">Assign</span> <span class="pre">|</span> <span class="pre">FuncCall</span> <span class="pre">|</span> <span class="pre">Expr</span></code></p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">Assign</span> <span class="pre">-&gt;</span> <span class="pre">ID</span> <span class="pre">'='</span> <span class="pre">Expr</span> <span class="pre">|</span> <span class="pre">ID</span> <span class="pre">'['</span> <span class="pre">Expr</span> <span class="pre">']'</span> <span class="pre">'='</span> <span class="pre">Expr</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">FuncCall</span> <span class="pre">-&gt;</span> <span class="pre">FUNC</span> <span class="pre">'('</span> <span class="pre">Args</span> <span class="pre">')'</span> <span class="pre">|</span> <span class="pre">FUNC</span> <span class="pre">'('</span> <span class="pre">')'</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Expr</span> <span class="pre">-&gt;</span> <span class="pre">Term</span> <span class="pre">((</span> <span class="pre">'+'</span> <span class="pre">|</span> <span class="pre">'-'</span> <span class="pre">)</span> <span class="pre">Term)*</span></code>（標準的な演算列）</p></li>
+</ul>
+</li>
+<li><p>条件式: <code class="docutils literal notranslate"><span class="pre">Cond</span> <span class="pre">-&gt;</span> <span class="pre">Expr</span> <span class="pre">(</span> <span class="pre">('AND'</span> <span class="pre">|</span> <span class="pre">'OR')</span> <span class="pre">Expr</span> <span class="pre">)*</span> <span class="pre">|</span> <span class="pre">Expr</span> <span class="pre">COMP</span> <span class="pre">Expr</span></code>（COMP は比較演算）</p></li>
+<li><p>複合ヘッダ（コロン必須）: <code class="docutils literal notranslate"><span class="pre">CompoundHeader</span> <span class="pre">-&gt;</span> <span class="pre">REPEAT_HEADER</span> <span class="pre">':'</span> <span class="pre">|</span> <span class="pre">LOOP_HEADER</span> <span class="pre">':'</span> <span class="pre">|</span> <span class="pre">IF_HEADER</span> <span class="pre">':'</span></code></p>
+<ul>
+<li><p>上記ヘッダ行の直後に <code class="docutils literal notranslate"><span class="pre">INDENT</span></code> が発生し、ブロック行が続く。ブロック終了で <code class="docutils literal notranslate"><span class="pre">DEDENT</span></code>。</p></li>
+</ul>
+</li>
+<li><p>ブロック表現（擬似）: <code class="docutils literal notranslate"><span class="pre">Block</span> <span class="pre">-&gt;</span> <span class="pre">INDENT</span> <span class="pre">Line+</span> <span class="pre">DEDENT</span></code></p></li>
+</ul>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Backus%E2%80%93Naur_form">Backus–Naur form - Wikipedia</a></p></li>
+</ul>
+</div>
+</section>
+<section id="id2">
+<h3>1.5.4 実装上・採点上の注意（短く<a class="headerlink" href="#id2" title="Link to this heading">#</a></h3>
+<div class="admonition attention">
+<p class="admonition-title">Attention</p>
+<ul class="simple">
+<li><p>インデント依存の複合文は <code class="docutils literal notranslate"><span class="pre">:</span></code> と <code class="docutils literal notranslate"><span class="pre">INDENT/DEDENT</span></code> の組を満たすことを採点基準に含める。</p></li>
+<li><p>ヘッダの検出は文字列マッチだけでなく、<code class="docutils literal notranslate"><span class="pre">もし</span> <span class="pre">&lt;cond&gt;</span> <span class="pre">ならば:</span></code> のように条件部を抽出できるかを評価する（空白や全角／半角の差に寛容に）。</p></li>
+<li><p>行番号プレフィックスやコメントの扱いが不一致なら減点対象。特に行番号削除でインデントを壊さないことを重視。</p></li>
+<li><p>字句解析で日本語キーワード（の間繰り返す／ながら繰り返す／もし／ならば）を個別トークンに正しくマッピングしているかを確認する。</p></li>
+<li><p>部分点の方針例: トークン列が正しい→+高得点、文法木が正しい→満点、インデントだけ誤り→部分点。</p></li>
+</ul>
+</div>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./chapters/01"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="01_04.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">第一回: 入試問題を解く (その1) 記述する</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="01_11.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">第一回: 入試問題を解く (その1) 記述する</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item"><div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dncl2">1.5 DNCL2: 仕様の分類と字句/構文仕様への翻案</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#simple-compound">1.5.1 ペラ一枚の10項目を Simple / Compound に分類</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tokenization">1.5.2 字句解析（Tokenization） — 必要なトークンと前処理</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#grammar-sketch-bnf">1.5.3 構文解析（Grammar sketch / BNF風） — 行単位の文法とブロック扱い</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">1.5.4 実装上・採点上の注意（短く</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Manabu Higashida, D3 Center, Osaka University, Japan
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2026.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

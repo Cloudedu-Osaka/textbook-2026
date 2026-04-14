@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>textbook-2026: 幾何学と計算思考 &#8212; プログラミングで遡る科学史</title>
+    <title>textbook-2026: プログラミングで遡る科学史 &#8212; プログラミングで遡る科学史</title>
   
   
   
@@ -34,7 +34,7 @@
     <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=3c74b3bc" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css?v=8cd3d715" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -60,11 +60,13 @@
     <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'intro';</script>
     <link rel="canonical" href="https://cloudedu-osaka.github.io/textbook-2026/intro.html" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="第一回: 円を描く (4)" href="chapters/01/014_geogebra.html" />
+    <link rel="next" title="第一回: 入試問題を解く (その1) 記述する" href="chapters/01/01_01.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
@@ -156,9 +158,16 @@
 </button></div>
         <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
-        <p aria-level="2" class="caption" role="heading"><span class="caption-text">2026/04/06</span></p>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">2026/04/15</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="chapters/01/014_geogebra.html">Introduction to Geometry and Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapters/01/01_01.html">入試問題を解く (その1) 記述する 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapters/01/01_02.html">入試問題を解く (その1) 記述する 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapters/01/01_03.html">入試問題を解く (その1) 記述する 3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapters/01/01_04.html">入試問題を解く (その1) 記述する 4</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapters/01/01_05.html">入試問題を解く (その1) 記述する 5</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapters/01/01_11.html">入試問題を解く (その1) 記述する 6</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapters/01/01_12.html">入試問題を解く (その1) 記述する 7</a></li>
+<li class="toctree-l1"><a class="reference internal" href="chapters/01/01_13.html">入試問題を解く (その1) 記述する 8</a></li>
 </ul>
 
     </div>
@@ -309,7 +318,7 @@
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>textbook-2026: 幾何学と計算思考</h1>
+    <h1>textbook-2026: プログラミングで遡る科学史</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -320,13 +329,6 @@
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">学習目標</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">カリキュラム構造</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#chapter-01-thales">Chapter 01: 円を描く — Thales の定理の再創造</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#chapters-0215">Chapters 02–15: 予定</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">使用技術</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">はじめに</a></li>
 </ul>
             </nav>
         </div>
@@ -339,57 +341,16 @@
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="textbook-2026">
-<h1>textbook-2026: 幾何学と計算思考<a class="headerlink" href="#textbook-2026" title="Link to this heading">#</a></h1>
-<p>次年度（2026年度）の授業用テキストブック。</p>
+<h1>textbook-2026: プログラミングで遡る科学史<a class="headerlink" href="#textbook-2026" title="Link to this heading">#</a></h1>
+<p>2026年度の授業用テキストブック。</p>
 <section id="id1">
 <h2>学習目標<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
-<p>このテキストブックは、GeoGebra と Python による<strong>双方向学習環境（ggblab）</strong> を活用して、以下を実現します：</p>
+<p>このテキストブックは、GeoGebra と Python/Julia による<strong>双方向学習環境（ggblab）</strong> を活用して、以下を実現します：</p>
 <ol class="arabic simple">
 <li><p><strong>幾何学的直感の再発見</strong> — 生徒が古代の数学者とともに定理を「再発見」する過程を体験</p></li>
 <li><p><strong>計算思考の育成</strong> — 幾何学の依存関係を通じて変数スコープと計算構造を理解</p></li>
 <li><p><strong>Dual Coding</strong> — ビジュアル（GeoGebra）と記号（Python）の対応関係を明示的に学習</p></li>
 </ol>
-</section>
-<section id="id2">
-<h2>カリキュラム構造<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
-<section id="chapter-01-thales">
-<h3>Chapter 01: 円を描く — Thales の定理の再創造<a class="headerlink" href="#chapter-01-thales" title="Link to this heading">#</a></h3>
-<p><strong>導入的な考え方</strong>:</p>
-<blockquote>
-<div><p>「円を描く」という最も基本的な作図から始め、古代ギリシャの数学者 Thales が発見した定理「直径に対する円周角は直角である」の導出過程を、生徒が自ら再創造する。</p>
-</div></blockquote>
-<p><strong>学習フロー</strong> (5段階):</p>
-<ol class="arabic simple">
-<li><p><strong>01_intro.ipynb</strong> — なぜ円か？歴史的背景</p></li>
-<li><p><strong>01_draw_circle.ipynb</strong> — 黒板で円を描く（視覚的直感）</p></li>
-<li><p><strong>01_geogebra.ipynb</strong> — GeoGebra での操作的な理解</p></li>
-<li><p><strong>01_protocol.ipynb</strong> — Construction Protocol による構造化</p></li>
-<li><p><strong>01_verify.ipynb</strong> — Python + ggblab による代数的検証</p></li>
-<li><p><strong>01_theorem.ipynb</strong> — Thales の定理の導出と証明</p></li>
-</ol>
-</section>
-<section id="chapters-0215">
-<h3>Chapters 02–15: 予定<a class="headerlink" href="#chapters-0215" title="Link to this heading">#</a></h3>
-<p>来年度のカリキュラム構築過程で追加予定。</p>
-</section>
-</section>
-<section id="id3">
-<h2>使用技術<a class="headerlink" href="#id3" title="Link to this heading">#</a></h2>
-<ul class="simple">
-<li><p><strong>GeoGebra</strong> — 動的幾何学ソフトウェア</p></li>
-<li><p><strong>Python</strong> — 計算と検証</p></li>
-<li><p><strong>ggblab</strong> — GeoGebra と Python の統合フレームワーク</p></li>
-<li><p><strong>Jupyter</strong> — 対話的学習環境</p></li>
-</ul>
-</section>
-<section id="id4">
-<h2>はじめに<a class="headerlink" href="#id4" title="Link to this heading">#</a></h2>
-<p>各章は以下の構造で学習を進めます：</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>[Motivation] → [Visual] → [Structured] → [Computational] → [Proof]
-   なぜか？      描く      プロトコル    Python検証        定理導出
-</pre></div>
-</div>
-<p>この流れにより、幾何学が「規則の集合」ではなく、「発見可能な論理体系」であることを学びます。</p>
 <hr class="docutils" />
 <p><strong>著者</strong>: Manabu Higashida<br />
 <strong>作成年</strong>: 2026<br />
@@ -430,11 +391,11 @@
                   
 <div class="prev-next-area">
     <a class="right-next"
-       href="chapters/01/014_geogebra.html"
+       href="chapters/01/01_01.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">第一回: 円を描く (4)</p>
+        <p class="prev-next-title">第一回: 入試問題を解く (その1) 記述する</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -457,13 +418,6 @@
   <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">学習目標</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">カリキュラム構造</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#chapter-01-thales">Chapter 01: 円を描く — Thales の定理の再創造</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#chapters-0215">Chapters 02–15: 予定</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">使用技術</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">はじめに</a></li>
 </ul>
   </nav></div>
 

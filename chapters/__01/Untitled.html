@@ -1,0 +1,1220 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>GeoGebra applet interaction from Python &#8212; プログラミングで遡る科学史</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=3c74b3bc" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css?v=8cd3d715" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=fab101a9"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'chapters/__01/Untitled';</script>
+    <link rel="canonical" href="https://cloudedu-osaka.github.io/textbook-2026/chapters/__01/Untitled.html" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../intro.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">プログラミングで遡る科学史</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">2026/04/15</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../01/01_01.html">入試問題を解く (その1) 記述する 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../01/01_02.html">入試問題を解く (その1) 記述する 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../01/01_03.html">入試問題を解く (その1) 記述する 3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../01/01_04.html">入試問題を解く (その1) 記述する 4</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../01/01_05.html">入試問題を解く (その1) 記述する 5</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../01/01_11.html">入試問題を解く (その1) 記述する 6</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../01/01_12.html">入試問題を解く (その1) 記述する 7</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../01/01_13.html">入試問題を解く (その1) 記述する 8</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://vioras-jh2500.japaneast.cloudapp.azure.com/hub/user-redirect/git-pull?repo=https%3A//github.com/Cloudedu-Osaka/textbook-2026&urlpath=lab/tree/textbook-2026/chapters/__01/Untitled.ipynb&branch=main" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on JupyterHub"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="JupyterHub logo" src="../../_static/images/logo_jupyterhub.svg">
+  </span>
+<span class="btn__text-container">JupyterHub</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+<a href="https://github.com/Cloudedu-Osaka/textbook-2026" target="_blank"
+   class="btn btn-sm btn-source-repository-button"
+   title="Source repository"
+   data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+
+</a>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/chapters/__01/Untitled.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button pst-navbar-icon"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>GeoGebra applet interaction from Python</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="geogebra-applet-interaction-from-python">
+<h1>GeoGebra applet interaction from Python<a class="headerlink" href="#geogebra-applet-interaction-from-python" title="Link to this heading">#</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># this magic for develop only</span>
+<span class="o">%</span><span class="k">load_ext</span> autoreload
+<span class="o">%</span><span class="k">autoreload</span> 2
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The autoreload extension is already loaded. To reload it, use:
+  %reload_ext autoreload
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">xml.etree.ElementTree</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">ET</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">xmlschema</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">base64</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">ggblab</span><span class="w"> </span><span class="kn">import</span> <span class="n">GeoGebra</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># open GeoGebra Widget on left-side</span>
+<span class="n">ggb</span> <span class="o">=</span> <span class="k">await</span> <span class="n">GeoGebra</span><span class="p">()</span><span class="o">.</span><span class="n">init</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Using local cached file: xsd/common.xsd
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># load from .ggb (zipped, and base64 encoded)</span>
+<span class="n">c</span> <span class="o">=</span> <span class="n">ggb</span><span class="o">.</span><span class="n">file</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">&#39;2025_01_01.ggb&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># sending loaded construction to GeoGebra view and draw</span>
+<span class="n">r</span> <span class="o">=</span> <span class="k">await</span> <span class="n">ggb</span><span class="o">.</span><span class="n">function</span><span class="p">(</span><span class="s2">&quot;setBase64&quot;</span><span class="p">,</span> <span class="p">[</span><span class="n">ggb</span><span class="o">.</span><span class="n">construction</span><span class="o">.</span><span class="n">base64_buffer</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">ipykernel</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">re</span>
+<span class="c1"># カーネルの接続情報ファイルパスを取得</span>
+<span class="n">connection_file</span> <span class="o">=</span> <span class="n">ipykernel</span><span class="o">.</span><span class="n">connect</span><span class="o">.</span><span class="n">get_connection_file</span><span class="p">()</span>
+<span class="c1"># ファイル名からカーネルID（UUID）を抽出</span>
+<span class="n">kernel_id</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s1">&#39;kernel-(.*).json&#39;</span><span class="p">,</span> <span class="n">connection_file</span><span class="p">)</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">kernel_id</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>b4595391-62eb-40ff-b107-0f8231ea2539
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">r</span> <span class="o">=</span> <span class="k">await</span> <span class="n">ggb</span><span class="o">.</span><span class="n">function</span><span class="p">(</span><span class="s2">&quot;showAlgebraInput&quot;</span><span class="p">,</span> <span class="p">[</span><span class="kc">False</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">r</span> <span class="o">=</span> <span class="k">await</span> <span class="n">ggb</span><span class="o">.</span><span class="n">function</span><span class="p">(</span><span class="s2">&quot;getPerspectiveXML&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">r</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;perspective id=&quot;tmp&quot;&gt;
+	&lt;panes&gt;
+	&lt;pane location=&quot;&quot; divider=&quot;0.06558849955076371&quot; orientation=&quot;1&quot;/&gt;
+&lt;/panes&gt;
+	&lt;views&gt;
+	&lt;view id=&quot;4097&quot; visible=&quot;false&quot; inframe=&quot;false&quot; stylebar=&quot;true&quot; location=&quot;1,1,1,1&quot; size=&quot;400&quot; window=&quot;100,100,700,550&quot;/&gt;
+	&lt;view id=&quot;512&quot; toolbar=&quot;0 | 1 501 5 19 , 67 | 2 15 45 18 , 7 37 | 514 3 9 , 13 44 , 47 | 16 51 | 551 550 11 ,  20 22 21 23 , 55 56 57 , 12 | 69 | 510 511 , 512 513 | 533 531 , 534 532 , 522 523 , 537 536 , 535 , 538 | 521 520 | 36 , 38 49 560 | 571 30 29 570 31 33 | 17 | 540 40 41 42 , 27 28 35 , 6 , 502&quot; visible=&quot;false&quot; inframe=&quot;false&quot; stylebar=&quot;false&quot; location=&quot;1,1,1&quot; size=&quot;500&quot; window=&quot;100,100,600,400&quot;/&gt;
+	&lt;view id=&quot;4&quot; toolbar=&quot;0 || 2020 , 2021 , 2022 || 2001 , 2003 , 2002 , 2004 , 2005 || 2040 , 2041 , 2042 , 2044 , 2043&quot; visible=&quot;false&quot; inframe=&quot;false&quot; stylebar=&quot;false&quot; location=&quot;1,1&quot; size=&quot;300&quot; window=&quot;100,100,600,400&quot;/&gt;
+	&lt;view id=&quot;8&quot; toolbar=&quot;1001 | 1002 | 1003  || 1005 | 1004 || 1006 | 1007 | 1010 || 1008 | 1009 || 6&quot; visible=&quot;false&quot; inframe=&quot;false&quot; stylebar=&quot;false&quot; location=&quot;1,3&quot; size=&quot;300&quot; window=&quot;100,100,600,400&quot;/&gt;
+	&lt;view id=&quot;1&quot; visible=&quot;true&quot; inframe=&quot;false&quot; stylebar=&quot;false&quot; location=&quot;1&quot; size=&quot;1042&quot; window=&quot;100,100,600,400&quot;/&gt;
+	&lt;view id=&quot;16&quot; visible=&quot;false&quot; inframe=&quot;false&quot; stylebar=&quot;false&quot; location=&quot;1&quot; size=&quot;300&quot; window=&quot;50,50,500,500&quot;/&gt;
+	&lt;view id=&quot;32&quot; visible=&quot;false&quot; inframe=&quot;false&quot; stylebar=&quot;true&quot; location=&quot;1&quot; size=&quot;608&quot; window=&quot;50,50,500,500&quot;/&gt;
+	&lt;view id=&quot;64&quot; visible=&quot;false&quot; inframe=&quot;false&quot; stylebar=&quot;false&quot; location=&quot;1&quot; size=&quot;480&quot; window=&quot;50,50,500,500&quot;/&gt;
+	&lt;view id=&quot;128&quot; visible=&quot;false&quot; inframe=&quot;false&quot; stylebar=&quot;false&quot; location=&quot;1&quot; size=&quot;480&quot; window=&quot;50,50,500,500&quot;/&gt;
+	&lt;view id=&quot;70&quot; toolbar=&quot;0 || 2020 || 2021 || 2022&quot; visible=&quot;false&quot; inframe=&quot;false&quot; stylebar=&quot;true&quot; location=&quot;1&quot; size=&quot;900&quot; window=&quot;50,50,500,500&quot;/&gt;
+	&lt;view id=&quot;2&quot; visible=&quot;false&quot; inframe=&quot;false&quot; stylebar=&quot;false&quot; location=&quot;2&quot; size=&quot;200&quot; tab=&quot;TOOLS&quot; window=&quot;100,100,250,400&quot;/&gt;
+&lt;/views&gt;
+	&lt;toolbar show=&quot;true&quot; items=&quot;0 77 73 62 | 1 501 67 , 5 19 , 72 75 76 | 2 15 45 , 18 65 , 7 37 | 4 3 8 9 , 13 44 , 58 , 47 | 16 51 64 , 70 | 10 34 53 11 , 24  20 22 , 21 23 | 55 56 57 , 12 | 36 46 , 38 49  50 , 71  14  68 | 30 29 54 32 31 33 | 25 17 26 60 52 61 | 40 41 42 , 27 28 35 , 6&quot; position=&quot;1&quot; help=&quot;false&quot;/&gt;
+	&lt;input show=&quot;false&quot; cmd=&quot;true&quot; top=&quot;algebra&quot;/&gt;
+	&lt;dockBar show=&quot;false&quot; east=&quot;false&quot;/&gt;
+&lt;/perspective&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">r</span> <span class="o">=</span> <span class="k">await</span> <span class="n">ggb</span><span class="o">.</span><span class="n">function</span><span class="p">(</span><span class="s2">&quot;setGridVisible&quot;</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="kc">False</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">r</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>None
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">r</span> <span class="o">=</span> <span class="k">await</span> <span class="n">ggb</span><span class="o">.</span><span class="n">function</span><span class="p">(</span><span class="s2">&quot;getGraphicsOptions&quot;</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">r</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;rightAngleStyle&#39;: 1,
+ &#39;pointCapturing&#39;: 3,
+ &#39;grid&#39;: False,
+ &#39;gridIsBold&#39;: False,
+ &#39;gridType&#39;: 3,
+ &#39;bgColor&#39;: &#39;#FFFFFF&#39;,
+ &#39;gridColor&#39;: &#39;#C0C0C0&#39;,
+ &#39;axesColor&#39;: &#39;#252525&#39;,
+ &#39;rulerType&#39;: 0,
+ &#39;axes&#39;: {&#39;x&#39;: {&#39;visible&#39;: False,
+   &#39;positiveAxis&#39;: False,
+   &#39;showNumbers&#39;: True,
+   &#39;tickStyle&#39;: 1,
+   &#39;label&#39;: None,
+   &#39;unitLabel&#39;: None},
+  &#39;y&#39;: {&#39;visible&#39;: False,
+   &#39;positiveAxis&#39;: False,
+   &#39;showNumbers&#39;: True,
+   &#39;tickStyle&#39;: 1,
+   &#39;label&#39;: None,
+   &#39;unitLabel&#39;: None},
+  &#39;z&#39;: {&#39;visible&#39;: True,
+   &#39;positiveAxis&#39;: False,
+   &#39;showNumbers&#39;: True,
+   &#39;tickStyle&#39;: 1,
+   &#39;label&#39;: None,
+   &#39;unitLabel&#39;: None}},
+ &#39;gridDistance&#39;: {&#39;x&#39;: None, &#39;y&#39;: None}}
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">r</span> <span class="o">=</span> <span class="k">await</span> <span class="n">ggb</span><span class="o">.</span><span class="n">function</span><span class="p">(</span><span class="s2">&quot;getEditorState&quot;</span><span class="p">)</span>
+<span class="n">r</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;{&quot;content&quot;:&quot;eq1: x^(2)+y^(2)=1&quot;,&quot;caret&quot;:[12]}&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">r</span> <span class="o">=</span> <span class="k">await</span> <span class="n">ggb</span><span class="o">.</span><span class="n">function</span><span class="p">(</span><span class="s2">&quot;setWidth&quot;</span><span class="p">,</span> <span class="p">[</span><span class="mi">800</span><span class="p">])</span>
+<span class="n">r</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">ggblab_extra.construction_io</span><span class="w"> </span><span class="kn">import</span> <span class="n">ConstructionIO</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="k">await</span> <span class="n">ConstructionIO</span><span class="o">.</span><span class="n">initialize_dataframe</span><span class="p">(</span><span class="n">ggb</span><span class="p">,</span> <span class="n">use_applet</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div><style>
+.dataframe > thead > tr,
+.dataframe > tbody > tr {
+  text-align: right;
+  white-space: pre-wrap;
+}
+</style>
+<small>shape: (24, 10)</small><table border="1" class="dataframe"><thead><tr><th>Sequence</th><th>Name</th><th>Type</th><th>Command</th><th>Value</th><th>Caption</th><th>Layer</th><th>ShowObject</th><th>ShowLabel</th><th>Auxiliary</th></tr><tr><td>u32</td><td>str</td><td>str</td><td>str</td><td>str</td><td>str</td><td>i64</td><td>bool</td><td>bool</td><td>bool</td></tr></thead><tbody><tr><td>0</td><td>&quot;eq1&quot;</td><td>&quot;circle&quot;</td><td>&quot;x² + y² = 1&quot;</td><td>&quot;eq1: x² + y² = 1&quot;</td><td>null</td><td>0</td><td>false</td><td>false</td><td>false</td></tr><tr><td>1</td><td>&quot;O&quot;</td><td>&quot;point&quot;</td><td>&quot;Center(eq1)&quot;</td><td>&quot;O = (0, 0)&quot;</td><td>null</td><td>0</td><td>true</td><td>true</td><td>false</td></tr><tr><td>2</td><td>&quot;P&quot;</td><td>&quot;point&quot;</td><td>&quot;Point(eq1)&quot;</td><td>&quot;P = (1, 0)&quot;</td><td>null</td><td>0</td><td>true</td><td>true</td><td>false</td></tr><tr><td>3</td><td>&quot;f&quot;</td><td>&quot;line&quot;</td><td>&quot;Line(O, P)&quot;</td><td>&quot;f: y = 0&quot;</td><td>null</td><td>0</td><td>true</td><td>false</td><td>false</td></tr><tr><td>4</td><td>&quot;A&quot;</td><td>&quot;point&quot;</td><td>&quot;Intersect(eq1, f)&quot;</td><td>&quot;A = (1, 0)&quot;</td><td>null</td><td>0</td><td>true</td><td>true</td><td>false</td></tr><tr><td>5</td><td>&quot;B&quot;</td><td>&quot;point&quot;</td><td>&quot;Intersect(eq1, f)&quot;</td><td>&quot;B = (-1, 0)&quot;</td><td>null</td><td>0</td><td>true</td><td>true</td><td>false</td></tr><tr><td>6</td><td>&quot;C&quot;</td><td>&quot;point&quot;</td><td>&quot;Point(f)&quot;</td><td>&quot;C = (0.5, 0)&quot;</td><td>null</td><td>0</td><td>true</td><td>true</td><td>false</td></tr><tr><td>7</td><td>&quot;g&quot;</td><td>&quot;line&quot;</td><td>&quot;PerpendicularLine(C, f)&quot;</td><td>&quot;g: -1x = -0.5&quot;</td><td>null</td><td>0</td><td>true</td><td>false</td><td>false</td></tr><tr><td>8</td><td>&quot;E&quot;</td><td>&quot;point&quot;</td><td>&quot;Intersect(eq1, g)&quot;</td><td>&quot;E = (0.5, -0.9)&quot;</td><td>null</td><td>0</td><td>true</td><td>true</td><td>false</td></tr><tr><td>9</td><td>&quot;D&quot;</td><td>&quot;point&quot;</td><td>&quot;Intersect(eq1, g)&quot;</td><td>&quot;D = (0.5, 0.9)&quot;</td><td>null</td><td>0</td><td>true</td><td>true</td><td>false</td></tr><tr><td>10</td><td>&quot;t1&quot;</td><td>&quot;triangle&quot;</td><td>&quot;Polygon(O, D, E)&quot;</td><td>&quot;t1 = 0.4&quot;</td><td>null</td><td>0</td><td>true</td><td>false</td><td>false</td></tr><tr><td>11</td><td>&quot;e&quot;</td><td>&quot;segment&quot;</td><td>&quot;Segment(O, D, t1)&quot;</td><td>&quot;e = 1&quot;</td><td>null</td><td>0</td><td>true</td><td>false</td><td>true</td></tr><tr><td>12</td><td>&quot;o&quot;</td><td>&quot;segment&quot;</td><td>&quot;Segment(D, E, t1)&quot;</td><td>&quot;o = 1.7&quot;</td><td>null</td><td>0</td><td>true</td><td>false</td><td>true</td></tr><tr><td>13</td><td>&quot;d&quot;</td><td>&quot;segment&quot;</td><td>&quot;Segment(E, O, t1)&quot;</td><td>&quot;d = 1&quot;</td><td>null</td><td>0</td><td>true</td><td>false</td><td>true</td></tr><tr><td>14</td><td>&quot;a&quot;</td><td>&quot;boolean&quot;</td><td>&quot;AreEqual(Distance(O, D), Dista…</td><td>&quot;a = true&quot;</td><td>null</td><td>0</td><td>false</td><td>true</td><td>false</td></tr><tr><td>15</td><td>&quot;b&quot;</td><td>&quot;boolean&quot;</td><td>&quot;AreEqual(Angle(O, D, E), Angle…</td><td>&quot;b = false&quot;</td><td>null</td><td>0</td><td>false</td><td>true</td><td>false</td></tr><tr><td>16</td><td>&quot;O&#x27;&quot;</td><td>&quot;point&quot;</td><td>&quot;Reflect(O, f)&quot;</td><td>&quot;O&#x27; = (0, 0)&quot;</td><td>null</td><td>0</td><td>true</td><td>true</td><td>false</td></tr><tr><td>17</td><td>&quot;C&#x27;&quot;</td><td>&quot;point&quot;</td><td>&quot;Reflect(C, f)&quot;</td><td>&quot;C&#x27; = (0.5, 0)&quot;</td><td>null</td><td>0</td><td>true</td><td>true</td><td>false</td></tr><tr><td>18</td><td>&quot;E&#x27;&quot;</td><td>&quot;point&quot;</td><td>&quot;Reflect(E, f)&quot;</td><td>&quot;E&#x27; = (0.5, 0.9)&quot;</td><td>null</td><td>0</td><td>true</td><td>true</td><td>false</td></tr><tr><td>19</td><td>&quot;t2&quot;</td><td>&quot;triangle&quot;</td><td>&quot;Polygon(O&#x27;, C&#x27;, E&#x27;)&quot;</td><td>&quot;t2 = 0.2&quot;</td><td>null</td><td>0</td><td>true</td><td>false</td><td>false</td></tr><tr><td>20</td><td>&quot;e&#x27;&quot;</td><td>&quot;segment&quot;</td><td>&quot;Segment(O&#x27;, C&#x27;, t2)&quot;</td><td>&quot;e&#x27; = 0.5&quot;</td><td>null</td><td>0</td><td>true</td><td>false</td><td>true</td></tr><tr><td>21</td><td>&quot;o&#x27;&quot;</td><td>&quot;segment&quot;</td><td>&quot;Segment(C&#x27;, E&#x27;, t2)&quot;</td><td>&quot;o&#x27; = 0.9&quot;</td><td>null</td><td>0</td><td>true</td><td>false</td><td>true</td></tr><tr><td>22</td><td>&quot;c&#x27;&quot;</td><td>&quot;segment&quot;</td><td>&quot;Segment(E&#x27;, O&#x27;, t2)&quot;</td><td>&quot;c&#x27; = 1&quot;</td><td>null</td><td>0</td><td>true</td><td>false</td><td>true</td></tr><tr><td>23</td><td>&quot;c&quot;</td><td>&quot;boolean&quot;</td><td>&quot;AreEqual(D, E&#x27;)&quot;</td><td>&quot;c = true&quot;</td><td>null</td><td>0</td><td>false</td><td>true</td><td>false</td></tr></tbody></table></div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ConstructionIO</span><span class="o">.</span><span class="n">save_dataframe</span><span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">df</span><span class="p">,</span> <span class="n">ggb</span><span class="o">=</span><span class="n">ggb</span><span class="p">,</span> <span class="n">fmt</span><span class="o">=</span><span class="s1">&#39;json&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;2025_01_01_2.json&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">networkx</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">nx</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">ggblab_extra.construction_parser</span><span class="w"> </span><span class="kn">import</span> <span class="n">ConstructionTreeParser</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">p</span> <span class="o">=</span> <span class="n">ConstructionTreeParser</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">g1</span> <span class="o">=</span> <span class="n">p</span><span class="o">.</span><span class="n">parse</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">p</span><span class="o">.</span><span class="n">df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div><style>
+.dataframe > thead > tr,
+.dataframe > tbody > tr {
+  text-align: right;
+  white-space: pre-wrap;
+}
+</style>
+<small>shape: (24, 12)</small><table border="1" class="dataframe"><thead><tr><th>Sequence</th><th>Name</th><th>Type</th><th>Command</th><th>Value</th><th>Caption</th><th>Layer</th><th>ShowObject</th><th>ShowLabel</th><th>Auxiliary</th><th>DependsOn</th><th>DependsOn_minimal</th></tr><tr><td>u32</td><td>str</td><td>str</td><td>str</td><td>str</td><td>str</td><td>i64</td><td>bool</td><td>bool</td><td>bool</td><td>list[str]</td><td>list[str]</td></tr></thead><tbody><tr><td>0</td><td>&quot;eq1&quot;</td><td>&quot;circle&quot;</td><td>&quot;x² + y² = 1&quot;</td><td>&quot;eq1: x² + y² = 1&quot;</td><td>null</td><td>0</td><td>false</td><td>false</td><td>false</td><td>[]</td><td>[]</td></tr><tr><td>1</td><td>&quot;O&quot;</td><td>&quot;point&quot;</td><td>&quot;Center(eq1)&quot;</td><td>&quot;O = (0, 0)&quot;</td><td>null</td><td>0</td><td>true</td><td>true</td><td>false</td><td>[&quot;eq1&quot;]</td><td>[&quot;eq1&quot;]</td></tr><tr><td>2</td><td>&quot;P&quot;</td><td>&quot;point&quot;</td><td>&quot;Point(eq1)&quot;</td><td>&quot;P = (1, 0)&quot;</td><td>null</td><td>0</td><td>true</td><td>true</td><td>false</td><td>[&quot;eq1&quot;]</td><td>[&quot;eq1&quot;]</td></tr><tr><td>3</td><td>&quot;f&quot;</td><td>&quot;line&quot;</td><td>&quot;Line(O, P)&quot;</td><td>&quot;f: y = 0&quot;</td><td>null</td><td>0</td><td>true</td><td>false</td><td>false</td><td>[&quot;O&quot;, &quot;P&quot;, &quot;eq1&quot;]</td><td>[&quot;O&quot;, &quot;P&quot;]</td></tr><tr><td>4</td><td>&quot;A&quot;</td><td>&quot;point&quot;</td><td>&quot;Intersect(eq1, f)&quot;</td><td>&quot;A = (1, 0)&quot;</td><td>null</td><td>0</td><td>true</td><td>true</td><td>false</td><td>[&quot;O&quot;, &quot;P&quot;, … &quot;f&quot;]</td><td>[&quot;eq1&quot;, &quot;f&quot;]</td></tr><tr><td>5</td><td>&quot;B&quot;</td><td>&quot;point&quot;</td><td>&quot;Intersect(eq1, f)&quot;</td><td>&quot;B = (-1, 0)&quot;</td><td>null</td><td>0</td><td>true</td><td>true</td><td>false</td><td>[&quot;O&quot;, &quot;P&quot;, … &quot;f&quot;]</td><td>[&quot;eq1&quot;, &quot;f&quot;]</td></tr><tr><td>6</td><td>&quot;C&quot;</td><td>&quot;point&quot;</td><td>&quot;Point(f)&quot;</td><td>&quot;C = (0.5, 0)&quot;</td><td>null</td><td>0</td><td>true</td><td>true</td><td>false</td><td>[&quot;O&quot;, &quot;P&quot;, … &quot;f&quot;]</td><td>[&quot;f&quot;]</td></tr><tr><td>7</td><td>&quot;g&quot;</td><td>&quot;line&quot;</td><td>&quot;PerpendicularLine(C, f)&quot;</td><td>&quot;g: -1x = -0.5&quot;</td><td>null</td><td>0</td><td>true</td><td>false</td><td>false</td><td>[&quot;C&quot;, &quot;O&quot;, … &quot;f&quot;]</td><td>[&quot;C&quot;]</td></tr><tr><td>8</td><td>&quot;E&quot;</td><td>&quot;point&quot;</td><td>&quot;Intersect(eq1, g)&quot;</td><td>&quot;E = (0.5, -0.9)&quot;</td><td>null</td><td>0</td><td>true</td><td>true</td><td>false</td><td>[&quot;C&quot;, &quot;O&quot;, … &quot;g&quot;]</td><td>[&quot;g&quot;]</td></tr><tr><td>9</td><td>&quot;D&quot;</td><td>&quot;point&quot;</td><td>&quot;Intersect(eq1, g)&quot;</td><td>&quot;D = (0.5, 0.9)&quot;</td><td>null</td><td>0</td><td>true</td><td>true</td><td>false</td><td>[&quot;C&quot;, &quot;O&quot;, … &quot;g&quot;]</td><td>[&quot;g&quot;]</td></tr><tr><td>10</td><td>&quot;t1&quot;</td><td>&quot;triangle&quot;</td><td>&quot;Polygon(O, D, E)&quot;</td><td>&quot;t1 = 0.4&quot;</td><td>null</td><td>0</td><td>true</td><td>false</td><td>false</td><td>[&quot;C&quot;, &quot;D&quot;, … &quot;g&quot;]</td><td>[&quot;D&quot;, &quot;E&quot;, &quot;O&quot;]</td></tr><tr><td>11</td><td>&quot;e&quot;</td><td>&quot;segment&quot;</td><td>&quot;Segment(O, D, t1)&quot;</td><td>&quot;e = 1&quot;</td><td>null</td><td>0</td><td>true</td><td>false</td><td>true</td><td>[&quot;C&quot;, &quot;D&quot;, … &quot;t1&quot;]</td><td>[&quot;D&quot;, &quot;O&quot;, &quot;t1&quot;]</td></tr><tr><td>12</td><td>&quot;o&quot;</td><td>&quot;segment&quot;</td><td>&quot;Segment(D, E, t1)&quot;</td><td>&quot;o = 1.7&quot;</td><td>null</td><td>0</td><td>true</td><td>false</td><td>true</td><td>[&quot;C&quot;, &quot;D&quot;, … &quot;t1&quot;]</td><td>[&quot;D&quot;, &quot;E&quot;, &quot;t1&quot;]</td></tr><tr><td>13</td><td>&quot;d&quot;</td><td>&quot;segment&quot;</td><td>&quot;Segment(E, O, t1)&quot;</td><td>&quot;d = 1&quot;</td><td>null</td><td>0</td><td>true</td><td>false</td><td>true</td><td>[&quot;C&quot;, &quot;D&quot;, … &quot;t1&quot;]</td><td>[&quot;E&quot;, &quot;O&quot;, &quot;t1&quot;]</td></tr><tr><td>14</td><td>&quot;a&quot;</td><td>&quot;boolean&quot;</td><td>&quot;AreEqual(Distance(O, D), Dista…</td><td>&quot;a = true&quot;</td><td>null</td><td>0</td><td>false</td><td>true</td><td>false</td><td>[]</td><td>[]</td></tr><tr><td>15</td><td>&quot;b&quot;</td><td>&quot;boolean&quot;</td><td>&quot;AreEqual(Angle(O, D, E), Angle…</td><td>&quot;b = false&quot;</td><td>null</td><td>0</td><td>false</td><td>true</td><td>false</td><td>[]</td><td>[]</td></tr><tr><td>16</td><td>&quot;O&#x27;&quot;</td><td>&quot;point&quot;</td><td>&quot;Reflect(O, f)&quot;</td><td>&quot;O&#x27; = (0, 0)&quot;</td><td>null</td><td>0</td><td>true</td><td>true</td><td>false</td><td>[&quot;O&quot;, &quot;P&quot;, … &quot;f&quot;]</td><td>[&quot;f&quot;]</td></tr><tr><td>17</td><td>&quot;C&#x27;&quot;</td><td>&quot;point&quot;</td><td>&quot;Reflect(C, f)&quot;</td><td>&quot;C&#x27; = (0.5, 0)&quot;</td><td>null</td><td>0</td><td>true</td><td>true</td><td>false</td><td>[&quot;C&quot;, &quot;O&quot;, … &quot;f&quot;]</td><td>[&quot;C&quot;]</td></tr><tr><td>18</td><td>&quot;E&#x27;&quot;</td><td>&quot;point&quot;</td><td>&quot;Reflect(E, f)&quot;</td><td>&quot;E&#x27; = (0.5, 0.9)&quot;</td><td>null</td><td>0</td><td>true</td><td>true</td><td>false</td><td>[&quot;C&quot;, &quot;E&quot;, … &quot;g&quot;]</td><td>[&quot;E&quot;]</td></tr><tr><td>19</td><td>&quot;t2&quot;</td><td>&quot;triangle&quot;</td><td>&quot;Polygon(O&#x27;, C&#x27;, E&#x27;)&quot;</td><td>&quot;t2 = 0.2&quot;</td><td>null</td><td>0</td><td>true</td><td>false</td><td>false</td><td>[&quot;C&quot;, &quot;C&#x27;&quot;, … &quot;g&quot;]</td><td>[&quot;C&#x27;&quot;, &quot;E&#x27;&quot;, &quot;O&#x27;&quot;]</td></tr><tr><td>20</td><td>&quot;e&#x27;&quot;</td><td>&quot;segment&quot;</td><td>&quot;Segment(O&#x27;, C&#x27;, t2)&quot;</td><td>&quot;e&#x27; = 0.5&quot;</td><td>null</td><td>0</td><td>true</td><td>false</td><td>true</td><td>[&quot;C&quot;, &quot;C&#x27;&quot;, … &quot;t2&quot;]</td><td>[&quot;C&#x27;&quot;, &quot;O&#x27;&quot;, &quot;t2&quot;]</td></tr><tr><td>21</td><td>&quot;o&#x27;&quot;</td><td>&quot;segment&quot;</td><td>&quot;Segment(C&#x27;, E&#x27;, t2)&quot;</td><td>&quot;o&#x27; = 0.9&quot;</td><td>null</td><td>0</td><td>true</td><td>false</td><td>true</td><td>[&quot;C&quot;, &quot;C&#x27;&quot;, … &quot;t2&quot;]</td><td>[&quot;C&#x27;&quot;, &quot;E&#x27;&quot;, &quot;t2&quot;]</td></tr><tr><td>22</td><td>&quot;c&#x27;&quot;</td><td>&quot;segment&quot;</td><td>&quot;Segment(E&#x27;, O&#x27;, t2)&quot;</td><td>&quot;c&#x27; = 1&quot;</td><td>null</td><td>0</td><td>true</td><td>false</td><td>true</td><td>[&quot;C&quot;, &quot;C&#x27;&quot;, … &quot;t2&quot;]</td><td>[&quot;E&#x27;&quot;, &quot;O&#x27;&quot;, &quot;t2&quot;]</td></tr><tr><td>23</td><td>&quot;c&quot;</td><td>&quot;boolean&quot;</td><td>&quot;AreEqual(D, E&#x27;)&quot;</td><td>&quot;c = true&quot;</td><td>null</td><td>0</td><td>false</td><td>true</td><td>false</td><td>[]</td><td>[]</td></tr></tbody></table></div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nx</span><span class="o">.</span><span class="n">write_network_text</span><span class="p">(</span><span class="n">g1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>╙── eq1
+    ├─╼ O
+    │   ├─╼ f ╾ P
+    │   │   ├─╼ A ╾ eq1
+    │   │   ├─╼ B ╾ eq1
+    │   │   ├─╼ C
+    │   │   │   ├─╼ g ╾ f
+    │   │   │   │   ├─╼ E ╾ eq1
+    │   │   │   │   │   ├─╼ t1 ╾ O, D
+    │   │   │   │   │   │   ├─╼ e ╾ O, D
+    │   │   │   │   │   │   ├─╼ o ╾ D, E
+    │   │   │   │   │   │   └─╼ d ╾ E, O
+    │   │   │   │   │   ├─╼ E&#39; ╾ f
+    │   │   │   │   │   │   ├─╼ t2 ╾ O&#39;, C&#39;
+    │   │   │   │   │   │   │   ├─╼ e&#39; ╾ O&#39;, C&#39;
+    │   │   │   │   │   │   │   ├─╼ o&#39; ╾ C&#39;, E&#39;
+    │   │   │   │   │   │   │   └─╼ c&#39; ╾ E&#39;, O&#39;
+    │   │   │   │   │   │   └─╼  ...
+    │   │   │   │   │   └─╼  ...
+    │   │   │   │   └─╼ D ╾ eq1
+    │   │   │   │       └─╼  ...
+    │   │   │   └─╼ C&#39; ╾ f
+    │   │   │       └─╼  ...
+    │   │   ├─╼ O&#39; ╾ O
+    │   │   │   └─╼  ...
+    │   │   └─╼  ...
+    │   └─╼  ...
+    ├─╼ P
+    │   └─╼  ...
+    └─╼  ...
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">g2</span> <span class="o">=</span> <span class="n">p</span><span class="o">.</span><span class="n">parse_subgraph_legacy</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">p</span><span class="o">.</span><span class="n">df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div><style>
+.dataframe > thead > tr,
+.dataframe > tbody > tr {
+  text-align: right;
+  white-space: pre-wrap;
+}
+</style>
+<small>shape: (24, 12)</small><table border="1" class="dataframe"><thead><tr><th>Sequence</th><th>Name</th><th>Type</th><th>Command</th><th>Value</th><th>Caption</th><th>Layer</th><th>ShowObject</th><th>ShowLabel</th><th>Auxiliary</th><th>DependsOn</th><th>DependsOn_minimal</th></tr><tr><td>u32</td><td>str</td><td>str</td><td>str</td><td>str</td><td>str</td><td>i64</td><td>bool</td><td>bool</td><td>bool</td><td>list[str]</td><td>list[str]</td></tr></thead><tbody><tr><td>0</td><td>&quot;eq1&quot;</td><td>&quot;circle&quot;</td><td>&quot;x² + y² = 1&quot;</td><td>&quot;eq1: x² + y² = 1&quot;</td><td>null</td><td>0</td><td>false</td><td>false</td><td>false</td><td>[]</td><td>[]</td></tr><tr><td>1</td><td>&quot;O&quot;</td><td>&quot;point&quot;</td><td>&quot;Center(eq1)&quot;</td><td>&quot;O = (0, 0)&quot;</td><td>null</td><td>0</td><td>true</td><td>true</td><td>false</td><td>[&quot;eq1&quot;]</td><td>[&quot;eq1&quot;]</td></tr><tr><td>2</td><td>&quot;P&quot;</td><td>&quot;point&quot;</td><td>&quot;Point(eq1)&quot;</td><td>&quot;P = (1, 0)&quot;</td><td>null</td><td>0</td><td>true</td><td>true</td><td>false</td><td>[&quot;eq1&quot;]</td><td>[&quot;eq1&quot;]</td></tr><tr><td>3</td><td>&quot;f&quot;</td><td>&quot;line&quot;</td><td>&quot;Line(O, P)&quot;</td><td>&quot;f: y = 0&quot;</td><td>null</td><td>0</td><td>true</td><td>false</td><td>false</td><td>[&quot;O&quot;, &quot;P&quot;, &quot;eq1&quot;]</td><td>[&quot;O&quot;, &quot;P&quot;]</td></tr><tr><td>4</td><td>&quot;A&quot;</td><td>&quot;point&quot;</td><td>&quot;Intersect(eq1, f)&quot;</td><td>&quot;A = (1, 0)&quot;</td><td>null</td><td>0</td><td>true</td><td>true</td><td>false</td><td>[&quot;O&quot;, &quot;P&quot;, … &quot;f&quot;]</td><td>[&quot;eq1&quot;, &quot;f&quot;]</td></tr><tr><td>5</td><td>&quot;B&quot;</td><td>&quot;point&quot;</td><td>&quot;Intersect(eq1, f)&quot;</td><td>&quot;B = (-1, 0)&quot;</td><td>null</td><td>0</td><td>true</td><td>true</td><td>false</td><td>[&quot;O&quot;, &quot;P&quot;, … &quot;f&quot;]</td><td>[&quot;eq1&quot;, &quot;f&quot;]</td></tr><tr><td>6</td><td>&quot;C&quot;</td><td>&quot;point&quot;</td><td>&quot;Point(f)&quot;</td><td>&quot;C = (0.5, 0)&quot;</td><td>null</td><td>0</td><td>true</td><td>true</td><td>false</td><td>[&quot;O&quot;, &quot;P&quot;, … &quot;f&quot;]</td><td>[&quot;f&quot;]</td></tr><tr><td>7</td><td>&quot;g&quot;</td><td>&quot;line&quot;</td><td>&quot;PerpendicularLine(C, f)&quot;</td><td>&quot;g: -1x = -0.5&quot;</td><td>null</td><td>0</td><td>true</td><td>false</td><td>false</td><td>[&quot;C&quot;, &quot;O&quot;, … &quot;f&quot;]</td><td>[&quot;C&quot;]</td></tr><tr><td>8</td><td>&quot;E&quot;</td><td>&quot;point&quot;</td><td>&quot;Intersect(eq1, g)&quot;</td><td>&quot;E = (0.5, -0.9)&quot;</td><td>null</td><td>0</td><td>true</td><td>true</td><td>false</td><td>[&quot;C&quot;, &quot;O&quot;, … &quot;g&quot;]</td><td>[&quot;g&quot;]</td></tr><tr><td>9</td><td>&quot;D&quot;</td><td>&quot;point&quot;</td><td>&quot;Intersect(eq1, g)&quot;</td><td>&quot;D = (0.5, 0.9)&quot;</td><td>null</td><td>0</td><td>true</td><td>true</td><td>false</td><td>[&quot;C&quot;, &quot;O&quot;, … &quot;g&quot;]</td><td>[&quot;g&quot;]</td></tr><tr><td>10</td><td>&quot;t1&quot;</td><td>&quot;triangle&quot;</td><td>&quot;Polygon(O, D, E)&quot;</td><td>&quot;t1 = 0.4&quot;</td><td>null</td><td>0</td><td>true</td><td>false</td><td>false</td><td>[&quot;C&quot;, &quot;D&quot;, … &quot;g&quot;]</td><td>[&quot;D&quot;, &quot;E&quot;, &quot;O&quot;]</td></tr><tr><td>11</td><td>&quot;e&quot;</td><td>&quot;segment&quot;</td><td>&quot;Segment(O, D, t1)&quot;</td><td>&quot;e = 1&quot;</td><td>null</td><td>0</td><td>true</td><td>false</td><td>true</td><td>[&quot;C&quot;, &quot;D&quot;, … &quot;t1&quot;]</td><td>[&quot;D&quot;, &quot;O&quot;, &quot;t1&quot;]</td></tr><tr><td>12</td><td>&quot;o&quot;</td><td>&quot;segment&quot;</td><td>&quot;Segment(D, E, t1)&quot;</td><td>&quot;o = 1.7&quot;</td><td>null</td><td>0</td><td>true</td><td>false</td><td>true</td><td>[&quot;C&quot;, &quot;D&quot;, … &quot;t1&quot;]</td><td>[&quot;D&quot;, &quot;E&quot;, &quot;t1&quot;]</td></tr><tr><td>13</td><td>&quot;d&quot;</td><td>&quot;segment&quot;</td><td>&quot;Segment(E, O, t1)&quot;</td><td>&quot;d = 1&quot;</td><td>null</td><td>0</td><td>true</td><td>false</td><td>true</td><td>[&quot;C&quot;, &quot;D&quot;, … &quot;t1&quot;]</td><td>[&quot;E&quot;, &quot;O&quot;, &quot;t1&quot;]</td></tr><tr><td>14</td><td>&quot;a&quot;</td><td>&quot;boolean&quot;</td><td>&quot;AreEqual(Distance(O, D), Dista…</td><td>&quot;a = true&quot;</td><td>null</td><td>0</td><td>false</td><td>true</td><td>false</td><td>[]</td><td>[]</td></tr><tr><td>15</td><td>&quot;b&quot;</td><td>&quot;boolean&quot;</td><td>&quot;AreEqual(Angle(O, D, E), Angle…</td><td>&quot;b = false&quot;</td><td>null</td><td>0</td><td>false</td><td>true</td><td>false</td><td>[]</td><td>[]</td></tr><tr><td>16</td><td>&quot;O&#x27;&quot;</td><td>&quot;point&quot;</td><td>&quot;Reflect(O, f)&quot;</td><td>&quot;O&#x27; = (0, 0)&quot;</td><td>null</td><td>0</td><td>true</td><td>true</td><td>false</td><td>[&quot;O&quot;, &quot;P&quot;, … &quot;f&quot;]</td><td>[&quot;f&quot;]</td></tr><tr><td>17</td><td>&quot;C&#x27;&quot;</td><td>&quot;point&quot;</td><td>&quot;Reflect(C, f)&quot;</td><td>&quot;C&#x27; = (0.5, 0)&quot;</td><td>null</td><td>0</td><td>true</td><td>true</td><td>false</td><td>[&quot;C&quot;, &quot;O&quot;, … &quot;f&quot;]</td><td>[&quot;C&quot;]</td></tr><tr><td>18</td><td>&quot;E&#x27;&quot;</td><td>&quot;point&quot;</td><td>&quot;Reflect(E, f)&quot;</td><td>&quot;E&#x27; = (0.5, 0.9)&quot;</td><td>null</td><td>0</td><td>true</td><td>true</td><td>false</td><td>[&quot;C&quot;, &quot;E&quot;, … &quot;g&quot;]</td><td>[&quot;E&quot;]</td></tr><tr><td>19</td><td>&quot;t2&quot;</td><td>&quot;triangle&quot;</td><td>&quot;Polygon(O&#x27;, C&#x27;, E&#x27;)&quot;</td><td>&quot;t2 = 0.2&quot;</td><td>null</td><td>0</td><td>true</td><td>false</td><td>false</td><td>[&quot;C&quot;, &quot;C&#x27;&quot;, … &quot;g&quot;]</td><td>[&quot;C&#x27;&quot;, &quot;E&#x27;&quot;, &quot;O&#x27;&quot;]</td></tr><tr><td>20</td><td>&quot;e&#x27;&quot;</td><td>&quot;segment&quot;</td><td>&quot;Segment(O&#x27;, C&#x27;, t2)&quot;</td><td>&quot;e&#x27; = 0.5&quot;</td><td>null</td><td>0</td><td>true</td><td>false</td><td>true</td><td>[&quot;C&quot;, &quot;C&#x27;&quot;, … &quot;t2&quot;]</td><td>[&quot;C&#x27;&quot;, &quot;O&#x27;&quot;, &quot;t2&quot;]</td></tr><tr><td>21</td><td>&quot;o&#x27;&quot;</td><td>&quot;segment&quot;</td><td>&quot;Segment(C&#x27;, E&#x27;, t2)&quot;</td><td>&quot;o&#x27; = 0.9&quot;</td><td>null</td><td>0</td><td>true</td><td>false</td><td>true</td><td>[&quot;C&quot;, &quot;C&#x27;&quot;, … &quot;t2&quot;]</td><td>[&quot;C&#x27;&quot;, &quot;E&#x27;&quot;, &quot;t2&quot;]</td></tr><tr><td>22</td><td>&quot;c&#x27;&quot;</td><td>&quot;segment&quot;</td><td>&quot;Segment(E&#x27;, O&#x27;, t2)&quot;</td><td>&quot;c&#x27; = 1&quot;</td><td>null</td><td>0</td><td>true</td><td>false</td><td>true</td><td>[&quot;C&quot;, &quot;C&#x27;&quot;, … &quot;t2&quot;]</td><td>[&quot;E&#x27;&quot;, &quot;O&#x27;&quot;, &quot;t2&quot;]</td></tr><tr><td>23</td><td>&quot;c&quot;</td><td>&quot;boolean&quot;</td><td>&quot;AreEqual(D, E&#x27;)&quot;</td><td>&quot;c = true&quot;</td><td>null</td><td>0</td><td>false</td><td>true</td><td>false</td><td>[]</td><td>[]</td></tr></tbody></table></div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nx</span><span class="o">.</span><span class="n">write_network_text</span><span class="p">(</span><span class="n">g2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>╙── eq1
+    ├─╼ P
+    │   └─╼ f ╾ O
+    │       ├─╼ O&#39;
+    │       └─╼ C
+    │           ├─╼ g
+    │           │   ├─╼ E
+    │           │   │   └─╼ E&#39;
+    │           │   └─╼ D
+    │           └─╼ C&#39;
+    └─╼ O
+        └─╼  ...
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">labels_map</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">p</span><span class="o">.</span><span class="n">ft</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">g2</span><span class="p">:</span>
+        <span class="n">labels_map</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;[</span><span class="si">{</span><span class="n">n</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">nx</span><span class="o">.</span><span class="n">descendants</span><span class="p">(</span><span class="n">g1</span><span class="p">,</span><span class="w"> </span><span class="n">n</span><span class="p">))</span><span class="si">}</span><span class="s2">]&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nx</span><span class="o">.</span><span class="n">set_node_attributes</span><span class="p">(</span><span class="n">g1</span><span class="p">,</span> <span class="n">labels_map</span><span class="p">,</span> <span class="s2">&quot;label&quot;</span><span class="p">)</span>
+<span class="n">nx</span><span class="o">.</span><span class="n">write_network_text</span><span class="p">(</span><span class="n">g1</span><span class="p">,</span> <span class="n">with_labels</span><span class="o">=</span><span class="s2">&quot;label&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>╙── [eq1: 20]
+    ├─╼ [O: 18]
+    │   ├─╼ [f: 17] ╾ [P: 18]
+    │   │   ├─╼ A ╾ [eq1: 20]
+    │   │   ├─╼ B ╾ [eq1: 20]
+    │   │   ├─╼ [C: 13]
+    │   │   │   ├─╼ [g: 11] ╾ [f: 17]
+    │   │   │   │   ├─╼ [E: 9] ╾ [eq1: 20]
+    │   │   │   │   │   ├─╼ t1 ╾ [O: 18], [D: 4]
+    │   │   │   │   │   │   ├─╼ e ╾ [O: 18], [D: 4]
+    │   │   │   │   │   │   ├─╼ o ╾ [D: 4], [E: 9]
+    │   │   │   │   │   │   └─╼ d ╾ [E: 9], [O: 18]
+    │   │   │   │   │   ├─╼ [E&#39;: 4] ╾ [f: 17]
+    │   │   │   │   │   │   ├─╼ t2 ╾ [O&#39;: 4], [C&#39;: 4]
+    │   │   │   │   │   │   │   ├─╼ e&#39; ╾ [O&#39;: 4], [C&#39;: 4]
+    │   │   │   │   │   │   │   ├─╼ o&#39; ╾ [C&#39;: 4], [E&#39;: 4]
+    │   │   │   │   │   │   │   └─╼ c&#39; ╾ [E&#39;: 4], [O&#39;: 4]
+    │   │   │   │   │   │   └─╼  ...
+    │   │   │   │   │   └─╼  ...
+    │   │   │   │   └─╼ [D: 4] ╾ [eq1: 20]
+    │   │   │   │       └─╼  ...
+    │   │   │   └─╼ [C&#39;: 4] ╾ [f: 17]
+    │   │   │       └─╼  ...
+    │   │   ├─╼ [O&#39;: 4] ╾ [O: 18]
+    │   │   │   └─╼  ...
+    │   │   └─╼  ...
+    │   └─╼  ...
+    ├─╼ [P: 18]
+    │   └─╼  ...
+    └─╼  ...
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">ggblab_extra.construction_parser</span><span class="w"> </span><span class="kn">import</span> <span class="n">build_graph_from_df</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">p</span><span class="o">.</span><span class="n">df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div><style>
+.dataframe > thead > tr,
+.dataframe > tbody > tr {
+  text-align: right;
+  white-space: pre-wrap;
+}
+</style>
+<small>shape: (24, 12)</small><table border="1" class="dataframe"><thead><tr><th>Sequence</th><th>Name</th><th>Type</th><th>Command</th><th>Value</th><th>Caption</th><th>Layer</th><th>ShowObject</th><th>ShowLabel</th><th>Auxiliary</th><th>DependsOn</th><th>DependsOn_minimal</th></tr><tr><td>u32</td><td>str</td><td>str</td><td>str</td><td>str</td><td>str</td><td>i64</td><td>bool</td><td>bool</td><td>bool</td><td>list[str]</td><td>list[str]</td></tr></thead><tbody><tr><td>0</td><td>&quot;eq1&quot;</td><td>&quot;circle&quot;</td><td>&quot;x² + y² = 1&quot;</td><td>&quot;eq1: x² + y² = 1&quot;</td><td>null</td><td>0</td><td>false</td><td>false</td><td>false</td><td>[]</td><td>[]</td></tr><tr><td>1</td><td>&quot;O&quot;</td><td>&quot;point&quot;</td><td>&quot;Center(eq1)&quot;</td><td>&quot;O = (0, 0)&quot;</td><td>null</td><td>0</td><td>true</td><td>true</td><td>false</td><td>[&quot;eq1&quot;]</td><td>[&quot;eq1&quot;]</td></tr><tr><td>2</td><td>&quot;P&quot;</td><td>&quot;point&quot;</td><td>&quot;Point(eq1)&quot;</td><td>&quot;P = (1, 0)&quot;</td><td>null</td><td>0</td><td>true</td><td>true</td><td>false</td><td>[&quot;eq1&quot;]</td><td>[&quot;eq1&quot;]</td></tr><tr><td>3</td><td>&quot;f&quot;</td><td>&quot;line&quot;</td><td>&quot;Line(O, P)&quot;</td><td>&quot;f: y = 0&quot;</td><td>null</td><td>0</td><td>true</td><td>false</td><td>false</td><td>[&quot;O&quot;, &quot;P&quot;, &quot;eq1&quot;]</td><td>[&quot;O&quot;, &quot;P&quot;]</td></tr><tr><td>4</td><td>&quot;A&quot;</td><td>&quot;point&quot;</td><td>&quot;Intersect(eq1, f)&quot;</td><td>&quot;A = (1, 0)&quot;</td><td>null</td><td>0</td><td>true</td><td>true</td><td>false</td><td>[&quot;O&quot;, &quot;P&quot;, … &quot;f&quot;]</td><td>[&quot;eq1&quot;, &quot;f&quot;]</td></tr><tr><td>5</td><td>&quot;B&quot;</td><td>&quot;point&quot;</td><td>&quot;Intersect(eq1, f)&quot;</td><td>&quot;B = (-1, 0)&quot;</td><td>null</td><td>0</td><td>true</td><td>true</td><td>false</td><td>[&quot;O&quot;, &quot;P&quot;, … &quot;f&quot;]</td><td>[&quot;eq1&quot;, &quot;f&quot;]</td></tr><tr><td>6</td><td>&quot;C&quot;</td><td>&quot;point&quot;</td><td>&quot;Point(f)&quot;</td><td>&quot;C = (0.5, 0)&quot;</td><td>null</td><td>0</td><td>true</td><td>true</td><td>false</td><td>[&quot;O&quot;, &quot;P&quot;, … &quot;f&quot;]</td><td>[&quot;f&quot;]</td></tr><tr><td>7</td><td>&quot;g&quot;</td><td>&quot;line&quot;</td><td>&quot;PerpendicularLine(C, f)&quot;</td><td>&quot;g: -1x = -0.5&quot;</td><td>null</td><td>0</td><td>true</td><td>false</td><td>false</td><td>[&quot;C&quot;, &quot;O&quot;, … &quot;f&quot;]</td><td>[&quot;C&quot;]</td></tr><tr><td>8</td><td>&quot;E&quot;</td><td>&quot;point&quot;</td><td>&quot;Intersect(eq1, g)&quot;</td><td>&quot;E = (0.5, -0.9)&quot;</td><td>null</td><td>0</td><td>true</td><td>true</td><td>false</td><td>[&quot;C&quot;, &quot;O&quot;, … &quot;g&quot;]</td><td>[&quot;g&quot;]</td></tr><tr><td>9</td><td>&quot;D&quot;</td><td>&quot;point&quot;</td><td>&quot;Intersect(eq1, g)&quot;</td><td>&quot;D = (0.5, 0.9)&quot;</td><td>null</td><td>0</td><td>true</td><td>true</td><td>false</td><td>[&quot;C&quot;, &quot;O&quot;, … &quot;g&quot;]</td><td>[&quot;g&quot;]</td></tr><tr><td>10</td><td>&quot;t1&quot;</td><td>&quot;triangle&quot;</td><td>&quot;Polygon(O, D, E)&quot;</td><td>&quot;t1 = 0.4&quot;</td><td>null</td><td>0</td><td>true</td><td>false</td><td>false</td><td>[&quot;C&quot;, &quot;D&quot;, … &quot;g&quot;]</td><td>[&quot;D&quot;, &quot;E&quot;, &quot;O&quot;]</td></tr><tr><td>11</td><td>&quot;e&quot;</td><td>&quot;segment&quot;</td><td>&quot;Segment(O, D, t1)&quot;</td><td>&quot;e = 1&quot;</td><td>null</td><td>0</td><td>true</td><td>false</td><td>true</td><td>[&quot;C&quot;, &quot;D&quot;, … &quot;t1&quot;]</td><td>[&quot;D&quot;, &quot;O&quot;, &quot;t1&quot;]</td></tr><tr><td>12</td><td>&quot;o&quot;</td><td>&quot;segment&quot;</td><td>&quot;Segment(D, E, t1)&quot;</td><td>&quot;o = 1.7&quot;</td><td>null</td><td>0</td><td>true</td><td>false</td><td>true</td><td>[&quot;C&quot;, &quot;D&quot;, … &quot;t1&quot;]</td><td>[&quot;D&quot;, &quot;E&quot;, &quot;t1&quot;]</td></tr><tr><td>13</td><td>&quot;d&quot;</td><td>&quot;segment&quot;</td><td>&quot;Segment(E, O, t1)&quot;</td><td>&quot;d = 1&quot;</td><td>null</td><td>0</td><td>true</td><td>false</td><td>true</td><td>[&quot;C&quot;, &quot;D&quot;, … &quot;t1&quot;]</td><td>[&quot;E&quot;, &quot;O&quot;, &quot;t1&quot;]</td></tr><tr><td>14</td><td>&quot;a&quot;</td><td>&quot;boolean&quot;</td><td>&quot;AreEqual(Distance(O, D), Dista…</td><td>&quot;a = true&quot;</td><td>null</td><td>0</td><td>false</td><td>true</td><td>false</td><td>[]</td><td>[]</td></tr><tr><td>15</td><td>&quot;b&quot;</td><td>&quot;boolean&quot;</td><td>&quot;AreEqual(Angle(O, D, E), Angle…</td><td>&quot;b = false&quot;</td><td>null</td><td>0</td><td>false</td><td>true</td><td>false</td><td>[]</td><td>[]</td></tr><tr><td>16</td><td>&quot;O&#x27;&quot;</td><td>&quot;point&quot;</td><td>&quot;Reflect(O, f)&quot;</td><td>&quot;O&#x27; = (0, 0)&quot;</td><td>null</td><td>0</td><td>true</td><td>true</td><td>false</td><td>[&quot;O&quot;, &quot;P&quot;, … &quot;f&quot;]</td><td>[&quot;f&quot;]</td></tr><tr><td>17</td><td>&quot;C&#x27;&quot;</td><td>&quot;point&quot;</td><td>&quot;Reflect(C, f)&quot;</td><td>&quot;C&#x27; = (0.5, 0)&quot;</td><td>null</td><td>0</td><td>true</td><td>true</td><td>false</td><td>[&quot;C&quot;, &quot;O&quot;, … &quot;f&quot;]</td><td>[&quot;C&quot;]</td></tr><tr><td>18</td><td>&quot;E&#x27;&quot;</td><td>&quot;point&quot;</td><td>&quot;Reflect(E, f)&quot;</td><td>&quot;E&#x27; = (0.5, 0.9)&quot;</td><td>null</td><td>0</td><td>true</td><td>true</td><td>false</td><td>[&quot;C&quot;, &quot;E&quot;, … &quot;g&quot;]</td><td>[&quot;E&quot;]</td></tr><tr><td>19</td><td>&quot;t2&quot;</td><td>&quot;triangle&quot;</td><td>&quot;Polygon(O&#x27;, C&#x27;, E&#x27;)&quot;</td><td>&quot;t2 = 0.2&quot;</td><td>null</td><td>0</td><td>true</td><td>false</td><td>false</td><td>[&quot;C&quot;, &quot;C&#x27;&quot;, … &quot;g&quot;]</td><td>[&quot;C&#x27;&quot;, &quot;E&#x27;&quot;, &quot;O&#x27;&quot;]</td></tr><tr><td>20</td><td>&quot;e&#x27;&quot;</td><td>&quot;segment&quot;</td><td>&quot;Segment(O&#x27;, C&#x27;, t2)&quot;</td><td>&quot;e&#x27; = 0.5&quot;</td><td>null</td><td>0</td><td>true</td><td>false</td><td>true</td><td>[&quot;C&quot;, &quot;C&#x27;&quot;, … &quot;t2&quot;]</td><td>[&quot;C&#x27;&quot;, &quot;O&#x27;&quot;, &quot;t2&quot;]</td></tr><tr><td>21</td><td>&quot;o&#x27;&quot;</td><td>&quot;segment&quot;</td><td>&quot;Segment(C&#x27;, E&#x27;, t2)&quot;</td><td>&quot;o&#x27; = 0.9&quot;</td><td>null</td><td>0</td><td>true</td><td>false</td><td>true</td><td>[&quot;C&quot;, &quot;C&#x27;&quot;, … &quot;t2&quot;]</td><td>[&quot;C&#x27;&quot;, &quot;E&#x27;&quot;, &quot;t2&quot;]</td></tr><tr><td>22</td><td>&quot;c&#x27;&quot;</td><td>&quot;segment&quot;</td><td>&quot;Segment(E&#x27;, O&#x27;, t2)&quot;</td><td>&quot;c&#x27; = 1&quot;</td><td>null</td><td>0</td><td>true</td><td>false</td><td>true</td><td>[&quot;C&quot;, &quot;C&#x27;&quot;, … &quot;t2&quot;]</td><td>[&quot;E&#x27;&quot;, &quot;O&#x27;&quot;, &quot;t2&quot;]</td></tr><tr><td>23</td><td>&quot;c&quot;</td><td>&quot;boolean&quot;</td><td>&quot;AreEqual(D, E&#x27;)&quot;</td><td>&quot;c = true&quot;</td><td>null</td><td>0</td><td>false</td><td>true</td><td>false</td><td>[]</td><td>[]</td></tr></tbody></table></div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nx</span><span class="o">.</span><span class="n">write_network_text</span><span class="p">(</span><span class="n">build_graph_from_df</span><span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">df</span><span class="p">,</span> <span class="n">reduce_transitive</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>╟── eq1
+╎   ├─╼ O
+╎   │   └─╼ f ╾ P
+╎   │       ├─╼ C
+╎   │       │   ├─╼ C&#39;
+╎   │       │   │   └─╼ t2 ╾ O&#39;, E&#39;
+╎   │       │   │       ├─╼ o&#39;
+╎   │       │   │       ├─╼ e&#39;
+╎   │       │   │       └─╼ c&#39;
+╎   │       │   └─╼ g
+╎   │       │       ├─╼ E
+╎   │       │       │   ├─╼ t1 ╾ D
+╎   │       │       │   │   ├─╼ d
+╎   │       │       │   │   ├─╼ e
+╎   │       │       │   │   └─╼ o
+╎   │       │       │   └─╼ E&#39;
+╎   │       │       │       └─╼  ...
+╎   │       │       └─╼ D
+╎   │       │           └─╼  ...
+╎   │       ├─╼ B
+╎   │       ├─╼ O&#39;
+╎   │       │   └─╼  ...
+╎   │       └─╼ A
+╎   └─╼ P
+╎       └─╼  ...
+╟── a
+╟── b
+╙── c
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ｖ</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">itertools</span><span class="w"> </span><span class="kn">import</span> <span class="n">zip_longest</span>
+
+<span class="n">l0</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+<span class="k">await</span> <span class="n">ggb</span><span class="o">.</span><span class="n">function</span><span class="p">(</span><span class="s2">&quot;setLayerVisible&quot;</span><span class="p">,</span> <span class="nb">list</span><span class="p">(</span><span class="n">zip_longest</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">l0</span><span class="p">),</span> <span class="p">[],</span> <span class="n">fillvalue</span><span class="o">=</span><span class="kc">False</span><span class="p">)))</span>
+<span class="n">l0</span> <span class="o">=</span> <span class="p">[</span><span class="mi">9</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
+<span class="k">await</span> <span class="n">ggb</span><span class="o">.</span><span class="n">function</span><span class="p">(</span><span class="s2">&quot;setLayerVisible&quot;</span><span class="p">,</span> <span class="nb">list</span><span class="p">(</span><span class="n">zip_longest</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">l0</span><span class="p">),</span> <span class="p">[],</span> <span class="n">fillvalue</span><span class="o">=</span><span class="kc">True</span><span class="p">)))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[None, None]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># case 3 of interactions: XML attributes</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">r</span> <span class="o">=</span> <span class="k">await</span> <span class="n">ggb</span><span class="o">.</span><span class="n">function</span><span class="p">(</span><span class="s2">&quot;getXML&quot;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;A&#39;</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">r</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;element type=&quot;point&quot; label=&quot;A&quot;&gt;
+	&lt;show object=&quot;true&quot; label=&quot;true&quot; ev=&quot;4&quot;/&gt;
+	&lt;objColor r=&quot;176&quot; g=&quot;0&quot; b=&quot;32&quot; alpha=&quot;0&quot;/&gt;
+	&lt;layer val=&quot;9&quot;/&gt;
+	&lt;labelMode val=&quot;0&quot;/&gt;
+	&lt;animation step=&quot;0.1&quot; type=&quot;1&quot; playing=&quot;false&quot;/&gt;
+	&lt;pointSize val=&quot;5&quot;/&gt;
+	&lt;pointStyle val=&quot;0&quot;/&gt;
+	&lt;coords x=&quot;10&quot; y=&quot;0&quot; z=&quot;1&quot;/&gt;
+&lt;/element&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">o2</span> <span class="o">=</span> <span class="n">c</span><span class="o">.</span><span class="n">ggb_schema</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="n">r</span><span class="p">)</span>
+<span class="n">o2</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;@type&#39;: &#39;point&#39;,
+ &#39;@label&#39;: &#39;A&#39;,
+ &#39;show&#39;: [{&#39;@object&#39;: True, &#39;@label&#39;: True, &#39;@ev&#39;: 4}],
+ &#39;objColor&#39;: [{&#39;@r&#39;: 176, &#39;@g&#39;: 0, &#39;@b&#39;: 32, &#39;@alpha&#39;: 0.0}],
+ &#39;layer&#39;: [{&#39;@val&#39;: 9}],
+ &#39;labelMode&#39;: [{&#39;@val&#39;: 0}],
+ &#39;animation&#39;: [{&#39;@step&#39;: &#39;0.1&#39;, &#39;@type&#39;: 1, &#39;@playing&#39;: False}],
+ &#39;pointSize&#39;: [{&#39;@val&#39;: 5.0}],
+ &#39;pointStyle&#39;: [{&#39;@val&#39;: 0}],
+ &#39;coords&#39;: [{&#39;@x&#39;: &#39;10&#39;, &#39;@y&#39;: &#39;0&#39;, &#39;@z&#39;: &#39;1&#39;}]}
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">o2</span><span class="p">[</span><span class="s1">&#39;show&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;@object&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="n">o2</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;@type&#39;: &#39;point&#39;,
+ &#39;@label&#39;: &#39;A&#39;,
+ &#39;show&#39;: [{&#39;@object&#39;: False, &#39;@label&#39;: True, &#39;@ev&#39;: 4}],
+ &#39;objColor&#39;: [{&#39;@r&#39;: 176, &#39;@g&#39;: 0, &#39;@b&#39;: 32, &#39;@alpha&#39;: 0.0}],
+ &#39;layer&#39;: [{&#39;@val&#39;: 9}],
+ &#39;labelMode&#39;: [{&#39;@val&#39;: 0}],
+ &#39;animation&#39;: [{&#39;@step&#39;: &#39;0.1&#39;, &#39;@type&#39;: 1, &#39;@playing&#39;: False}],
+ &#39;pointSize&#39;: [{&#39;@val&#39;: 5.0}],
+ &#39;pointStyle&#39;: [{&#39;@val&#39;: 0}],
+ &#39;coords&#39;: [{&#39;@x&#39;: &#39;10&#39;, &#39;@y&#39;: &#39;0&#39;, &#39;@z&#39;: &#39;1&#39;}]}
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># construct xml attributes from dict</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">xmlschema</span><span class="o">.</span><span class="n">etree_tostring</span><span class="p">(</span><span class="n">c</span><span class="o">.</span><span class="n">ggb_schema</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="n">o2</span><span class="p">,</span> <span class="s1">&#39;element&#39;</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;element type=&quot;point&quot; label=&quot;A&quot;&gt;
+    &lt;show object=&quot;false&quot; label=&quot;true&quot; ev=&quot;4&quot; /&gt;
+    &lt;objColor r=&quot;176&quot; g=&quot;0&quot; b=&quot;32&quot; alpha=&quot;0.0&quot; /&gt;
+    &lt;layer val=&quot;9&quot; /&gt;
+    &lt;labelMode val=&quot;0&quot; /&gt;
+    &lt;animation step=&quot;0.1&quot; type=&quot;1&quot; playing=&quot;false&quot; /&gt;
+    &lt;pointSize val=&quot;5.0&quot; /&gt;
+    &lt;pointStyle val=&quot;0&quot; /&gt;
+    &lt;coords x=&quot;10&quot; y=&quot;0&quot; z=&quot;1&quot; /&gt;
+&lt;/element&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># update the applet</span>
+<span class="n">r</span> <span class="o">=</span> <span class="k">await</span> <span class="n">ggb</span><span class="o">.</span><span class="n">function</span><span class="p">(</span><span class="s2">&quot;evalXML&quot;</span><span class="p">,</span> <span class="p">[</span><span class="n">x</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">itertools</span><span class="w"> </span><span class="kn">import</span> <span class="n">zip_longest</span>
+
+<span class="n">l0</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+<span class="k">await</span> <span class="n">ggb</span><span class="o">.</span><span class="n">function</span><span class="p">(</span><span class="s2">&quot;setLayerVisible&quot;</span><span class="p">,</span> <span class="nb">list</span><span class="p">(</span><span class="n">zip_longest</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">l0</span><span class="p">),</span> <span class="p">[],</span> <span class="n">fillvalue</span><span class="o">=</span><span class="kc">False</span><span class="p">)))</span>
+<span class="n">l0</span> <span class="o">=</span> <span class="p">[</span><span class="mi">9</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
+<span class="k">await</span> <span class="n">ggb</span><span class="o">.</span><span class="n">function</span><span class="p">(</span><span class="s2">&quot;setLayerVisible&quot;</span><span class="p">,</span> <span class="nb">list</span><span class="p">(</span><span class="n">zip_longest</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">l0</span><span class="p">),</span> <span class="p">[],</span> <span class="n">fillvalue</span><span class="o">=</span><span class="kc">True</span><span class="p">)))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[None, None]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># case 3 of interactions: XML attributes</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">r</span> <span class="o">=</span> <span class="k">await</span> <span class="n">ggb</span><span class="o">.</span><span class="n">function</span><span class="p">(</span><span class="s2">&quot;getXML&quot;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;A&#39;</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">r</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;element type=&quot;point&quot; label=&quot;A&quot;&gt;
+	&lt;show object=&quot;true&quot; label=&quot;true&quot; ev=&quot;4&quot;/&gt;
+	&lt;objColor r=&quot;176&quot; g=&quot;0&quot; b=&quot;32&quot; alpha=&quot;0&quot;/&gt;
+	&lt;layer val=&quot;9&quot;/&gt;
+	&lt;labelMode val=&quot;0&quot;/&gt;
+	&lt;animation step=&quot;0.1&quot; type=&quot;1&quot; playing=&quot;false&quot;/&gt;
+	&lt;pointSize val=&quot;5&quot;/&gt;
+	&lt;pointStyle val=&quot;0&quot;/&gt;
+	&lt;coords x=&quot;10&quot; y=&quot;0&quot; z=&quot;1&quot;/&gt;
+&lt;/element&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">o2</span> <span class="o">=</span> <span class="n">c</span><span class="o">.</span><span class="n">ggb_schema</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="n">r</span><span class="p">)</span>
+<span class="n">o2</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;@type&#39;: &#39;point&#39;,
+ &#39;@label&#39;: &#39;A&#39;,
+ &#39;show&#39;: [{&#39;@object&#39;: True, &#39;@label&#39;: True, &#39;@ev&#39;: 4}],
+ &#39;objColor&#39;: [{&#39;@r&#39;: 176, &#39;@g&#39;: 0, &#39;@b&#39;: 32, &#39;@alpha&#39;: 0.0}],
+ &#39;layer&#39;: [{&#39;@val&#39;: 9}],
+ &#39;labelMode&#39;: [{&#39;@val&#39;: 0}],
+ &#39;animation&#39;: [{&#39;@step&#39;: &#39;0.1&#39;, &#39;@type&#39;: 1, &#39;@playing&#39;: False}],
+ &#39;pointSize&#39;: [{&#39;@val&#39;: 5.0}],
+ &#39;pointStyle&#39;: [{&#39;@val&#39;: 0}],
+ &#39;coords&#39;: [{&#39;@x&#39;: &#39;10&#39;, &#39;@y&#39;: &#39;0&#39;, &#39;@z&#39;: &#39;1&#39;}]}
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">o2</span><span class="p">[</span><span class="s1">&#39;show&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;@object&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="n">o2</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;@type&#39;: &#39;point&#39;,
+ &#39;@label&#39;: &#39;A&#39;,
+ &#39;show&#39;: [{&#39;@object&#39;: False, &#39;@label&#39;: True, &#39;@ev&#39;: 4}],
+ &#39;objColor&#39;: [{&#39;@r&#39;: 176, &#39;@g&#39;: 0, &#39;@b&#39;: 32, &#39;@alpha&#39;: 0.0}],
+ &#39;layer&#39;: [{&#39;@val&#39;: 9}],
+ &#39;labelMode&#39;: [{&#39;@val&#39;: 0}],
+ &#39;animation&#39;: [{&#39;@step&#39;: &#39;0.1&#39;, &#39;@type&#39;: 1, &#39;@playing&#39;: False}],
+ &#39;pointSize&#39;: [{&#39;@val&#39;: 5.0}],
+ &#39;pointStyle&#39;: [{&#39;@val&#39;: 0}],
+ &#39;coords&#39;: [{&#39;@x&#39;: &#39;10&#39;, &#39;@y&#39;: &#39;0&#39;, &#39;@z&#39;: &#39;1&#39;}]}
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># construct xml attributes from dict</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">xmlschema</span><span class="o">.</span><span class="n">etree_tostring</span><span class="p">(</span><span class="n">c</span><span class="o">.</span><span class="n">ggb_schema</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="n">o2</span><span class="p">,</span> <span class="s1">&#39;element&#39;</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;element type=&quot;point&quot; label=&quot;A&quot;&gt;
+    &lt;show object=&quot;false&quot; label=&quot;true&quot; ev=&quot;4&quot; /&gt;
+    &lt;objColor r=&quot;176&quot; g=&quot;0&quot; b=&quot;32&quot; alpha=&quot;0.0&quot; /&gt;
+    &lt;layer val=&quot;9&quot; /&gt;
+    &lt;labelMode val=&quot;0&quot; /&gt;
+    &lt;animation step=&quot;0.1&quot; type=&quot;1&quot; playing=&quot;false&quot; /&gt;
+    &lt;pointSize val=&quot;5.0&quot; /&gt;
+    &lt;pointStyle val=&quot;0&quot; /&gt;
+    &lt;coords x=&quot;10&quot; y=&quot;0&quot; z=&quot;1&quot; /&gt;
+&lt;/element&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># update the applet</span>
+<span class="n">r</span> <span class="o">=</span> <span class="k">await</span> <span class="n">ggb</span><span class="o">.</span><span class="n">function</span><span class="p">(</span><span class="s2">&quot;evalXML&quot;</span><span class="p">,</span> <span class="p">[</span><span class="n">x</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">r</span> <span class="o">=</span> <span class="k">await</span> <span class="n">ggb</span><span class="o">.</span><span class="n">function</span><span class="p">(</span><span class="s2">&quot;getBase64&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="n">r</span><span class="p">),</span> <span class="nb">type</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s1">&#39;ascii&#39;</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(str, bytes)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># encode str to bytes for save</span>
+<span class="n">ggb</span><span class="o">.</span><span class="n">construction</span><span class="o">.</span><span class="n">base64_buffer</span> <span class="o">=</span> <span class="n">r</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s1">&#39;ascii&#39;</span><span class="p">)</span>
+<span class="c1"># ggb.construction.base64_buffer</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># using API, some part of archive would lost...</span>
+<span class="n">c</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;ggblab.file.ggb_file at 0x109adea50&gt;
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./chapters/__01"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Manabu Higashida, D3 Center, Osaka University, Japan
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2026.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

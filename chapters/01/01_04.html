@@ -1,0 +1,880 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>第一回: 入試問題を解く (その1) 記述する &#8212; プログラミングで遡る科学史</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=3c74b3bc" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css?v=8cd3d715" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=fab101a9"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'chapters/01/01_04';</script>
+    <link rel="canonical" href="https://cloudedu-osaka.github.io/textbook-2026/chapters/01/01_04.html" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="第一回: 入試問題を解く (その1) 記述する" href="01_05.html" />
+    <link rel="prev" title="第一回: 入試問題を解く (その1) 記述する" href="01_03.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../intro.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">プログラミングで遡る科学史</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">2026/04/15</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="01_01.html">入試問題を解く (その1) 記述する 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="01_02.html">入試問題を解く (その1) 記述する 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="01_03.html">入試問題を解く (その1) 記述する 3</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">入試問題を解く (その1) 記述する 4</a></li>
+<li class="toctree-l1"><a class="reference internal" href="01_05.html">入試問題を解く (その1) 記述する 5</a></li>
+<li class="toctree-l1"><a class="reference internal" href="01_11.html">入試問題を解く (その1) 記述する 6</a></li>
+<li class="toctree-l1"><a class="reference internal" href="01_12.html">入試問題を解く (その1) 記述する 7</a></li>
+<li class="toctree-l1"><a class="reference internal" href="01_13.html">入試問題を解く (その1) 記述する 8</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://vioras-jh2500.japaneast.cloudapp.azure.com/hub/user-redirect/git-pull?repo=https%3A//github.com/Cloudedu-Osaka/textbook-2026&urlpath=lab/tree/textbook-2026/chapters/01/01_04.ipynb&branch=main" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on JupyterHub"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="JupyterHub logo" src="../../_static/images/logo_jupyterhub.svg">
+  </span>
+<span class="btn__text-container">JupyterHub</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+<a href="https://github.com/Cloudedu-Osaka/textbook-2026" target="_blank"
+   class="btn btn-sm btn-source-repository-button"
+   title="Source repository"
+   data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+
+</a>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/chapters/01/01_04.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button pst-navbar-icon"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm pst-navbar-icon" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>第一回: 入試問題を解く (その1) 記述する</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dncl">DNCLによる出題を自然言語として分析する</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">1.4.1 行番号を取り除く</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">1.4.2 分かち書き (字句解析)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#nltk">1.4.3 nltkによる構文解析</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="id1">
+<h1>第一回: 入試問題を解く (その1) 記述する<a class="headerlink" href="#id1" title="Link to this heading">#</a></h1>
+<section id="dncl">
+<h2>DNCLによる出題を自然言語として分析する<a class="headerlink" href="#dncl" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 図2 ２人目以降の来訪者の待ち時間を求めるプログラム</span>
+<span class="n">dncl_example</span> <span class="o">=</span> <span class="s1">&#39;&#39;&#39;(01) taiken = 3</span>
+<span class="s1">(02) Touchaku = [0, 3, 4, 10, 11, 12]</span>
+<span class="s1">(03) kyakusu = 要素数(Touchaku)</span>
+<span class="s1">(04) Kaishi = [0, 0, 0, 0, 0, 0]</span>
+<span class="s1">(05) Shuryou = [0, 0, 0, 0, 0, 0]</span>
+<span class="s1">(06) Shuryou[1] = taiken</span>
+<span class="s1">(07) i を 2 から kyakusu まで 1 ずつ増やしながら繰り返す:</span>
+<span class="s1">(08)     Kaishi[i] = 最大値( カ , キ )</span>
+<span class="s1">(09)     Shuryou[i] = ク</span>
+<span class="s1">(10)     表示する(i, &quot;人目の待ち時間:&quot;, ケ - コ, &quot;分間&quot;)</span>
+<span class="s1">&#39;&#39;&#39;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 図3 最長待ち時間が10分間未満となる体験時間を調べるプログラム</span>
+<span class="n">dncl_example</span> <span class="o">=</span> <span class="s1">&#39;&#39;&#39;(01) Touchaku = [0, 3, 4, 10, 11, 12]</span>
+<span class="s1">(02) kyakusu = 要素数(Touchaku)</span>
+<span class="s1">(03) taiken を 1 から 15 まで 1 ずつ増やしながら繰り返す:</span>
+<span class="s1">(04)     Kaishi = [0, 0, 0, 0, 0, 0]</span>
+<span class="s1">(05)     Shuryou = [0, 0, 0, 0, 0, 0]</span>
+<span class="s1">(06)     Shuryou[1] = taiken</span>
+<span class="s1">(07)     i を 2 から kyakusu まで 1 ずつ増やしながら繰り返す:</span>
+<span class="s1">(08)         Kaishi[i] = 最大値( カ , キ )</span>
+<span class="s1">(09)         Shuryou[i] = ク</span>
+<span class="s1">(10)     saichou = 0</span>
+<span class="s1">(11)     i を 1 から kyakusu まで 1 ずつ増やしながら繰り返す:</span>
+<span class="s1">(12)         saichou = 最大値( サ , ケ - コ )</span>
+<span class="s1">(13)     もし シ ならば:</span>
+<span class="s1">(14)         表示する(&quot;体験時間&quot;, taiken, &quot;分間: &quot;, 最長待ち時間&quot;, saichou, &quot;分間&quot;) </span>
+<span class="s1">&#39;&#39;&#39;</span>
+<span class="c1"># (04)〜(09)行目の処理は図2のプログラムの(04)〜(09)行目の処理と同じである</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 図3 最長待ち時間が10分間未満となる体験時間を調べるプログラム</span>
+<span class="n">dncl_example</span> <span class="o">=</span> <span class="s1">&#39;&#39;&#39;(01) Touchaku = [0, 3, 4, 10, 11, 12]</span>
+<span class="s1">(02) kyakusu = 要素数(Touchaku)</span>
+<span class="s1">(03) taiken = 1, saichou = 0</span>
+<span class="s1">(04) (taiken &lt;= 15) and (saichou &lt; 10) の間繰り返す:</span>
+<span class="s1">(05)     Kaishi = [0, 0, 0, 0, 0, 0]</span>
+<span class="s1">(06)     Shuryou = [0, 0, 0, 0, 0, 0]</span>
+<span class="s1">(07)     Shuryou[1] = taiken</span>
+<span class="s1">(08)     i を 2 から kyakusu まで 1 ずつ増やしながら繰り返す:</span>
+<span class="s1">(09)         Kaishi[i] = 最大値( カ , キ )</span>
+<span class="s1">(10)         Shuryou[i] = ク</span>
+<span class="s1">(11)     saichou = 0</span>
+<span class="s1">(12)     i を 1 から kyakusu まで 1 ずつ増やしながら繰り返す:</span>
+<span class="s1">(13)         saichou = 最大値( サ , ケ - コ )</span>
+<span class="s1">(14)     もし シ ならば:</span>
+<span class="s1">(15)         表示する(&quot;体験時間&quot;, taiken, &quot;分間: &quot;, 最長待ち時間&quot;, saichou, &quot;分間&quot;) </span>
+<span class="s1">(16)     taiken = taiken + 1</span>
+<span class="s1">&#39;&#39;&#39;</span>
+<span class="c1"># (04)〜(09)行目の処理は図2のプログラムの(04)〜(09)行目の処理と同じである</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="id2">
+<h3>1.4.1 行番号を取り除く<a class="headerlink" href="#id2" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">re</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">strip_lineno</span><span class="p">(</span><span class="n">s</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+    <span class="c1"># Robustly remove a leading parenthesized prefix like &#39;(01)&#39; while preserving indentation.</span>
+    <span class="c1"># This handles cases like &#39;(13)     もし ...&#39; by keeping the spaces after the closing paren.</span>
+    <span class="n">m</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;^(\s*)\(([^)]*)\)(\s*)(.*)$&#39;</span><span class="p">,</span> <span class="n">s</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">m</span><span class="p">:</span>
+        <span class="n">leading_spaces</span> <span class="o">=</span> <span class="n">m</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>  <span class="c1"># spaces before &#39;(&#39; (often empty)</span>
+        <span class="n">spaces_after</span> <span class="o">=</span> <span class="n">m</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>    <span class="c1"># spaces after &#39;)&#39; which encode indentation</span>
+        <span class="n">rest</span> <span class="o">=</span> <span class="n">m</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>            <span class="c1"># remaining content</span>
+        <span class="k">return</span> <span class="n">leading_spaces</span> <span class="o">+</span> <span class="n">spaces_after</span> <span class="o">+</span> <span class="n">rest</span><span class="o">.</span><span class="n">rstrip</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+    <span class="c1"># If no parenthesized prefix, return line stripped of trailing newline only</span>
+    <span class="k">return</span> <span class="n">s</span><span class="o">.</span><span class="n">rstrip</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">example_lines</span> <span class="o">=</span> <span class="n">dncl_example</span><span class="o">.</span><span class="n">splitlines</span><span class="p">()</span>
+<span class="n">example_lines</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">l</span> <span class="ow">in</span> <span class="n">example_lines</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">strip_lineno</span><span class="p">(</span><span class="n">l</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="id3">
+<h3>1.4.2 分かち書き (字句解析)<a class="headerlink" href="#id3" title="Link to this heading">#</a></h3>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Lexical_analysis">Lexical analysis - Wikipedia</a></p></li>
+</ul>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">leading_spaces</span><span class="p">(</span><span class="n">s</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+    <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="n">s</span><span class="p">)</span> <span class="o">-</span> <span class="nb">len</span><span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">lstrip</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">))</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">tok_types</span><span class="p">(</span><span class="n">line</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+    <span class="c1"># normalize fullwidth digits to ASCII so they are recognized as numbers</span>
+    <span class="n">fw_digits</span> <span class="o">=</span> <span class="nb">str</span><span class="o">.</span><span class="n">maketrans</span><span class="p">(</span><span class="s1">&#39;０１２３４５６７８９&#39;</span><span class="p">,</span> <span class="s1">&#39;0123456789&#39;</span><span class="p">)</span>
+    <span class="n">line</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">translate</span><span class="p">(</span><span class="n">fw_digits</span><span class="p">)</span>
+    <span class="n">tokens</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="c1"># known function names in DNCL (Japanese)</span>
+    <span class="n">funcs</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;要素数&#39;</span><span class="p">,</span> <span class="s1">&#39;最大値&#39;</span><span class="p">,</span> <span class="s1">&#39;表示する&#39;</span><span class="p">]</span>
+    <span class="n">L</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
+    <span class="k">while</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">L</span><span class="p">:</span>
+        <span class="n">c</span> <span class="o">=</span> <span class="n">line</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+        <span class="k">if</span> <span class="n">c</span><span class="o">.</span><span class="n">isspace</span><span class="p">():</span>
+            <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>
+            <span class="k">continue</span>
+        <span class="n">matched</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">funcs</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">line</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">i</span><span class="p">):</span>
+                <span class="n">tokens</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;FUNC&#39;</span><span class="p">)</span>
+                <span class="n">i</span> <span class="o">+=</span> <span class="nb">len</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+                <span class="n">matched</span> <span class="o">=</span> <span class="kc">True</span>
+                <span class="k">break</span>
+        <span class="k">if</span> <span class="n">matched</span><span class="p">:</span>
+            <span class="k">continue</span>
+        <span class="c1"># string (handle escaped quotes)</span>
+        <span class="k">if</span> <span class="n">line</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="ow">in</span> <span class="s1">&#39;&quot;</span><span class="se">\&#39;</span><span class="s1">&#39;</span><span class="p">:</span>
+            <span class="n">q</span> <span class="o">=</span> <span class="n">line</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+            <span class="n">j</span> <span class="o">=</span> <span class="n">i</span><span class="o">+</span><span class="mi">1</span>
+            <span class="k">while</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="n">L</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">line</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;</span><span class="se">\\</span><span class="s1">&#39;</span> <span class="ow">and</span> <span class="n">j</span><span class="o">+</span><span class="mi">1</span> <span class="o">&lt;</span> <span class="n">L</span><span class="p">:</span>
+                    <span class="n">j</span> <span class="o">+=</span> <span class="mi">2</span>
+                    <span class="k">continue</span>
+                <span class="k">if</span> <span class="n">line</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">==</span> <span class="n">q</span><span class="p">:</span>
+                    <span class="k">break</span>
+                <span class="n">j</span> <span class="o">+=</span> <span class="mi">1</span>
+            <span class="k">if</span> <span class="n">j</span> <span class="o">&gt;=</span> <span class="n">L</span><span class="p">:</span>
+                <span class="n">j</span> <span class="o">=</span> <span class="n">L</span><span class="o">-</span><span class="mi">1</span>
+            <span class="n">tokens</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;STRING&#39;</span><span class="p">)</span>
+            <span class="n">i</span> <span class="o">=</span> <span class="n">j</span><span class="o">+</span><span class="mi">1</span>
+            <span class="k">continue</span>
+        <span class="c1"># number (ASCII digits)</span>
+        <span class="n">m</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;\d+&#39;</span><span class="p">,</span> <span class="n">line</span><span class="p">[</span><span class="n">i</span><span class="p">:])</span>
+        <span class="k">if</span> <span class="n">m</span><span class="p">:</span>
+            <span class="n">tokens</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;NUMBER&#39;</span><span class="p">)</span>
+            <span class="n">i</span> <span class="o">+=</span> <span class="nb">len</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">0</span><span class="p">))</span>
+            <span class="k">continue</span>
+        <span class="c1"># comparison operators</span>
+        <span class="k">if</span> <span class="n">line</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;&lt;=&#39;</span><span class="p">,</span> <span class="n">i</span><span class="p">):</span>
+            <span class="n">tokens</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;LE&#39;</span><span class="p">)</span>
+            <span class="n">i</span> <span class="o">+=</span> <span class="mi">2</span>
+            <span class="k">continue</span>
+        <span class="k">if</span> <span class="n">line</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;&gt;=&#39;</span><span class="p">,</span> <span class="n">i</span><span class="p">):</span>
+            <span class="n">tokens</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;GE&#39;</span><span class="p">)</span>
+            <span class="n">i</span> <span class="o">+=</span> <span class="mi">2</span>
+            <span class="k">continue</span>
+        <span class="k">if</span> <span class="n">line</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;&lt;&#39;</span><span class="p">:</span>
+            <span class="n">tokens</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;LT&#39;</span><span class="p">)</span>
+            <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>
+            <span class="k">continue</span>
+        <span class="k">if</span> <span class="n">line</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;&gt;&#39;</span><span class="p">:</span>
+            <span class="n">tokens</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;GT&#39;</span><span class="p">)</span>
+            <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>
+            <span class="k">continue</span>
+        <span class="c1"># logical words (and/or)</span>
+        <span class="n">m2</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;(and|or)\b&#39;</span><span class="p">,</span> <span class="n">line</span><span class="p">[</span><span class="n">i</span><span class="p">:],</span> <span class="n">re</span><span class="o">.</span><span class="n">I</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">m2</span><span class="p">:</span>
+            <span class="n">w</span> <span class="o">=</span> <span class="n">m2</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+            <span class="n">tokens</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;AND&#39;</span> <span class="k">if</span> <span class="n">w</span><span class="o">==</span><span class="s1">&#39;and&#39;</span> <span class="k">else</span> <span class="s1">&#39;OR&#39;</span><span class="p">)</span>
+            <span class="n">i</span> <span class="o">+=</span> <span class="nb">len</span><span class="p">(</span><span class="n">m2</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">0</span><span class="p">))</span>
+            <span class="k">continue</span>
+        <span class="c1"># punctuation</span>
+        <span class="k">if</span> <span class="n">line</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="ow">in</span> <span class="s1">&#39;[],()=:+-*&#39;</span><span class="p">:</span>
+            <span class="n">tokens</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">line</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+            <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>
+            <span class="k">continue</span>
+        <span class="c1"># identifier: ASCII IDs or any run of non-separator characters (including Japanese),</span>
+        <span class="c1"># but ensure it does NOT start with a digit so numbers are not captured as ID</span>
+        <span class="n">m_id</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;[A-Za-z_][A-Za-z0-9_]*|(?!\d)[^\s,=+\-\*()\[\]&lt;&gt;:,]+&quot;</span><span class="p">,</span> <span class="n">line</span><span class="p">[</span><span class="n">i</span><span class="p">:])</span>
+        <span class="k">if</span> <span class="n">m_id</span><span class="p">:</span>
+            <span class="n">tokens</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;ID&#39;</span><span class="p">)</span>
+            <span class="n">i</span> <span class="o">+=</span> <span class="nb">len</span><span class="p">(</span><span class="n">m_id</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">0</span><span class="p">))</span>
+            <span class="k">continue</span>
+        <span class="c1"># fallback: single character token</span>
+        <span class="n">tokens</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">line</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+        <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="k">return</span> <span class="n">tokens</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">tokenize_lines_with_indent</span><span class="p">(</span><span class="n">lines</span><span class="p">):</span>
+    <span class="n">results</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">indent_stack</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">first_real_line_seen</span> <span class="o">=</span> <span class="kc">False</span>
+    <span class="n">last_significant_toks</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">last_header_indent</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">expect_indent_on_next</span> <span class="o">=</span> <span class="kc">False</span>
+    <span class="k">for</span> <span class="n">idx</span><span class="p">,</span> <span class="n">raw</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">lines</span><span class="p">,</span> <span class="n">start</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+        <span class="n">s</span> <span class="o">=</span> <span class="n">strip_lineno</span><span class="p">(</span><span class="n">raw</span><span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">s</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span> <span class="ow">or</span> <span class="n">s</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;#&#39;</span><span class="p">):</span>
+            <span class="n">results</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">idx</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;SKIP&#39;</span><span class="p">]))</span>
+            <span class="k">continue</span>
+        <span class="n">cur</span> <span class="o">=</span> <span class="n">leading_spaces</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+        <span class="n">toks</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="c1"># Decide whether this increase of indent is logical: only after a header-like line</span>
+        <span class="n">prev_was_header</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="k">if</span> <span class="n">last_significant_toks</span><span class="p">:</span>
+            <span class="n">prev_was_header</span> <span class="o">=</span> <span class="p">(</span><span class="n">last_significant_toks</span> <span class="ow">and</span> <span class="p">(</span><span class="n">last_significant_toks</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;:&#39;</span> <span class="ow">or</span> <span class="n">last_significant_toks</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="ow">in</span> <span class="p">(</span><span class="s1">&#39;LOOP_HEADER&#39;</span><span class="p">,</span> <span class="s1">&#39;REPEAT_HEADER&#39;</span><span class="p">,</span> <span class="s1">&#39;IF_HEADER&#39;</span><span class="p">)))</span>
+        <span class="n">content</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">lstrip</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">)</span>
+        <span class="n">content_stripped</span> <span class="o">=</span> <span class="n">content</span><span class="o">.</span><span class="n">rstrip</span><span class="p">()</span>
+        <span class="n">is_header_line</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="c1"># Emit INDENT only when indent increases AND previous line was a header (or repetition) or explicit expect flag</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">cur</span> <span class="o">&gt;</span> <span class="n">indent_stack</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="ow">and</span> <span class="n">first_real_line_seen</span> <span class="ow">and</span> <span class="p">(</span><span class="n">prev_was_header</span> <span class="ow">or</span> <span class="p">(</span><span class="n">last_header_indent</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">cur</span> <span class="o">&gt;</span> <span class="n">last_header_indent</span><span class="p">)))</span> <span class="ow">or</span> <span class="n">expect_indent_on_next</span><span class="p">:</span>
+            <span class="n">indent_stack</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">cur</span><span class="p">)</span>
+            <span class="n">toks</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;INDENT&#39;</span><span class="p">)</span>
+            <span class="n">expect_indent_on_next</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">while</span> <span class="n">cur</span> <span class="o">&lt;</span> <span class="n">indent_stack</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]:</span>
+                <span class="n">indent_stack</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
+                <span class="n">toks</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;DEDENT&#39;</span><span class="p">)</span>
+        <span class="n">first_real_line_seen</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="c1"># Determine header or normal line: detect three header patterns and treat them uniformly as headers</span>
+        <span class="k">if</span> <span class="n">content_stripped</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s1">&#39;:&#39;</span><span class="p">):</span>
+            <span class="c1"># 1) &#39;の間繰り返す:&#39; pattern (condition の間繰り返す:)</span>
+            <span class="k">if</span> <span class="s1">&#39;の間繰り返す&#39;</span> <span class="ow">in</span> <span class="n">content_stripped</span><span class="p">:</span>
+                <span class="n">i_pos</span> <span class="o">=</span> <span class="n">content_stripped</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;の間繰り返す&#39;</span><span class="p">)</span>
+                <span class="n">cond</span> <span class="o">=</span> <span class="n">content_stripped</span><span class="p">[:</span><span class="n">i_pos</span><span class="p">]</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+                <span class="k">if</span> <span class="n">cond</span><span class="p">:</span>
+                    <span class="n">toks</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">tok_types</span><span class="p">(</span><span class="n">cond</span><span class="p">))</span>
+                <span class="n">toks</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;REPEAT_HEADER&#39;</span><span class="p">)</span>
+                <span class="n">toks</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;:&#39;</span><span class="p">)</span>
+                <span class="n">is_header_line</span> <span class="o">=</span> <span class="kc">True</span>
+            <span class="c1"># 2) &#39;ながら繰り返す:&#39; pattern (loop header like &#39;増やしながら繰り返す:&#39;)</span>
+            <span class="k">elif</span> <span class="s1">&#39;ながら繰り返す&#39;</span> <span class="ow">in</span> <span class="n">content_stripped</span><span class="p">:</span>
+                <span class="n">i_pos</span> <span class="o">=</span> <span class="n">content_stripped</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;ながら繰り返す&#39;</span><span class="p">)</span>
+                <span class="n">head</span> <span class="o">=</span> <span class="n">content_stripped</span><span class="p">[:</span><span class="n">i_pos</span><span class="p">]</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+                <span class="k">if</span> <span class="n">head</span><span class="p">:</span>
+                    <span class="n">toks</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">tok_types</span><span class="p">(</span><span class="n">head</span><span class="p">))</span>
+                <span class="n">toks</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;LOOP_HEADER&#39;</span><span class="p">)</span>
+                <span class="n">toks</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;:&#39;</span><span class="p">)</span>
+                <span class="n">is_header_line</span> <span class="o">=</span> <span class="kc">True</span>
+            <span class="c1"># 3) &#39;もし ... ならば:&#39; pattern (if header)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">m_if</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;^もし\s+(.*?)\s+ならば\s*:$&#39;</span><span class="p">,</span> <span class="n">content_stripped</span><span class="p">)</span>
+                <span class="k">if</span> <span class="n">m_if</span><span class="p">:</span>
+                    <span class="n">cond</span> <span class="o">=</span> <span class="n">m_if</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+                    <span class="k">if</span> <span class="n">cond</span><span class="p">:</span>
+                        <span class="n">toks</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">tok_types</span><span class="p">(</span><span class="n">cond</span><span class="p">))</span>
+                    <span class="n">toks</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;IF_HEADER&#39;</span><span class="p">)</span>
+                    <span class="n">toks</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;:&#39;</span><span class="p">)</span>
+                    <span class="n">is_header_line</span> <span class="o">=</span> <span class="kc">True</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="c1"># fallback: generic loop/header token</span>
+                    <span class="n">toks</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;LOOP_HEADER&#39;</span><span class="p">)</span>
+                    <span class="n">toks</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;:&#39;</span><span class="p">)</span>
+                    <span class="n">is_header_line</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">toks</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">tok_types</span><span class="p">(</span><span class="n">content_stripped</span><span class="p">))</span>
+        <span class="c1"># record header indent for next line decision</span>
+        <span class="k">if</span> <span class="n">is_header_line</span><span class="p">:</span>
+            <span class="n">last_header_indent</span> <span class="o">=</span> <span class="n">cur</span>
+            <span class="n">expect_indent_on_next</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">last_header_indent</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="n">results</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">idx</span><span class="p">,</span> <span class="n">toks</span><span class="p">))</span>
+        <span class="k">if</span> <span class="n">toks</span> <span class="o">!=</span> <span class="p">[</span><span class="s1">&#39;SKIP&#39;</span><span class="p">]:</span>
+            <span class="n">last_significant_toks</span> <span class="o">=</span> <span class="n">toks</span>
+    <span class="k">while</span> <span class="nb">len</span><span class="p">(</span><span class="n">indent_stack</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="n">indent_stack</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
+        <span class="n">results</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="s1">&#39;EOF&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;DEDENT&#39;</span><span class="p">]))</span>
+    <span class="k">return</span> <span class="n">results</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Tokenize with INDENT/DEDENT info</span>
+<span class="n">tokenized</span> <span class="o">=</span> <span class="n">tokenize_lines_with_indent</span><span class="p">(</span><span class="n">example_lines</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;=== Pass1: per-line tokens ===&#39;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">idx</span><span class="p">,</span> <span class="n">toks</span> <span class="ow">in</span> <span class="n">tokenized</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="o">*</span><span class="n">toks</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="nltk">
+<h3>1.4.3 nltkによる構文解析<a class="headerlink" href="#nltk" title="Link to this heading">#</a></h3>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<ul class="simple">
+<li><p>(2001–) <a class="reference external" href="https://en.wikipedia.org/wiki/Natural_Language_Toolkit">Natural Language Toolkit - Wikipedia</a></p></li>
+</ul>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">nltk</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">nltk</span><span class="w"> </span><span class="kn">import</span> <span class="n">CFG</span><span class="p">,</span> <span class="n">ChartParser</span>
+
+<span class="c1"># Line-level grammar for per-line parsing (headers handled by grammar)</span>
+<span class="n">line_grammar</span> <span class="o">=</span> <span class="sa">r</span><span class="s1">&#39;&#39;&#39;</span>
+<span class="s1">S -&gt; ASSIGN | FUNC_CALL | LOOP_STMT | IF_STMT</span>
+<span class="s1">LOOP_STMT -&gt; &#39;LOOP_HEADER&#39; &#39;:&#39; | COND &#39;REPEAT_HEADER&#39; &#39;:&#39;</span>
+<span class="s1">IF_STMT -&gt; &#39;IF_HEADER&#39; &#39;:&#39; | COND &#39;IF_HEADER&#39; &#39;:&#39;</span>
+<span class="s1">COND -&gt; EXPR | EXPR &#39;AND&#39; EXPR | EXPR &#39;OR&#39; EXPR</span>
+<span class="s1">ASSIGN -&gt; &#39;ID&#39; &#39;=&#39; EXPR | &#39;ID&#39; &#39;[&#39; &#39;NUMBER&#39; &#39;]&#39; &#39;=&#39; EXPR | &#39;ID&#39; &#39;[&#39; &#39;ID&#39; &#39;]&#39; &#39;=&#39; EXPR</span>
+<span class="s1">EXPR -&gt; &#39;NUMBER&#39; | &#39;ID&#39; | FUNC_CALL | EXPR &#39;+&#39; EXPR | EXPR &#39;-&#39; EXPR | EXPR &#39;*&#39; EXPR | ARRAY</span>
+<span class="s1">ARRAY -&gt; &#39;[&#39; ELEM_LIST &#39;]&#39;</span>
+<span class="s1">ELEM_LIST -&gt; ELEMENT | ELEMENT &#39;,&#39; ELEM_LIST</span>
+<span class="s1">ELEMENT -&gt; EXPR</span>
+<span class="s1">FUNC_CALL -&gt; &#39;FUNC&#39; &#39;(&#39; ARGS &#39;)&#39; | &#39;FUNC&#39; &#39;(&#39; &#39;)&#39;</span>
+<span class="s1">ARGS -&gt; ARG | ARG &#39;,&#39; ARGS</span>
+<span class="s1">ARG -&gt; EXPR | &#39;STRING&#39;</span>
+<span class="s1">&#39;&#39;&#39;</span>
+
+<span class="k">try</span><span class="p">:</span>
+    <span class="n">cfg_line</span> <span class="o">=</span> <span class="n">CFG</span><span class="o">.</span><span class="n">fromstring</span><span class="p">(</span><span class="n">line_grammar</span><span class="p">)</span>
+    <span class="n">parser_line</span> <span class="o">=</span> <span class="n">ChartParser</span><span class="p">(</span><span class="n">cfg_line</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">=== Pass2: per-line parse trees ===&#39;</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">idx</span><span class="p">,</span> <span class="n">toks</span> <span class="ow">in</span> <span class="n">tokenized</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">idx</span> <span class="o">==</span> <span class="s1">&#39;EOF&#39;</span><span class="p">:</span>
+            <span class="k">continue</span>
+        <span class="k">if</span> <span class="n">toks</span> <span class="o">==</span> <span class="p">[</span><span class="s1">&#39;SKIP&#39;</span><span class="p">]:</span>
+            <span class="k">continue</span>
+        <span class="c1"># remove layout tokens for line parsing</span>
+        <span class="n">line_tokens</span> <span class="o">=</span> <span class="p">[</span><span class="n">t</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">toks</span> <span class="k">if</span> <span class="n">t</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">(</span><span class="s1">&#39;INDENT&#39;</span><span class="p">,</span> <span class="s1">&#39;DEDENT&#39;</span><span class="p">)]</span>
+        <span class="c1"># remove optional leading lineno tokens like &#39;(&#39; &#39;NUMBER&#39; &#39;)&#39;</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">line_tokens</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="mi">3</span> <span class="ow">and</span> <span class="n">line_tokens</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;(&#39;</span> <span class="ow">and</span> <span class="n">line_tokens</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;NUMBER&#39;</span> <span class="ow">and</span> <span class="n">line_tokens</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;)&#39;</span><span class="p">:</span>
+            <span class="n">line_tokens</span> <span class="o">=</span> <span class="n">line_tokens</span><span class="p">[</span><span class="mi">3</span><span class="p">:]</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">trees</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">parser_line</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="n">line_tokens</span><span class="p">))</span>
+            <span class="k">if</span> <span class="n">trees</span><span class="p">:</span>
+                <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">trees</span><span class="p">:</span>
+                    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Line </span><span class="si">{</span><span class="n">idx</span><span class="si">}</span><span class="s1"> -&gt;&#39;</span><span class="p">,</span> <span class="n">t</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Line </span><span class="si">{</span><span class="n">idx</span><span class="si">}</span><span class="s1"> -&gt; No parse&#39;</span><span class="p">)</span>
+        <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Line </span><span class="si">{</span><span class="n">idx</span><span class="si">}</span><span class="s1"> parse error:&#39;</span><span class="p">,</span> <span class="n">e</span><span class="p">)</span>
+<span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Line parser setup error:&#39;</span><span class="p">,</span> <span class="n">e</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="admonition attention">
+<p class="admonition-title">Attention</p>
+<ul class="simple">
+<li><p>nltkでは、複数行にまたがる複合命令文 (compaund statement) を解析できない</p>
+<ul>
+<li><p>DNCLによる出題を自然言語として処理しようとしても解答できない可能性が高い</p></li>
+</ul>
+</li>
+</ul>
+</div>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./chapters/01"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="01_03.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">第一回: 入試問題を解く (その1) 記述する</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="01_05.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">第一回: 入試問題を解く (その1) 記述する</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item"><div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dncl">DNCLによる出題を自然言語として分析する</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">1.4.1 行番号を取り除く</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">1.4.2 分かち書き (字句解析)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#nltk">1.4.3 nltkによる構文解析</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Manabu Higashida, D3 Center, Osaka University, Japan
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2026.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

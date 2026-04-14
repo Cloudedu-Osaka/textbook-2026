@@ -1,0 +1,763 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>&lt;no title&gt; &#8212; プログラミングで遡る科学史</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=3c74b3bc" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css?v=8cd3d715" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=fab101a9"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'chapters/__01/eg41';</script>
+    <link rel="canonical" href="https://cloudedu-osaka.github.io/textbook-2026/chapters/__01/eg41.html" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../intro.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">プログラミングで遡る科学史</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">2026/04/15</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../01/01_01.html">入試問題を解く (その1) 記述する 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../01/01_02.html">入試問題を解く (その1) 記述する 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../01/01_03.html">入試問題を解く (その1) 記述する 3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../01/01_04.html">入試問題を解く (その1) 記述する 4</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../01/01_05.html">入試問題を解く (その1) 記述する 5</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../01/01_11.html">入試問題を解く (その1) 記述する 6</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../01/01_12.html">入試問題を解く (その1) 記述する 7</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../01/01_13.html">入試問題を解く (その1) 記述する 8</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://vioras-jh2500.japaneast.cloudapp.azure.com/hub/user-redirect/git-pull?repo=https%3A//github.com/Cloudedu-Osaka/textbook-2026&urlpath=lab/tree/textbook-2026/chapters/__01/eg41.ipynb&branch=main" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on JupyterHub"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="JupyterHub logo" src="../../_static/images/logo_jupyterhub.svg">
+  </span>
+<span class="btn__text-container">JupyterHub</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+<a href="https://github.com/Cloudedu-Osaka/textbook-2026" target="_blank"
+   class="btn btn-sm btn-source-repository-button"
+   title="Source repository"
+   data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+
+</a>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/chapters/__01/eg41.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button pst-navbar-icon"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm pst-navbar-icon" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1><no title></h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="simple visible nav section-nav flex-column">
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="k">using</span><span class="w"> </span><span class="n">Pkg</span>
+<span class="n">Pkg</span><span class="o">.</span><span class="n">activate</span><span class="p">(</span><span class="s">&quot;/Users/manabu/work/ggblab/julia/GeoGebra.jl&quot;</span><span class="p">)</span><span class="w">  </span><span class="c"># または Pkg.activate(pwd())</span>
+<span class="n">Pkg</span><span class="o">.</span><span class="n">instantiate</span><span class="p">()</span>
+<span class="k">using</span><span class="w"> </span><span class="n">GeoGebra</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Bold -Color-Bold-Green">  Activating</span> project at `~/work/ggblab/julia/GeoGebra.jl`
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">inject_applet</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Bold -Color-Bold-Cyan">[ Info: </span>Listening on: 127.0.0.1:63254, thread id: 1
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Dict{String, Any} with 5 entries:
+  &quot;kernelId&quot;   =&gt; &quot;bb676840-26f1-4395-8847-70cf746c4a69&quot;
+  &quot;wsPort&quot;     =&gt; 0xf716
+  &quot;insertMode&quot; =&gt; &quot;split-right&quot;
+  &quot;type&quot;       =&gt; &quot;inject&quot;
+  &quot;appName&quot;    =&gt; &quot;suite&quot;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="k">using</span><span class="w"> </span><span class="n">SymPyPythonCall</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="nd">@syms</span><span class="w"> </span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">,</span><span class="w"> </span><span class="n">z</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(x, y, z)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="nd">@syms</span><span class="w"> </span><span class="n">u</span><span class="p">,</span><span class="w"> </span><span class="n">v</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(u, v)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="nd">@syms</span><span class="w"> </span><span class="n">f</span><span class="p">,</span><span class="w"> </span><span class="n">g</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(f, g)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="nd">@ggb</span><span class="w"> </span><span class="ss">:const</span><span class="w"> </span><span class="ss">:new</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>GGBObject[]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="nd">@ggb</span><span class="w"> </span><span class="n">If</span><span class="p">(</span><span class="ss">:a</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="n">x</span><span class="o">^</span><span class="mi">2</span><span class="o">-</span><span class="mi">8</span><span class="n">x</span><span class="o">+</span><span class="mi">5</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>g
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="nd">@ggb</span><span class="w"> </span><span class="n">Derivative</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>f&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="nd">@ggb</span><span class="w"> </span><span class="ss">:const</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2-element Vector{Tuple{Int64, String, PythonCall.Py}}:
+ (1, &quot;f&quot;, None)
+ (2, &quot;f&#39;&quot;, &#39;Derivative(f)&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="nd">@ggb</span><span class="w"> </span><span class="ss">:api</span><span class="w"> </span><span class="n">getValueString</span><span class="p">(</span><span class="ss">:a</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&quot;a: 0 ≤ x ≤ 3&quot;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="nd">@ggb</span><span class="w"> </span><span class="s">&quot;0&lt;=x&lt;=3&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>b
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">xml_str</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nd">@ggb</span><span class="w"> </span><span class="ss">:api</span><span class="w"> </span><span class="n">getXML</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&quot;&lt;?xml version=\&quot;1.0\&quot; encoding=\&quot;utf-8\&quot;?&gt;\n&lt;geogebra format=\&quot;5.0\&quot; version=\&quot;5.4.916.2\&quot; app=\&quot;suite\&quot; subApp=\&quot;graphing\&quot; platform=\&quot;w\&quot; id=\&quot;8f677d41-100b-4252-9b5e-49fd54f7dbec\&quot; xsi:noNamespaceSchemaLocation=\&quot;https://www.geogebra.org/apps/xsd/ggb.xsd\&quot; xmlns=\&quot;\&quot; xmlns:xsi=\&quot;http://www&quot;<span class=" -Color -Color-Bold"> ⋯ 5480 bytes ⋯ </span>&quot;=\&quot;function\&quot; label=\&quot;b\&quot;&gt;\n\t&lt;show object=\&quot;true\&quot; label=\&quot;true\&quot;/&gt;\n\t&lt;objColor r=\&quot;0\&quot; g=\&quot;0\&quot; b=\&quot;255\&quot; alpha=\&quot;0.25\&quot;/&gt;\n\t&lt;layer val=\&quot;0\&quot;/&gt;\n\t&lt;labelMode val=\&quot;0\&quot;/&gt;\n\t&lt;animation step=\&quot;0.1\&quot; type=\&quot;0\&quot; playing=\&quot;false\&quot;/&gt;\n\t&lt;lineStyle thickness=\&quot;5\&quot; type=\&quot;0\&quot; typeHidden=\&quot;1\&quot;/&gt;\n&lt;/element&gt;\n&lt;/construction&gt;\n&lt;/geogebra&gt;\n&quot;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">println</span><span class="p">(</span><span class="n">xml_str</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+&lt;geogebra format=&quot;5.0&quot; version=&quot;5.4.916.2&quot; app=&quot;suite&quot; subApp=&quot;graphing&quot; platform=&quot;w&quot; id=&quot;8f677d41-100b-4252-9b5e-49fd54f7dbec&quot; xsi:noNamespaceSchemaLocation=&quot;https://www.geogebra.org/apps/xsd/ggb.xsd&quot; xmlns=&quot;&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;&gt;
+&lt;gui&gt;
+	&lt;window width=&quot;1669&quot; height=&quot;1500&quot;/&gt;
+	&lt;perspectives&gt;
+&lt;perspective id=&quot;tmp&quot;&gt;
+	&lt;panes&gt;
+	&lt;pane location=&quot;&quot; divider=&quot;0.6560814859197124&quot; orientation=&quot;1&quot;/&gt;
+	&lt;pane location=&quot;0&quot; divider=&quot;0.2852007189934092&quot; orientation=&quot;1&quot;/&gt;
+&lt;/panes&gt;
+	&lt;views&gt;
+	&lt;view id=&quot;4097&quot; visible=&quot;false&quot; inframe=&quot;false&quot; stylebar=&quot;true&quot; location=&quot;1,1,1,1&quot; size=&quot;400&quot; window=&quot;100,100,700,550&quot;/&gt;
+	&lt;view id=&quot;512&quot; toolbar=&quot;0 | 1 501 5 19 , 67 | 2 15 45 18 , 7 37 | 514 3 9 , 13 44 , 47 | 16 51 | 551 550 11 ,  20 22 21 23 , 55 56 57 , 12 | 69 | 510 511 , 512 513 | 533 531 , 534 532 , 522 523 , 537 536 , 535 , 538 | 521 520 | 36 , 38 49 560 | 571 30 29 570 31 33 | 17 | 540 40 41 42 , 27 28 35 , 6 , 502&quot; visible=&quot;false&quot; inframe=&quot;false&quot; stylebar=&quot;false&quot; location=&quot;1,1,1&quot; size=&quot;500&quot; window=&quot;100,100,600,400&quot;/&gt;
+	&lt;view id=&quot;1&quot; visible=&quot;true&quot; inframe=&quot;false&quot; stylebar=&quot;false&quot; location=&quot;3,1&quot; size=&quot;1176&quot; window=&quot;100,100,600,400&quot;/&gt;
+	&lt;view id=&quot;4&quot; toolbar=&quot;0 || 2020 , 2021 , 2022 || 2001 , 2003 , 2002 , 2004 , 2005 || 2040 , 2041 , 2042 , 2044 , 2043&quot; visible=&quot;false&quot; inframe=&quot;false&quot; stylebar=&quot;false&quot; location=&quot;1,1&quot; size=&quot;300&quot; window=&quot;100,100,600,400&quot;/&gt;
+	&lt;view id=&quot;2&quot; visible=&quot;true&quot; inframe=&quot;false&quot; stylebar=&quot;false&quot; location=&quot;3,3&quot; size=&quot;476&quot; tab=&quot;ALGEBRA&quot; window=&quot;100,100,600,400&quot;/&gt;
+	&lt;view id=&quot;8&quot; toolbar=&quot;1001 | 1002 | 1003  || 1005 | 1004 || 1006 | 1007 | 1010 || 1008 | 1009 || 6&quot; visible=&quot;false&quot; inframe=&quot;false&quot; stylebar=&quot;false&quot; location=&quot;1,3&quot; size=&quot;300&quot; window=&quot;100,100,600,400&quot;/&gt;
+	&lt;view id=&quot;16&quot; visible=&quot;false&quot; inframe=&quot;false&quot; stylebar=&quot;false&quot; location=&quot;1&quot; size=&quot;300&quot; window=&quot;50,50,500,500&quot;/&gt;
+	&lt;view id=&quot;32&quot; visible=&quot;true&quot; inframe=&quot;false&quot; stylebar=&quot;true&quot; location=&quot;1&quot; size=&quot;558&quot; window=&quot;50,50,500,500&quot;/&gt;
+	&lt;view id=&quot;64&quot; visible=&quot;false&quot; inframe=&quot;false&quot; stylebar=&quot;false&quot; location=&quot;1&quot; size=&quot;480&quot; window=&quot;50,50,500,500&quot;/&gt;
+	&lt;view id=&quot;128&quot; visible=&quot;false&quot; inframe=&quot;false&quot; stylebar=&quot;false&quot; location=&quot;1&quot; size=&quot;480&quot; window=&quot;50,50,500,500&quot;/&gt;
+	&lt;view id=&quot;70&quot; toolbar=&quot;0 || 2020 || 2021 || 2022&quot; visible=&quot;false&quot; inframe=&quot;false&quot; stylebar=&quot;true&quot; location=&quot;1&quot; size=&quot;900&quot; window=&quot;50,50,500,500&quot;/&gt;
+&lt;/views&gt;
+	&lt;toolbar show=&quot;true&quot; items=&quot;0 77 73 62 | 1 501 67 , 5 19 , 72 75 76 | 2 15 45 , 18 65 , 7 37 | 4 3 8 9 , 13 44 , 58 , 47 | 16 51 64 , 70 | 10 34 53 11 , 24  20 22 , 21 23 | 55 56 57 , 12 | 36 46 , 38 49  50 , 71  14  68 | 30 29 54 32 31 33 | 25 17 26 60 52 61 | 40 41 42 , 27 28 35 , 6&quot; position=&quot;1&quot; help=&quot;false&quot;/&gt;
+	&lt;input show=&quot;true&quot; cmd=&quot;true&quot; top=&quot;algebra&quot;/&gt;
+	&lt;dockBar show=&quot;false&quot; east=&quot;false&quot;/&gt;
+&lt;/perspective&gt;
+&lt;/perspectives&gt;
+	&lt;labelingStyle val=&quot;1&quot;/&gt;
+	&lt;font size=&quot;16&quot;/&gt;
+	&lt;consProtColumns col0=&quot;true&quot; col1=&quot;true&quot; col2=&quot;false&quot; col3=&quot;true&quot; col4=&quot;true&quot; col5=&quot;true&quot; col6=&quot;true&quot; col7=&quot;false&quot;/&gt;
+	&lt;consProtocol useColors=&quot;false&quot; addIcons=&quot;false&quot; showOnlyBreakpoints=&quot;false&quot;/&gt;
+	&lt;consProtNavigationBar id=&quot;1&quot; playButton=&quot;true&quot; playDelay=&quot;2&quot; protButton=&quot;true&quot; consStep=&quot;4&quot;/&gt;
+&lt;/gui&gt;
+&lt;euclidianView&gt;
+	&lt;viewNumber viewNo=&quot;1&quot;/&gt;
+	&lt;size width=&quot;1176&quot; height=&quot;1458&quot;/&gt;
+	&lt;coordSystem xZero=&quot;472.44444444444457&quot; yZero=&quot;733.4444444444446&quot; scale=&quot;22.222222222222214&quot; yscale=&quot;22.2222222222222&quot;/&gt;
+	&lt;evSettings axes=&quot;true&quot; grid=&quot;true&quot; gridIsBold=&quot;false&quot; pointCapturing=&quot;3&quot; rightAngleStyle=&quot;1&quot; checkboxSize=&quot;26&quot; gridType=&quot;3&quot;/&gt;
+	&lt;bgColor r=&quot;255&quot; g=&quot;255&quot; b=&quot;255&quot;/&gt;
+	&lt;axesColor r=&quot;28&quot; g=&quot;28&quot; b=&quot;31&quot;/&gt;
+	&lt;gridColor r=&quot;180&quot; g=&quot;179&quot; b=&quot;186&quot;/&gt;
+	&lt;lineStyle axes=&quot;1&quot; grid=&quot;0&quot;/&gt;
+	&lt;axis id=&quot;0&quot; show=&quot;true&quot; label=&quot;&quot; unitLabel=&quot;&quot; tickStyle=&quot;1&quot; showNumbers=&quot;true&quot;/&gt;
+	&lt;axis id=&quot;1&quot; show=&quot;true&quot; label=&quot;&quot; unitLabel=&quot;&quot; tickStyle=&quot;1&quot; showNumbers=&quot;true&quot;/&gt;
+&lt;/euclidianView&gt;
+&lt;algebraView&gt;
+	&lt;mode val=&quot;3&quot;/&gt;
+&lt;/algebraView&gt;
+&lt;kernel&gt;
+	&lt;continuous val=&quot;false&quot;/&gt;
+	&lt;usePathAndRegionParameters val=&quot;true&quot;/&gt;
+	&lt;decimals val=&quot;13&quot;/&gt;
+	&lt;angleUnit val=&quot;degree&quot;/&gt;
+	&lt;algebraStyle val=&quot;3&quot; spreadsheet=&quot;0&quot;/&gt;
+	&lt;coordStyle val=&quot;0&quot;/&gt;
+&lt;/kernel&gt;
+&lt;tableview min=&quot;0&quot; max=&quot;0&quot; step=&quot;0&quot;/&gt;
+&lt;scripting blocked=&quot;false&quot; disabled=&quot;false&quot;/&gt;
+&lt;construction title=&quot;&quot; author=&quot;&quot; date=&quot;&quot;&gt;
+&lt;expression label=&quot;f&quot; exp=&quot;f(x) = If[0 ≤ x ≤ 3, (2 * x^(2)) - (8 * x) + 5]&quot; type=&quot;function&quot;/&gt;
+&lt;element type=&quot;function&quot; label=&quot;f&quot;&gt;
+	&lt;show object=&quot;true&quot; label=&quot;true&quot; ev=&quot;4&quot;/&gt;
+	&lt;objColor r=&quot;199&quot; g=&quot;80&quot; b=&quot;0&quot; alpha=&quot;0&quot;/&gt;
+	&lt;layer val=&quot;0&quot;/&gt;
+	&lt;labelMode val=&quot;0&quot;/&gt;
+	&lt;fixed val=&quot;true&quot;/&gt;
+	&lt;lineStyle thickness=&quot;5&quot; type=&quot;0&quot; typeHidden=&quot;1&quot; opacity=&quot;204&quot;/&gt;
+	&lt;casMap&gt;
+		&lt;entry key=&quot;Derivative[If[0 ≤ x ≤ 3, 2x² - 8x + 5],x,1]&quot; val=&quot;If[0 ≤ x ≤ 3, (4 * x) - 8]&quot;/&gt;
+&lt;/casMap&gt;
+&lt;/element&gt;
+&lt;command name=&quot;Derivative&quot;&gt;
+	&lt;input a0=&quot;f&quot;/&gt;
+	&lt;output a0=&quot;f&amp;apos;&quot;/&gt;
+&lt;/command&gt;
+&lt;element type=&quot;function&quot; label=&quot;f&amp;apos;&quot;&gt;
+	&lt;show object=&quot;true&quot; label=&quot;true&quot; ev=&quot;4&quot;/&gt;
+	&lt;objColor r=&quot;101&quot; g=&quot;87&quot; b=&quot;210&quot; alpha=&quot;0&quot;/&gt;
+	&lt;layer val=&quot;0&quot;/&gt;
+	&lt;labelMode val=&quot;0&quot;/&gt;
+	&lt;fixed val=&quot;true&quot;/&gt;
+	&lt;lineStyle thickness=&quot;5&quot; type=&quot;0&quot; typeHidden=&quot;1&quot; opacity=&quot;204&quot;/&gt;
+&lt;/element&gt;
+&lt;expression label=&quot;a&quot; exp=&quot;a(x) = 0 ≤ x ≤ 3&quot; type=&quot;inequality&quot;/&gt;
+&lt;element type=&quot;function&quot; label=&quot;a&quot;&gt;
+	&lt;show object=&quot;true&quot; label=&quot;true&quot;/&gt;
+	&lt;objColor r=&quot;0&quot; g=&quot;0&quot; b=&quot;255&quot; alpha=&quot;0.25&quot;/&gt;
+	&lt;layer val=&quot;0&quot;/&gt;
+	&lt;labelMode val=&quot;0&quot;/&gt;
+	&lt;animation step=&quot;0.1&quot; type=&quot;0&quot; playing=&quot;false&quot;/&gt;
+	&lt;lineStyle thickness=&quot;5&quot; type=&quot;0&quot; typeHidden=&quot;1&quot;/&gt;
+&lt;/element&gt;
+&lt;expression label=&quot;g&quot; exp=&quot;g(x) = If[a(x), (2 * x^(2)) - (8 * x) + 5]&quot;/&gt;
+&lt;element type=&quot;function&quot; label=&quot;g&quot;&gt;
+	&lt;show object=&quot;true&quot; label=&quot;true&quot; ev=&quot;4&quot;/&gt;
+	&lt;objColor r=&quot;211&quot; g=&quot;47&quot; b=&quot;47&quot; alpha=&quot;0&quot;/&gt;
+	&lt;layer val=&quot;0&quot;/&gt;
+	&lt;labelMode val=&quot;0&quot;/&gt;
+	&lt;fixed val=&quot;true&quot;/&gt;
+	&lt;lineStyle thickness=&quot;5&quot; type=&quot;0&quot; typeHidden=&quot;1&quot; opacity=&quot;204&quot;/&gt;
+&lt;/element&gt;
+&lt;expression label=&quot;b&quot; exp=&quot;b(x) = 0 ≤ x ≤ 3&quot; type=&quot;inequality&quot;/&gt;
+&lt;element type=&quot;function&quot; label=&quot;b&quot;&gt;
+	&lt;show object=&quot;true&quot; label=&quot;true&quot;/&gt;
+	&lt;objColor r=&quot;0&quot; g=&quot;0&quot; b=&quot;255&quot; alpha=&quot;0.25&quot;/&gt;
+	&lt;layer val=&quot;0&quot;/&gt;
+	&lt;labelMode val=&quot;0&quot;/&gt;
+	&lt;animation step=&quot;0.1&quot; type=&quot;0&quot; playing=&quot;false&quot;/&gt;
+	&lt;lineStyle thickness=&quot;5&quot; type=&quot;0&quot; typeHidden=&quot;1&quot;/&gt;
+&lt;/element&gt;
+&lt;/construction&gt;
+&lt;/geogebra&gt;
+</pre></div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "julia-1.12"
+        },
+        kernelOptions: {
+            name: "julia-1.12",
+            path: "./chapters/__01"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'julia-1.12'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item"><div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="simple visible nav section-nav flex-column">
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Manabu Higashida, D3 Center, Osaka University, Japan
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2026.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
