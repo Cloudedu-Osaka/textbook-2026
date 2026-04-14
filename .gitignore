@@ -1,7 +1,7 @@
 # MyST build outputs
 _build
 *.ipynb_checkpoints
-Manifest.toml
-Project.toml
+# Manifest.toml
+# Project.toml
 chapters/__01
 chapters/_01
