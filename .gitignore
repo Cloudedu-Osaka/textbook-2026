@@ -5,3 +5,7 @@ _build
 # Project.toml
 chapters/__01
 chapters/_01
+chapters/_02
+.CondaPkg
+*.zip
+**/common.xsd
