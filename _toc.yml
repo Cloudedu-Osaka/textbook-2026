@@ -3,6 +3,20 @@
 format: jb-book
 root: intro.md
 parts:
+- caption: 2026/04/22
+  numbered: false
+  chapters:
+  - file: chapters/02/02_01.ipynb
+    title: 入試問題を解く (その2) 記述する・解答する 1
+  - file: chapters/02/02_11.ipynb
+    title: 入試問題を解く (その2) 記述する・解答する 2
+  - file: chapters/02/02_12.ipynb
+    title: 入試問題を解く (その2) 記述する・解答する 3
+  - file: chapters/02/02_13.ipynb
+    title: 入試問題を解く (その2) 記述する・解答する 4
+  - file: chapters/02/02_02.ipynb
+    title: 入試問題を解く (その2) 記述する・解答する 5
+  - file: chapters/02/02_03.ipynb
 - caption: 2026/04/15
   numbered: false
   chapters:
