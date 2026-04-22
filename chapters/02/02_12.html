@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>第一回: 入試問題を解く (その1) 記述する &#8212; プログラミングで遡る科学史</title>
+    <title>第二回: 入試問題を解く (その2) 記述する・解答する &#8212; プログラミングで遡る科学史</title>
   
   
   
@@ -66,7 +66,7 @@
     <link rel="canonical" href="https://cloudedu-osaka.github.io/textbook-2026/chapters/02/02_12.html" />
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="第一回: 入試問題を解く (その1) 記述する" href="02_13.html" />
+    <link rel="next" title="第二回: 入試問題を解く (その2) 記述する・解答する" href="02_13.html" />
     <link rel="prev" title="第二回: 入試問題を解く (その2) 記述する・解答する" href="02_11.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -357,7 +357,7 @@
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>第一回: 入試問題を解く (その1) 記述する</h1>
+    <h1>第二回: 入試問題を解く (その2) 記述する・解答する</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -367,11 +367,14 @@
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">2.12.1 操作環境の準備</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">2.12.2 作図</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">2.12.3 作図手順</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">2.12.4 関係の記述</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">2.12.5 関係の記述: 同一平面上のオブジェクトを抽出</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">情報・プログラミング以外の入試問題を記述する: 2</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">2.12.1 操作環境の準備</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">2.12.2 作図</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">2.12.3 作図手順</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">2.12.4 関係の記述</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">2.12.5 関係の記述: 同一平面上のオブジェクトを抽出</a></li>
+</ul>
+</li>
 </ul>
             </nav>
         </div>
@@ -384,15 +387,17 @@
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="id1">
-<h1>第一回: 入試問題を解く (その1) 記述する<a class="headerlink" href="#id1" title="Link to this heading">#</a></h1>
+<h1>第二回: 入試問題を解く (その2) 記述する・解答する<a class="headerlink" href="#id1" title="Link to this heading">#</a></h1>
+<section id="id2">
+<h2>情報・プログラミング以外の入試問題を記述する: 2<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
 <div class="admonition hint">
 <p class="admonition-title">Hint</p>
 <ul class="simple">
 <li><p>次の例題の出典は？</p></li>
 </ul>
 </div>
-<section id="id2">
-<h2>2.12.1 操作環境の準備<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
+<section id="id3">
+<h3>2.12.1 操作環境の準備<a class="headerlink" href="#id3" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="k">using</span><span class="w"> </span><span class="n">Pkg</span>
@@ -426,8 +431,14 @@
 </div>
 </div>
 </section>
-<section id="id3">
-<h2>2.12.2 作図<a class="headerlink" href="#id3" title="Link to this heading">#</a></h2>
+<section id="id4">
+<h3>2.12.2 作図<a class="headerlink" href="#id4" title="Link to this heading">#</a></h3>
+<div class="admonition caution">
+<p class="admonition-title">Caution</p>
+<ul class="simple">
+<li><p>アプレットを「空間図形」に切り替え</p></li>
+</ul>
+</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="nd">@ggb</span><span class="w"> </span><span class="ss">:const</span><span class="w"> </span><span class="ss">:new</span>
@@ -548,8 +559,8 @@
 </div>
 </div>
 </section>
-<section id="id4">
-<h2>2.12.3 作図手順<a class="headerlink" href="#id4" title="Link to this heading">#</a></h2>
+<section id="id5">
+<h3>2.12.3 作図手順<a class="headerlink" href="#id5" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="nd">@ggb</span><span class="w"> </span><span class="ss">:const</span>
@@ -574,8 +585,8 @@
 <p>辺PA上の点Eは、<span class="math notranslate nohighlight">\(∠PED = ∠PID\)</span>を満たしているとする</p>
 </div>
 </section>
-<section id="id5">
-<h2>2.12.4 関係の記述<a class="headerlink" href="#id5" title="Link to this heading">#</a></h2>
+<section id="id6">
+<h3>2.12.4 関係の記述<a class="headerlink" href="#id6" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="k">using</span><span class="w"> </span><span class="n">PythonCall</span>
@@ -632,8 +643,8 @@
 </div>
 </div>
 </section>
-<section id="id6">
-<h2>2.12.5 関係の記述: 同一平面上のオブジェクトを抽出<a class="headerlink" href="#id6" title="Link to this heading">#</a></h2>
+<section id="id7">
+<h3>2.12.5 関係の記述: 同一平面上のオブジェクトを抽出<a class="headerlink" href="#id7" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">df2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ggbex_sympy</span><span class="o">.</span><span class="n">attach_object3d</span><span class="p">(</span><span class="n">df</span><span class="p">)[</span><span class="s">&quot;Name&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Type&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Command&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Value&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;object3d&quot;</span><span class="p">]</span>
@@ -725,6 +736,7 @@
 </div>
 </section>
 </section>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -770,7 +782,7 @@
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">第一回: 入試問題を解く (その1) 記述する</p>
+        <p class="prev-next-title">第二回: 入試問題を解く (その2) 記述する・解答する</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -792,11 +804,14 @@
   </div>
   <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">2.12.1 操作環境の準備</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">2.12.2 作図</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">2.12.3 作図手順</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">2.12.4 関係の記述</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">2.12.5 関係の記述: 同一平面上のオブジェクトを抽出</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">情報・プログラミング以外の入試問題を記述する: 2</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">2.12.1 操作環境の準備</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">2.12.2 作図</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">2.12.3 作図手順</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">2.12.4 関係の記述</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">2.12.5 関係の記述: 同一平面上のオブジェクトを抽出</a></li>
+</ul>
+</li>
 </ul>
   </nav></div>
 
