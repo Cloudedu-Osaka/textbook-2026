@@ -3,6 +3,17 @@
 format: jb-book
 root: intro.md
 parts:
+- caption: 2026/05/08
+  numbered: false
+  chapters:
+  - file: chapters/03/03_01.ipynb
+    title: 科学は何故停滞するのか？
+  - file: chapters/03/02_13.ipynb
+    title: 入試問題を解く (その2) 記述する・解答する 4
+  - file: chapters/03/02_11.ipynb
+    title: 入試問題を解く (その2) 記述する・解答する 2
+  - file: chapters/03/02_12.ipynb
+    title: 入試問題を解く (その2) 記述する・解答する 3
 - caption: 2026/04/22
   numbered: false
   chapters:
