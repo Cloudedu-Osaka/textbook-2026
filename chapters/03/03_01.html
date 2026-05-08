@@ -1,0 +1,990 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>第3回: 試験問題の記述とこの授業のルール &#8212; プログラミングで遡る科学史</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=3c74b3bc" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css?v=8cd3d715" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=fab101a9"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'chapters/03/03_01';</script>
+    <link rel="canonical" href="https://cloudedu-osaka.github.io/textbook-2026/chapters/03/03_01.html" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="第二回: 入試問題を解く (その2) 記述する・解答する" href="02_13.html" />
+    <link rel="prev" title="textbook-2026: プログラミングで遡る科学史" href="../../intro.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../intro.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">プログラミングで遡る科学史</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">2026/05/08</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">第3回: 試験問題の記述とこの授業のルール</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="02_13.html">入試問題を解く (その2) 記述する・解答する 4</a></li>
+<li class="toctree-l1"><a class="reference internal" href="02_11.html">入試問題を解く (その2) 記述する・解答する 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="02_12.html">入試問題を解く (その2) 記述する・解答する 3</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">2026/04/22</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../02/02_01.html">入試問題を解く (その2) 記述する・解答する 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../02/02_11.html">入試問題を解く (その2) 記述する・解答する 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../02/02_12.html">入試問題を解く (その2) 記述する・解答する 3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../02/02_13.html">入試問題を解く (その2) 記述する・解答する 4</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../02/02_02.html">入試問題を解く (その2) 記述する・解答する 5</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">2026/04/15</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../01/01_00_intro.html">How to connect and use JupyterHub</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../01/01_01.html">入試問題を解く (その1) 記述する 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../01/01_02.html">入試問題を解く (その1) 記述する 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../01/01_03.html">入試問題を解く (その1) 記述する 3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../01/01_04.html">入試問題を解く (その1) 記述する 4</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../01/01_05.html">入試問題を解く (その1) 記述する 5</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../01/01_11.html">入試問題を解く (その1) 記述する 6</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../01/01_12.html">入試問題を解く (その1) 記述する 7</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../01/01_13.html">入試問題を解く (その1) 記述する 8</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://vioras-jh2500.japaneast.cloudapp.azure.com/hub/user-redirect/git-pull?repo=https%3A//github.com/Cloudedu-Osaka/textbook-2026&urlpath=lab/tree/textbook-2026/chapters/03/03_01.ipynb&branch=main" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on JupyterHub"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="JupyterHub logo" src="../../_static/images/logo_jupyterhub.svg">
+  </span>
+<span class="btn__text-container">JupyterHub</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+<a href="https://github.com/Cloudedu-Osaka/textbook-2026" target="_blank"
+   class="btn btn-sm btn-source-repository-button"
+   title="Source repository"
+   data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+
+</a>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/chapters/03/03_01.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button pst-navbar-icon"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm pst-navbar-icon" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>第3回: 試験問題の記述とこの授業のルール</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">第3回: 試験問題の記述とこの授業のルール</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">第4回: 科学は何故停滞するのか？</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">三角形の中心（内心・外心・重心・垂心） — 歴史的背景と関連事象</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">重心のバリセントリック（重心座標）による証明</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">バリセントリック座標とベクトルへの移行 — 歴史的注記</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#excenters-dandelin">傍心（Excenters）とDandelin球 — 円錐曲線との対応</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dandelin">Dandelin球の本質 — 接点の対称性と教科書で扱われにくい理由</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#wikipedia">出典（英語 Wikipedia）と補足</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">考察：三角形中心の歴史をめぐる科学の停滞について</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">クーンの科学革命論（要約）</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#menaechmusapollonius">Menaechmus、Apollonius と科学史的受容 — 円錐曲線論の流れ</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#menaechmus-vs-apollonius">事例から学ぶ：Menaechmus vs Apollonius と科学の停滞</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">代数学の伝播と近代的革新（簡潔な補注）</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">一次資料（原典）と注釈 — 科学の停滞と画期の文脈で</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">現代の停滞と転換の契機 — 学部初年次で学ぶべきこと（教育案）</a></li>
+</ul>
+</li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="id1">
+<h1>第3回: 試験問題の記述とこの授業のルール<a class="headerlink" href="#id1" title="Link to this heading">#</a></h1>
+<ul class="simple">
+<li><p>試験問題の記述の残件</p>
+<ul>
+<li><p>Errata</p></li>
+<li><p>2Dと3Dとツールの紹介</p></li>
+</ul>
+</li>
+<li><p>科学の画期を記述する</p></li>
+</ul>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="id2">
+<h1>第4回: 科学は何故停滞するのか？<a class="headerlink" href="#id2" title="Link to this heading">#</a></h1>
+<ul class="simple">
+<li><p>三角形の中心</p>
+<ul>
+<li><p>Wikipediaの「Triangle center」（英語）: <a class="reference external" href="https://en.wikipedia.org/wiki/Triangle_center">Triangle center - Wikipedia</a>.</p></li>
+</ul>
+</li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="k">using</span><span class="w"> </span><span class="n">Pkg</span>
+<span class="n">Pkg</span><span class="o">.</span><span class="n">activate</span><span class="p">(</span><span class="s">&quot;../..&quot;</span><span class="p">)</span>
+<span class="n">Pkg</span><span class="o">.</span><span class="n">instantiate</span><span class="p">()</span>
+<span class="c"># Pkg.add(url=&quot;https://github.com/moyhig-ecs/GeoGebra.jl&quot;)</span>
+<span class="k">using</span><span class="w"> </span><span class="n">GeoGebra</span>
+<span class="nb">ENV</span><span class="p">[</span><span class="s">&quot;GGB_DIRECT_TRANSPORT&quot;</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">inject_applet</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">versioninfo</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="nd">@ggb</span><span class="w"> </span><span class="ss">:api</span><span class="w"> </span><span class="n">getVersion</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="nd">@ggb</span><span class="w"> </span><span class="n">A</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
+<span class="nd">@ggb</span><span class="w"> </span><span class="n">B</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="n">sqrt</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span>
+<span class="nd">@ggb</span><span class="w"> </span><span class="n">C</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="nd">@ggb</span><span class="w"> </span><span class="n">Circle</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="nd">@ggb</span><span class="w"> </span><span class="n">Polygon</span><span class="p">(</span><span class="ss">:A</span><span class="p">,</span><span class="w"> </span><span class="ss">:B</span><span class="p">,</span><span class="w"> </span><span class="ss">:C</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="nd">@ggb</span><span class="w"> </span><span class="n">TriangleCenter</span><span class="p">(</span><span class="ss">:A</span><span class="p">,</span><span class="w"> </span><span class="ss">:B</span><span class="p">,</span><span class="w"> </span><span class="ss">:C</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://geogebra.github.io/docs/manual/en/commands/TriangleCenter/">TriangleCenter Command :: GeoGebra Manual</a></p>
+<ul>
+<li><p>1: Incenter</p></li>
+<li><p>2: Centroid</p></li>
+<li><p>3: Circumcenter</p></li>
+<li><p>4: Orthocenter</p></li>
+<li><p>5: Nine-point center</p></li>
+<li><p>6: <a class="reference external" href="https://en.wikipedia.org/wiki/Symmedian">Symmedian - Wikipedia</a></p></li>
+<li><p>7: <a class="reference external" href="https://en.wikipedia.org/wiki/Incircle_and_excircles#Gergonne_triangle_and_point">Incircle and excircles - Wikipedia</a>#Gergonne_triangle_and_point</p></li>
+<li><p>8: <a class="reference external" href="https://en.wikipedia.org/wiki/Nagel_point">Nagel point - Wikipedia</a></p></li>
+<li><p>13: <a class="reference external" href="https://en.wikipedia.org/wiki/Fermat_point">Fermat point - Wikipedia</a></p></li>
+</ul>
+</li>
+</ul>
+</div>
+<section id="id3">
+<h2>三角形の中心（内心・外心・重心・垂心） — 歴史的背景と関連事象<a class="headerlink" href="#id3" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p><strong>内心 (Incenter)</strong>: 各角の二等分線の交点で、三角形の内接円の中心。角の二等分の性質や作図は古代ギリシャ幾何学に根ざす。参考: <a class="reference external" href="https://en.wikipedia.org/wiki/Incenter">https://en.wikipedia.org/wiki/Incenter</a></p></li>
+<li><p><strong>内心と近代科学</strong>: 内心自体は古代に知られていたが、近代初期の解析幾何学や円錐曲線の研究は内心に関連する概念を解析的に扱う土壌を与えた。デカルトらの解析幾何学は接線・法線・曲線の方程式へと幾何学を拡張し、円や放物線の接線・法線の性質が角の二等分線や接点の解析と結び付けて議論されるようになった。ニュートンは放物線やその他の円錐曲線の性質（焦点、軸、反射性など）を厳密に扱い、これらの研究は力学や光学における放物線の焦点概念の発展を促した。内心が“科学革命”そのものを引き起こしたわけではないが、内心を含む古典幾何の命題が解析的手法で再解釈された点に意義がある。</p></li>
+<li><p><strong>外心 (Circumcenter)</strong>: 各辺の垂直二等分線の交点で外接円の中心。外接円・垂直二等分線の作図はユークリッド以来の古典的命題として扱われる。ここで関連深いのがタレス（Thales）の定理で、直径に対する円周角が直角になるという命題は円と直径・円周角の基本的な関係を示し、円の中心や外接円に関する諸命題の基盤となった。すなわち、三角形を円に内接させたときに各辺の垂直二等分線が同一の点（外心）を通るという性質は、古代ギリシャの円周角に関する議論の延長線上にある（注意: これは外心に関する系譜であり、内心とは区別される）。参考: <a class="reference external" href="https://en.wikipedia.org/wiki/Circumcenter">https://en.wikipedia.org/wiki/Circumcenter</a></p></li>
+<li><p><strong>重心 (Centroid)</strong>: 各中線の交点で、図形の質量中心（単位密度のときの中心）。アルキメデスは天秤や平衡の考察を通じて面積や重心に関する初期の議論を行ったと伝えられるが、当時の議論には実験的・幾何的双方の要素が混在している。現代的に重心の位置を示す方法としては、</p>
+<ul>
+<li><p>幾何学的議論（中線の比による直接的構成）、</p></li>
+<li><p>解析的議論（座標・ベクトルを導入して積分／重積分でモーメントを計算）、</p></li>
+<li><p>物理的議論（質点や天秤による平衡の考え）
+がある。解析的証明はしばしば座標系の取り方や積分の取り扱いに依存し、完全に座標非依存な（purely coordinate-free）証明が常に提示されるわけではないという批判がある。したがって、数学的厳密性の観点からはArchimedes の天秤による直感的・実験的手法が概念的に十分である場合もあり得るが、現代数学では解析的・測度論的裏付け（積分による定義と計算）を与えることが多い。重心の「数学的」意味づけと「物理的」意味づけが領域間で異なる点は、なお議論の余地がある。</p></li>
+</ul>
+</li>
+<li><p><strong>座標非依存証明の試み</strong>:</p>
+<ul>
+<li><p><strong>面積分割による議論</strong>: 各中線が三角形を等面積に分けることと平行移動・平行四辺形の性質から、三つの中線が一点で交わりその比が2:1であることを示す証明がある。これは座標を用いず純粋にユークリッド幾何の操作で進められる。</p></li>
+<li><p><strong>質点（Mass-point）法</strong>: 頂点に質量を配置しててんびんの平衡を使う方法。物理的直観を使うが、質量の比の計算は純粋な比の算術であり、幾何学的公理系の下で形式化できる。</p></li>
+<li><p><strong>バリセントリック／アフィン不変な説明</strong>: バリセントリック座標は座標導入に見えるが、本質的にアフィン不変な構造を示し、座標選択によらない性質説明に近い。</p></li>
+<li><p><strong>測度論的・モーメントの形式化</strong>: 連続分布のモーメントに基づく定義は解析的だが、アフィン変換に対する不変性を示すことで座標選択への依存を限定的に扱える。</p></li>
+</ul>
+</li>
+<li><p><strong>垂心 (Orthocenter)</strong>: 各頂点から対辺に下した垂線の交点。直角三角形では直角の頂点が垂心になる（頂点からの垂線が辺に一致するため）。古代・ユークリッドの命題や直角三角形の関連証明では垂線が重要な役割を果たし、いくつかのピタゴラス風の議論や補助線として用いられる。一般の三角形では、垂心は余弦定理や投影を用いた証明・解析に現れることが多い（高さ・射影を用いる議論で自然に登場する）。参考: <a class="reference external" href="https://en.wikipedia.org/wiki/Orthocenter">https://en.wikipedia.org/wiki/Orthocenter</a></p></li>
+<li><p><strong>近代的な発展</strong>: 18世紀にオイラーが重心・外心・垂心（および垂心・重心・外心の位置関係）などを示し、三角形中心の関係性が体系化された（<a class="reference external" href="https://en.wikipedia.org/wiki/Euler_line%EF%BC%89%E3%80%82">https://en.wikipedia.org/wiki/Euler_line）。</a></p></li>
+<li><p><strong>体系化と現代の研究</strong>: Clark Kimberling による “Encyclopedia of Triangle Centers” は何千もの三角形中心を整理し、現代の研究・教育での扱いを拡大した（<a class="reference external" href="https://faculty.evansville.edu/ck6/encyclopedia/ETC.html%EF%BC%89%E3%80%82">https://faculty.evansville.edu/ck6/encyclopedia/ETC.html）。</a></p></li>
+<li><p><strong>教育的・出題上の意義</strong>: センター試験のような問題は、古典的な作図・証明技能と近代的な解析（座標幾何、重心の物理的意味、垂心を用いる投影による議論など）を結び付ける良い機会となる。これらの中心は幾何学の基礎概念であり、数学史や科学史の文脈（古代ギリシャ→中世の保存・翻訳→近代の力学・解析学）とも深く結び付いている。</p></li>
+</ul>
+<p><em>(参考: Euclid, Archimedes, Apollonius, Descartes, Newton, Euler, Kimberling の成果と解説を概観)</em></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="c"># Draw a triangle and mark its incenter, circumcenter, centroid, and orthocenter</span>
+<span class="c"># If A, B, C are already defined in the notebook, this cell will use them; otherwise a default triangle is used.</span>
+<span class="k">import</span><span class="w"> </span><span class="n">numpy</span><span class="w"> </span><span class="n">as</span><span class="w"> </span><span class="n">np</span>
+<span class="k">import</span><span class="w"> </span><span class="n">matplotlib</span><span class="o">.</span><span class="n">pyplot</span><span class="w"> </span><span class="n">as</span><span class="w"> </span><span class="n">plt</span>
+
+<span class="c"># Use existing points if present, otherwise define a sample triangle</span>
+<span class="k">try</span><span class="o">:</span>
+<span class="w">    </span><span class="n">A</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">A</span><span class="p">,</span><span class="w"> </span><span class="n">dtype</span><span class="o">=</span><span class="n">float</span><span class="p">)</span>
+<span class="w">    </span><span class="n">B</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">B</span><span class="p">,</span><span class="w"> </span><span class="n">dtype</span><span class="o">=</span><span class="n">float</span><span class="p">)</span>
+<span class="w">    </span><span class="n">C</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">C</span><span class="p">,</span><span class="w"> </span><span class="n">dtype</span><span class="o">=</span><span class="n">float</span><span class="p">)</span>
+<span class="n">except</span><span class="w"> </span><span class="kt">Exception</span><span class="o">:</span>
+<span class="w">    </span><span class="n">A</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.0</span><span class="p">,</span><span class="w"> </span><span class="mf">0.0</span><span class="p">])</span>
+<span class="w">    </span><span class="n">B</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">1.0</span><span class="p">,</span><span class="w"> </span><span class="mf">0.2</span><span class="p">])</span>
+<span class="w">    </span><span class="n">C</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.35</span><span class="p">,</span><span class="w"> </span><span class="mf">0.9</span><span class="p">])</span>
+
+<span class="n">def</span><span class="w"> </span><span class="n">circumcenter</span><span class="p">(</span><span class="n">A</span><span class="p">,</span><span class="w"> </span><span class="n">B</span><span class="p">,</span><span class="w"> </span><span class="n">C</span><span class="p">)</span><span class="o">:</span>
+<span class="w">    </span><span class="n">Ax</span><span class="p">,</span><span class="w"> </span><span class="n">Ay</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">A</span>
+<span class="w">    </span><span class="n">Bx</span><span class="p">,</span><span class="w"> </span><span class="n">By</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">B</span>
+<span class="w">    </span><span class="n">Cx</span><span class="p">,</span><span class="w"> </span><span class="n">Cy</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">C</span>
+<span class="w">    </span><span class="n">D</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="n">Ax</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="n">By</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">Cy</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">Bx</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="n">Cy</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">Ay</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">Cx</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="n">Ay</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">By</span><span class="p">))</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="n">np</span><span class="o">.</span><span class="n">isclose</span><span class="p">(</span><span class="n">D</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="o">:</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span><span class="w"> </span><span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">])</span>
+<span class="w">    </span><span class="n">Ux</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">((</span><span class="n">Ax</span><span class="o">**</span><span class="mi">2</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">Ay</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="n">By</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">Cy</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="p">(</span><span class="n">Bx</span><span class="o">**</span><span class="mi">2</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">By</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="n">Cy</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">Ay</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="p">(</span><span class="n">Cx</span><span class="o">**</span><span class="mi">2</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">Cy</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="n">Ay</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">By</span><span class="p">))</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">D</span>
+<span class="w">    </span><span class="n">Uy</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">((</span><span class="n">Ax</span><span class="o">**</span><span class="mi">2</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">Ay</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="n">Cx</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">Bx</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="p">(</span><span class="n">Bx</span><span class="o">**</span><span class="mi">2</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">By</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="n">Ax</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">Cx</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="p">(</span><span class="n">Cx</span><span class="o">**</span><span class="mi">2</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">Cy</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="n">Bx</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">Ax</span><span class="p">))</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">D</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">Ux</span><span class="p">,</span><span class="w"> </span><span class="n">Uy</span><span class="p">])</span>
+
+<span class="n">def</span><span class="w"> </span><span class="n">incenter</span><span class="p">(</span><span class="n">A</span><span class="p">,</span><span class="w"> </span><span class="n">B</span><span class="p">,</span><span class="w"> </span><span class="n">C</span><span class="p">)</span><span class="o">:</span>
+<span class="w">    </span><span class="n">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">B</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">C</span><span class="p">)</span><span class="w">  </span><span class="c"># side opposite A</span>
+<span class="w">    </span><span class="n">b</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">C</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">A</span><span class="p">)</span><span class="w">  </span><span class="c"># side opposite B</span>
+<span class="w">    </span><span class="n">c</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">A</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">B</span><span class="p">)</span><span class="w">  </span><span class="c"># side opposite C</span>
+<span class="w">    </span><span class="n">s</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">c</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="n">np</span><span class="o">.</span><span class="n">isclose</span><span class="p">(</span><span class="n">s</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="o">:</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span><span class="w"> </span><span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">])</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="p">(</span><span class="n">a</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">A</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">B</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">c</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">C</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">s</span>
+
+<span class="n">def</span><span class="w"> </span><span class="n">centroid</span><span class="p">(</span><span class="n">A</span><span class="p">,</span><span class="w"> </span><span class="n">B</span><span class="p">,</span><span class="w"> </span><span class="n">C</span><span class="p">)</span><span class="o">:</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="p">(</span><span class="n">A</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">B</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">C</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mf">3.0</span>
+
+<span class="n">def</span><span class="w"> </span><span class="n">orthocenter</span><span class="p">(</span><span class="n">A</span><span class="p">,</span><span class="w"> </span><span class="n">B</span><span class="p">,</span><span class="w"> </span><span class="n">C</span><span class="p">)</span><span class="o">:</span>
+<span class="w">    </span><span class="c"># Compute intersection of two altitudes: from A (perp to BC) and from B (perp to AC)</span>
+<span class="w">    </span><span class="n">vBC</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">C</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">B</span>
+<span class="w">    </span><span class="n">nA</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="o">-</span><span class="n">vBC</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="w"> </span><span class="n">vBC</span><span class="p">[</span><span class="mi">0</span><span class="p">]])</span><span class="w">  </span><span class="c"># direction of altitude from A</span>
+<span class="w">    </span><span class="n">vAC</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">C</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">A</span>
+<span class="w">    </span><span class="n">nB</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="o">-</span><span class="n">vAC</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="w"> </span><span class="n">vAC</span><span class="p">[</span><span class="mi">0</span><span class="p">]])</span><span class="w">  </span><span class="c"># direction of altitude from B</span>
+<span class="w">    </span><span class="n">M</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">np</span><span class="o">.</span><span class="n">column_stack</span><span class="p">((</span><span class="n">nA</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="n">nB</span><span class="p">))</span>
+<span class="w">    </span><span class="n">rhs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">B</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">A</span>
+<span class="w">    </span><span class="k">try</span><span class="o">:</span>
+<span class="w">        </span><span class="n">t_s</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">M</span><span class="p">,</span><span class="w"> </span><span class="n">rhs</span><span class="p">)</span>
+<span class="w">        </span><span class="n">t</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">t_s</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="w">        </span><span class="n">H</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">A</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">t</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">nA</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">H</span>
+<span class="w">    </span><span class="n">except</span><span class="w"> </span><span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">LinAlgError</span><span class="o">:</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span><span class="w"> </span><span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">])</span>
+
+<span class="c"># Compute centers</span>
+<span class="n">O</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">circumcenter</span><span class="p">(</span><span class="n">A</span><span class="p">,</span><span class="w"> </span><span class="n">B</span><span class="p">,</span><span class="w"> </span><span class="n">C</span><span class="p">)</span>
+<span class="n">I</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">incenter</span><span class="p">(</span><span class="n">A</span><span class="p">,</span><span class="w"> </span><span class="n">B</span><span class="p">,</span><span class="w"> </span><span class="n">C</span><span class="p">)</span>
+<span class="n">G</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">centroid</span><span class="p">(</span><span class="n">A</span><span class="p">,</span><span class="w"> </span><span class="n">B</span><span class="p">,</span><span class="w"> </span><span class="n">C</span><span class="p">)</span>
+<span class="n">H</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">orthocenter</span><span class="p">(</span><span class="n">A</span><span class="p">,</span><span class="w"> </span><span class="n">B</span><span class="p">,</span><span class="w"> </span><span class="n">C</span><span class="p">)</span>
+
+<span class="c"># Plot</span>
+<span class="n">fig</span><span class="p">,</span><span class="w"> </span><span class="n">ax</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span><span class="w"> </span><span class="mi">6</span><span class="p">))</span>
+<span class="n">triangle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">np</span><span class="o">.</span><span class="n">vstack</span><span class="p">([</span><span class="n">A</span><span class="p">,</span><span class="w"> </span><span class="n">B</span><span class="p">,</span><span class="w"> </span><span class="n">C</span><span class="p">,</span><span class="w"> </span><span class="n">A</span><span class="p">])</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">triangle</span><span class="p">[</span><span class="o">:</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">],</span><span class="w"> </span><span class="n">triangle</span><span class="p">[</span><span class="o">:</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">],</span><span class="w"> </span><span class="err">&#39;</span><span class="o">-</span><span class="n">k</span><span class="o">&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">lw</span><span class="o">=</span><span class="mf">1.5</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">([</span><span class="n">A</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="w"> </span><span class="n">B</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="w"> </span><span class="n">C</span><span class="p">[</span><span class="mi">0</span><span class="p">]],</span><span class="w"> </span><span class="p">[</span><span class="n">A</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="w"> </span><span class="n">B</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="w"> </span><span class="n">C</span><span class="p">[</span><span class="mi">1</span><span class="p">]],</span><span class="w"> </span><span class="n">color</span><span class="o">=</span><span class="sc">&#39;k&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">zorder</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+<span class="k">for</span><span class="w"> </span><span class="n">p</span><span class="p">,</span><span class="w"> </span><span class="n">label</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">zip</span><span class="p">([</span><span class="n">A</span><span class="p">,</span><span class="w"> </span><span class="n">B</span><span class="p">,</span><span class="w"> </span><span class="n">C</span><span class="p">],</span><span class="w"> </span><span class="p">[</span><span class="sc">&#39;A&#39;</span><span class="p">,</span><span class="w"> </span><span class="sc">&#39;B&#39;</span><span class="p">,</span><span class="w"> </span><span class="sc">&#39;C&#39;</span><span class="p">])</span><span class="o">:</span>
+<span class="w">    </span><span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">p</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">0.02</span><span class="p">,</span><span class="w"> </span><span class="n">p</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">0.02</span><span class="p">,</span><span class="w"> </span><span class="n">label</span><span class="p">,</span><span class="w"> </span><span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">O</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="w"> </span><span class="n">O</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="w"> </span><span class="n">color</span><span class="o">=</span><span class="err">&#39;</span><span class="n">tab</span><span class="o">:</span><span class="n">orange</span><span class="o">&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">label</span><span class="o">=</span><span class="err">&#39;</span><span class="n">Circumcenter</span><span class="w"> </span><span class="p">(</span><span class="n">O</span><span class="p">)</span><span class="o">&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">zorder</span><span class="o">=</span><span class="mi">6</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">I</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="w"> </span><span class="n">I</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="w"> </span><span class="n">color</span><span class="o">=</span><span class="err">&#39;</span><span class="n">tab</span><span class="o">:</span><span class="n">green</span><span class="o">&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">label</span><span class="o">=</span><span class="err">&#39;</span><span class="n">Incenter</span><span class="w"> </span><span class="p">(</span><span class="n">I</span><span class="p">)</span><span class="o">&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">zorder</span><span class="o">=</span><span class="mi">6</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">G</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="w"> </span><span class="n">G</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="w"> </span><span class="n">color</span><span class="o">=</span><span class="err">&#39;</span><span class="n">tab</span><span class="o">:</span><span class="n">blue</span><span class="o">&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">label</span><span class="o">=</span><span class="err">&#39;</span><span class="n">Centroid</span><span class="w"> </span><span class="p">(</span><span class="n">G</span><span class="p">)</span><span class="o">&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">zorder</span><span class="o">=</span><span class="mi">6</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">H</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="w"> </span><span class="n">H</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="w"> </span><span class="n">color</span><span class="o">=</span><span class="err">&#39;</span><span class="n">tab</span><span class="o">:</span><span class="n">red</span><span class="o">&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">label</span><span class="o">=</span><span class="err">&#39;</span><span class="n">Orthocenter</span><span class="w"> </span><span class="p">(</span><span class="n">H</span><span class="p">)</span><span class="o">&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">zorder</span><span class="o">=</span><span class="mi">6</span><span class="p">)</span>
+
+<span class="c"># Annotate</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="sc">&#39;O&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">xy</span><span class="o">=</span><span class="p">(</span><span class="n">O</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="w"> </span><span class="n">O</span><span class="p">[</span><span class="mi">1</span><span class="p">]),</span><span class="w"> </span><span class="n">xytext</span><span class="o">=</span><span class="p">(</span><span class="n">O</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">+</span><span class="mf">0.02</span><span class="p">,</span><span class="w"> </span><span class="n">O</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">+</span><span class="mf">0.02</span><span class="p">))</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="sc">&#39;I&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">xy</span><span class="o">=</span><span class="p">(</span><span class="n">I</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="w"> </span><span class="n">I</span><span class="p">[</span><span class="mi">1</span><span class="p">]),</span><span class="w"> </span><span class="n">xytext</span><span class="o">=</span><span class="p">(</span><span class="n">I</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">+</span><span class="mf">0.02</span><span class="p">,</span><span class="w"> </span><span class="n">I</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">+</span><span class="mf">0.02</span><span class="p">))</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="sc">&#39;G&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">xy</span><span class="o">=</span><span class="p">(</span><span class="n">G</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="w"> </span><span class="n">G</span><span class="p">[</span><span class="mi">1</span><span class="p">]),</span><span class="w"> </span><span class="n">xytext</span><span class="o">=</span><span class="p">(</span><span class="n">G</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">+</span><span class="mf">0.02</span><span class="p">,</span><span class="w"> </span><span class="n">G</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">+</span><span class="mf">0.02</span><span class="p">))</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="sc">&#39;H&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">xy</span><span class="o">=</span><span class="p">(</span><span class="n">H</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="w"> </span><span class="n">H</span><span class="p">[</span><span class="mi">1</span><span class="p">]),</span><span class="w"> </span><span class="n">xytext</span><span class="o">=</span><span class="p">(</span><span class="n">H</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">+</span><span class="mf">0.02</span><span class="p">,</span><span class="w"> </span><span class="n">H</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">+</span><span class="mf">0.02</span><span class="p">))</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">set_aspect</span><span class="p">(</span><span class="err">&#39;</span><span class="n">equal</span><span class="o">&#39;</span><span class="p">,</span><span class="w"> </span><span class="err">&#39;</span><span class="n">box</span><span class="o">&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="err">&#39;</span><span class="n">Triangle</span><span class="w"> </span><span class="n">centers</span><span class="o">:</span><span class="w"> </span><span class="n">I</span><span class="w"> </span><span class="p">(</span><span class="n">incenter</span><span class="p">),</span><span class="w"> </span><span class="n">O</span><span class="w"> </span><span class="p">(</span><span class="n">circumcenter</span><span class="p">),</span><span class="w"> </span><span class="n">G</span><span class="w"> </span><span class="p">(</span><span class="n">centroid</span><span class="p">),</span><span class="w"> </span><span class="n">H</span><span class="w"> </span><span class="p">(</span><span class="n">orthocenter</span><span class="p">)</span><span class="o">&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="err">&#39;</span><span class="n">best</span><span class="o">&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="id4">
+<h2>重心のバリセントリック（重心座標）による証明<a class="headerlink" href="#id4" title="Link to this heading">#</a></h2>
+<p>参考（英語）: <a class="reference external" href="https://en.wikipedia.org/wiki/Centroid">Centroid - Wikipedia</a></p>
+<ol class="arabic simple">
+<li><p>点Pをバリセントリック座標で表す：P = αA + βB + γC, ただし α+β+γ = 1。</p></li>
+<li><p>辺BCの中点Mは M = (0, 1/2, 1/2) と表せる（Aの係数が0、BとCが1/2）。</p></li>
+<li><p>AからMへの中線上の任意点はパラメータtで表すと
+P(t) = (t, (1−t)/2, (1−t)/2), ここで係数和は1を保つ。</p></li>
+<li><p>三つの中線が共通に交わる点では対称性より α=β=γ が成り立つ。
+したがって重心G は α=β=γ=1/3 より G = (1/3,1/3,1/3) となる。</p></li>
+<li><p>P(t)=G を満たす t を求めると t = 1/3 であるため、A→M に対する位置は A から G までが全長の 1/3、G から M までが 2/3 に対応する。したがって AG:GM = 2:1（すなわち G は A と中点 M を結ぶ中線を 2:1 に内分する点）。</p></li>
+</ol>
+<p>結論：バリセントリック座標を用いると、座標の具体的選択に依存せず（係数和=1 の制約の下で）中線の一点交差と 2:1 の分割が簡潔に示される。</p>
+</section>
+<section id="id5">
+<h2>バリセントリック座標とベクトルへの移行 — 歴史的注記<a class="headerlink" href="#id5" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>バリセントリック（重心）座標は August Ferdinand Möbius によって初めて体系化された（1827年頃の業績）。これは点を重み付き線形結合で表す考え方で、三角形の重心に関する簡潔な証明を可能にする（参照: <a class="reference external" href="https://en.wikipedia.org/wiki/Barycentric_coordinate_system">https://en.wikipedia.org/wiki/Barycentric_coordinate_system</a> ; Möbius: <a class="reference external" href="https://en.wikipedia.org/wiki/August_Ferdinand_M%C3%B6bius%EF%BC%89%E3%80%82">https://en.wikipedia.org/wiki/August_Ferdinand_Möbius）。</a></p></li>
+<li><p>ベクトル代数は Hermann Grassmann の『Ausdehnungslehre』（1844年）により抽象的な形で現れ、19世紀後半に Gibbs と Heaviside によって解析物理・電磁気学の言語として整備された（Gibbs: <a class="reference external" href="https://en.wikipedia.org/wiki/J._Willard_Gibbs">https://en.wikipedia.org/wiki/J._Willard_Gibbs</a> ; Heaviside: <a class="reference external" href="https://en.wikipedia.org/wiki/Oliver_Heaviside">https://en.wikipedia.org/wiki/Oliver_Heaviside</a> ; Grassmann: <a class="reference external" href="https://en.wikipedia.org/wiki/Hermann_Gra%C3%9Fmann%EF%BC%89%E3%80%82">https://en.wikipedia.org/wiki/Hermann_Graßmann）。</a></p></li>
+<li><p>各歴史的段階を踏まえると、バリセントリック座標は「係数による線形結合」という発想を先取りしており、表現は座標的でもその本質はアフィン／線形的不変性にある。したがって、バリセントリックによる重心の証明はベクトル的証明への移行を示す橋渡しと見なせるが、必ずしもベクトル記法そのものを必要としない点が興味深い。</p></li>
+</ul>
+<p>(出典: 各記事の英語版Wikipediaへのリンクを付記)</p>
+</section>
+<section id="excenters-dandelin">
+<h2>傍心（Excenters）とDandelin球 — 円錐曲線との対応<a class="headerlink" href="#excenters-dandelin" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p><strong>傍心 (Excenters)</strong>: 三角形の外角の二等分線の交点で、各傍接円（excircle）の中心である。参考（英語）: <a class="reference external" href="https://en.wikipedia.org/wiki/Excenter">https://en.wikipedia.org/wiki/Excenter</a> , <a class="reference external" href="https://en.wikipedia.org/wiki/Excircle">https://en.wikipedia.org/wiki/Excircle</a></p></li>
+<li><p><strong>Dandelin球 (Dandelin spheres)</strong>: 円錐と平面の交わりによる円錐曲線の焦点を幾何的に与える古典的構成。円錐に内接する球（Dandelin球）が平面と接する点が、その円錐曲線の焦点に一致する。参考（英語）: <a class="reference external" href="https://en.wikipedia.org/wiki/Dandelin_sphere">https://en.wikipedia.org/wiki/Dandelin_sphere</a></p></li>
+<li><p><strong>対応の概説</strong>: 適切に取った円錐と切断平面では、三角形の内接円・傍接円に対応する球がそれぞれDandelin球として現れ、内心・傍心が円錐曲線の焦点に対応する視点が得られる。これは三角形の「五心」と円錐曲線理論を結び付ける興味深い接点であるが、通常の教科書はこの高度な構成を扱わない。</p></li>
+<li><p><strong>教育的注記</strong>: 日本で五心を強調する傾向はあり、傍心を含めた体系化は問題演習上便利だが、Dandelin球との対応を示すには立体幾何の補助と高度な概念説明が必要となる。</p></li>
+</ul>
+<p>(参照: 各英語版Wikipedia記事)</p>
+</section>
+<section id="dandelin">
+<h2>Dandelin球の本質 — 接点の対称性と教科書で扱われにくい理由<a class="headerlink" href="#dandelin" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p><strong>核心的事実</strong>: Dandelin球は円錐と切断平面に同時に接する球で、球の平面への接点はその円錐曲線の焦点になる。三角形モデルでは、内接円と傍接円（および対応する球）の接点は各辺上で角の二等分線に関して対称になる。これは「辺上の接点の対称性」が、接点が楕円の焦点となることを示す際の本質的な特徴である。</p></li>
+<li><p><strong>初等幾何での説明要点（概観）</strong>:</p>
+<ol class="arabic simple">
+<li><p>各頂点から接点へ引いた接線長は等しい（同一接点からの接線長の等しさ）。</p></li>
+<li><p>内接円と傍接円に対して頂点からの接線長の和や差を比較すると、円錐断面上の点から二つの接球接点までの距離和が一定であることに帰着する。</p></li>
+<li><p>この比較を使うと、辺上の接点が角の二等分線に関して対称に配置されること、ゆえに接点が楕円の焦点として機能することが平面上の接線長の議論で示せる。</p></li>
+</ol>
+</li>
+<li><p><strong>なぜ教科書は触れにくいか（考察）</strong>:</p>
+<ul>
+<li><p>図示が空間的（円錐＋球＋平面）で視覚的に複雑になり、正確な図を描くのが手間。</p></li>
+<li><p>証明は『平面』の接線長や対称性の議論に還元できるが、その還元過程を教えるには追加の補題と立体幾何の直観が必要で、通常のカリキュラムでは扱いにくい。</p></li>
+<li><p>初等幾何の教科書は平面図形の基本命題に注力するため、円錐曲線の焦点を導く立体的構成は選択肢から外れやすい（時間・学習順序の都合）。</p></li>
+<li><p>代替として解析幾何（座標・方程式）や微分幾何的・解析的手法で楕円の定義を示す教科書が多く、Dandelin球は高度な補助的構成と見なされがちである。</p></li>
+</ul>
+</li>
+<li><p><strong>参考（英語）</strong>: <a class="reference external" href="https://en.wikipedia.org/wiki/Dandelin_sphere">https://en.wikipedia.org/wiki/Dandelin_sphere</a></p></li>
+</ul>
+<p>（必要なら、この説明を補う平面中心線図や3Dスケッチを別途作成します）</p>
+</section>
+<section id="wikipedia">
+<h2>出典（英語 Wikipedia）と補足<a class="headerlink" href="#wikipedia" title="Link to this heading">#</a></h2>
+<p>Apollonius and later developments:</p>
+<ul class="simple">
+<li><p>Apollonius of Perga — <a class="reference external" href="https://en.wikipedia.org/wiki/Apollonius_of_Perga">https://en.wikipedia.org/wiki/Apollonius_of_Perga</a></p></li>
+<li><p>Dandelin sphere — <a class="reference external" href="https://en.wikipedia.org/wiki/Dandelin_sphere">https://en.wikipedia.org/wiki/Dandelin_sphere</a></p></li>
+<li><p>Conic section — <a class="reference external" href="https://en.wikipedia.org/wiki/Conic_section">https://en.wikipedia.org/wiki/Conic_section</a></p></li>
+<li><p>Focus (geometry) — <a class="reference external" href="https://en.wikipedia.org/wiki/Focus_(geometry)">https://en.wikipedia.org/wiki/Focus_(geometry)</a></p></li>
+<li><p>The Feynman Lectures on Physics — <a class="reference external" href="https://en.wikipedia.org/wiki/The_Feynman_Lectures_on_Physics">https://en.wikipedia.org/wiki/The_Feynman_Lectures_on_Physics</a></p></li>
+</ul>
+<p>要旨: Apollonius による円錐曲線の体系化は古典的であるが、焦点を球によって幾何的に与える構成（Dandelin）は Dandelin によって明確化された。Feynman が円形準線などの観点から問題提起した後も、初等教育では立体的補助構成の扱いが難しいため、教科書に明示的な説明が残りにくい点を参考文献として示す。</p>
+<p>(英語 Wikipedia へのリンクを参照。必要なら各記事の主要箇所を引用して注釈を拡張します。)</p>
+</section>
+<section id="id6">
+<h2>考察：三角形中心の歴史をめぐる科学の停滞について<a class="headerlink" href="#id6" title="Link to this heading">#</a></h2>
+<p>Apollonius の体系化、Dandelin の幾何的構成、Feynman の問題提起を辿ると、一見進歩が連続しているように見えるが、実際には「発見の遅延」が所々で生じる。理由は主に次の通りである。</p>
+<ul class="simple">
+<li><p>パラダイム依存：既存の方法論や教義が新しい視点の採用を阻む（Kuhn 的）。</p></li>
+<li><p>教育的制約：立体的補題や高度な補助命題はカリキュラムに組み込みにくい。図示・指導負担が大きい。</p></li>
+<li><p>道具と表現：解析的・代数的手法の台頭で幾何学的直観の価値が一時的に見過ごされる。</p></li>
+<li><p>制度的・経済的要因：研究の評価基準や出版のインセンティブが新奇な合成を促しにくい。</p></li>
+</ul>
+<p>これらは、単に知識が『足りない』のではなく、知識を発見・伝達・承認する仕組みの問題である。回避策としては、学際的交流、可視化と模型の教育投入、カリキュラムの柔軟化、問題発見を奨励する評価体系の整備が有効である。</p>
+</section>
+<section id="id7">
+<h2>クーンの科学革命論（要約）<a class="headerlink" href="#id7" title="Link to this heading">#</a></h2>
+<p>Thomas S. Kuhn (1922–1996)。主著『The Structure of Scientific Revolutions』にて、科学の進展を「パラダイム（研究枠組み）」とその転換という枠組みで記述した。</p>
+<p>主なポイント:</p>
+<ul class="simple">
+<li><p>通常科学：既存パラダイム内での問題解決活動。</p></li>
+<li><p>異常の蓄積：パラダイムで説明できない事実が蓄積される。</p></li>
+<li><p>危機と転換：蓄積した異常が危機を生み、やがてパラダイム転換（革命）が起こる。</p></li>
+<li><p>不可換性：異なるパラダイムは観点や評価基準が異なり、相互理解が難しい。</p></li>
+</ul>
+<p>この観点は、知識の『欠如』ではなく制度・教育・方法論の枠組みが停滞の主要因になり得ることを示す。参考（英語）: <a class="reference external" href="https://en.wikipedia.org/wiki/Thomas_Kuhn">https://en.wikipedia.org/wiki/Thomas_Kuhn</a></p>
+</section>
+<section id="menaechmusapollonius">
+<h2>Menaechmus、Apollonius と科学史的受容 — 円錐曲線論の流れ<a class="headerlink" href="#menaechmusapollonius" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p><strong>Menaechmus</strong>: 古代ギリシアの数学者で、立体的な円錐の切断による曲線（円錐曲線）や二次方程式に対応する曲線的解法を扱ったと伝えられる。彼は放物線・双曲線などを問題解法の道具として扱い、関数的・曲線的な視点を先取りした。参考（英語）: <a class="reference external" href="https://en.wikipedia.org/wiki/Menaechmus">https://en.wikipedia.org/wiki/Menaechmus</a></p></li>
+<li><p><strong>Euclid と Apollonius の体系化</strong>: 後のユークリッドや特に Apollonius of Perga は円錐曲線を幾何学的に厳密に体系化し、平面幾何学の枠組みで命題を整理した。歴史的には Apollonius の著述が学界で権威的に受け入れられ、以降の世代（包括的には Kepler や Newton を含む）も Apollonius の幾何学的表現を参照した。参考（英語）: <a class="reference external" href="https://en.wikipedia.org/wiki/Apollonius_of_Perga">https://en.wikipedia.org/wiki/Apollonius_of_Perga</a></p></li>
+<li><p><strong>受容の選択と進展の遅れ</strong>: Menaechmus の曲線的／関数的視点は、当時の主流的な幾何学的表現に比べてやや周縁的であった可能性が高い。Apollonius による公理化・分類が学界の標準となると、代替的な記述（関数的・代数的手法）はしばらく注目されにくくなり、その結果として解析的・関数的な見方の普及が遅れた側面が考えられる。</p></li>
+<li><p><strong>近代への影響</strong>: Kepler や Newton は Apollonius を権威として参照しつつ独自の解析法を発展させた。彼らが引用したのは主に Apollonius の幾何学的記述だが、解析的手法（関数・座標的記述）の確立は後代の数学者・物理学者によって進められた。</p></li>
+<li><p><strong>結び（解釈の提示）</strong>: 歴史は単純な「進歩」だけでなく、記述法や表現（幾何学的 vs 解析的）に関する受容の問題を含む。Menaechmus 的な関数的視点が早期に広く受け入れられなかったことは、方法論の選好と学術的な権威の作用が科学の進展に与える影響を示唆する。</p></li>
+</ul>
+<p>(参考（英語）: Menaechmus, Apollonius of Perga, Euclid, Johannes Kepler, Isaac Newton, Conic section)</p>
+</section>
+<section id="menaechmus-vs-apollonius">
+<h2>事例から学ぶ：Menaechmus vs Apollonius と科学の停滞<a class="headerlink" href="#menaechmus-vs-apollonius" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Menaechmus は関数的・曲線的視点で円錐曲線を扱ったが、その表現は広く受容されなかった。</p></li>
+<li><p>Apollonius による幾何学的な体系化が学界の権威となると、方法論的な多様性は後退し、関数的・解析的視点の普及は遅れた。</p></li>
+<li><p>これはクーンの『パラダイム』概念と結びつく。支配的パラダイム（ここでは幾何学的表現）の中で『正常科学』が行われ、代替的手法は周縁化されやすい。</p></li>
+<li><p>結果として、解析的手法（座標、関数、代数的記述）への移行が遅れ、一部の問題解決の進展が阻まれた可能性がある。しかし Kepler・Newton のような後の研究者が解析的道具を整備し、別のパラダイムで成果を出すことで、やがて転換が起きた。</p></li>
+</ul>
+<p>教訓：歴史的事例は、方法論的多様性と学際的交流の重要性を示す。教育と学術制度は新しい表現法を受け入れる余地を持つべきで、そうした柔軟性が停滞を防ぐ。</p>
+<p>(参照: <a class="reference external" href="https://en.wikipedia.org/wiki/Menaechmus">https://en.wikipedia.org/wiki/Menaechmus</a> , <a class="reference external" href="https://en.wikipedia.org/wiki/Apollonius_of_Perga">https://en.wikipedia.org/wiki/Apollonius_of_Perga</a> , <a class="reference external" href="https://en.wikipedia.org/wiki/Thomas_Kuhn">https://en.wikipedia.org/wiki/Thomas_Kuhn</a> )</p>
+</section>
+<section id="id8">
+<h2>代数学の伝播と近代的革新（簡潔な補注）<a class="headerlink" href="#id8" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>中世にインド発の数法と代数学的手法はイスラム世界で発展し（例: al-Khwarizmi）、後にスペイン＝イベリア半島を経由してヨーロッパに伝わった（トレドの翻訳運動、Reconquista の文脈）。参考（英語）: <a class="reference external" href="https://en.wikipedia.org/wiki/Al-Khwarizmi">https://en.wikipedia.org/wiki/Al-Khwarizmi</a> ; <a class="reference external" href="https://en.wikipedia.org/wiki/Transmission_of_mathematical_knowledge">https://en.wikipedia.org/wiki/Transmission_of_mathematical_knowledge</a></p></li>
+<li><p>フィボナッチらがヒンドゥー＝アラビア数字を広め、記号的・算法的な手法が普及したことが解析的・代数的思考の基盤を作った。参考: <a class="reference external" href="https://en.wikipedia.org/wiki/Fibonacci">https://en.wikipedia.org/wiki/Fibonacci</a></p></li>
+<li><p>この土壌の下でルネサンス〜近世の数学者たち（Viete, Descartes, Fermat など）は代数的記法と方法を発展させ、解析的視点を用いて古典幾何学の問題に新しい解法を与えた。参考: <a class="reference external" href="https://en.wikipedia.org/wiki/History_of_algebra">https://en.wikipedia.org/wiki/History_of_algebra</a> ; <a class="reference external" href="https://en.wikipedia.org/wiki/Ren%C3%A9_Descartes">https://en.wikipedia.org/wiki/René_Descartes</a> ; <a class="reference external" href="https://en.wikipedia.org/wiki/Pierre_de_Fermat">https://en.wikipedia.org/wiki/Pierre_de_Fermat</a></p></li>
+<li><p>結語: あなたの指摘通り、近代の革新は中世の数学伝播という長期的歴史的文脈と強く結びついている。</p></li>
+</ul>
+</section>
+<section id="id9">
+<h2>一次資料（原典）と注釈 — 科学の停滞と画期の文脈で<a class="headerlink" href="#id9" title="Link to this heading">#</a></h2>
+<p>以下は可能な限り一次資料（原典）や信頼できる古典的翻訳へのリンクと注釈。各資料について、三角形中心や円錐曲線、代数学伝播、方法論的受容の観点で注釈を付す。</p>
+<ul class="simple">
+<li><p>Euclid, Elements (Book I, Book IIIなど)</p>
+<ul>
+<li><p>リンク（英語訳・Heath）: <a class="reference external" href="https://archive.org/details/euclid00heatuoft">https://archive.org/details/euclid00heatuoft</a></p></li>
+<li><p>注釈: 平面幾何の公理的展開。外心・垂心に関連する古典命題の源泉として参照される。</p></li>
+</ul>
+</li>
+<li><p>Apollonius of Perga, Conics</p>
+<ul>
+<li><p>リンク（英語訳・Heath）: <a class="reference external" href="https://archive.org/details/apolloniusconic01bannuoft">https://archive.org/details/apolloniusconic01bannuoft</a></p></li>
+<li><p>注釈: 円錐曲線の体系的扱い。Apollonius の幾何学的分類が後の権威となり、解析的表現の早期受容を阻んだ側面を考察する上で重要。</p></li>
+</ul>
+</li>
+<li><p>Menaechmus (断片・二次資料)</p>
+<ul>
+<li><p>リンク（解説・Heath の議論）: <a class="reference external" href="https://archive.org/details/historyofgreekma00heat">https://archive.org/details/historyofgreekma00heat</a></p></li>
+<li><p>注釈: 二次的にしか現存しないが、関数的・曲線的視点の先駆として歴史的に重要。受容の問題を議論するための事例研究。</p></li>
+</ul>
+</li>
+<li><p>Archimedes, On the Equilibrium of Planes / On the Centre of Gravity of a Triangle</p>
+<ul>
+<li><p>リンク（英語訳・Heath）: <a class="reference external" href="https://archive.org/details/worksofarchimede00archuoft">https://archive.org/details/worksofarchimede00archuoft</a></p></li>
+<li><p>注釈: 重心や天秤に関する原典的議論。物理的直観と幾何学的論証の交差を示す好例。</p></li>
+</ul>
+</li>
+<li><p>Dandelin, (Dandelin spheres explanation)</p>
+<ul>
+<li><p>リンク（英語概説・Wikipedia）: <a class="reference external" href="https://en.wikipedia.org/wiki/Dandelin_sphere">https://en.wikipedia.org/wiki/Dandelin_sphere</a></p></li>
+<li><p>注釈: 円錐曲線の焦点を幾何的に示す構成。原典論文はフランス語史料にあるが、現代解説で入門可能。</p></li>
+</ul>
+</li>
+<li><p>Descartes, La Géométrie (1637)</p>
+<ul>
+<li><p>リンク（英語訳）: <a class="reference external" href="https://archive.org/details/geometryofrene00descuoft">https://archive.org/details/geometryofrene00descuoft</a></p></li>
+<li><p>注釈: 解析幾何の創始。幾何的命題を代数的に扱う視点の源流。</p></li>
+</ul>
+</li>
+<li><p>Fermat (断片的著作)</p>
+<ul>
+<li><p>リンク（解説）: <a class="reference external" href="https://en.wikipedia.org/wiki/Pierre_de_Fermat">https://en.wikipedia.org/wiki/Pierre_de_Fermat</a></p></li>
+<li><p>注釈: 解析的方法・最大最小問題への寄与。代数的手法の普及に寄与。</p></li>
+</ul>
+</li>
+<li><p>Al-Khwarizmi, On the Calculation with Hindu Numerals / Al-Kitab al-Mukhtasar fi Hisab al-Jabr wal-Muqabala</p>
+<ul>
+<li><p>リンク（英語解説）: <a class="reference external" href="https://en.wikipedia.org/wiki/Al-Khwarizmi">https://en.wikipedia.org/wiki/Al-Khwarizmi</a></p></li>
+<li><p>注釈: 代数学と数記法の伝播。ヨーロッパへの伝来が近代解析・代数の受け皿を形成。</p></li>
+</ul>
+</li>
+<li><p>Fibonacci, Liber Abaci (1202)</p>
+<ul>
+<li><p>リンク（英語解説）: <a class="reference external" href="https://en.wikipedia.org/wiki/Liber_Abaci">https://en.wikipedia.org/wiki/Liber_Abaci</a></p></li>
+<li><p>注釈: ヒンドゥー＝アラビア数字と算法の普及を促進。数学的実用性が解析的視点の土台に。</p></li>
+</ul>
+</li>
+<li><p>Kepler, Astronomia Nova; Newton, Principia</p>
+<ul>
+<li><p>リンク（英語解説）: <a class="reference external" href="https://en.wikipedia.org/wiki/Astronomia_Nova">https://en.wikipedia.org/wiki/Astronomia_Nova</a> ; <a class="reference external" href="https://en.wikipedia.org/wiki/Philosophi%C3%A6_Naturalis_Principia_Mathematica">https://en.wikipedia.org/wiki/Philosophiæ_Naturalis_Principia_Mathematica</a></p></li>
+<li><p>注釈: Apollonius の権威を参照しつつも、解析的手法で新しい成果（運動法則等）を導出。パラダイム転換の事例。</p></li>
+</ul>
+</li>
+<li><p>Thomas Kuhn, The Structure of Scientific Revolutions</p>
+<ul>
+<li><p>リンク（英語）: <a class="reference external" href="https://en.wikipedia.org/wiki/The_Structure_of_Scientific_Revolutions">https://en.wikipedia.org/wiki/The_Structure_of_Scientific_Revolutions</a></p></li>
+<li><p>注釈: 科学の停滞と転換の理論的枠組み。歴史事例の解釈に有用。</p></li>
+</ul>
+</li>
+</ul>
+<p>注: ここに挙げた多くの一次資料は古典翻訳や解説（Heath など）を通して入手可能。一次資料の原文（ギリシャ語・ラテン語・フランス語など）への直接アクセスも重要だが、まずは信頼できる近代翻訳・注釈を参照すると議論の基盤を固めやすい。</p>
+<p>（注釈の追加・一次資料の原典引用（該当節や頁）をさらに詳細に挿入することもできます。どの文献の詳細注釈を優先しますか？）</p>
+</section>
+<section id="id10">
+<h2>現代の停滞と転換の契機 — 学部初年次で学ぶべきこと（教育案）<a class="headerlink" href="#id10" title="Link to this heading">#</a></h2>
+<p>背景（簡潔）:</p>
+<ul class="simple">
+<li><p>歴史的に技術や表現法（幾何学的 vs 解析的、道具の有無）が受容・停滞に影響した。現在、AI の進展はハードウェア供給（半導体）に依存する局面にあり、同様に『道具依存の危機』が生じている。</p></li>
+</ul>
+<p>学部初年次の教育目標（転換のための基礎）:</p>
+<ul class="simple">
+<li><p>数学的基礎: 線形代数・微分積分・確率統計・最適化の入門。</p></li>
+<li><p>計算と理論: アルゴリズム基礎・計算複雑性・離散数学。</p></li>
+<li><p>システム思考: コンピュータアーキテクチャの入門、組込みシステム、並列分散の概念。</p></li>
+<li><p>ハードウェア感覚: FPGA/組込みボード/クラウドでの実習。ハード寄せの制約（メモリ・演算）を体験する。</p></li>
+<li><p>省資源アルゴリズム: 量子化、スパース化、近似アルゴリズム、モデル圧縮の基礎を学ぶ。</p></li>
+<li><p>実験的方法: 再現性ある実験設計、計測・ベンチマークの技能。</p></li>
+<li><p>学際性と倫理: サプライチェーン、技術政策、学術・産業の協働、技術倫理の素養。</p></li>
+<li><p>オープン実践: OSS 貢献、学内ハッカソン、公開データセットでの公開実験を奨励。</p></li>
+</ul>
+<p>授業設計の提案:</p>
+<ul class="simple">
+<li><p>1年次後半に「ソフト×ハード基礎」コース（演習重視、FPGA/クラウドのハンズオン）を必修化。</p></li>
+<li><p>早期のプロジェクト型学習（小さな設計→実装→計測のループ）を導入。</p></li>
+</ul>
+<p>期待される成果:</p>
+<ul class="simple">
+<li><p>ハード制約下でのアルゴリズム設計力、システム思考、協働と公開の文化が育ち、半導体など物的制約による停滞を技術的・制度的に打破する素地が形成される。</p></li>
+</ul>
+<p>(短く: 初年次は『基礎の広さ』と『実践の早さ』を両立させ、方法論的多様性を育てることが転換の鍵。)</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "julia-1.12"
+        },
+        kernelOptions: {
+            name: "julia-1.12",
+            path: "./chapters/03"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'julia-1.12'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../../intro.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">textbook-2026: プログラミングで遡る科学史</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="02_13.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">第二回: 入試問題を解く (その2) 記述する・解答する</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item"><div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">第3回: 試験問題の記述とこの授業のルール</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">第4回: 科学は何故停滞するのか？</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">三角形の中心（内心・外心・重心・垂心） — 歴史的背景と関連事象</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">重心のバリセントリック（重心座標）による証明</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">バリセントリック座標とベクトルへの移行 — 歴史的注記</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#excenters-dandelin">傍心（Excenters）とDandelin球 — 円錐曲線との対応</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dandelin">Dandelin球の本質 — 接点の対称性と教科書で扱われにくい理由</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#wikipedia">出典（英語 Wikipedia）と補足</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">考察：三角形中心の歴史をめぐる科学の停滞について</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">クーンの科学革命論（要約）</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#menaechmusapollonius">Menaechmus、Apollonius と科学史的受容 — 円錐曲線論の流れ</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#menaechmus-vs-apollonius">事例から学ぶ：Menaechmus vs Apollonius と科学の停滞</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">代数学の伝播と近代的革新（簡潔な補注）</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">一次資料（原典）と注釈 — 科学の停滞と画期の文脈で</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">現代の停滞と転換の契機 — 学部初年次で学ぶべきこと（教育案）</a></li>
+</ul>
+</li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Manabu Higashida, D3 Center, Osaka University, Japan
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2026.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
