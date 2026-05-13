@@ -3,6 +3,13 @@
 format: jb-book
 root: intro.md
 parts:
+- caption: 2026/05/13
+  numbered: false
+  chapters:
+  - file: chapters/04/lesson_00_about_this_textbook.ipynb
+    title: この教材はどう作られているか — AI と人間の役割分担
+  - file: chapters/04/lesson_04_thales_circumcenter.ipynb
+    title: 前提・発見・連鎖 — Thales の定理から外心へ
 - caption: 2026/05/08
   numbered: false
   chapters:
