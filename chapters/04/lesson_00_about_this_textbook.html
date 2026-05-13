@@ -1,0 +1,754 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>第 0 回: この教材はどう作られているか — AI と人間の役割分担 &#8212; プログラミングで遡る科学史</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=3c74b3bc" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css?v=8cd3d715" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=fab101a9"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'chapters/04/lesson_00_about_this_textbook';</script>
+    <link rel="canonical" href="https://cloudedu-osaka.github.io/textbook-2026/chapters/04/lesson_00_about_this_textbook.html" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="第4回: 前提・発見・連鎖 — Thales の定理から外心へ" href="lesson_04_thales_circumcenter.html" />
+    <link rel="prev" title="textbook-2026: プログラミングで遡る科学史" href="../../intro.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/vioras-logo.png" class="logo__image only-light" alt="プログラミングで遡る科学史 - Home"/>
+    <img src="../../_static/vioras-logo.png" class="logo__image only-dark pst-js-only" alt="プログラミングで遡る科学史 - Home"/>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">2026/05/13</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">この教材はどう作られているか — AI と人間の役割分担</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lesson_04_thales_circumcenter.html">前提・発見・連鎖 — Thales の定理から外心へ</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">2026/05/08</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../03/03_01.html">第3回: 試験問題の記述とこの授業のルール</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../03/02_13.html">入試問題を解く (その2) 記述する・解答する 4</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../03/02_11.html">入試問題を解く (その2) 記述する・解答する 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../03/02_12.html">入試問題を解く (その2) 記述する・解答する 3</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">2026/04/22</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../02/02_01.html">入試問題を解く (その2) 記述する・解答する 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../02/02_11.html">入試問題を解く (その2) 記述する・解答する 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../02/02_12.html">入試問題を解く (その2) 記述する・解答する 3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../02/02_13.html">入試問題を解く (その2) 記述する・解答する 4</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../02/02_02.html">入試問題を解く (その2) 記述する・解答する 5</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">2026/04/15</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../01/01_00_intro.html">How to connect and use JupyterHub</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../01/01_01.html">入試問題を解く (その1) 記述する 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../01/01_02.html">入試問題を解く (その1) 記述する 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../01/01_03.html">入試問題を解く (その1) 記述する 3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../01/01_04.html">入試問題を解く (その1) 記述する 4</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../01/01_05.html">入試問題を解く (その1) 記述する 5</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../01/01_11.html">入試問題を解く (その1) 記述する 6</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../01/01_12.html">入試問題を解く (その1) 記述する 7</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../01/01_13.html">入試問題を解く (その1) 記述する 8</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://vioras-jh2500.japaneast.cloudapp.azure.com/hub/user-redirect/git-pull?repo=https%3A//github.com/Cloudedu-Osaka/textbook-2026&urlpath=lab/tree/textbook-2026/chapters/04/lesson_00_about_this_textbook.ipynb&branch=main" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on JupyterHub"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="JupyterHub logo" src="../../_static/images/logo_jupyterhub.svg">
+  </span>
+<span class="btn__text-container">JupyterHub</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+<a href="https://github.com/Cloudedu-Osaka/textbook-2026" target="_blank"
+   class="btn btn-sm btn-source-repository-button"
+   title="Source repository"
+   data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+
+</a>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/chapters/04/lesson_00_about_this_textbook.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button pst-navbar-icon"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm pst-navbar-icon" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>第 0 回: この教材はどう作られているか — AI と人間の役割分担</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">1. この教材の中核は AI の生成物ではない</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ai-routing">2. では AI は何をしているか — 軸沿いに routing する道具として</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">3. なぜ AI を使うのか — 単に楽をするためではない</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#o-neill-smalltalk">4. 設計の系譜 — O’Neill のハイフロンティアと Smalltalk</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#o-neill-1976">4.1 O’Neill のハイフロンティア (1976) — オマージュの源</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#smalltalk-o-neill">4.2 Smalltalk — O’Neill 的楽観の技術的実装</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ingalls-1981">4.3 Ingalls 1981 の三原則 — 本講義設計への直接対応</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#image">4.4 image の現代再演</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#smalltalk">4.5 動いている Smalltalk を見る</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">5. 全体構造の図</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">6. 皆さんに保証できること</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">6.5 段階的な移行 — AI の使い方は学期を通じて変わります（伏線）</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">6.7 教師の過剰防御 — 率直に書きます</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#higashida">教師として、Higashida がやってきたこと</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">学生側に予想される現状と、Higashida からの期待</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">7. 皆さんへの問いかけ</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="ai">
+<h1>第 0 回: この教材はどう作られているか — AI と人間の役割分担<a class="headerlink" href="#ai" title="Link to this heading">#</a></h1>
+<blockquote>
+<div><p>本書を読み始める前に、この教材がどういう過程で作られているかを共有します。AI に対して <strong>拒絶感</strong> を持つ人も、AI を <strong>信頼しすぎる</strong> 人も、両方の立場の人に同じ事実を伝えることが目的です。</p>
+</div></blockquote>
+<hr class="docutils" />
+<section id="id1">
+<h2>1. この教材の中核は AI の生成物ではない<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
+<p>本講義の縦軸 — バビロニアの恒等式 <span class="math notranslate nohighlight">\((x+y)^2 = (x-y)^2 + 4xy\)</span> から始まり、Menaechmus・Apollonius・Kepler・Newton・Dandelin・Feynman を貫いて、最後に五心と楕円二焦点の対称性に至る四千年の系譜 — は、Higashida が <strong>五年かけて発見・整理した</strong> ものです。</p>
+<p>これは AI に書かせて生まれたものではありません。むしろ、五年間の継続的な学習・対話・読書・授業実践の積み重ねの中で <strong>教師の頭の中に少しずつ結晶した</strong> ものです。LLM（Claude や GPT などの AI）は、定義上、セッションを跨いで記憶を持ちません。五年間の継続的学習という時間構造を、AI は内在的に持っていない。</p>
+<p><strong>ただし</strong>、これは越えられない壁ではありません。<strong>Smalltalk は記憶を持つ言語環境でした</strong>。プログラマが書いたコード、実行中のオブジェクト、デバッガ・ブラウザの状態、その全てが image としてセッションを跨いで保持される — 「個人の認知容量を超える知識を、システム側に持続させる」問題を、四十年前に Smalltalk は実装として解いていました（詳細は §4）。</p>
+<p>本講義の教材作成・システム開発・授業実践は、この image vision に <strong>AI の長期記憶を持たせる装置</strong> として homage する取り組みの一環です。五年間の発見・対話・判断を Markdown / Jupyter / SPEC として外部化し、LanceDB と MCP を介して AI が前回までの文脈を session ごとに <strong>再ロード</strong> できる経路を整える — これにより、AI 単独では持てない「時間を跨ぐ知識の連続性」が image 経由で回復します。</p>
+<p>つまり、本講義の主張は <strong>人間にしか辿れなかった経路を経て獲得され</strong>、かつ <strong>AI が image を介して継続的に参照できる形式に整えられた</strong> ものです。Smalltalk が半世紀前に解いた「個人の時間構造の外部化」を、AI 時代に組み直す試みでもあります。</p>
+</section>
+<section id="ai-routing">
+<h2>2. では AI は何をしているか — 軸沿いに routing する道具として<a class="headerlink" href="#ai-routing" title="Link to this heading">#</a></h2>
+<p>AI に依頼しているのは、次のような作業です:</p>
+<ul class="simple">
+<li><p>教師の五年間の発見を <strong>構造化された軸として整理し直す</strong>（image と呼びます。これは Smalltalk の image vision の現代再演で、半世紀前から確立された設計です）</p></li>
+<li><p>学生がアクセスしやすい形に <strong>整形</strong> する（例: 数式を Python コードに翻訳する、図を作る、定理の証明を順序立てて並べる）</p></li>
+<li><p>教師の判断を <strong>複数の表現で言い換える</strong>（例: 同じ重心の話を、Archimedes の天秤・面積分割・バリセントリック座標の三通りで書く）</p></li>
+</ul>
+<p>重要なのは: AI は <strong>軸を発明していない</strong>。軸は教師が五年かけて見つけたもので、AI はそれに沿って具体化作業を担っている。例えるなら、教師が「ここに登山道を引いた」と決め、AI が「その道に沿って案内板を整える」役割を引き受けている。</p>
+</section>
+<section id="id2">
+<h2>3. なぜ AI を使うのか — 単に楽をするためではない<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
+<p>教師が一人で全教材を書こうとすると、5 年で発見した縦軸を <strong>学生に届けるための具体例を全部書き下ろす</strong>作業に、また数年かかります。一方、AI を軸沿いの routing 装置として使うことで、教師は <strong>発見した縦軸の保守と curation</strong> に集中できます。</p>
+<p>しかし、これには副作用があります。<strong>AI が単独で生成すると、surface paraphrase（表面的な言い換え）に落ちることが多い</strong>。同じ内容を別の語彙で繰り返すだけで、構造的に新しいものは生まれない。本講義ではこれを避けるために、<strong>軸を image（structured corpus）として外部化</strong> し、AI 生成が必ず軸沿いに routing されるよう設計しています。</p>
+<p>詳細は同梱の <code class="docutils literal notranslate"><span class="pre">MOTIVATION.md</span></code> と <code class="docutils literal notranslate"><span class="pre">SPEC/</span></code> 配下を参照してください。</p>
+</section>
+<section id="o-neill-smalltalk">
+<h2>4. 設計の系譜 — O’Neill のハイフロンティアと Smalltalk<a class="headerlink" href="#o-neill-smalltalk" title="Link to this heading">#</a></h2>
+<p>この教材の作り方は、最近の AI 流行で生まれた即席設計ではありません。<strong>1970 年代の楽観的技術人文主義の系譜</strong> の継承です。</p>
+<section id="o-neill-1976">
+<h3>4.1 O’Neill のハイフロンティア (1976) — オマージュの源<a class="headerlink" href="#o-neill-1976" title="Link to this heading">#</a></h3>
+<p>Princeton 大学の物理学者 Gerard K. O’Neill は、1976 年の著書 <em>The High Frontier: Human Colonies in Space</em> で、地球の限界を超えた人類の未来を提示しました。宇宙居住地、太陽光発電、Honest Sam という personal information assistant — 当時としては大胆な future vision を、<strong>計算による定量的根拠</strong> で裏付けた点が画期的でした。</p>
+<blockquote>
+<div><p>Gerard K. O’Neill, <em>The High Frontier: Human Colonies in Space</em>, William Morrow, 1976
+続編: <em>2081: A Hopeful View of the Human Future</em>, Simon &amp; Schuster, 1981</p>
+</div></blockquote>
+<p>O’Neill の vision の核は三点:</p>
+<ol class="arabic simple">
+<li><p><strong>楽観 — ただし計算と実装で支える</strong>。当時主流だった “Limits to Growth” 言説 (Club of Rome 1972) — 人類は資源枯渇で滅ぶ — に対し、大規模な技術的飛躍で乗り越えられるという反論を、<strong>定量見積もりで</strong> 示した</p></li>
+<li><p><strong>協業の必要性</strong>。宇宙居住地は一人や一国では作れない。<strong>複数機関・複数世代の協力を最初から前提</strong> に設計</p></li>
+<li><p><strong>道具としての personal computer</strong>。Dynabook と並ぶ時代の構想として、人間の認知能力を拡張する道具が中核</p></li>
+</ol>
+<p>O’Neill 自身が <strong>prototype を実際に組み</strong>（mass driver の試作機）、<strong>Space Studies Institute を設立</strong> (1977)、講演で resources を集めて回った。<strong>楽観は宣言で成立せず、prototype と数値と継続で成立する</strong> — このプロジェクトの根本姿勢はここに由来します。</p>
+<p>本講義の AI に対する姿勢は、O’Neill が宇宙開発に対して取った姿勢と同型です:</p>
+<ul class="simple">
+<li><p>AI の限界を「越えられない壁」とせず、<strong>構造的応答</strong> で延長を試みる（image による長期記憶の外部化）</p></li>
+<li><p>楽観は宣言ではなく、<strong>実装と数値</strong> で支える（LanceDB / MCP / jupytext の実装、INV-G-009 として原則を invariant 化）</p></li>
+<li><p>協業を前提とする — AI 単独でも人間単独でも到達できない知識生産を、<strong>人間 × AI × image の三者の役割分担</strong> で組み立てる</p></li>
+</ul>
+</section>
+<section id="smalltalk-o-neill">
+<h3>4.2 Smalltalk — O’Neill 的楽観の技術的実装<a class="headerlink" href="#smalltalk-o-neill" title="Link to this heading">#</a></h3>
+<p>O’Neill が大きな vision を描いた同じ 1970 年代、Xerox PARC で <strong>Alan Kay と Dan Ingalls が Smalltalk の image vision を実装</strong> していました。O’Neill の “personal information assistant” の vision を、<strong>動く実装</strong> として地上に降ろした試みと読めます。</p>
+<p>本講義はこの <strong>二重のオマージュ</strong> の上に立っています — <strong>O’Neill の楽観・計算・協業</strong> と、<strong>Smalltalk の image による知識の持続性</strong>。</p>
+<ul class="simple">
+<li><p>Alan Kay, <em>A Personal Computer for Children of All Ages</em> (1972) — image vision の起点</p></li>
+<li><p>Dan Ingalls, <em>Design Principles Behind Smalltalk</em> (BYTE, August 1981) — image 原則の最も簡潔な記述</p></li>
+<li><p>Adele Goldberg, <em>Smalltalk-80: The Interactive Programming Environment</em> (1984) — environment としての実装解説</p></li>
+</ul>
+</section>
+<section id="ingalls-1981">
+<h3>4.3 Ingalls 1981 の三原則 — 本講義設計への直接対応<a class="headerlink" href="#ingalls-1981" title="Link to this heading">#</a></h3>
+<p>Ingalls (1981) は 17 の design principles を提示しましたが、本講義の設計に最も直接対応するのは次の三つです:</p>
+<blockquote>
+<div><p><strong>Personal Mastery</strong>: <em>“If a system is to serve the creative spirit, it must be entirely comprehensible to a single individual.”</em></p>
+<p>（システムが創造的精神に仕えるためには、一人の個人にとって完全に理解可能でなければならない）</p>
+</div></blockquote>
+<p>— 本講義の縦軸は、五年間 <strong>一人の教師の頭の中に保持された</strong> ものです。Personal Mastery の原則は、教師の理解可能性を超える複雑さを system に持ち込まない、という設計上の戒めとして機能します。</p>
+<blockquote>
+<div><p><strong>Uniform Metaphor</strong>: <em>“A language should be designed around a powerful metaphor that can be uniformly applied in all areas.”</em></p>
+<p>（言語は、あらゆる領域に一貫して適用できる強力な metaphor を中心に設計されるべきである）</p>
+</div></blockquote>
+<p>— 本講義における uniform metaphor は **「合成 (composition)」**です。construction（cum-struere）= synthesis（συν-θεσις）= composition（com-ponere）— 同じ語源を持つ概念を、作図・代数・コード・転生エッセイ・評価系のすべてに <strong>均一に適用</strong> しています。</p>
+<blockquote>
+<div><p><strong>Operating System</strong>: <em>“An operating system is a collection of things that don’t fit into a language. There shouldn’t be one.”</em></p>
+<p>（OS とは、言語に収まらないものの寄せ集めである。OS は存在すべきでない）</p>
+</div></blockquote>
+<p>— 本講義の image には、教材・対話・実装・履歴がすべて住んでいます。「教材は教材、講義ノートは別、AI 対話は別、コードは別」という分離が存在しない。image の外に置かれる「OS 的なもの」を最小化する設計です。</p>
+</section>
+<section id="image">
+<h3>4.4 image の現代再演<a class="headerlink" href="#image" title="Link to this heading">#</a></h3>
+<p>Smalltalk の image とは「コード・データ・履歴・道具をひとつの問い合わせ可能な空間に住まわせる」設計で、半世紀前から技術として確立されていました。本講義の教材作成は、その vision を LanceDB（vector database）と MCP（Model Context Protocol）と Jupyter で組み直しただけです。<strong>言語と道具は変わりましたが、image としての完結性・反射性・全体性はそのまま受け継いでいます</strong>。</p>
+</section>
+<section id="smalltalk">
+<h3>4.5 動いている Smalltalk を見る<a class="headerlink" href="#smalltalk" title="Link to this heading">#</a></h3>
+<p>文献だけでは抽象的に感じる方は、設計者 Dan Ingalls 本人の講義とデモを動画で確認できます:</p>
+<ol class="arabic simple">
+<li><p><strong>Object-Oriented Programming, lecture by Daniel Ingalls</strong> — Smalltalk の中核開発者本人による OOP 講義。Smalltalk が単なる「クラスとオブジェクト」の言語ではなく、<strong>統合された生きた system</strong> として設計されたことが、開発者本人の言葉で語られる
+<a class="reference external" href="https://www.youtube.com/watch?v=Ao9W93OxQ7U">https://www.youtube.com/watch?v=Ao9W93OxQ7U</a></p></li>
+<li><p><strong>Alto System Project: Dan Ingalls demonstrates Smalltalk</strong> — Xerox Alto 上の Smalltalk の Ingalls 本人によるデモ。1970 年代の実装が、現代の GUI と OOP のほぼすべてを既に具備していたことが視覚的に確認できる
+<a class="reference external" href="https://www.youtube.com/watch?v=uknEhXyZgsg">https://www.youtube.com/watch?v=uknEhXyZgsg</a></p></li>
+<li><p><strong>Smalltalk-78 simulator demo</strong> — <strong>Smalltalk が自分自身を書き換えるデモ</strong>。実行中の image に対して、その image 自身のコードを修正し、修正が即座に動作に反映される様子が観察できる。これが Ingalls の言う <strong>Reactive Principle</strong>（すべてのコンポーネントは、観察と操作のために自身を意味ある形で提示できる）の実演であり、本講義の image vision の最も直接的な祖型です
+<a class="reference external" href="https://www.youtube.com/watch?v=eEz08IlcNMg">https://www.youtube.com/watch?v=eEz08IlcNMg</a></p></li>
+</ol>
+<p>特に三本目は、<strong>「システムが実行中に、自分自身を改変できる」</strong> という設計が四十年前から実装として存在していた事実を、手触りで確認できる動画です。本講義で使う LanceDB image が、SPEC を ingest して MCP で自己検索できる（INV-G-008 自己参照ループ）構造の祖型がここにあります。</p>
+</section>
+</section>
+<section id="id3">
+<h2>5. 全体構造の図<a class="headerlink" href="#id3" title="Link to this heading">#</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>┌─────────────────────────────────────────────────────────┐
+│  Higashida 先生の五年間の継続的学習・閃き                     │
+│  (Babylonia → Menaechmus → Apollonius → Kepler            │
+│   → Newton → Cauchy → Dandelin → Feynman → 五心対称性)     │
+└──────────────────────┬──────────────────────────────────┘
+                       │
+                       │  軸として外部化
+                       ▼
+┌─────────────────────────────────────────────────────────┐
+│  image core (Smalltalk へのオマージュ、半世紀前の知恵)         │
+│  ┌───────────────────────────────────────────────────┐  │
+│  │ 翻訳格子  (数⇄線分⇄代数⇄作図⇄code)                  │  │
+│  │ 歴史軸    (4000 年を貫く恒等式)                       │  │
+│  │ 段階構造  (手順→自己採点→表現多様性→symbolic⇄literal) │  │
+│  │ 自問自答  (5 つのチェックリスト)                       │  │
+│  └───────────────────────────────────────────────────┘  │
+└──────────────────────┬──────────────────────────────────┘
+                       │
+                       │  軸に沿って routing (軸は発明しない)
+                       ▼
+┌─────────────────────────────────────────────────────────┐
+│  AI (Claude 等) — 道具として                              │
+│  軸沿いに教材を整形する。軸の外には踏み出さない                │
+└──────────────────────┬──────────────────────────────────┘
+                       │
+                       │  生成 + 先生の curation
+                       ▼
+┌─────────────────────────────────────────────────────────┐
+│  本教材 (あなたが今読んでいるもの)                          │
+└─────────────────────────────────────────────────────────┘
+</pre></div>
+</div>
+</section>
+<section id="id4">
+<h2>6. 皆さんに保証できること<a class="headerlink" href="#id4" title="Link to this heading">#</a></h2>
+<ol class="arabic simple">
+<li><p><strong>教材の縦軸（系譜と中心命題）は AI の生成物ではない</strong>。Higashida の五年間の発見と判断</p></li>
+<li><p><strong>AI が言うことを丸呑みする必要はない</strong>。AI は軸に沿った routing の一実装に過ぎず、別経路で同じ軸に到達することは歓迎される</p></li>
+<li><p><strong>「これは AI が書いた感じがする」と感じた箇所は、おそらく軸を外れた surface paraphrase</strong>。指摘してください。改善材料になります</p></li>
+<li><p><strong>皆さんが AI と関わる場面（<code class="docutils literal notranslate"><span class="pre">%%ai</span></code> 等）はあくまで補助</strong> で、評価は皆さんの手で組み立てた構成（construction）に対して行われます</p></li>
+</ol>
+</section>
+<section id="id5">
+<h2>6.5 段階的な移行 — AI の使い方は学期を通じて変わります（伏線）<a class="headerlink" href="#id5" title="Link to this heading">#</a></h2>
+<p>本講義での AI の使い方は段階的に変わります:</p>
+<ul class="simple">
+<li><p><strong>最初</strong> — 皆さんが他の授業で AI を使うときと同じく、単一の問いを投げて答えをもらう形から始めます</p></li>
+<li><p><strong>中盤</strong> — 本講義専用の Jupyter AI (<code class="docutils literal notranslate"><span class="pre">&#64;Codex</span></code> / GPT-5 mini) に移行</p></li>
+<li><p><strong>後半</strong> — 「もし □□□期の ○○○ に転生したら」型の複数制約合成課題で、AI を <strong>協業者</strong> として使う形に進みます</p></li>
+</ul>
+<p>段階が進むほど、皆さんが AI に <strong>委託する部分</strong> と <strong>自分で curate する部分</strong> の区別が明示的になります。最終的な課題では、AI との対話ログ・curation 過程・最終文・振り返りを併せて提出してもらうことで、AI と人間の役割分担そのものが評価対象になります。</p>
+<p>これは §4.1 で示した O’Neill 的協業の精神の実装です。AI を「使う / 使わない」の二極ではなく、<strong>「どう協業するか」</strong> を学ぶ訓練の場として本講義を設計しています。詳細は各段階で改めて説明します。</p>
+</section>
+<section id="id6">
+<h2>6.7 教師の過剰防御 — 率直に書きます<a class="headerlink" href="#id6" title="Link to this heading">#</a></h2>
+<p>ここまで本講義の設計を客観的に書いてきましたが、内面を率直に共有させてください。<strong>Higashida は AI に対して過剰防御的な反応を持っています</strong>。皆さんが AI への拒絶反応や違和感を持つかもしれないのと同じく、教える側にも防御反応がある。隠さずに書きます。</p>
+<section id="higashida">
+<h3>教師として、Higashida がやってきたこと<a class="headerlink" href="#higashida" title="Link to this heading">#</a></h3>
+<ol class="arabic simple">
+<li><p><strong>AI Coding で授業ツールを開発した</strong> — 4 ヶ月で約 5 万行。ggblab/GeoGebra.jl は AI 支援で短期間に立ち上げたもので、これ自体、伝統的な開発文化からは異例の規模と速度</p></li>
+<li><p><strong>AI と改善点を議論し、自前の RAG-MCP を導入した</strong>（lesson_04 から運用中、<strong>今ここ</strong>）— image vision を組み立て、SPEC を image に住まわせ、判断系譜を外部化する装置を作った。皆さんが今読んでいるこの教材も、その装置から生まれている</p></li>
+<li><p><strong>学生が使える AI Agent を JupyterHub に準備し、皆さんに課題を課す</strong> — <code class="docutils literal notranslate"><span class="pre">&#64;Codex</span></code> (GPT-5 mini) を本講義の専用 AI として整えた。ただし、<strong>何を合成したかのまとめは、皆さん自身の言葉で書いてほしい</strong></p></li>
+</ol>
+<p>(3) の “ただし” がここでの過剰防御の核心です。「使っていい、でも自分の言葉で」と書いた瞬間、Higashida 自身が AI と人間の役割分担を不安に思っている表れでもあります。</p>
+</section>
+<section id="id7">
+<h3>学生側に予想される現状と、Higashida からの期待<a class="headerlink" href="#id7" title="Link to this heading">#</a></h3>
+<ol class="arabic">
+<li><p><strong>皆さんは色々な授業で、プロンプトエンジニアリングを教えられているはず</strong> — 本講義はそれを学習対象にしません（プロジェクト不変原則 §0.2）。プロンプト工夫より、<strong>合成の質</strong> を評価します</p></li>
+<li><p><strong>「Wikipedia を疑え」と教えられている</strong> と思いますが、注意点があります。本講義で参照する最新の知見には、<strong>英語版 Wikipedia に更新済みで日本語版にはまだ反映されていない</strong> 情報が含まれます（たとえば近年地中海で発見された写本群に関する記述など）。「Wikipedia は信用できない」は一般則として正しいが、<strong>英語版で cutting-edge 情報の所在を確認できる場合がある</strong> ことを覚えておいてください</p></li>
+<li><p><strong>「死海文書」と聞いて Evangelion 等のサブカル連想を持つかもしれませんが</strong>、本来の歴史的意義は別です。1947〜1956 年に発見されたヘブライ語写本群は、紀元前 3 世紀〜紀元 1 世紀の旧約聖書テキストを含み、紀元 1000 年頃の Masoretic Text とほぼ一致する。<strong>旧約聖書が千年以上ほぼ原型を保っていた</strong> ことの textual criticism としての証拠です。</p>
+<p><strong>ただし — 日本にも同型の対象があります</strong>。古事記（712 CE）と日本書紀（720 CE）は、大陸伝承から <strong>ほぼ独立に編纂された</strong> 創世神話を、二書として 8 年差で並走させた文書群です。両書は内容も神統も substantially 異なり（source criticism の素材）、各々に複数の写本系統が存在（古事記の真福寺本・兼永筆本など）。死海文書 vs Masoretic と完全に同型の textual criticism の対象になり得る資産です。</p>
+<p>ところが、日本では古事記/日本書紀を死海文書と同じ厳密性で扱う議論が pop culture にも academia にも広く浸透していません。<strong>「外の textual 遺物は exotic にオカルト扱い、自国の同型物は検証の対象外に置く」非対称</strong> が、私たちの文化に染み付いている。本講義で育てたい「軸の検証感覚」を学生に渡す際、この非対称が見えない障壁になります。</p>
+<p>本講義の image vision（軸を持続させて伝える設計）の遠い祖型として、<strong>死海文書 + 古事記/日本書紀の双方</strong> が等しく参照されるべき、というのが Higashida の立場です</p>
+</li>
+<li><p><strong>皆さんと AI が協業する O’Neill 的楽観的未来の一像を、本講義で示したい</strong> — ただし、これは宣言で成立しません。§4.1 の O’Neill が prototype と数値と継続で支えたように、<strong>皆さん自身も働き者である必要があります</strong>。AI に委託しても、curation の労働と自分の言葉での総括は、皆さんの手で</p></li>
+</ol>
+<p>最後の点が、本講義からの最も真剣な期待です。AI 委託は許容、curation と総括は皆さんの仕事。これが O’Neill 的協業の、皆さんに向けた具体的な形です。</p>
+</section>
+</section>
+<section id="id8">
+<h2>7. 皆さんへの問いかけ<a class="headerlink" href="#id8" title="Link to this heading">#</a></h2>
+<p>本講義の縦軸を理解した上で、AI を <strong>どこまで使い、どこで使わないか</strong> を、皆さん自身が選び取る訓練の場として、この教材を使ってください。AI を「拒絶」も「全面信頼」もせず、<strong>道具として何を担わせ、何を自分で担うか</strong> を判断できるようになることが、社会に出る前に身につけるべきリテラシです（<a class="reference internal" href="#../conversations/2026-05-12/SUMMARY_chatlogs_for_textbook.md"><span class="xref myst">2.5 節</span></a> も参照）。</p>
+<p>第 4 回以降の本論で、その判断の具体例を一つずつ体験していきます。</p>
+<hr class="docutils" />
+<blockquote>
+<div><p><strong>教師の補足</strong>: この preface 自体も、Higashida が <a class="reference external" href="http://claude.ai">claude.ai</a> および Claude Code との対話を通じて整理した内容を、軸（Smalltalk image, 翻訳格子, 歴史的縦軸）に沿って AI に整形してもらったものです。文言の最終判断は教師が行っています。違和感を覚える箇所があれば授業中に申し出てください。</p>
+</div></blockquote>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./chapters/04"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../../intro.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">textbook-2026: プログラミングで遡る科学史</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="lesson_04_thales_circumcenter.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">第4回: 前提・発見・連鎖 — Thales の定理から外心へ</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item"><div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">1. この教材の中核は AI の生成物ではない</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ai-routing">2. では AI は何をしているか — 軸沿いに routing する道具として</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">3. なぜ AI を使うのか — 単に楽をするためではない</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#o-neill-smalltalk">4. 設計の系譜 — O’Neill のハイフロンティアと Smalltalk</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#o-neill-1976">4.1 O’Neill のハイフロンティア (1976) — オマージュの源</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#smalltalk-o-neill">4.2 Smalltalk — O’Neill 的楽観の技術的実装</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ingalls-1981">4.3 Ingalls 1981 の三原則 — 本講義設計への直接対応</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#image">4.4 image の現代再演</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#smalltalk">4.5 動いている Smalltalk を見る</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">5. 全体構造の図</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">6. 皆さんに保証できること</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">6.5 段階的な移行 — AI の使い方は学期を通じて変わります（伏線）</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">6.7 教師の過剰防御 — 率直に書きます</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#higashida">教師として、Higashida がやってきたこと</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">学生側に予想される現状と、Higashida からの期待</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">7. 皆さんへの問いかけ</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Manabu Higashida, D3 Center, Osaka University, Japan
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2026.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

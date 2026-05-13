@@ -1,0 +1,1277 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>第4回: 前提・発見・連鎖 — Thales の定理から外心へ &#8212; プログラミングで遡る科学史</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=3c74b3bc" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css?v=8cd3d715" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=fab101a9"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'chapters/04/lesson_04_thales_circumcenter';</script>
+    <link rel="canonical" href="https://cloudedu-osaka.github.io/textbook-2026/chapters/04/lesson_04_thales_circumcenter.html" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="第3回: 試験問題の記述とこの授業のルール" href="../03/03_01.html" />
+    <link rel="prev" title="第 0 回: この教材はどう作られているか — AI と人間の役割分担" href="lesson_00_about_this_textbook.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/vioras-logo.png" class="logo__image only-light" alt="プログラミングで遡る科学史 - Home"/>
+    <img src="../../_static/vioras-logo.png" class="logo__image only-dark pst-js-only" alt="プログラミングで遡る科学史 - Home"/>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">2026/05/13</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="lesson_00_about_this_textbook.html">この教材はどう作られているか — AI と人間の役割分担</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">前提・発見・連鎖 — Thales の定理から外心へ</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">2026/05/08</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../03/03_01.html">第3回: 試験問題の記述とこの授業のルール</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../03/02_13.html">入試問題を解く (その2) 記述する・解答する 4</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../03/02_11.html">入試問題を解く (その2) 記述する・解答する 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../03/02_12.html">入試問題を解く (その2) 記述する・解答する 3</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">2026/04/22</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../02/02_01.html">入試問題を解く (その2) 記述する・解答する 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../02/02_11.html">入試問題を解く (その2) 記述する・解答する 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../02/02_12.html">入試問題を解く (その2) 記述する・解答する 3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../02/02_13.html">入試問題を解く (その2) 記述する・解答する 4</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../02/02_02.html">入試問題を解く (その2) 記述する・解答する 5</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">2026/04/15</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../01/01_00_intro.html">How to connect and use JupyterHub</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../01/01_01.html">入試問題を解く (その1) 記述する 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../01/01_02.html">入試問題を解く (その1) 記述する 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../01/01_03.html">入試問題を解く (その1) 記述する 3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../01/01_04.html">入試問題を解く (その1) 記述する 4</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../01/01_05.html">入試問題を解く (その1) 記述する 5</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../01/01_11.html">入試問題を解く (その1) 記述する 6</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../01/01_12.html">入試問題を解く (その1) 記述する 7</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../01/01_13.html">入試問題を解く (その1) 記述する 8</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://vioras-jh2500.japaneast.cloudapp.azure.com/hub/user-redirect/git-pull?repo=https%3A//github.com/Cloudedu-Osaka/textbook-2026&urlpath=lab/tree/textbook-2026/chapters/04/lesson_04_thales_circumcenter.ipynb&branch=main" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on JupyterHub"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="JupyterHub logo" src="../../_static/images/logo_jupyterhub.svg">
+  </span>
+<span class="btn__text-container">JupyterHub</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+<a href="https://github.com/Cloudedu-Osaka/textbook-2026" target="_blank"
+   class="btn btn-sm btn-source-repository-button"
+   title="Source repository"
+   data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+
+</a>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/chapters/04/lesson_04_thales_circumcenter.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button pst-navbar-icon"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm pst-navbar-icon" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>第4回: 前提・発見・連鎖 — Thales の定理から外心へ</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">なぜこの講義は存在するか — 受験の例題と、社会の例題</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">方法 — 三段の枠組み</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">① 前提を明示する</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">② 前提から、解くべき命題を発見する</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">③ 一貫した命題の連鎖を組み立てる</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">0. 前 3 回からの移行 — なぜスモールスタートか</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">1. 前提の提示 — Thales の五定理</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ggblab">2. ggblab で前提を確認する</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">2.1 公準 (1) の確認：円と直径</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">3. 解くべき命題を発見する</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">3.1 弦と中点と垂直二等分線</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">4. 前提から命題への連鎖（証明）</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">5. 命題の連鎖を三角形へ拡張する — 外心の発見</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ggblab-5">5.1 ggblab で構成する (5 ステップ作図)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">6. 停滞と画期の照射 — 身の回りの事象と照らす</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id14">7. 次回への接続</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id15">7.1 全体のロードマップ（幾何の側）</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ggblab-extra">7.2 道具のロードマップ — ggblab_extra の段階導入</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id16">参考文献</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="thales">
+<h1>第4回: 前提・発見・連鎖 — Thales の定理から外心へ<a class="headerlink" href="#thales" title="Link to this heading">#</a></h1>
+<p><strong>主題</strong>: 五心の最初の一つ、外心 (Circumcenter) を Thales の定理だけから組み立てる。</p>
+<p><strong>副題</strong>: 「画期はいかに起こるか」を、最小公準からの命題連鎖という形で体験する。</p>
+<p><strong>学習目標</strong></p>
+<ol class="arabic simple">
+<li><p>最小公準（Thales の定理）だけから、外心の存在を演繹的に導けるようになる。</p></li>
+<li><p>「観察された事実」と「証明された事実」の区別を、ggblab の作図と命題連鎖の両方で体感する。</p></li>
+<li><p><strong>科学の停滞と画期</strong>を、現代の身の回りの事象（プロトコル設計・ハードウェア制約）と照らして議論する。</p></li>
+</ol>
+<section id="id1">
+<h2>なぜこの講義は存在するか — 受験の例題と、社会の例題<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
+<p>受験では、<strong>公理は与えられている</strong>。三角形の内角の和は 180°、ベクトル空間の公理 8 つ、命題論理の規則 — 皆さんは与えられた公理の下で <strong>定理を使う訓練</strong> を膨大な量こなしてきた。例題は学校・問題集・予備校が無限に供給する。</p>
+<p>社会に出ると風景が変わる。<strong>公理を自分で選び取る場面</strong> が日常的に起きる：</p>
+<ul class="simple">
+<li><p>データ分析で「何を仮定すれば結論が成立するか」</p></li>
+<li><p>プロトコル設計で「何を最小公準にすれば応用が組み立つか」</p></li>
+<li><p>法律・契約・組織運営で「前提条件を明示するか暗黙にするか」</p></li>
+</ul>
+<p>ところが、<strong>公理を選び取る訓練の例題集は存在しない</strong>。受験のように 100 題並べて解いて身につけるルートが、社会の側に用意されていない。</p>
+<p><strong>本講義はその例題集である。</strong> 数学史と GeoGebra と ggblab を媒介に、公理（前提）を選び、命題を発見し、連鎖を組み立てる経験を、12〜15 回かけて積み上げる。</p>
+<blockquote>
+<div><p>数学について受験で十分な例題を解いた皆さんが、社会に出てから <strong>前提を見直す例題</strong> に出会えるか？ — それを今、用意する。</p>
+</div></blockquote>
+</section>
+<section id="id2">
+<h2>方法 — 三段の枠組み<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
+<p>本講義の各回は次の三段で構成される。プログラミングで <code class="docutils literal notranslate"><span class="pre">if</span> <span class="pre">x:</span></code> や <code class="docutils literal notranslate"><span class="pre">def</span> <span class="pre">f(x):</span></code> を書く前にしばしばやっている動作と、構造的に同じである。</p>
+<section id="id3">
+<h3>① 前提を明示する<a class="headerlink" href="#id3" title="Link to this heading">#</a></h3>
+<p>何を仮定するか。<strong>定義・公準・公理</strong> を、なるべく少なく、なるべく明示的に書き下す。</p>
+</section>
+<section id="id4">
+<h3>② 前提から、解くべき命題を発見する<a class="headerlink" href="#id4" title="Link to this heading">#</a></h3>
+<p>与えられた前提のもとで、<strong>何が問題になるか</strong> を自分で発想する。教科書が問いを与えてくれる時代は終わっている。本講義では、ggblab の作図と観察を媒介に、<strong>命題を学生自身が発見する</strong> 訓練を行う。</p>
+<blockquote>
+<div><p>「コピペがめんどう」と感じたら、それは「何を抽象化すべきか」を発見した瞬間である。それを支える道具が MCP（前回授業の Swagger → MCP 再発明実演を参照、§0.5）。</p>
+</div></blockquote>
+</section>
+<section id="id5">
+<h3>③ 一貫した命題の連鎖を組み立てる<a class="headerlink" href="#id5" title="Link to this heading">#</a></h3>
+<p>発見した命題を、最小の前提から <strong>演繹的に連鎖</strong> させる。Wolfram 流の <a class="reference external" href="https://writings.stephenwolfram.com/2020/09/the-empirical-metamathematics-of-euclid-and-beyond/">empirical metamathematics of Euclid and beyond</a> は、<strong>axiom system の選び方そのものを探索対象</strong> にする視座だが、本講義はその抽象議論に立ち入らず、Euclid の具体的な五公準を出発点にする。</p>
+<hr class="docutils" />
+<p>本回 (L4) は、この三段の最初の具体例である。Thales の二つの公準だけから、外心の存在を導く。</p>
+</section>
+</section>
+<section id="id6">
+<h2>0. 前 3 回からの移行 — なぜスモールスタートか<a class="headerlink" href="#id6" title="Link to this heading">#</a></h2>
+<p>前 3 回では、2026 共通テストの問題（内心・重心）を ggblab で記述する一連の流れを見せました：</p>
+<ul class="simple">
+<li><p>20+ ステップの大きな作図</p></li>
+<li><p>作図手順を DataFrame 化</p></li>
+<li><p>networkx で依存関係をグラフ化</p></li>
+<li><p>グラフを元に自己採点</p></li>
+<li><p>空間図形の平面上のオブジェクトを集める</p></li>
+<li><p>数式で表現する</p></li>
+</ul>
+<p>つまり「<strong>全体の pipeline</strong>」を最初に見せました。</p>
+<p>今回からは逆向きに、<strong>最小骨格</strong> から積み上げます。Euclid 流に、最小公準から命題を連鎖させていくスタイルです。</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>比喩：MCP プロトコルの設計
+前回授業で GPT-5 mini に「Swagger から MCP サーバを作れ」と指示した実演を思い出してください。</p>
+<p>Anthropic が MCP (Model Context Protocol) を設計したとき、彼らは「LLM とツールの間で必要な最小限の公準」を切り出しました：</p>
+<ul class="simple">
+<li><p><strong>リソース</strong>は URI で識別される</p></li>
+<li><p><strong>ツール</strong>は JSON-RPC で呼び出す</p></li>
+<li><p><strong>プロンプト</strong>はテンプレートとして公開する</p></li>
+</ul>
+<p>この三つだけで、無数の応用が組み立てられます。これは Euclid が「点・線・円」と五つの公準だけから幾何学を組み立てたのと同じ思想です。</p>
+<p><strong>画期は、最小公準を見抜くこと</strong>から起こります。</p>
+</div>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>画期は何から始まるか — 「嫌い」が抽象化を呼ぶ</p>
+<p>Anthropic のエンジニアは、何が <strong>嫌い</strong> だったでしょうか?</p>
+<p><strong>コピペが嫌い</strong> だったのです。同じ context を Claude のような AI に何度も貼り直すのが、ツールを繋ぐたびに繰り返されて、嫌だった。だから MCP が生まれました。「最小公準を見抜く」前に、まず <strong>面倒くさい何か</strong> がありました。</p>
+<p>歴史を見渡すと、画期は同じパターンで生まれています:</p>
+<ul class="simple">
+<li><p>古代メソポタミア人は <strong>割り算が嫌い</strong> だった → 約数の多い 60 を基数にした（60 進法、割り算表）</p></li>
+<li><p>John Napier は <strong>掛け算が嫌い</strong> だった → 対数で乗算が加算になる仕組み (1614)</p></li>
+<li><p>Gottfried Leibniz は <strong>掛け算が嫌い</strong> だった → 二進法、九九の要らない世界 (1703)</p></li>
+<li><p>Isaac Newton は Apollonius 流の幾何的接線構成が <strong>嫌い</strong> だった → ultimate ratios で 0/0 から議論を逸らし、微分が立ち上がった (1687)</p></li>
+</ul>
+<p>画期は美徳ではなく、<strong>負の感情が抽象化を呼ぶ</strong>。「面倒くさい」を訴える人が、その面倒を消す道具を発明する。</p>
+<p>学生の皆さんに最後に問いたいのはこれです:</p>
+<blockquote>
+<div><p><strong>あなたが今、面倒くさいと感じているそれは、何の抽象化を呼んでいるのだろうか?</strong></p>
+</div></blockquote>
+<p>本講義で扱う五心、Thales の定理、Apollonius の通径、Kepler の楕円軌道、Newton の Principia、Leibniz の二進法 — これらはすべて、<strong>誰かの「嫌い」から始まった抽象化</strong> です。歴史を遡るのは、過去の称賛のためではなく、<strong>現代のあなたの「嫌い」を見抜くため</strong> の訓練です。</p>
+</div>
+</section>
+<section id="id7">
+<h2>1. 前提の提示 — Thales の五定理<a class="headerlink" href="#id7" title="Link to this heading">#</a></h2>
+<p>Thales of Miletus (c.624–c.546 BC) に帰される五つの命題を、本講義の <strong>公準</strong> とします。</p>
+<ol class="arabic simple">
+<li><p><strong>円は直径によって二等分される</strong> (A circle is bisected by its diameter)</p></li>
+<li><p><strong>二等辺三角形の底角は等しい</strong> (Angles at the base of any isosceles triangle are equal)<br />
+→ Euclid Elements Book I, Proposition 5</p></li>
+<li><p><strong>交差する二直線がなす対頂角は等しい</strong> (Vertical angles are equal)<br />
+→ Euclid I, Proposition 15</p></li>
+<li><p><strong>二角と一辺が等しい二つの三角形は合同である</strong> (ASA 合同)<br />
+→ Euclid I, Proposition 26</p></li>
+<li><p><strong>半円に内接する角は直角である</strong> (Thales’ theorem 本来の意味)</p></li>
+</ol>
+<p>本回ではこのうち <strong>(1) と (2)</strong> だけを使います。</p>
+<p>参考: <a class="reference external" href="https://en.wikipedia.org/wiki/Thales_of_Miletus">Thales of Miletus - Wikipedia</a></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>なぜ Thales を最小公準に置くか
+Thales の五定理は、Euclid の『原論』にすべて吸収されていますが、<strong>Thales 個人に帰される</strong> という点が重要です。</p>
+<p>Thales 以前、エジプトやバビロニアの数学は「観察された事実の蓄積」でした。「直径は円を等分する」は誰でも目で見れば分かることです。しかし Thales は、それを <strong>「すべての場合に成り立つ」と言える形</strong> で言葉にしました。</p>
+<p>これが「証明」概念の誕生 — 紀元前 6 世紀の <strong>第一の画期</strong> です。</p>
+</div>
+</section>
+<section id="ggblab">
+<h2>2. ggblab で前提を確認する<a class="headerlink" href="#ggblab" title="Link to this heading">#</a></h2>
+<p>まず ggblab のセットアップと、Thales の定理 (1) の確認です。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="k">using</span><span class="w"> </span><span class="n">Pkg</span>
+<span class="n">Pkg</span><span class="o">.</span><span class="n">activate</span><span class="p">(</span><span class="s">&quot;../..&quot;</span><span class="p">)</span>
+<span class="n">Pkg</span><span class="o">.</span><span class="n">instantiate</span><span class="p">()</span>
+<span class="k">using</span><span class="w"> </span><span class="n">GeoGebra</span>
+<span class="nb">ENV</span><span class="p">[</span><span class="s">&quot;GGB_DIRECT_TRANSPORT&quot;</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;true&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Bold -Color-Bold-Green">  Activating</span> 
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>project at `~/work/ggblab/textbook-2026`
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&quot;true&quot;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">inject_applet</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Bold -Color-Bold-Cyan">[ Info: </span>Listening on: 127.0.0.1:63267, thread id: 1
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Dict{String, Any} with 5 entries:
+  &quot;kernelId&quot;   =&gt; &quot;9b08d15d-adc0-40f5-870c-34f8ecf9b307&quot;
+  &quot;wsPort&quot;     =&gt; 0xf723
+  &quot;insertMode&quot; =&gt; &quot;split-right&quot;
+  &quot;type&quot;       =&gt; &quot;inject&quot;
+  &quot;appName&quot;    =&gt; &quot;suite&quot;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="c"># 環境のバージョンを記録する — 再現性の起点</span>
+<span class="n">println</span><span class="p">(</span><span class="s">&quot;Julia: &quot;</span><span class="p">,</span><span class="w"> </span><span class="nb">VERSION</span><span class="p">)</span>
+<span class="k">using</span><span class="w"> </span><span class="n">Pkg</span><span class="p">;</span><span class="w"> </span><span class="n">Pkg</span><span class="o">.</span><span class="n">status</span><span class="p">([</span><span class="s">&quot;GeoGebra&quot;</span><span class="p">];</span><span class="w"> </span><span class="n">mode</span><span class="o">=</span><span class="n">Pkg</span><span class="o">.</span><span class="n">PKGMODE_PROJECT</span><span class="p">)</span>
+<span class="nd">@ggb</span><span class="w"> </span><span class="ss">:api</span><span class="w"> </span><span class="n">getVersion</span><span class="p">()</span><span class="w">  </span><span class="c"># GeoGebra applet (Web ビュー側)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Julia: 1
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>.12.5
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Bold -Color-Bold-Green">Status</span> `~/work/ggblab/textbook-2026/Project.toml`
+  [db4dc2ca] GeoGebra v0.2.1 `https://github.com/moyhig-ecs/GeoGebra.jl#main`
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Bold -Color-Bold-Cyan">[ Info: </span>GeoGebra: enabling direct transport via environment variable
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&quot;5.4.920.0&quot;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>バージョンを読み、合わなければクレームを出す</p>
+<p>教材は <strong>「あらゆる事象をコードとして記述、コンピュータが再現する」</strong> を前提とします。再現性は環境バージョンの一致から始まります。</p>
+<p>上のセルで三つのバージョンを記録しました：</p>
+<ol class="arabic simple">
+<li><p><strong>Julia 本体</strong> (<code class="docutils literal notranslate"><span class="pre">VERSION</span></code>)</p></li>
+<li><p><strong>GeoGebra.jl パッケージ</strong> (<code class="docutils literal notranslate"><span class="pre">Pkg.status</span></code>) — <code class="docutils literal notranslate"><span class="pre">Project.toml</span></code> の pin と一致するか</p></li>
+<li><p><strong>GeoGebra applet</strong> (<code class="docutils literal notranslate"><span class="pre">&#64;ggb</span> <span class="pre">:api</span> <span class="pre">getVersion()</span></code>) — 実行時の Web ビュー側</p></li>
+</ol>
+<p><strong>この三つが揃わないと、本文の例が動かないことがあります</strong>。Errata は実際に発生します。皆さんがクレームを上げることで教材は improve します：</p>
+<ul class="simple">
+<li><p>「Julia X.Y.Z ですが、§N の図が出ません」</p></li>
+<li><p>「GeoGebra.jl のバージョンが古いようです」</p></li>
+<li><p>「applet バージョンが想定と違うのでは」</p></li>
+</ul>
+<p>社会で道具を扱うときの基本リテラシでもあります。<strong>バージョンの不一致を黙って受け入れない</strong>。困ったら声を上げる。</p>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p><code class="docutils literal notranslate"><span class="pre">&#64;ggb</span></code> のシンボル規約 — 左辺は素朴に、右辺は <code class="docutils literal notranslate"><span class="pre">:</span></code> で escape</p>
+<p><code class="docutils literal notranslate"><span class="pre">&#64;ggb</span></code> マクロは Julia の式から GeoGebra applet 側のコマンドを組み立てます。このとき、識別子の扱いが <strong>左辺と右辺で非対称</strong> になります。</p>
+<p><strong>左辺（新しい名前を持ち込む）</strong>: そのままで OK</p>
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="nd">@ggb</span><span class="w"> </span><span class="n">O</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span>
+<span class="nd">@ggb</span><span class="w"> </span><span class="n">s</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Segment</span><span class="p">(</span><span class="ss">:B</span><span class="p">,</span><span class="w"> </span><span class="ss">:C</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>右辺（既存のものを参照する）</strong>: <code class="docutils literal notranslate"><span class="pre">:</span></code> を付けて escape</p>
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="nd">@ggb</span><span class="w"> </span><span class="n">Circle</span><span class="p">(</span><span class="ss">:O</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w">             </span><span class="c"># 既存の applet 識別子 O を参照</span>
+<span class="nd">@ggb</span><span class="w"> </span><span class="n">PerpendicularLine</span><span class="p">(</span><span class="ss">:M</span><span class="p">,</span><span class="w"> </span><span class="ss">:s</span><span class="p">)</span><span class="w"> </span><span class="c"># 既存の M と s を参照</span>
+
+<span class="nd">@ggb</span><span class="w"> </span><span class="n">Circle</span><span class="p">(</span><span class="n">O</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w">              </span><span class="c"># ✗ Julia の変数として解決を試みて壊れる</span>
+</pre></div>
+</div>
+<p><strong>なぜ非対称か</strong> — 左辺の <code class="docutils literal notranslate"><span class="pre">O</span></code> は宣言、右辺の <code class="docutils literal notranslate"><span class="pre">O</span></code> は参照。宣言ではマクロが <code class="docutils literal notranslate"><span class="pre">O</span></code> を <strong>新しい名前（literal token）</strong> として applet 世界に登録するので、Julia の評価器は通らない。参照では Julia の評価器が <code class="docutils literal notranslate"><span class="pre">O</span></code> を <strong>Julia の binding</strong> として解決しようとするので、私たちが渡したい「applet 識別子としての <code class="docutils literal notranslate"><span class="pre">O</span></code>」が「Julia 変数の値」に置き換わって壊れる。</p>
+<p><code class="docutils literal notranslate"><span class="pre">:</span></code> は <strong>「Julia の評価器に渡さず、literal として applet 世界に届けてくれ」のスイッチ</strong> です。</p>
+<p><strong>他の世界での同じ問題</strong> — この対比は、本講義で何度も出会う <strong>literal 表現と operable object 表現の分離</strong> の典型例です。SymPy で <code class="docutils literal notranslate"><span class="pre">Symbol(&quot;x&quot;)</span></code> と書くのは「これを文字列のままではなく、操作可能なオブジェクトとして扱いたい」のスイッチ。GeoGebra の <code class="docutils literal notranslate"><span class="pre">:O</span></code> は逆向き — 「これを Julia 変数として評価せず、applet 世界の identifier として届けたい」のスイッチ。<strong>やりたいことに応じて表現を選ぶ</strong>、という本講義の縦軸が、ここでも姿を現しています。</p>
+<p>理想は、applet 識別子・Julia シンボル・SymPy <code class="docutils literal notranslate"><span class="pre">Symbol</span></code> が一つの宣言で揃って定義されることですが、現状の <code class="docutils literal notranslate"><span class="pre">&#64;ggb</span></code> ではこれは未解決の課題で、JuliaCon 論文 §11 Open Problem として議論されています（<code class="docutils literal notranslate"><span class="pre">bind_symbol!</span></code> API の構想）。それまでの当面のルールは <strong>「左辺は素朴に、右辺は <code class="docutils literal notranslate"><span class="pre">:</span></code>」</strong> です。</p>
+</div>
+<section id="id8">
+<h3>2.1 公準 (1) の確認：円と直径<a class="headerlink" href="#id8" title="Link to this heading">#</a></h3>
+<p>原点中心、半径 1 の円を描き、直径を引いて、円が二等分されることを確認します。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="nd">@ggb</span><span class="w"> </span><span class="ss">:const</span><span class="w"> </span><span class="ss">:new</span>
+<span class="nd">@ggb</span><span class="w"> </span><span class="n">O</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
+<span class="nd">@ggb</span><span class="w"> </span><span class="n">Circle</span><span class="p">(</span><span class="ss">:O</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>c
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Info: PersistentCounter disabled when called from Julia/PythonCall
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="nd">@ggb</span><span class="w"> </span><span class="n">P</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span>
+<span class="nd">@ggb</span><span class="w"> </span><span class="n">Q</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span>
+<span class="nd">@ggb</span><span class="w"> </span><span class="n">Segment</span><span class="p">(</span><span class="ss">:P</span><span class="p">,</span><span class="w"> </span><span class="ss">:Q</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>f
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>観察</strong>: 直径 PQ が円を二等分しています。これは目で見て確認できる事実です。<br />
+<strong>しかし</strong>、これは「証明」ではありません — 「すべての直径について」成り立つことを保証する論理は、まだ立てていません。</p>
+<p>→ ここでは <strong>公準として認める</strong> のが Thales 流です。</p>
+</section>
+</section>
+<section id="id9">
+<h2>3. 解くべき命題を発見する<a class="headerlink" href="#id9" title="Link to this heading">#</a></h2>
+<p>弦と中点を導入し、観察から命題を <strong>発見</strong> します。</p>
+<section id="id10">
+<h3>3.1 弦と中点と垂直二等分線<a class="headerlink" href="#id10" title="Link to this heading">#</a></h3>
+<p>円周上に任意の二点 B, C を取り、弦 BC を引き、その中点 M を求め、M を通り BC に垂直な直線 ℓ を引きます。</p>
+<p><strong>先に、手で具体的な点を一つ求めておきます</strong>。x = 1/2 のとき、単位円上の y は？</p>
+<div class="math notranslate nohighlight">
+\[
+\left(\frac{1}{2}\right)^2 + y^2 = 1 \quad\Rightarrow\quad y^2 = 1 - \frac{1}{4} = \frac{3}{4} \quad\Rightarrow\quad y = \pm \frac{\sqrt{3}}{2}
+\]</div>
+<p>正の解を採れば、点 <span class="math notranslate nohighlight">\(\left(\dfrac{1}{2},\,\dfrac{\sqrt{3}}{2}\right)\)</span> が単位円上にある。手計算の値を覚えておきます。</p>
+<div class="tip admonition">
+<p class="admonition-title">伏線</p>
+<p>この <span class="math notranslate nohighlight">\(\sqrt{3}/2\)</span> は、後の回で <strong>Archimedes の π 計算</strong> を再現するときに再登場します。<span class="math notranslate nohighlight">\(\sqrt{3}/2\)</span> は単位円に内接する正六角形の頂点 y 座標 — つまり「内接正多角形の周長で π を下から押さえる」古典構成の出発点。</p>
+<p>伏線は意図的に離して置きます。気付かなくても授業は進みますが、後で「あの値だ」と気付いたとき、Archimedes と Thales が同じ単位円計算で繋がっている構造が見えてくる。</p>
+</div>
+<p>その上で、ggblab に座標を可変で渡して観察します。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="nd">@ggb</span><span class="w"> </span><span class="n">B</span><span class="o">=</span><span class="p">(</span><span class="n">cos</span><span class="p">(</span><span class="mi">2</span><span class="nb">π</span><span class="o">/</span><span class="mi">5</span><span class="p">),</span><span class="w"> </span><span class="n">sin</span><span class="p">(</span><span class="mi">2</span><span class="nb">π</span><span class="o">/</span><span class="mi">5</span><span class="p">))</span>
+<span class="nd">@ggb</span><span class="w"> </span><span class="n">C</span><span class="o">=</span><span class="p">(</span><span class="n">cos</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="nb">π</span><span class="o">/</span><span class="mi">5</span><span class="p">),</span><span class="w"> </span><span class="n">sin</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="nb">π</span><span class="o">/</span><span class="mi">5</span><span class="p">))</span>
+<span class="nd">@ggb</span><span class="w"> </span><span class="n">s_BC</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Segment</span><span class="p">(</span><span class="ss">:B</span><span class="p">,</span><span class="w"> </span><span class="ss">:C</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>s_BC
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="nd">@ggb</span><span class="w"> </span><span class="n">M</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Midpoint</span><span class="p">(</span><span class="ss">:B</span><span class="p">,</span><span class="w"> </span><span class="ss">:C</span><span class="p">)</span>
+<span class="nd">@ggb</span><span class="w"> </span><span class="n">PerpendicularLine</span><span class="p">(</span><span class="ss">:M</span><span class="p">,</span><span class="w"> </span><span class="ss">:s_BC</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>g
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>観察</strong>: 弦 BC の垂直二等分線 ℓ が <strong>円の中心 O を通っている</strong> ように見えます。</p>
+<p><strong>問い</strong>: これは偶然か？ B, C の取り方を変えても同じか？</p>
+<p>実際に B, C の座標を変えて確かめてみましょう。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="c"># 別の弦で試す</span>
+<span class="nd">@ggb</span><span class="w"> </span><span class="n">B2</span><span class="o">=</span><span class="p">(</span><span class="n">cos</span><span class="p">(</span><span class="nb">π</span><span class="o">/</span><span class="mi">3</span><span class="p">),</span><span class="w"> </span><span class="n">sin</span><span class="p">(</span><span class="nb">π</span><span class="o">/</span><span class="mi">3</span><span class="p">))</span>
+<span class="nd">@ggb</span><span class="w"> </span><span class="n">C2</span><span class="o">=</span><span class="p">(</span><span class="n">cos</span><span class="p">(</span><span class="o">-</span><span class="nb">π</span><span class="o">/</span><span class="mi">6</span><span class="p">),</span><span class="w"> </span><span class="n">sin</span><span class="p">(</span><span class="o">-</span><span class="nb">π</span><span class="o">/</span><span class="mi">6</span><span class="p">))</span>
+<span class="nd">@ggb</span><span class="w"> </span><span class="n">s_BC2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Segment</span><span class="p">(</span><span class="ss">:B2</span><span class="p">,</span><span class="w"> </span><span class="ss">:C2</span><span class="p">)</span>
+<span class="nd">@ggb</span><span class="w"> </span><span class="n">M2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Midpoint</span><span class="p">(</span><span class="ss">:B2</span><span class="p">,</span><span class="w"> </span><span class="ss">:C2</span><span class="p">)</span>
+<span class="nd">@ggb</span><span class="w"> </span><span class="n">PerpendicularLine</span><span class="p">(</span><span class="ss">:M2</span><span class="p">,</span><span class="w"> </span><span class="ss">:s_BC2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>h
+</pre></div>
+</div>
+</div>
+</div>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>発見した命題 (Lemma 1)
+<strong>円の任意の弦の垂直二等分線は、円の中心を通る。</strong></p>
+</div>
+<p>観察だけからは「いつでもそうなる」とは言えません。次節で <strong>証明</strong> します。</p>
+</section>
+</section>
+<section id="id11">
+<h2>4. 前提から命題への連鎖（証明）<a class="headerlink" href="#id11" title="Link to this heading">#</a></h2>
+<p>Lemma 1 を、公準 (1) と (2) だけから導きます。</p>
+<p><strong>証明 (Lemma 1)</strong></p>
+<ol class="arabic simple">
+<li><p>O を中心とする円上に、二点 B, C を取る。<br />
+円の定義より、<span class="math notranslate nohighlight">\(|OB| = |OC|\)</span> (二つとも半径)。</p></li>
+<li><p>ゆえに三角形 <span class="math notranslate nohighlight">\(\triangle OBC\)</span> は二等辺三角形である (定義による)。</p></li>
+<li><p>公準 (2) より、二等辺三角形 <span class="math notranslate nohighlight">\(\triangle OBC\)</span> の底角は等しい：<span class="math notranslate nohighlight">\(\angle OBC = \angle OCB\)</span>。</p></li>
+<li><p>BC の中点を M とする。<span class="math notranslate nohighlight">\(\triangle OBM\)</span> と <span class="math notranslate nohighlight">\(\triangle OCM\)</span> について：</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(|OB| = |OC|\)</span> (ステップ 1)</p></li>
+<li><p><span class="math notranslate nohighlight">\(|BM| = |CM|\)</span> (M の定義)</p></li>
+<li><p><span class="math notranslate nohighlight">\(|OM|\)</span> は共有</p></li>
+</ul>
+</li>
+<li><p>ゆえに三辺がそれぞれ等しい (SSS 合同)。よって対応する角も等しく、<span class="math notranslate nohighlight">\(\angle OMB = \angle OMC\)</span>。</p></li>
+<li><p><span class="math notranslate nohighlight">\(\angle OMB + \angle OMC = 180°\)</span> (直線 BC 上の角) かつ等しいから、<span class="math notranslate nohighlight">\(\angle OMB = \angle OMC = 90°\)</span>。</p></li>
+<li><p>すなわち、M を通り BC に垂直な直線 ℓ は O を通る。<br />
+<span class="math notranslate nohighlight">\(\blacksquare\)</span></p></li>
+</ol>
+<p>→ 公準 (1) と (2) <strong>だけ</strong> から、Lemma 1 が連鎖的に導かれました。</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>補助的に使った合同条件について — 日本語と国際標準の対応</p>
+<p>ステップ 5 で「三辺がそれぞれ等しい二つの三角形は合同である」を使いました。これは日本の中学 2 年「図形の合同」で学ぶ三つの三角形合同条件のうちの一つです。<strong>知識としては既に持っているはず</strong> ですが、本講義では国際標準の略記 (SSS, SAS, ASA など) を併記します。英語論文・国際学会・プロトコル設計の場面ではこの略記が標準だからです。</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>国際標準</p></th>
+<th class="head"><p>日本語の呼び方</p></th>
+<th class="head"><p>Euclid Elements</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>SSS</strong> (Side-Side-Side)</p></td>
+<td><p>三辺がそれぞれ等しい</p></td>
+<td><p>Book I, Proposition 8</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>SAS</strong> (Side-Angle-Side)</p></td>
+<td><p>二辺とその夾角が等しい</p></td>
+<td><p>Book I, Proposition 4</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>ASA</strong> (Angle-Side-Angle)</p></td>
+<td><p>一辺とその両端の角が等しい</p></td>
+<td><p>Book I, Proposition 26 (前半)</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>AAS</strong> (Angle-Angle-Side)</p></td>
+<td><p>二角と一辺が等しい</p></td>
+<td><p>Book I, Proposition 26 (後半)</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>RHS / HL</strong> (Right angle-Hypotenuse-Side)</p></td>
+<td><p>直角三角形の斜辺と他の一辺</p></td>
+<td><p>(特殊ケース)</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>参考</strong></p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Congruence_(geometry)#Congruence_of_triangles">Congruence (geometry) - Wikipedia</a></p></li>
+<li><p><a class="reference external" href="https://ja.wikipedia.org/wiki/%E5%90%88%E5%90%8C_(%E5%B9%BE%E4%BD%95%E5%AD%A6)">合同 (幾何学) - Wikipedia</a></p></li>
+<li><p><a class="reference external" href="http://aleph0.clarku.edu/~djoyce/java/elements/bookI/propI4.html">Euclid Elements Book I, Proposition 4 (SAS)</a></p></li>
+<li><p><a class="reference external" href="http://aleph0.clarku.edu/~djoyce/java/elements/bookI/propI8.html">Euclid Elements Book I, Proposition 8 (SSS)</a></p></li>
+<li><p><a class="reference external" href="http://aleph0.clarku.edu/~djoyce/java/elements/bookI/propI26.html">Euclid Elements Book I, Proposition 26 (ASA / AAS)</a></p></li>
+</ul>
+<p><strong>論点</strong>: 最小公準を厳密に絞ると証明は長くなる。実用上どこまで絞るかは設計判断です。Euclid は SAS (Proposition 4) を基礎の合同条件として置き、SSS (Proposition 8) はそこから導く <strong>定理</strong> としました。本講義では SSS / SAS / ASA を「公準に準じる補助定理」として認めます。</p>
+<p>MCP プロトコルでも、Anthropic は「resource / tool / prompt」の三層に絞り、<code class="docutils literal notranslate"><span class="pre">sampling</span></code> や <code class="docutils literal notranslate"><span class="pre">roots</span></code> といった補助的な公準は後から追加しました。<strong>何を公準とし、何を定理として導くか</strong> は、Euclid から MCP まで一貫してプロトコル設計の核心です。</p>
+</div>
+</section>
+<section id="id12">
+<h2>5. 命題の連鎖を三角形へ拡張する — 外心の発見<a class="headerlink" href="#id12" title="Link to this heading">#</a></h2>
+<p>Lemma 1 を使うと、外心はほぼ自動的に出てきます。</p>
+<p><strong>主命題 (Theorem)</strong>: 任意の三角形 <span class="math notranslate nohighlight">\(\triangle ABC\)</span> について、三辺の垂直二等分線は一点で交わる。その点を中心とする円は、三頂点 A, B, C を通る (外接円)。</p>
+<p><strong>証明</strong></p>
+<ol class="arabic simple">
+<li><p>辺 BC の垂直二等分線 <span class="math notranslate nohighlight">\(\ell_{BC}\)</span> 上の任意の点 X について、<span class="math notranslate nohighlight">\(|XB| = |XC|\)</span> (垂直二等分線の特徴づけ)。</p></li>
+<li><p>同様に、辺 CA の垂直二等分線 <span class="math notranslate nohighlight">\(\ell_{CA}\)</span> 上の任意の点 Y について、<span class="math notranslate nohighlight">\(|YC| = |YA|\)</span>。</p></li>
+<li><p><span class="math notranslate nohighlight">\(\ell_{BC}\)</span> と <span class="math notranslate nohighlight">\(\ell_{CA}\)</span> の交点を O とすると、O は両方の直線上にあるから：</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(|OB| = |OC|\)</span> (1 より)</p></li>
+<li><p><span class="math notranslate nohighlight">\(|OC| = |OA|\)</span> (2 より)</p></li>
+</ul>
+</li>
+<li><p>ゆえに <span class="math notranslate nohighlight">\(|OA| = |OB| = |OC|\)</span>。</p></li>
+<li><p>これは、O が辺 AB の垂直二等分線上にもあること（<span class="math notranslate nohighlight">\(|OA| = |OB|\)</span>）を意味する。</p></li>
+<li><p>すなわち、三辺の垂直二等分線は <strong>一点 O で交わる</strong>。</p></li>
+<li><p><span class="math notranslate nohighlight">\(|OA| = |OB| = |OC|\)</span> より、O を中心、<span class="math notranslate nohighlight">\(|OA|\)</span> を半径とする円は A, B, C を通る。<br />
+<span class="math notranslate nohighlight">\(\blacksquare\)</span></p></li>
+</ol>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>定義
+この交点 O を三角形 <span class="math notranslate nohighlight">\(\triangle ABC\)</span> の <strong>外心 (Circumcenter)</strong> と呼び、それを中心とする円を <strong>外接円 (Circumscribed circle)</strong> と呼ぶ。</p>
+</div>
+<section id="ggblab-5">
+<h3>5.1 ggblab で構成する (5 ステップ作図)<a class="headerlink" href="#ggblab-5" title="Link to this heading">#</a></h3>
+<p>上の証明をそのまま作図に落とします。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="nd">@ggb</span><span class="w"> </span><span class="ss">:const</span><span class="w"> </span><span class="ss">:new</span>
+<span class="nd">@ggb</span><span class="w"> </span><span class="n">A</span><span class="o">=</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span>
+<span class="nd">@ggb</span><span class="w"> </span><span class="n">B</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span>
+<span class="nd">@ggb</span><span class="w"> </span><span class="n">C</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+<span class="nd">@ggb</span><span class="w"> </span><span class="n">Polygon</span><span class="p">(</span><span class="ss">:A</span><span class="p">,</span><span class="w"> </span><span class="ss">:B</span><span class="p">,</span><span class="w"> </span><span class="ss">:C</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4-element Vector{GGBObject}:
+ t1
+ c
+ a
+ b
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="nd">@ggb</span><span class="w"> </span><span class="n">l_BC</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">PerpendicularBisector</span><span class="p">(</span><span class="ss">:B</span><span class="p">,</span><span class="w"> </span><span class="ss">:C</span><span class="p">)</span>
+<span class="nd">@ggb</span><span class="w"> </span><span class="n">l_CA</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">PerpendicularBisector</span><span class="p">(</span><span class="ss">:C</span><span class="p">,</span><span class="w"> </span><span class="ss">:A</span><span class="p">)</span>
+<span class="nd">@ggb</span><span class="w"> </span><span class="n">l_AB</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">PerpendicularBisector</span><span class="p">(</span><span class="ss">:A</span><span class="p">,</span><span class="w"> </span><span class="ss">:B</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>l_AB
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="nd">@ggb</span><span class="w"> </span><span class="n">O</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Intersect</span><span class="p">(</span><span class="ss">:l_BC</span><span class="p">,</span><span class="w"> </span><span class="ss">:l_CA</span><span class="p">)</span>
+<span class="nd">@ggb</span><span class="w"> </span><span class="n">Circle</span><span class="p">(</span><span class="ss">:O</span><span class="p">,</span><span class="w"> </span><span class="ss">:A</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>d
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>観察ポイント</strong>:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\ell_{AB}\)</span> も O を通ることを確認する（証明の結論）</p></li>
+<li><p>三角形 ABC の頂点を動かしても、O は常に三線の交点に留まる</p></li>
+<li><p>鈍角三角形では O が三角形の外に出る（外心の名の由来）</p></li>
+</ul>
+<p>比較として、GeoGebra 組み込みの <code class="docutils literal notranslate"><span class="pre">TriangleCenter(:A,</span> <span class="pre">:B,</span> <span class="pre">:C,</span> <span class="pre">n)</span></code> も呼び出して同じ点が得られることを確認しましょう。第 4 引数 <code class="docutils literal notranslate"><span class="pre">n</span></code> の意味は <strong>記憶せず、毎回ドキュメントを辿ります</strong> — 次の callout を参照。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="nd">@ggb</span><span class="w"> </span><span class="n">TriangleCenter</span><span class="p">(</span><span class="ss">:A</span><span class="p">,</span><span class="w"> </span><span class="ss">:B</span><span class="p">,</span><span class="w"> </span><span class="ss">:C</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">)</span><span class="w">  </span><span class="c"># 3 = Circumcenter</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Dict{String, Any} with 1 entry:
+  &quot;message&quot; =&gt; &quot;Handler execution failed&quot;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>GeoGebra <code class="docutils literal notranslate"><span class="pre">TriangleCenter</span></code> の第 4 引数 <code class="docutils literal notranslate"><span class="pre">n</span></code> と「五心」 — 命名規約の食い違いを読む</p>
+<p><code class="docutils literal notranslate"><span class="pre">TriangleCenter(:A,</span> <span class="pre">:B,</span> <span class="pre">:C,</span> <span class="pre">n)</span></code> の n が何を指すかは記憶しません。GeoGebra 公式リファレンスを参照します:</p>
+<p>📖 <a class="reference external" href="https://geogebra.github.io/docs/manual/en/commands/TriangleCenter/"><strong>TriangleCenter command — GeoGebra Manual</strong></a></p>
+<p>日本の高校数学で言う <strong>五心</strong> と、GeoGebra (Clark Kimberling の Encyclopedia of Triangle Centers = ETC) の番号付けは <strong>一致しない</strong>:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-center"><p>日本の「五心」</p></th>
+<th class="head"><p>中心</p></th>
+<th class="head"><p>英語名</p></th>
+<th class="head text-center"><p>GeoGebra <code class="docutils literal notranslate"><span class="pre">TriangleCenter</span></code> の n</p></th>
+<th class="head"><p>参考</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-center"><p>第 1</p></td>
+<td><p>内心</p></td>
+<td><p>Incenter</p></td>
+<td class="text-center"><p><code class="docutils literal notranslate"><span class="pre">n=1</span></code></p></td>
+<td><p><a class="reference external" href="https://en.wikipedia.org/wiki/Incenter">Wikipedia</a></p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>第 2</p></td>
+<td><p>重心</p></td>
+<td><p>Centroid</p></td>
+<td class="text-center"><p><code class="docutils literal notranslate"><span class="pre">n=2</span></code></p></td>
+<td><p><a class="reference external" href="https://en.wikipedia.org/wiki/Centroid">Wikipedia</a></p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>第 3</p></td>
+<td><p>外心</p></td>
+<td><p>Circumcenter</p></td>
+<td class="text-center"><p><code class="docutils literal notranslate"><span class="pre">n=3</span></code></p></td>
+<td><p><a class="reference external" href="https://en.wikipedia.org/wiki/Circumscribed_circle#Triangles">Wikipedia</a></p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>第 4</p></td>
+<td><p>垂心</p></td>
+<td><p>Orthocenter</p></td>
+<td class="text-center"><p><code class="docutils literal notranslate"><span class="pre">n=4</span></code></p></td>
+<td><p><a class="reference external" href="https://en.wikipedia.org/wiki/Orthocenter">Wikipedia</a></p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>第 5</p></td>
+<td><p><strong>傍心</strong>（3 つの傍接円の中心）</p></td>
+<td><p>Excenters</p></td>
+<td class="text-center"><p><code class="docutils literal notranslate"><span class="pre">n=5</span></code> <strong>ではない</strong></p></td>
+<td><p><a class="reference external" href="https://en.wikipedia.org/wiki/Incircle_and_excircles#Excircles">Wikipedia</a></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>注意</strong>: GeoGebra の <code class="docutils literal notranslate"><span class="pre">n=5</span></code> は <strong>九点円中心 (Nine-point center, ETC X(5))</strong> で、日本の五心の第 5（傍心）とは別物です。傍心は三つあって（<span class="math notranslate nohighlight">\(I_A, I_B, I_C\)</span>）、GeoGebra ではそれぞれ別途構成するか、ETC の対応する X(n)（X(11)、X(12)、X(13) など）で呼び出します。</p>
+<p>九点円中心は日本の高校数学では五心の範疇外で、後に <strong>Euler 線</strong>（重心・外心・垂心の共線）と合わせて発展的に紹介される（<a class="reference external" href="https://en.wikipedia.org/wiki/Nine-point_circle">Wikipedia</a>、<a class="reference external" href="https://en.wikipedia.org/wiki/Euler_line">Euler line</a>）。</p>
+<p>Clark Kimberling の <strong>ETC</strong> は数千の三角形中心を体系化:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://faculty.evansville.edu/ck6/encyclopedia/ETC.html">ETC — Encyclopedia of Triangle Centers</a></p></li>
+</ul>
+<p><strong>学習目標</strong>: コードに <code class="docutils literal notranslate"><span class="pre">n=3</span></code> と書く前に、必ず docs を辿って意味を確認する。<strong>ローカル文化の規約とツールの規約が食い違う</strong>のは現実によくあること（西暦/和暦、メートル/インチ、SI/imperial、GeoGebra/Japanese 五心）。「黙って合わせる」ではなく「<strong>両者の対応表を持つ</strong>」が社会で道具を扱う基本動作。詳しい歴史的背景は <strong>第 3 章 §三角形の中心</strong> を参照。</p>
+</div>
+</section>
+</section>
+<section id="id13">
+<h2>6. 停滞と画期の照射 — 身の回りの事象と照らす<a class="headerlink" href="#id13" title="Link to this heading">#</a></h2>
+<p>今回扱った内容を、現代の身の回りの事象と照らし合わせます。</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>段階</p></th>
+<th class="head"><p>古代の画期</p></th>
+<th class="head"><p>現代の対応</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>前提を絞る</strong></p></td>
+<td><p>Thales が「証明可能な命題」と「観察事実」を区別</p></td>
+<td><p>Anthropic が MCP の三層 (resource/tool/prompt) を切り出す</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>連鎖を組む</strong></p></td>
+<td><p>Euclid が公準から命題を組み立てる</p></td>
+<td><p>Swagger 仕様から MCP サーバを生成する</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>画期の正体</strong></p></td>
+<td><p>道具を増やすことではなく、前提を見直すこと</p></td>
+<td><p>GPU を増やすことではなく、アルゴリズム・量子化・スパース化で対応する</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>現代の停滞の一例：GPU 不足
+2026 年現在、AI 開発は GPU 供給制約で停滞気味です。これは歴史上の停滞と次の構造を共有しています：</p>
+<ul class="simple">
+<li><p><strong>道具依存の危機</strong>: 特定の道具 (NVIDIA GPU / Apollonius の斜交座標系) なしには進めないという思い込み</p></li>
+<li><p><strong>評価制度の偏り</strong>: SOTA スコア偏重 / 古代の学術権威 が、代替視点を周縁化する</p></li>
+<li><p><strong>打破の処方</strong>: 量子化・スパース化・近似アルゴリズム、FPGA / 別経路・正面突破・橋渡し・新初等構成</p></li>
+</ul>
+<p>→ 「画期」は新しい道具を待つことではなく、<strong>前提を疑い直す</strong> ことから来る。</p>
+</div>
+<div class="tip admonition">
+<p class="admonition-title">今回の課題</p>
+<p><strong>必修</strong></p>
+<ol class="arabic simple">
+<li><p>共通テスト本試で出題された外心関連の問題を、本日の 5 ステップ作図で記述してみよ。</p></li>
+<li><p>「弦の垂直二等分線は中心を通る」を、Thales の定理 (1)(2) だけから書き下ろせ（教科書を見ずに）。</p></li>
+</ol>
+<p><strong>思考課題</strong>
+3. 身の回りで、<strong>観察された事実は知られているのに、それが「なぜか」が答えられていない（あるいは答えられていることに気づかれていない）もの</strong> を一つ挙げ、2〜3 行で説明せよ。</p>
+<p><em>ヒント</em>: 第 15 回で再びこの問いに戻ります。記録を残しておいてください。</p>
+</div>
+</section>
+<section id="id14">
+<h2>7. 次回への接続<a class="headerlink" href="#id14" title="Link to this heading">#</a></h2>
+<p>今回は五心のうちの <strong>外心</strong> から始めました。なぜ外心からか？</p>
+<ul class="simple">
+<li><p>Thales の定理 (最も初期の証明) だけで完結する</p></li>
+<li><p>円の定義 (中心から等距離) と直接結びつく</p></li>
+<li><p>「弦 → 中点 → 垂直二等分線」という最短経路で組み立てられる</p></li>
+</ul>
+<p>次回 (第 5 回) は <strong>重心 (Centroid)</strong> に移ります。重心は外心とは違い、円の定義からは出てきません。代わりに：</p>
+<ul class="simple">
+<li><p>Archimedes の <strong>天秤</strong> という物理的直観</p></li>
+<li><p>中線が三角形を等面積に分ける</p></li>
+<li><p>バリセントリック座標による座標非依存証明</p></li>
+</ul>
+<p>という別の三つの道があります。<strong>「同じ点を異なる前提から導くと、何が見えるか」</strong> が次回のテーマです。</p>
+<section id="id15">
+<h3>7.1 全体のロードマップ（幾何の側）<a class="headerlink" href="#id15" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>第 4 回: <strong>外心</strong> (Thales 起点) ← 本日</p></li>
+<li><p>第 5 回: 重心 (Archimedes 起点)</p></li>
+<li><p>第 6 回: 内心 (角の二等分線)</p></li>
+<li><p>第 7 回: 垂心と Euler 線</p></li>
+<li><p>第 8 回: <strong>傍心</strong> — 日本の「二心」伝統</p></li>
+<li><p>第 9 回: <strong>内心と傍心の辺対称性</strong> ← ここで隠れた対称性に出会う</p></li>
+<li><p>第 10 回: 楕円と二焦点</p></li>
+<li><p>第 11 回: 円錐の切断面</p></li>
+<li><p>第 12 回: Dandelin 球</p></li>
+<li><p>第 13 回: <strong>二心 ⇒ Dandelin の三次元化</strong> — 焦点の対称性の根拠</p></li>
+<li><p>第 14 回: Apollonius の隠蔽と Descartes/Fermat/Newton</p></li>
+<li><p>第 15 回: Feynman 1964 と現代の停滞 — 学生立論</p></li>
+</ul>
+</section>
+<section id="ggblab-extra">
+<h3>7.2 道具のロードマップ — ggblab_extra の段階導入<a class="headerlink" href="#ggblab-extra" title="Link to this heading">#</a></h3>
+<p>幾何の積み上げと並行して、ggblab_extra の機能を毎回少しずつ取り入れていきます。<strong>機能の使い方を覚えることが目的ではありません。なぜそれが必要か、汎用的にどう使えるか、将来の武器として何になるかを少しずつ伝える</strong> ためです。</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>機能</p></th>
+<th class="head"><p>導入回</p></th>
+<th class="head"><p>この回での幾何的動機</p></th>
+<th class="head"><p>将来の武器として</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Construction Protocol → DataFrame</p></td>
+<td><p><strong>L5</strong> (重心)</p></td>
+<td><p>三つの起点（天秤・面積・バリセントリック）が同じ点に至ることを比較するため、作図履歴をデータとして取り出す</p></td>
+<td><p>pandas/polars/SQL、実験 reproducibility、API レスポンス処理</p></td>
+</tr>
+<tr class="row-odd"><td><p>DataFrame → 有向グラフ (networkx)</p></td>
+<td><p><strong>L7</strong> (Euler 線)</p></td>
+<td><p>三中心が一直線上に並ぶ理由を、依存関係の構造として見る</p></td>
+<td><p>DAG はビルドシステム・タスクスケジューラ・コンパイラの共通言語</p></td>
+</tr>
+<tr class="row-even"><td><p>自己採点（リファレンスとの構造比較）</p></td>
+<td><p><strong>L9</strong> (二心対称性)</p></td>
+<td><p>学生が自力発見した対称性を、座標ではなく構造的同型性で評価する</p></td>
+<td><p>TDD・property-based testing・LLM eval</p></td>
+</tr>
+<tr class="row-odd"><td><p>SymPy 連携（代数復元）</p></td>
+<td><p><strong>L11</strong> (円錐切断)</p></td>
+<td><p>観察された <span class="math notranslate nohighlight">\(x^2/a^2 + y^2/b^2 = 1\)</span> を作図から抽出して証明する</p></td>
+<td><p>記号計算・自動定理証明・計算機代数</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>詳細な配置と「なぜ・武器」の三段構造は <a class="reference internal" href="#ggblab_extra_roadmap.md"><span class="xref myst"><code class="docutils literal notranslate"><span class="pre">ggblab_extra_roadmap.md</span></code></span></a> を参照。</p>
+<p>第 4 回はあえて ggblab_extra を入れず、Euclid 流の <strong>最小公準と命題連鎖</strong> だけで組みました。次回から、必要に応じて道具を一つずつ手元に揃えていきます。</p>
+</section>
+</section>
+<section id="id16">
+<h2>参考文献<a class="headerlink" href="#id16" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Thales_of_Miletus">Thales of Miletus - Wikipedia</a></p></li>
+<li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Thales%27s_theorem">Thales’s theorem - Wikipedia</a></p></li>
+<li><p><a class="reference external" href="http://aleph0.clarku.edu/~djoyce/java/elements/bookI/propI5.html">Euclid’s Elements, Book I, Proposition 5</a></p></li>
+<li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Circumscribed_circle">Circumcenter - Wikipedia</a></p></li>
+<li><p><a class="reference external" href="https://geogebra.github.io/docs/manual/en/commands/TriangleCenter/">TriangleCenter Command :: GeoGebra Manual</a></p></li>
+<li><p><a class="reference external" href="https://modelcontextprotocol.io/">Model Context Protocol</a> — Anthropic</p></li>
+<li><p>第 3 回までの作業ノート (共通テスト問題の ggblab 記述、networkx 依存グラフ、自己採点) を参照</p></li>
+</ul>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "julia-1.12"
+        },
+        kernelOptions: {
+            name: "julia-1.12",
+            path: "./chapters/04"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'julia-1.12'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="lesson_00_about_this_textbook.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">第 0 回: この教材はどう作られているか — AI と人間の役割分担</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../03/03_01.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">第3回: 試験問題の記述とこの授業のルール</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item"><div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">なぜこの講義は存在するか — 受験の例題と、社会の例題</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">方法 — 三段の枠組み</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">① 前提を明示する</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">② 前提から、解くべき命題を発見する</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">③ 一貫した命題の連鎖を組み立てる</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">0. 前 3 回からの移行 — なぜスモールスタートか</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">1. 前提の提示 — Thales の五定理</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ggblab">2. ggblab で前提を確認する</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">2.1 公準 (1) の確認：円と直径</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">3. 解くべき命題を発見する</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">3.1 弦と中点と垂直二等分線</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">4. 前提から命題への連鎖（証明）</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">5. 命題の連鎖を三角形へ拡張する — 外心の発見</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ggblab-5">5.1 ggblab で構成する (5 ステップ作図)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">6. 停滞と画期の照射 — 身の回りの事象と照らす</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id14">7. 次回への接続</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id15">7.1 全体のロードマップ（幾何の側）</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ggblab-extra">7.2 道具のロードマップ — ggblab_extra の段階導入</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id16">参考文献</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Manabu Higashida, D3 Center, Osaka University, Japan
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2026.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

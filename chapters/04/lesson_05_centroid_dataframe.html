@@ -1,0 +1,866 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>第5回: 同じ点を三つの前提から導く — 重心と DataFrame 外部化 &#8212; プログラミングで遡る科学史</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=3c74b3bc" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css?v=8cd3d715" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=fab101a9"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'chapters/04/lesson_05_centroid_dataframe';</script>
+    <link rel="canonical" href="https://cloudedu-osaka.github.io/textbook-2026/chapters/04/lesson_05_centroid_dataframe.html" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/vioras-logo.png" class="logo__image only-light" alt="プログラミングで遡る科学史 - Home"/>
+    <img src="../../_static/vioras-logo.png" class="logo__image only-dark pst-js-only" alt="プログラミングで遡る科学史 - Home"/>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">2026/05/13</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="lesson_00_about_this_textbook.html">この教材はどう作られているか — AI と人間の役割分担</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lesson_04_thales_circumcenter.html">前提・発見・連鎖 — Thales の定理から外心へ</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">2026/05/08</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../03/03_01.html">第3回: 試験問題の記述とこの授業のルール</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../03/02_13.html">入試問題を解く (その2) 記述する・解答する 4</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../03/02_11.html">入試問題を解く (その2) 記述する・解答する 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../03/02_12.html">入試問題を解く (その2) 記述する・解答する 3</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">2026/04/22</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../02/02_01.html">入試問題を解く (その2) 記述する・解答する 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../02/02_11.html">入試問題を解く (その2) 記述する・解答する 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../02/02_12.html">入試問題を解く (その2) 記述する・解答する 3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../02/02_13.html">入試問題を解く (その2) 記述する・解答する 4</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../02/02_02.html">入試問題を解く (その2) 記述する・解答する 5</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">2026/04/15</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../01/01_00_intro.html">How to connect and use JupyterHub</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../01/01_01.html">入試問題を解く (その1) 記述する 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../01/01_02.html">入試問題を解く (その1) 記述する 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../01/01_03.html">入試問題を解く (その1) 記述する 3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../01/01_04.html">入試問題を解く (その1) 記述する 4</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../01/01_05.html">入試問題を解く (その1) 記述する 5</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../01/01_11.html">入試問題を解く (その1) 記述する 6</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../01/01_12.html">入試問題を解く (その1) 記述する 7</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../01/01_13.html">入試問題を解く (その1) 記述する 8</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://vioras-jh2500.japaneast.cloudapp.azure.com/hub/user-redirect/git-pull?repo=https%3A//github.com/Cloudedu-Osaka/textbook-2026&urlpath=lab/tree/textbook-2026/chapters/04/lesson_05_centroid_dataframe.ipynb&branch=main" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on JupyterHub"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="JupyterHub logo" src="../../_static/images/logo_jupyterhub.svg">
+  </span>
+<span class="btn__text-container">JupyterHub</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+<a href="https://github.com/Cloudedu-Osaka/textbook-2026" target="_blank"
+   class="btn btn-sm btn-source-repository-button"
+   title="Source repository"
+   data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+
+</a>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/chapters/04/lesson_05_centroid_dataframe.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button pst-navbar-icon"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm pst-navbar-icon" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>第5回: 同じ点を三つの前提から導く — 重心と DataFrame 外部化</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">0. 前回 (第 4 回) の振り返り</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">1. 三つの前提 — 重心への三つの道</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ggblab">2. ggblab セットアップと三角形の準備</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">3. 解くべき命題を発見する</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">4. 三つの前提からの証明</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#euclid">4.1 面積分割による証明（Euclid 流）</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">4.2 バリセントリック座標による証明</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#archimedes">4.3 Archimedes の天秤による証明</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ggblab-extra-construction-protocol-dataframe">5. ggblab_extra 初出 — Construction Protocol を DataFrame として外部化する</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">5.1 なぜ今これが必要か</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">5.2 何が起きているか — 最小デモ</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">5.3 DataFrame として取り出して比較する</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">5.4 これが汎用的にどこに効くか — 将来の武器</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">6. 停滞と画期の照射 — 物理直観の二千年</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">7. 次回への接続</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">参考文献</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="dataframe">
+<h1>第5回: 同じ点を三つの前提から導く — 重心と DataFrame 外部化<a class="headerlink" href="#dataframe" title="Link to this heading">#</a></h1>
+<p><strong>主題</strong>: 重心 (Centroid) は外心とは違い、円の定義からは出てこない。代わりに <strong>三つの異なる前提</strong> から到達される。</p>
+<p><strong>副題</strong>: 三つの前提が「同じ点」に至ることを保証するには何が必要か。</p>
+<p><strong>学習目標</strong></p>
+<ol class="arabic simple">
+<li><p>重心を三つの異なる前提（Archimedes の天秤・面積分割・バリセントリック座標）から導けるようになる。</p></li>
+<li><p>作図履歴を Construction Protocol → DataFrame として <strong>外部化</strong> することの意味を理解する。</p></li>
+<li><p><strong>同じ点に到達した</strong> ことを、座標値ではなくデータ構造で検査できるようになる。</p></li>
+</ol>
+<section id="id1">
+<h2>0. 前回 (第 4 回) の振り返り<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
+<p>前回は <strong>外心</strong> を Thales の二定理だけから組み立てました：</p>
+<ul class="simple">
+<li><p>公準 (1) 円は直径によって二等分される</p></li>
+<li><p>公準 (2) 二等辺三角形の底角は等しい</p></li>
+<li><p>→ Lemma 1: 弦の垂直二等分線は中心を通る</p></li>
+<li><p>→ 主命題: 三辺の垂直二等分線は一点 O で交わる（外心）</p></li>
+</ul>
+<p><strong>前提一つ、命題連鎖の最短経路</strong> という構造でした。</p>
+<p>今回は逆に、<strong>前提を複数並べて、同じ結論に至る</strong> という構造を扱います。</p>
+</section>
+<section id="id2">
+<h2>1. 三つの前提 — 重心への三つの道<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
+<p>重心は次の三つの前提のどれからでも導けます：</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>前提</p></th>
+<th class="head"><p>起源</p></th>
+<th class="head"><p>性質</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Archimedes の天秤</strong></p></td>
+<td><p>紀元前 3 世紀、Archimedes 『On the Equilibrium of Planes』</p></td>
+<td><p>物理的直観：質点の平衡で重心を定義</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>面積分割</strong></p></td>
+<td><p>Euclid 流、純粋な幾何</p></td>
+<td><p>中線は三角形を等面積に分ける</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>バリセントリック座標</strong></p></td>
+<td><p>1827 年、Möbius 『Der barycentrische Calcül』</p></td>
+<td><p>線形結合の係数で点を表す。座標選択に依存しない</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>問い</strong>: 三つの異なる前提が <strong>同じ点</strong> に至るのは偶然か？<br />
+あるいは、何かが保証しているのか？</p>
+<p>参考: <a class="reference external" href="https://en.wikipedia.org/wiki/Centroid">Centroid - Wikipedia</a>、<a class="reference external" href="https://en.wikipedia.org/wiki/Barycentric_coordinate_system">Barycentric coordinate system - Wikipedia</a>、<a class="reference external" href="https://en.wikipedia.org/wiki/August_Ferdinand_M%C3%B6bius">August Ferdinand Möbius - Wikipedia</a></p>
+</section>
+<section id="ggblab">
+<h2>2. ggblab セットアップと三角形の準備<a class="headerlink" href="#ggblab" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="k">using</span><span class="w"> </span><span class="n">Pkg</span>
+<span class="n">Pkg</span><span class="o">.</span><span class="n">activate</span><span class="p">(</span><span class="s">&quot;../..&quot;</span><span class="p">)</span>
+<span class="n">Pkg</span><span class="o">.</span><span class="n">instantiate</span><span class="p">()</span>
+<span class="k">using</span><span class="w"> </span><span class="n">GeoGebra</span>
+<span class="nb">ENV</span><span class="p">[</span><span class="s">&quot;GGB_DIRECT_TRANSPORT&quot;</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;true&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">inject_applet</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="nd">@ggb</span><span class="w"> </span><span class="ss">:const</span><span class="w"> </span><span class="ss">:new</span>
+<span class="nd">@ggb</span><span class="w"> </span><span class="n">A</span><span class="o">=</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span>
+<span class="nd">@ggb</span><span class="w"> </span><span class="n">B</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span>
+<span class="nd">@ggb</span><span class="w"> </span><span class="n">C</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+<span class="nd">@ggb</span><span class="w"> </span><span class="n">Polygon</span><span class="p">(</span><span class="ss">:A</span><span class="p">,</span><span class="w"> </span><span class="ss">:B</span><span class="p">,</span><span class="w"> </span><span class="ss">:C</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="id3">
+<h2>3. 解くべき命題を発見する<a class="headerlink" href="#id3" title="Link to this heading">#</a></h2>
+<p>中線（各頂点から対辺の中点への線分）を三本引き、観察します。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="nd">@ggb</span><span class="w"> </span><span class="n">M_a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Midpoint</span><span class="p">(</span><span class="n">B</span><span class="p">,</span><span class="w"> </span><span class="n">C</span><span class="p">)</span>
+<span class="nd">@ggb</span><span class="w"> </span><span class="n">M_b</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Midpoint</span><span class="p">(</span><span class="n">C</span><span class="p">,</span><span class="w"> </span><span class="n">A</span><span class="p">)</span>
+<span class="nd">@ggb</span><span class="w"> </span><span class="n">M_c</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Midpoint</span><span class="p">(</span><span class="n">A</span><span class="p">,</span><span class="w"> </span><span class="n">B</span><span class="p">)</span>
+<span class="nd">@ggb</span><span class="w"> </span><span class="n">Segment</span><span class="p">(</span><span class="n">A</span><span class="p">,</span><span class="w"> </span><span class="n">M_a</span><span class="p">)</span>
+<span class="nd">@ggb</span><span class="w"> </span><span class="n">Segment</span><span class="p">(</span><span class="n">B</span><span class="p">,</span><span class="w"> </span><span class="n">M_b</span><span class="p">)</span>
+<span class="nd">@ggb</span><span class="w"> </span><span class="n">Segment</span><span class="p">(</span><span class="n">C</span><span class="p">,</span><span class="w"> </span><span class="n">M_c</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>観察</strong>: 三本の中線が一点で交わる。さらに、その点は中線を <strong>2:1 に内分</strong> しているように見える。</p>
+<p><strong>問い</strong>: B, C の取り方を変えても成り立つか？ 成り立つとしたら、なぜか？</p>
+<p>前回と同じ構造の問い — 観察から命題への移行です。</p>
+</section>
+<section id="id4">
+<h2>4. 三つの前提からの証明<a class="headerlink" href="#id4" title="Link to this heading">#</a></h2>
+<p>三つの道で同じ点に到達できることを順に確認します。</p>
+<section id="euclid">
+<h3>4.1 面積分割による証明（Euclid 流）<a class="headerlink" href="#euclid" title="Link to this heading">#</a></h3>
+<ol class="arabic simple">
+<li><p>中線 <span class="math notranslate nohighlight">\(AM_a\)</span> は、<span class="math notranslate nohighlight">\(\triangle ABM_a\)</span> と <span class="math notranslate nohighlight">\(\triangle ACM_a\)</span> に三角形を分ける。</p></li>
+<li><p>両者は底辺 <span class="math notranslate nohighlight">\(BM_a\)</span>, <span class="math notranslate nohighlight">\(CM_a\)</span> が等しく（中点の定義）、高さが共通（A から底辺への垂線）。<br />
+→ <strong>二つの三角形は等面積</strong>。</p></li>
+<li><p>同様に、中線 <span class="math notranslate nohighlight">\(BM_b\)</span>, <span class="math notranslate nohighlight">\(CM_c\)</span> もそれぞれ三角形を等面積に分ける。</p></li>
+<li><p>三本の中線が同じ点 G で交わると仮定して、面積比から AG:GM_a を計算すると <strong>2:1</strong> になる。</p></li>
+<li><p>（詳細な作図は付録参照）</p></li>
+</ol>
+<p>参考: <a class="reference external" href="https://en.wikipedia.org/wiki/Centroid#Properties">Centroid - Wikipedia</a></p>
+</section>
+<section id="id5">
+<h3>4.2 バリセントリック座標による証明<a class="headerlink" href="#id5" title="Link to this heading">#</a></h3>
+<p>点 P を <strong>バリセントリック座標</strong> で次のように表す：
+$<span class="math notranslate nohighlight">\( P = \alpha A + \beta B + \gamma C, \quad \alpha + \beta + \gamma = 1 \)</span>$</p>
+<ol class="arabic simple">
+<li><p>辺 BC の中点 <span class="math notranslate nohighlight">\(M_a\)</span> は <span class="math notranslate nohighlight">\(M_a = (0, 1/2, 1/2)\)</span>。</p></li>
+<li><p>A から <span class="math notranslate nohighlight">\(M_a\)</span> への中線上の点はパラメータ <span class="math notranslate nohighlight">\(t \in [0, 1]\)</span> で
+$<span class="math notranslate nohighlight">\( P(t) = ((1-t), t/2, t/2) \)</span><span class="math notranslate nohighlight">\(
+ （係数和は \)</span>1$ を保つ）。</p></li>
+<li><p>三本の中線が一点で交わるなら、対称性より <span class="math notranslate nohighlight">\(\alpha = \beta = \gamma\)</span> が成立。</p></li>
+<li><p><span class="math notranslate nohighlight">\(\alpha + \beta + \gamma = 1\)</span> より <span class="math notranslate nohighlight">\(\alpha = \beta = \gamma = 1/3\)</span>。</p></li>
+<li><p>すなわち <strong>重心 <span class="math notranslate nohighlight">\(G = (1/3, 1/3, 1/3)\)</span></strong>。</p></li>
+<li><p><span class="math notranslate nohighlight">\(P(t) = G\)</span> となる <span class="math notranslate nohighlight">\(t\)</span> は <span class="math notranslate nohighlight">\(t = 2/3\)</span>。これは AG が中線 <span class="math notranslate nohighlight">\(AM_a\)</span> の <span class="math notranslate nohighlight">\(2/3\)</span>、すなわち <strong>AG:GM_a = 2:1</strong>。</p></li>
+</ol>
+<p><strong>ポイント</strong>: この証明は座標系の取り方に依存しない。バリセントリック座標は、点の表現を「アフィン不変」な形にしている。<br />
+→ Möbius (1827) の発想は、座標選択の自由を構造的に吸収する画期。</p>
+</section>
+<section id="archimedes">
+<h3>4.3 Archimedes の天秤による証明<a class="headerlink" href="#archimedes" title="Link to this heading">#</a></h3>
+<ol class="arabic simple">
+<li><p>A, B, C それぞれに同じ質量 <span class="math notranslate nohighlight">\(m\)</span> を置く。</p></li>
+<li><p>B と C に置いた質量 <span class="math notranslate nohighlight">\(m, m\)</span> は、その中点 <span class="math notranslate nohighlight">\(M_a\)</span> に集中された質量 <span class="math notranslate nohighlight">\(2m\)</span> と平衡する（天秤の原理）。</p></li>
+<li><p>A の質量 <span class="math notranslate nohighlight">\(m\)</span> と <span class="math notranslate nohighlight">\(M_a\)</span> の質量 <span class="math notranslate nohighlight">\(2m\)</span> は、線分 <span class="math notranslate nohighlight">\(AM_a\)</span> 上の点 G で平衡する。</p></li>
+<li><p>平衡条件 <span class="math notranslate nohighlight">\(m \cdot AG = 2m \cdot GM_a\)</span> より、<strong>AG : GM_a = 2 : 1</strong>。</p></li>
+<li><p>同じ議論を B, C を起点として繰り返すと、三本の中線がすべて G で交わることが分かる。</p></li>
+</ol>
+<p><strong>ポイント</strong>: 物理直観 (天秤) だけで結論に到達する。座標も等式も不要。<br />
+→ Archimedes は紀元前 3 世紀にこの議論を行った。</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>発見
+三つの異なる前提（面積分割・バリセントリック・天秤）が、<strong>同じ点</strong> <span class="math notranslate nohighlight">\(G\)</span> に到達した。AG:GM_a = 2:1 も三つすべてで一致。</p>
+<p>これは偶然ではなく、三つが <strong>同じ構造を別の言語で記述している</strong> ことの帰結である。</p>
+<p>では、三つが「同じ点を指している」ことを、どう <strong>検査</strong> すればよいか？</p>
+</div>
+</section>
+</section>
+<section id="ggblab-extra-construction-protocol-dataframe">
+<h2>5. ggblab_extra 初出 — Construction Protocol を DataFrame として外部化する<a class="headerlink" href="#ggblab-extra-construction-protocol-dataframe" title="Link to this heading">#</a></h2>
+<p>ここで、本講義シリーズの <strong>道具のロードマップ</strong> の第一段階に進みます。</p>
+<section id="id6">
+<h3>5.1 なぜ今これが必要か<a class="headerlink" href="#id6" title="Link to this heading">#</a></h3>
+<p>三つの起点から「同じ点」に到達したことを保証したい。しかし、目で見ただけでは、誤差で重なって見えているだけかもしれません。</p>
+<p>GeoGebra アプレットの <strong>内部</strong> には、作図された各オブジェクト（点・線・円など）の名前・型・定義式・座標値・依存元がすべて記録されています。これを <strong>Construction Protocol</strong> と呼びます。</p>
+<p>Construction Protocol を Python/Julia の <strong>DataFrame</strong> として取り出せば、三つの起点で得られた重心の座標を <strong>数値として直接比較</strong> できます。</p>
+<p>→ 「アプレットの内部状態を外部化する」という操作は、本講義のここから先で <strong>何度も使う基本作法</strong> になります。</p>
+</section>
+<section id="id7">
+<h3>5.2 何が起きているか — 最小デモ<a class="headerlink" href="#id7" title="Link to this heading">#</a></h3>
+<p>現在のアプレットの作図状態を DataFrame として取り出します。</p>
+<p>（ggblab_extra の Python 側機能を呼び出す形になります。Julia の <code class="docutils literal notranslate"><span class="pre">juliacall</span></code> 経由、または Python セルで実行します。先生の環境での正確な呼び出し方法に合わせて調整してください。）</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="c"># Archimedes の天秤による重心の構成（GeoGebra 組み込みコマンドで）</span>
+<span class="nd">@ggb</span><span class="w"> </span><span class="n">G_balance</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">TriangleCenter</span><span class="p">(</span><span class="ss">:A</span><span class="p">,</span><span class="w"> </span><span class="ss">:B</span><span class="p">,</span><span class="w"> </span><span class="ss">:C</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="w">  </span><span class="c"># 2 = Centroid</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="c"># バリセントリック座標による重心</span>
+<span class="nd">@ggb</span><span class="w"> </span><span class="n">G_bary</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">A</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">B</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">C</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">3</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="c"># 面積分割（中線の交点）による重心</span>
+<span class="nd">@ggb</span><span class="w"> </span><span class="n">G_medians</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Intersect</span><span class="p">(</span><span class="n">Segment</span><span class="p">(</span><span class="n">A</span><span class="p">,</span><span class="w"> </span><span class="n">M_a</span><span class="p">),</span><span class="w"> </span><span class="n">Segment</span><span class="p">(</span><span class="n">B</span><span class="p">,</span><span class="w"> </span><span class="n">M_b</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="id8">
+<h3>5.3 DataFrame として取り出して比較する<a class="headerlink" href="#id8" title="Link to this heading">#</a></h3>
+<p>三つの構成 <span class="math notranslate nohighlight">\(G_{\text{balance}}\)</span>, <span class="math notranslate nohighlight">\(G_{\text{bary}}\)</span>, <span class="math notranslate nohighlight">\(G_{\text{medians}}\)</span> を DataFrame に並べて、座標値を比較します。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="c"># Construction Protocol を DataFrame として外部化</span>
+<span class="c"># Python 側の ggblab_extra を呼び出す（環境に応じて API を調整してください）</span>
+<span class="c">#</span>
+<span class="c"># 例: textbook-2025 examples_by_dual_coding/eg00.ipynb で使用された形：</span>
+<span class="c">#   df = await ConstructionIO.initialize_dataframe(ggb, use_applet=True)</span>
+<span class="c">#   df[[&quot;Name&quot;, &quot;Type&quot;, &quot;Command&quot;, &quot;Value&quot;]]</span>
+<span class="c">#</span>
+<span class="c"># Julia 側からは juliacall 経由、または PyCall でアクセスします。</span>
+
+<span class="k">using</span><span class="w"> </span><span class="n">PythonCall</span>
+<span class="n">ggblab_extra</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pyimport</span><span class="p">(</span><span class="s">&quot;ggblab_extra&quot;</span><span class="p">)</span>
+<span class="n">ConstructionIO</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ggblab_extra</span><span class="o">.</span><span class="n">ConstructionIO</span>
+
+<span class="c"># df = ConstructionIO.initialize_dataframe(...)  # 先生の環境での正確な呼び出しに調整</span>
+<span class="c"># df_centroids = df[df[&quot;Name&quot;].isin([&quot;G_balance&quot;, &quot;G_bary&quot;, &quot;G_medians&quot;])]</span>
+<span class="c"># df_centroids</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>DataFrame で見ると、何が起きるか</strong>：</p>
+<ul class="simple">
+<li><p>三行のうち、<code class="docutils literal notranslate"><span class="pre">Value</span></code> 列の座標が（数値誤差の範囲で）一致している → 三つの起点が同じ点を指していることが <strong>データレベルで確認</strong> できる</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Command</span></code> 列を見ると、三つが <strong>異なる手続き</strong> で構成されていることが分かる → 異なる前提から同じ結論に至った経路が記録されている</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Type</span></code> 列は全て <code class="docutils literal notranslate"><span class="pre">point</span></code> → 三つとも点として扱われている</p></li>
+</ul>
+<p>観察を <strong>目視ではなくデータで検証</strong> できる。これは Apollonius 期の幾何学が手作業で行っていた作業を、現代のツールで一段階上にした行為です。</p>
+</section>
+<section id="id9">
+<h3>5.4 これが汎用的にどこに効くか — 将来の武器<a class="headerlink" href="#id9" title="Link to this heading">#</a></h3>
+<p>「アプレットの内部状態を外部 DataFrame に取り出す」という操作は、<strong>他のあらゆる場面で再演されます</strong>：</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>分野</p></th>
+<th class="head"><p>同じ操作</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>データサイエンス</p></td>
+<td><p>データベースから pandas/polars にロードする</p></td>
+</tr>
+<tr class="row-odd"><td><p>Web API 開発</p></td>
+<td><p>レスポンス JSON を構造化データに変換する</p></td>
+</tr>
+<tr class="row-even"><td><p>計測 / 実験</p></td>
+<td><p>センサーログを DataFrame にして解析する</p></td>
+</tr>
+<tr class="row-odd"><td><p>機械学習</p></td>
+<td><p>モデルの中間表現を可視化する (TensorBoard, MLflow)</p></td>
+</tr>
+<tr class="row-even"><td><p>数値計算</p></td>
+<td><p>シミュレーションの内部状態を時系列 DataFrame として外部化</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>共通する思想</strong>：<strong>「ブラックボックスの中身を、検査可能なデータ構造に変換する」</strong>。これは現代エンジニアリングの最も基本的な作法の一つです。</p>
+<p>Apollonius 期に隠蔽されていた接線の局所構造を、19 世紀の数学者たち（Cauchy/Weierstrass）が記号化と論理化で <strong>外部化</strong> したのと、同じ動きの現代版です。</p>
+</section>
+</section>
+<section id="id10">
+<h2>6. 停滞と画期の照射 — 物理直観の二千年<a class="headerlink" href="#id10" title="Link to this heading">#</a></h2>
+<p>Archimedes の天秤による重心の議論は、<strong>紀元前 3 世紀から二千年の間、物理的直観として受け入れられ続け</strong> ました。「天秤を傾ける」という日常感覚で正しい答えに到達できる。</p>
+<p>しかし、これが <strong>解析的・座標非依存に厳密化</strong> されたのは、Möbius のバリセントリック座標 (1827) を待たねばなりませんでした。</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>段階</p></th>
+<th class="head"><p>何が画期だったか</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>紀元前 3 世紀 (Archimedes)</p></td>
+<td><p>物理直観で重心を <strong>正しく</strong> 計算できた</p></td>
+</tr>
+<tr class="row-odd"><td><p>1637 (Descartes)</p></td>
+<td><p>座標を導入したが、重心の本質は座標の選び方に依存しないはず</p></td>
+</tr>
+<tr class="row-even"><td><p>1827 (Möbius)</p></td>
+<td><p>バリセントリック座標で <strong>座標選択の自由を構造的に吸収</strong></p></td>
+</tr>
+<tr class="row-odd"><td><p>1844 (Grassmann)</p></td>
+<td><p>線形結合の代数を抽象化（ベクトル空間の先駆）</p></td>
+</tr>
+<tr class="row-even"><td><p>19 世紀後半 (Gibbs/Heaviside)</p></td>
+<td><p>ベクトル代数として物理に整備</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>→ <strong>「正しい答え」と「なぜ正しいかが明確な答え」の間に二千年の遅延</strong> があった。</p>
+<p>現代の例：LLM が「動く答え」を出してくれるが、<strong>「なぜそう動いているか」が明確でない</strong> 状態にいる。Archimedes 期と Möbius 期の間の二千年と、現代の状況に構造的類似があります。</p>
+<div class="tip admonition">
+<p class="admonition-title">今回の課題</p>
+<p><strong>必修</strong></p>
+<ol class="arabic simple">
+<li><p>三つの起点（天秤・面積・バリセントリック）のいずれか一つで重心 G を作図し、Construction Protocol を DataFrame として取り出して、AG:GM_a = 2:1 を数値で確認せよ。</p></li>
+<li><p>残り二つの起点でも同じ点に到達することを、DataFrame の <code class="docutils literal notranslate"><span class="pre">Value</span></code> 列で確認せよ。</p></li>
+</ol>
+<p><strong>思考課題</strong>
+3. 「正しい答え」と「なぜ正しいかが明確な答え」の間に時間的ギャップがある事例を、身の回りから一つ挙げよ（前回課題の延長として）。例: 経験則として動いている技術、説明はないが効くと信じられている手法、etc.</p>
+<p><em>ヒント</em>: 第 15 回での立論の素材として記録を残してください。</p>
+</div>
+</section>
+<section id="id11">
+<h2>7. 次回への接続<a class="headerlink" href="#id11" title="Link to this heading">#</a></h2>
+<p>次回 (第 6 回) は <strong>内心 (Incenter)</strong> に移ります。内心は外心とも重心とも違う系統 — <strong>角の二等分線</strong> の交点として定義されます。</p>
+<p>今回扱った Construction Protocol → DataFrame は、第 6 回でも引き続き使います。<strong>角の二等分線が一点で交わることをデータで検証</strong> する場面です。</p>
+<p>また、次々回 (第 7 回) では DataFrame をさらに一歩進めて <strong>有向グラフ (networkx)</strong> に変換します。Euler 線（外心・重心・垂心が一直線上に並ぶ）の理由を、座標計算ではなく <strong>依存構造</strong> から見ます。</p>
+<p>道具のロードマップは <a class="reference internal" href="#ggblab_extra_roadmap.md"><span class="xref myst"><code class="docutils literal notranslate"><span class="pre">ggblab_extra_roadmap.md</span></code></span></a> を参照。</p>
+</section>
+<section id="id12">
+<h2>参考文献<a class="headerlink" href="#id12" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Centroid">Centroid - Wikipedia</a></p></li>
+<li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Barycentric_coordinate_system">Barycentric coordinate system - Wikipedia</a></p></li>
+<li><p><a class="reference external" href="https://en.wikipedia.org/wiki/August_Ferdinand_M%C3%B6bius">August Ferdinand Möbius - Wikipedia</a></p></li>
+<li><p><a class="reference external" href="https://archive.org/details/worksofarchimede00archuoft">Archimedes’ On the Equilibrium of Planes (Heath 訳)</a></p></li>
+<li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Hermann_Grassmann">Hermann Grassmann - Wikipedia</a></p></li>
+<li><p><a class="reference external" href="https://pandas.pydata.org/">pandas</a> / <a class="reference external" href="https://pola.rs/">Polars</a> — DataFrame の現代的実装</p></li>
+<li><p>前回授業 <a class="reference internal" href="lesson_04_thales_circumcenter.html"><span class="std std-doc"><code class="docutils literal notranslate"><span class="pre">lesson_04_thales_circumcenter.ipynb</span></code></span></a></p></li>
+<li><p>道具のロードマップ <a class="reference internal" href="#ggblab_extra_roadmap.md"><span class="xref myst"><code class="docutils literal notranslate"><span class="pre">ggblab_extra_roadmap.md</span></code></span></a></p></li>
+</ul>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "julia-1.12"
+        },
+        kernelOptions: {
+            name: "julia-1.12",
+            path: "./chapters/04"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'julia-1.12'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item"><div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">0. 前回 (第 4 回) の振り返り</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">1. 三つの前提 — 重心への三つの道</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ggblab">2. ggblab セットアップと三角形の準備</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">3. 解くべき命題を発見する</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">4. 三つの前提からの証明</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#euclid">4.1 面積分割による証明（Euclid 流）</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">4.2 バリセントリック座標による証明</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#archimedes">4.3 Archimedes の天秤による証明</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ggblab-extra-construction-protocol-dataframe">5. ggblab_extra 初出 — Construction Protocol を DataFrame として外部化する</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">5.1 なぜ今これが必要か</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">5.2 何が起きているか — 最小デモ</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">5.3 DataFrame として取り出して比較する</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">5.4 これが汎用的にどこに効くか — 将来の武器</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">6. 停滞と画期の照射 — 物理直観の二千年</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">7. 次回への接続</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">参考文献</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Manabu Higashida, D3 Center, Osaka University, Japan
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2026.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
