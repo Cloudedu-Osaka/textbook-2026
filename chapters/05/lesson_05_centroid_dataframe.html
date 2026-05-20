@@ -62,10 +62,12 @@
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'chapters/04/lesson_05_centroid_dataframe';</script>
-    <link rel="canonical" href="https://cloudedu-osaka.github.io/textbook-2026/chapters/04/lesson_05_centroid_dataframe.html" />
+    <script>DOCUMENTATION_OPTIONS.pagename = 'chapters/05/lesson_05_centroid_dataframe';</script>
+    <link rel="canonical" href="https://cloudedu-osaka.github.io/textbook-2026/chapters/05/lesson_05_centroid_dataframe.html" />
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="第 0 回: この教材はどう作られているか — AI と人間の役割分担" href="../04/lesson_00_about_this_textbook.html" />
+    <link rel="prev" title="第4回: 前提・発見・連鎖 — Thales の定理から外心へ" href="lesson_04_thales_circumcenter.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
@@ -117,8 +119,6 @@
       
       
       
-        
-      
       <dialog id="pst-primary-sidebar-modal"></dialog>
       <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
         
@@ -164,14 +164,14 @@
         <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">2026/05/20</span></p>
-<ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../05/lesson_04_thales_circumcenter.html">前提・発見・連鎖 — Thales の定理から外心へ</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../05/lesson_05_centroid_dataframe.html">同じ点を三つの前提から導く — 重心と DataFrame 外部化</a></li>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="lesson_04_thales_circumcenter.html">前提・発見・連鎖 — Thales の定理から外心へ</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">同じ点を三つの前提から導く — 重心と DataFrame 外部化</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">2026/05/13</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="lesson_00_about_this_textbook.html">この教材はどう作られているか — AI と人間の役割分担</a></li>
-<li class="toctree-l1"><a class="reference internal" href="lesson_04_thales_circumcenter.html">前提・発見・連鎖 — Thales の定理から外心へ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../04/lesson_00_about_this_textbook.html">この教材はどう作られているか — AI と人間の役割分担</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../04/lesson_04_thales_circumcenter.html">前提・発見・連鎖 — Thales の定理から外心へ</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">2026/05/08</span></p>
 <ul class="nav bd-sidenav">
@@ -259,7 +259,7 @@
       
       
       
-      <li><a href="https://vioras-jh2500.japaneast.cloudapp.azure.com/hub/user-redirect/git-pull?repo=https%3A//github.com/Cloudedu-Osaka/textbook-2026&urlpath=lab/tree/textbook-2026/chapters/04/lesson_05_centroid_dataframe.ipynb&branch=main" target="_blank"
+      <li><a href="https://vioras-jh2500.japaneast.cloudapp.azure.com/hub/user-redirect/git-pull?repo=https%3A//github.com/Cloudedu-Osaka/textbook-2026&urlpath=lab/tree/textbook-2026/chapters/05/lesson_05_centroid_dataframe.ipynb&branch=main" target="_blank"
    class="btn btn-sm dropdown-item"
    title="Launch on JupyterHub"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -305,7 +305,7 @@
       
       
       
-      <li><a href="../../_sources/chapters/04/lesson_05_centroid_dataframe.ipynb" target="_blank"
+      <li><a href="../../_sources/chapters/05/lesson_05_centroid_dataframe.ipynb" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -409,7 +409,8 @@
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">6. 停滞と画期の照射 — 物理直観の二千年</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">7. 次回への接続</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#l5-version">7. 今学期の実験 — 科学転生無双レポート (L5 version)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">8. 次回への接続</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">参考文献</a></li>
 </ul>
             </nav>
@@ -443,6 +444,12 @@
 </ul>
 <p><strong>前提一つ、命題連鎖の最短経路</strong> という構造でした。</p>
 <p>今回は逆に、<strong>前提を複数並べて、同じ結論に至る</strong> という構造を扱います。</p>
+<div class="tip admonition">
+<p class="admonition-title">Tip</p>
+<p>先週仕込んだ語彙が今日 instance 化する</p>
+<p>L4 §0 で「<strong>嫌い → 抽象化</strong>」 という閃きの pattern を articulate した (Babylonia/Napier/Leibniz/Anthropic 系譜)。今日は、Möbius がバリセントリック座標 (1827) で literal にこの pattern を経た事例に出会う (§4.2)。</p>
+<p>L4 §0 のファミマ入店音 reframe (同じ scope を異なる文脈で実装) も今日体験する: 「重心」 という同じ点を、天秤/面積/座標という三つの異なる前提で arrange する (§4)。<strong>連続講義の体験は、先週の語彙が今週使える</strong> ようになることに価値の一部がある。</p>
+</div>
 </section>
 <section id="id2">
 <h2>1. 三つの前提 — 重心への三つの道<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
@@ -500,10 +507,22 @@
 <span class="nd">@ggb</span><span class="w"> </span><span class="n">A</span><span class="o">=</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span>
 <span class="nd">@ggb</span><span class="w"> </span><span class="n">B</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span>
 <span class="nd">@ggb</span><span class="w"> </span><span class="n">C</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
-<span class="nd">@ggb</span><span class="w"> </span><span class="n">Polygon</span><span class="p">(</span><span class="ss">:A</span><span class="p">,</span><span class="w"> </span><span class="ss">:B</span><span class="p">,</span><span class="w"> </span><span class="ss">:C</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="nd">@ggb</span><span class="w"> </span><span class="n">Polygon</span><span class="p">(</span><span class="ss">:A</span><span class="p">,</span><span class="w"> </span><span class="ss">:B</span><span class="p">,</span><span class="w"> </span><span class="ss">:C</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="tip admonition">
+<p class="admonition-title">Tip</p>
+<p>&#64;Codex 多層対話 model (L4 §2 で詳述)</p>
+<p>L4 §2 で説明した三層対話 model (context / tools / post-processing) は、L5 でも同じく機能する。今日 ggblab セットアップしたアプレットは &#64;Codex にとっての「環境 (tools)」 になる。</p>
+<p>「重心がなぜ一点に集まるか」 のような <strong>答えは知っているが理由が混みあった</strong> 問いを &#64;Codex に聞くと、Möbius バリセントリック座標を出してくる可能性が高い。これは LLM の standard answer で、L5 §6 で見るように <strong>答えと「なぜ動くか」 のギャップ</strong> を体感する素材になる (Bender 「Stochastic Parrot」)。</p>
 </div>
 </section>
 <section id="id3">
@@ -511,12 +530,18 @@
 <p>中線（各頂点から対辺の中点への線分）を三本引き、観察します。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="nd">@ggb</span><span class="w"> </span><span class="n">M_a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Midpoint</span><span class="p">(</span><span class="n">B</span><span class="p">,</span><span class="w"> </span><span class="n">C</span><span class="p">)</span>
-<span class="nd">@ggb</span><span class="w"> </span><span class="n">M_b</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Midpoint</span><span class="p">(</span><span class="n">C</span><span class="p">,</span><span class="w"> </span><span class="n">A</span><span class="p">)</span>
-<span class="nd">@ggb</span><span class="w"> </span><span class="n">M_c</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Midpoint</span><span class="p">(</span><span class="n">A</span><span class="p">,</span><span class="w"> </span><span class="n">B</span><span class="p">)</span>
-<span class="nd">@ggb</span><span class="w"> </span><span class="n">Segment</span><span class="p">(</span><span class="n">A</span><span class="p">,</span><span class="w"> </span><span class="n">M_a</span><span class="p">)</span>
-<span class="nd">@ggb</span><span class="w"> </span><span class="n">Segment</span><span class="p">(</span><span class="n">B</span><span class="p">,</span><span class="w"> </span><span class="n">M_b</span><span class="p">)</span>
-<span class="nd">@ggb</span><span class="w"> </span><span class="n">Segment</span><span class="p">(</span><span class="n">C</span><span class="p">,</span><span class="w"> </span><span class="n">M_c</span><span class="p">)</span>
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="nd">@ggb</span><span class="w"> </span><span class="n">M_a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Midpoint</span><span class="p">(</span><span class="ss">:B</span><span class="p">,</span><span class="w"> </span><span class="ss">:C</span><span class="p">)</span>
+<span class="nd">@ggb</span><span class="w"> </span><span class="n">M_b</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Midpoint</span><span class="p">(</span><span class="ss">:C</span><span class="p">,</span><span class="w"> </span><span class="ss">:A</span><span class="p">)</span>
+<span class="nd">@ggb</span><span class="w"> </span><span class="n">M_c</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Midpoint</span><span class="p">(</span><span class="ss">:A</span><span class="p">,</span><span class="w"> </span><span class="ss">:B</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="nd">@ggb</span><span class="w"> </span><span class="n">Segment</span><span class="p">(</span><span class="ss">:A</span><span class="p">,</span><span class="w"> </span><span class="ss">:M_a</span><span class="p">)</span>
+<span class="nd">@ggb</span><span class="w"> </span><span class="n">Segment</span><span class="p">(</span><span class="ss">:B</span><span class="p">,</span><span class="w"> </span><span class="ss">:M_b</span><span class="p">)</span>
+<span class="nd">@ggb</span><span class="w"> </span><span class="n">Segment</span><span class="p">(</span><span class="ss">:C</span><span class="p">,</span><span class="w"> </span><span class="ss">:M_c</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -556,6 +581,21 @@ $<span class="math notranslate nohighlight">\( P(t) = ((1-t), t/2, t/2) \)</span
 </ol>
 <p><strong>ポイント</strong>: この証明は座標系の取り方に依存しない。バリセントリック座標は、点の表現を「アフィン不変」な形にしている。<br />
 → Möbius (1827) の発想は、座標選択の自由を構造的に吸収する画期。</p>
+<div class="important admonition">
+<p class="admonition-title">Important</p>
+<p>「嫌い → 抽象化」 pattern が今 literal に起こっている</p>
+<p>Möbius (1827) は <strong>座標選択の煩わしさを嫌った</strong>。Descartes の (x, y) 座標は便利だが、原点・軸の取り方によって同じ点が違う数で表される。「重心」 のような <strong>配置に内在する量</strong> を扱うのに、外部的な座標選択を経由するのは不自然である。</p>
+<p>この嫌悪が <strong>バリセントリック座標</strong> <span class="math notranslate nohighlight">\(P = αA + βB + γC\)</span> という抽象化を生んだ。係数 <span class="math notranslate nohighlight">\((α, β, γ)\)</span> は、原点や軸の選び方に依存しない。三角形の頂点 <span class="math notranslate nohighlight">\(A, B, C\)</span> 自身を「内部の参照点」 として使う。</p>
+<p>これは L4 §0 で仕込んだ「<strong>嫌い → 抽象化</strong>」 という閃きの pattern の literal instance である:</p>
+<ul class="simple">
+<li><p>Babylonia: 大きな数の掛け算が嫌い → log-log table の前駆</p></li>
+<li><p>Napier (1614): 大きな数の掛け算が嫌い → 対数表</p></li>
+<li><p>Leibniz: Newton の流率表記が嫌い → 現代の <span class="math notranslate nohighlight">\(dx, dy\)</span> 記法</p></li>
+<li><p><strong>Möbius (1827)</strong>: 座標選択が嫌い → バリセントリック座標</p></li>
+<li><p>Anthropic: マルチターン RL の不安定が嫌い → Constitutional AI</p></li>
+</ul>
+<p>「嫌い」 を articulate できる人だけが抽象化の入口に立つ。</p>
+</div>
 </section>
 <section id="archimedes">
 <h3>4.3 Archimedes の天秤による証明<a class="headerlink" href="#archimedes" title="Link to this heading">#</a></h3>
@@ -574,6 +614,18 @@ $<span class="math notranslate nohighlight">\( P(t) = ((1-t), t/2, t/2) \)</span
 三つの異なる前提（面積分割・バリセントリック・天秤）が、<strong>同じ点</strong> <span class="math notranslate nohighlight">\(G\)</span> に到達した。AG:GM_a = 2:1 も三つすべてで一致。</p>
 <p>これは偶然ではなく、三つが <strong>同じ構造を別の言語で記述している</strong> ことの帰結である。</p>
 <p>では、三つが「同じ点を指している」ことを、どう <strong>検査</strong> すればよいか？</p>
+</div>
+<div class="attention admonition">
+<p class="admonition-title">Attention</p>
+<p>三つの証明、それぞれの「納得できなさ」</p>
+<p>三つが同じ点に到達した、と書いた。しかし正直に言うと、三つともそれぞれ「完全には納得できない」 ところがある:</p>
+<ul class="simple">
+<li><p><strong>面積分割</strong> (§4.1) は手順 4 で「三本の中線が同じ点 G で交わると <strong>仮定して</strong>」 から始まる。<strong>一点で交わること自体は別に証明する必要</strong> がある。手順 1-3 だけでは閉じない。</p></li>
+<li><p><strong>天秤</strong> (§4.3) は物理的直観 (連続体の重心と質点の重心が同じ振る舞いをする) を hypothesis として使っている。Archimedes 自身は独立に正当化したが、現代的厳密さからは公理ではなく定理である。</p></li>
+<li><p><strong>バリセントリック</strong> (§4.2) は座標選択を消すが、「<strong>なぜ</strong> 三本の中線が交わるか」 自体は説明していない。手順 3 の「対称性より <span class="math notranslate nohighlight">\(α = β = γ\)</span>」 は、交わることを暗黙に使っている。</p></li>
+</ul>
+<p>つまり、三つの「証明」 は <strong>異なる暗黙の前提</strong> に依存しており、独立に完結した証明ではない。それでも教育上有益なのは、「同じ結論に至る三つの道筋」 を観察すること自体に意味があるからである。<strong>完全に納得できる証明はおそらく、これら三つを統合した先にある</strong> — そしてそれは線形代数や射影幾何の本格的な道具立てを必要とする (Cauchy/Weierstrass の二千年後の厳密化 §6 を参照)。</p>
+<p>これは「証明の隙」 を学生が見つけるための callout でもある。気持ち悪いと思ったら、それは正しい感覚である。L4 で扱った Thales (外心) 証明とは違って、L5 (重心) の証明は <strong>教育の伝統が隙を整理しないまま伝えてきた</strong> instance であり、ここを律儀に articulate することそのものが今日の練習の一つになる。</p>
 </div>
 </section>
 </section>
@@ -602,7 +654,7 @@ $<span class="math notranslate nohighlight">\( P(t) = ((1-t), t/2, t/2) \)</span
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="c"># バリセントリック座標による重心</span>
-<span class="nd">@ggb</span><span class="w"> </span><span class="n">G_bary</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">A</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">B</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">C</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">3</span>
+<span class="nd">@ggb</span><span class="w"> </span><span class="s">&quot;G_{bary} = (A + B + C) / 3&quot;</span>
 </pre></div>
 </div>
 </div>
@@ -610,7 +662,9 @@ $<span class="math notranslate nohighlight">\( P(t) = ((1-t), t/2, t/2) \)</span
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="c"># 面積分割（中線の交点）による重心</span>
-<span class="nd">@ggb</span><span class="w"> </span><span class="n">G_medians</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Intersect</span><span class="p">(</span><span class="n">Segment</span><span class="p">(</span><span class="n">A</span><span class="p">,</span><span class="w"> </span><span class="n">M_a</span><span class="p">),</span><span class="w"> </span><span class="n">Segment</span><span class="p">(</span><span class="n">B</span><span class="p">,</span><span class="w"> </span><span class="n">M_b</span><span class="p">))</span>
+<span class="nd">@ggb</span><span class="w"> </span><span class="n">sa</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Segment</span><span class="p">(</span><span class="ss">:A</span><span class="p">,</span><span class="w"> </span><span class="ss">:M_a</span><span class="p">)</span>
+<span class="nd">@ggb</span><span class="w"> </span><span class="n">sb</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Segment</span><span class="p">(</span><span class="ss">:B</span><span class="p">,</span><span class="w"> </span><span class="ss">:M_b</span><span class="p">)</span>
+<span class="nd">@ggb</span><span class="w"> </span><span class="kt">G_</span><span class="p">{</span><span class="kt">medians</span><span class="p">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Intersect</span><span class="p">(</span><span class="ss">:sa</span><span class="p">,</span><span class="w"> </span><span class="ss">:sb</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -631,12 +685,27 @@ $<span class="math notranslate nohighlight">\( P(t) = ((1-t), t/2, t/2) \)</span
 <span class="c"># Julia 側からは juliacall 経由、または PyCall でアクセスします。</span>
 
 <span class="k">using</span><span class="w"> </span><span class="n">PythonCall</span>
-<span class="n">ggblab_extra</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pyimport</span><span class="p">(</span><span class="s">&quot;ggblab_extra&quot;</span><span class="p">)</span>
+<span class="n">pl</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pyimport</span><span class="p">(</span><span class="s">&quot;polars&quot;</span><span class="p">)</span>
+<span class="n">ggb</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pyimport</span><span class="p">(</span><span class="s">&quot;ggblab&quot;</span><span class="p">)</span>
+<span class="n">ggb</span><span class="o">.</span><span class="n">file</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pyimport</span><span class="p">(</span><span class="s">&quot;ggblab.file&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">ggb_file</span><span class="p">()</span>
+<span class="n">ggb</span><span class="o">.</span><span class="n">parser</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pyimport</span><span class="p">(</span><span class="s">&quot;ggblab.parser&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">ggb_parser</span><span class="p">()</span>
+<span class="n">ggb</span><span class="o">.</span><span class="n">schema</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pyimport</span><span class="p">(</span><span class="s">&quot;ggblab.schema&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">ggb_schema</span><span class="p">()</span>
 <span class="n">ConstructionIO</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ggblab_extra</span><span class="o">.</span><span class="n">ConstructionIO</span>
-
-<span class="c"># df = ConstructionIO.initialize_dataframe(...)  # 先生の環境での正確な呼び出しに調整</span>
-<span class="c"># df_centroids = df[df[&quot;Name&quot;].isin([&quot;G_balance&quot;, &quot;G_bary&quot;, &quot;G_medians&quot;])]</span>
-<span class="c"># df_centroids</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nd">@await</span><span class="w"> </span><span class="n">ConstructionIO</span><span class="o">.</span><span class="n">initialize_dataframe</span><span class="p">(</span><span class="n">ggb</span><span class="p">,</span><span class="w"> </span><span class="n">use_applet</span><span class="o">=</span><span class="nb">true</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">df_centroids</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">df</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">pl</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s">&quot;Name&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">is_in</span><span class="p">([</span><span class="s">&quot;G_balance&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;G_bary&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;G_medians&quot;</span><span class="p">]))</span>
+<span class="n">df_centroids</span>
 </pre></div>
 </div>
 </div>
@@ -712,6 +781,7 @@ $<span class="math notranslate nohighlight">\( P(t) = ((1-t), t/2, t/2) \)</span
 </div>
 <p>→ <strong>「正しい答え」と「なぜ正しいかが明確な答え」の間に二千年の遅延</strong> があった。</p>
 <p>現代の例：LLM が「動く答え」を出してくれるが、<strong>「なぜそう動いているか」が明確でない</strong> 状態にいる。Archimedes 期と Möbius 期の間の二千年と、現代の状況に構造的類似があります。</p>
+<p>これは Bender et al. (2021) 「Stochastic Parrot」 が articulate した <strong>form と meaning のギャップ</strong> と同型である: LLM は適切な form (動く回答・正しい数値) を生成するが、生成手続きと意味の対応関係 (meaning) は内部に持たない。Archimedes 期の物理直観 (天秤を傾ける) は日常 form で正しい answer に到達したが、<strong>なぜ正しいかの meaning</strong> は Möbius (1827) を待たねばならなかった。LLM もこの二千年期と同型の段階にいる可能性がある。</p>
 <div class="tip admonition">
 <p class="admonition-title">今回の課題</p>
 <p><strong>必修</strong></p>
@@ -724,8 +794,58 @@ $<span class="math notranslate nohighlight">\( P(t) = ((1-t), t/2, t/2) \)</span
 <p><em>ヒント</em>: 第 15 回での立論の素材として記録を残してください。</p>
 </div>
 </section>
+<section id="l5-version">
+<h2>7. 今学期の実験 — 科学転生無双レポート (L5 version)<a class="headerlink" href="#l5-version" title="Link to this heading">#</a></h2>
+<p>L4 で導入した「現代から歴史の数学世界に転生して、現代知識で無双する」 課題 (L4 §7) を、今日の重心テーマで継続する。</p>
+<p><strong>課題</strong> (L5 version):</p>
+<blockquote>
+<div><p><strong>1827 年の Möbius の時代に転生したと仮定し、「バリセントリック座標」 という抽象化を生まない代替戦略を一つ考案せよ</strong>。なぜその代替戦略が当時の他の数学者に採用されず、Möbius の座標が prevail したかを、現代の知見から推測せよ。</p>
+</div></blockquote>
+<p>または、より easy mode として:</p>
+<blockquote>
+<div><p><strong>紀元前 3 世紀の Archimedes の時代に転生したと仮定し、「天秤による重心の議論」 の代わりに、現代の知識で別の説明戦略を考案せよ</strong>。Archimedes 自身がなぜ天秤 framework を選んだか、現代から推測せよ。</p>
+</div></blockquote>
+<p><strong>評価軸</strong> (L4 §7 と同じ):</p>
+<ol class="arabic simple">
+<li><p>当時の知識・道具立てを尊重しているか (時代錯誤の有無)</p></li>
+<li><p>「無双できる場面」 と「無双できない場面」 を自己評価しているか (cf. L4 §7 で観察された AI の self-pivot 事例)</p></li>
+<li><p>なぜ Möbius (または Archimedes) の元の戦略が prevail したかの構造的説明</p></li>
+</ol>
+<p><strong>注記</strong> (5/19 観察): L4 §7 で先生が試した instance では、&#64;Codex (gpt-5.4-mini) が Turing 系に転生できないと self-pivot して Neumann を選んだ。L5 では、AI に「Möbius 期に転生して何を考案するか」 を聞いてみると、別種の self-assessment pattern が観察できる可能性がある。AI が「<strong>ここは無双できない</strong>」 と articulate する場面を意識的に捕まえること。</p>
+<p><strong>提出</strong>: L4 と同じ format (markdown または PDF、A4 1 枚程度)。第 15 回での立論の素材として記録を残す。</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>授業末尾の自己評価 — <code class="docutils literal notranslate"><span class="pre">&#64;Codex</span></code> に聞いてみる (任意、L4 から継続)</p>
+<p>L4 で導入した <strong>授業末尾の自己評価 prompt</strong> を、L5 でも同じ template で試してください。<strong>任意</strong> です。</p>
+<h3 class="rubric" id="copy-paste-prompt">copy-paste 用 prompt</h3>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>@Codex 今日のノートブックを全 cell 読んで評価してください。
+次の三つを区別して articulate してください:
+
+1. 自分で考えて書いた cell — 思考の痕跡が残っている部分
+2. AI 委託で書いたが、理解して受け入れた cell — 動いて、なぜ動くか説明できる部分
+3. AI 委託で書いたが、なぜ動くか説明できない cell — 動いているが、理解で未到達の部分
+
+加えて: 今日の lesson 主題 (重心 / Archimedes 天秤 / Möbius バリセントリック /
+DataFrame 外部化) に対する自分の到達度、完成しないまま残った問い、
+次回 (L6 内心) への接続点。
+
+特に L5 §4 「三つの証明、それぞれの納得できなさ」 callout について、
+私自身がどこに「気持ち悪さ」 を感じたか、または感じなかったかを正直に articulate してください。
+
+私の cell 配列を見て、誤魔化さず正直に articulate してください。
+</pre></div>
+</div>
+<h3 class="rubric" id="l5">L5 特有の観察ポイント</h3>
+<ul class="simple">
+<li><p><strong>§4.2 Möbius 「嫌い → 抽象化」 callout</strong> が L4 §0 の pattern instance として認識できているか。先週の語彙が今週使えているかの直接 signal</p></li>
+<li><p><strong>§4 attention callout</strong> (三つの証明それぞれの納得できなさ) で、自分の proof skepticism が言語化できるか。先生自身が articulate した open problem に学生が向き合えるかの確認</p></li>
+<li><p><strong>§7 科学転生無双 (Möbius 期 / Archimedes 期)</strong> で、<code class="docutils literal notranslate"><span class="pre">&#64;Codex</span></code> 自身の自己評価 (無双できる/できない) を観察する課題と、本 prompt の <strong>自己評価の対称性</strong> を意識すると、AI-学生 二口採点の構造が立ち上がります</p></li>
+</ul>
+<p>JupyterAI のやり取り log は LMS 経由で先生に届きます — 学期末立論 (第 15 回) の materials として、毎週の自己診断 log を蓄積。<strong>「先週は気付かなかった AI 委託を今週は気付けるようになった」</strong> が回を重ねるごとに起こるか、皆さん自身でも観察してみてください。</p>
+</div>
+</section>
 <section id="id11">
-<h2>7. 次回への接続<a class="headerlink" href="#id11" title="Link to this heading">#</a></h2>
+<h2>8. 次回への接続<a class="headerlink" href="#id11" title="Link to this heading">#</a></h2>
 <p>次回 (第 6 回) は <strong>内心 (Incenter)</strong> に移ります。内心は外心とも重心とも違う系統 — <strong>角の二等分線</strong> の交点として定義されます。</p>
 <p>今回扱った Construction Protocol → DataFrame は、第 6 回でも引き続き使います。<strong>角の二等分線が一点で交わることをデータで検証</strong> する場面です。</p>
 <p>また、次々回 (第 7 回) では DataFrame をさらに一歩進めて <strong>有向グラフ (networkx)</strong> に変換します。Euler 線（外心・重心・垂心が一直線上に並ぶ）の理由を、座標計算ではなく <strong>依存構造</strong> から見ます。</p>
@@ -740,7 +860,8 @@ $<span class="math notranslate nohighlight">\( P(t) = ((1-t), t/2, t/2) \)</span
 <li><p><a class="reference external" href="https://archive.org/details/worksofarchimede00archuoft">Archimedes’ On the Equilibrium of Planes (Heath 訳)</a></p></li>
 <li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Hermann_Grassmann">Hermann Grassmann - Wikipedia</a></p></li>
 <li><p><a class="reference external" href="https://pandas.pydata.org/">pandas</a> / <a class="reference external" href="https://pola.rs/">Polars</a> — DataFrame の現代的実装</p></li>
-<li><p>前回授業 <a class="reference internal" href="lesson_04_thales_circumcenter.html"><span class="std std-doc"><code class="docutils literal notranslate"><span class="pre">lesson_04_thales_circumcenter.ipynb</span></code></span></a></p></li>
+<li><p>Bender, Gebru, McMillan-Major, Mitchell (2021) <a class="reference external" href="https://dl.acm.org/doi/10.1145/3442188.3445922">“On the Dangers of Stochastic Parrots: Can Language Models Be Too Big? 🦜”</a> FAccT — form と meaning の区別</p></li>
+<li><p>前回授業 <a class="reference internal" href="lesson_04_thales_circumcenter.html"><span class="std std-doc"><code class="docutils literal notranslate"><span class="pre">lesson_04_thales_circumcenter.ipynb</span></code></span></a> — §0 「嫌い → 抽象化」 pattern、§7 科学転生無双レポート</p></li>
 <li><p>道具のロードマップ <a class="reference internal" href="#ggblab_extra_roadmap.md"><span class="xref myst"><code class="docutils literal notranslate"><span class="pre">ggblab_extra_roadmap.md</span></code></span></a></p></li>
 </ul>
 </section>
@@ -759,7 +880,7 @@ $<span class="math notranslate nohighlight">\( P(t) = ((1-t), t/2, t/2) \)</span
         },
         kernelOptions: {
             name: "julia-1.12",
-            path: "./chapters/04"
+            path: "./chapters/05"
         },
         predefinedOutput: true
     }
@@ -776,6 +897,24 @@ $<span class="math notranslate nohighlight">\( P(t) = ((1-t), t/2, t/2) \)</span
                 <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
+    <a class="left-prev"
+       href="lesson_04_thales_circumcenter.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">第4回: 前提・発見・連鎖 — Thales の定理から外心へ</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../04/lesson_00_about_this_textbook.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">第 0 回: この教材はどう作られているか — AI と人間の役割分担</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
 </div>
                 </footer>
               
@@ -812,7 +951,8 @@ $<span class="math notranslate nohighlight">\( P(t) = ((1-t), t/2, t/2) \)</span
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">6. 停滞と画期の照射 — 物理直観の二千年</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">7. 次回への接続</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#l5-version">7. 今学期の実験 — 科学転生無双レポート (L5 version)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">8. 次回への接続</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">参考文献</a></li>
 </ul>
   </nav></div>
