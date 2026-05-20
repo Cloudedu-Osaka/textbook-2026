@@ -71,6 +71,7 @@ L4 §0 のファミマ入店音 reframe (同じ scope を異なる文脈で実�
 ```{code-cell}
 using Pkg
 Pkg.activate("../..")
+Pkg.resolve()
 Pkg.instantiate()
 using GeoGebra
 ENV["GGB_DIRECT_TRANSPORT"] = "true"
