@@ -3,6 +3,13 @@
 format: jb-book
 root: intro.md
 parts:
+- caption: 2026/05/20
+  numbered: false
+  chapters:
+  - file: chapters/05/lesson_04_thales_circumcenter.ipynb
+    title: 前提・発見・連鎖 — Thales の定理から外心へ
+  - file: chapters/05/lesson_05_centroid_dataframe.ipynb
+    title: 同じ点を三つの前提から導く — 重心と DataFrame 外部化
 - caption: 2026/05/13
   numbered: false
   chapters:
