@@ -3,6 +3,13 @@
 format: jb-book
 root: intro.md
 parts:
+- caption: 2026/05/27
+  numbered: false
+  chapters:
+  - file: chapters/06/lesson_05_centroid_dataframe.ipynb
+    title: 同じ点を三つの前提から導く — 重心と DataFrame 外部化
+  - file: chapters/06/lesson_06_incenter_metric.ipynb
+    title: 内心と角の二等分線 — 計量が要る場面（重心のアフィンとの対比）
 - caption: 2026/05/20
   numbered: false
   chapters:
