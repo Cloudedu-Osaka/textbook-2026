@@ -62,10 +62,12 @@
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'chapters/06/lesson_06_incenter_metric';</script>
-    <link rel="canonical" href="https://cloudedu-osaka.github.io/textbook-2026/chapters/06/lesson_06_incenter_metric.html" />
+    <script>DOCUMENTATION_OPTIONS.pagename = 'chapters/07/lesson_06_incenter_mtric';</script>
+    <link rel="canonical" href="https://cloudedu-osaka.github.io/textbook-2026/chapters/07/lesson_06_incenter_mtric.html" />
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="第5回: 重心を Archimedes の天秤で正当化する — アフィンの細片と DataFrame 外部化" href="../06/lesson_05_centroid_dataframe.html" />
+    <link rel="prev" title="textbook-2026: プログラミングで遡る科学史" href="../../intro.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
@@ -117,8 +119,6 @@
       
       
       
-        
-      
       <dialog id="pst-primary-sidebar-modal"></dialog>
       <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
         
@@ -164,12 +164,12 @@
         <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">2026/06/03</span></p>
-<ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../07/lesson_06_incenter_mtric.html">内心と角の二等分線 — 計量が要る場面（重心のアフィンとの対比）</a></li>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">内心と角の二等分線 — 計量が要る場面（重心のアフィンとの対比）</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">2026/05/27</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="lesson_05_centroid_dataframe.html">同じ点を三つの前提から導く — 重心と DataFrame 外部化</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../06/lesson_05_centroid_dataframe.html">同じ点を三つの前提から導く — 重心と DataFrame 外部化</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">2026/05/20</span></p>
 <ul class="nav bd-sidenav">
@@ -267,7 +267,7 @@
       
       
       
-      <li><a href="https://vioras-jh2500.japaneast.cloudapp.azure.com/hub/user-redirect/git-pull?repo=https%3A//github.com/Cloudedu-Osaka/textbook-2026&urlpath=lab/tree/textbook-2026/chapters/06/lesson_06_incenter_metric.ipynb&branch=main" target="_blank"
+      <li><a href="https://vioras-jh2500.japaneast.cloudapp.azure.com/hub/user-redirect/git-pull?repo=https%3A//github.com/Cloudedu-Osaka/textbook-2026&urlpath=lab/tree/textbook-2026/chapters/07/lesson_06_incenter_mtric.ipynb&branch=main" target="_blank"
    class="btn btn-sm dropdown-item"
    title="Launch on JupyterHub"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -313,7 +313,7 @@
       
       
       
-      <li><a href="../../_sources/chapters/06/lesson_06_incenter_metric.ipynb" target="_blank"
+      <li><a href="../../_sources/chapters/07/lesson_06_incenter_mtric.ipynb" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -478,7 +478,13 @@
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="nd">@ggb</span><span class="w"> </span><span class="ss">:const</span><span class="w"> </span><span class="ss">:new</span>
-<span class="nd">@ggb</span><span class="w"> </span><span class="n">A</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="nd">@ggb</span><span class="w"> </span><span class="n">A</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span>
 <span class="nd">@ggb</span><span class="w"> </span><span class="n">B</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span>
 <span class="nd">@ggb</span><span class="w"> </span><span class="n">C</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">)</span>
 <span class="nd">@ggb</span><span class="w"> </span><span class="n">Polygon</span><span class="p">(</span><span class="ss">:A</span><span class="p">,</span><span class="w"> </span><span class="ss">:B</span><span class="p">,</span><span class="w"> </span><span class="ss">:C</span><span class="p">)</span>
@@ -579,15 +585,27 @@
 
 <span class="c"># 元の三角形 ABC の内心（ルート b は §3 の二等分線 wa, wb を再利用）</span>
 <span class="nd">@ggb</span><span class="w"> </span><span class="n">I_tc</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="n">TriangleCenter</span><span class="p">(</span><span class="ss">:A</span><span class="p">,</span><span class="w"> </span><span class="ss">:B</span><span class="p">,</span><span class="w"> </span><span class="ss">:C</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w">   </span><span class="c"># ルート a</span>
-<span class="nd">@ggb</span><span class="w"> </span><span class="n">I_int</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Intersect</span><span class="p">(</span><span class="ss">:wa</span><span class="p">,</span><span class="w"> </span><span class="ss">:wb</span><span class="p">)</span><span class="w">             </span><span class="c"># ルート b（a と同じ点になるはず）</span>
-
-<span class="c"># せん断後の三角形 A_s B_s C_s の内心（ルート b は二等分線を引き直して交点を取る）</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="c"># せん断後の三角形 A_s B_s C_s の内心（ルート b は二等分線を引き直して交点を取る）</span>
 <span class="nd">@ggb</span><span class="w"> </span><span class="n">wa_s</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="n">AngleBisector</span><span class="p">(</span><span class="ss">:B_s</span><span class="p">,</span><span class="w"> </span><span class="ss">:A_s</span><span class="p">,</span><span class="w"> </span><span class="ss">:C_s</span><span class="p">)</span>
 <span class="nd">@ggb</span><span class="w"> </span><span class="n">wb_s</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="n">AngleBisector</span><span class="p">(</span><span class="ss">:A_s</span><span class="p">,</span><span class="w"> </span><span class="ss">:B_s</span><span class="p">,</span><span class="w"> </span><span class="ss">:C_s</span><span class="p">)</span>
-<span class="nd">@ggb</span><span class="w"> </span><span class="n">I_s_tc</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="n">TriangleCenter</span><span class="p">(</span><span class="ss">:A_s</span><span class="p">,</span><span class="w"> </span><span class="ss">:B_s</span><span class="p">,</span><span class="w"> </span><span class="ss">:C_s</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w">   </span><span class="c"># ルート a</span>
+<span class="nd">@ggb</span><span class="w"> </span><span class="n">wc_s</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="n">AngleBisector</span><span class="p">(</span><span class="ss">:A_s</span><span class="p">,</span><span class="w"> </span><span class="ss">:C_s</span><span class="p">,</span><span class="w"> </span><span class="ss">:B_s</span><span class="p">)</span>
+<span class="c"># @ggb I_s_tc  = TriangleCenter(:A_s, :B_s, :C_s, 1)   # ルート a</span>
 <span class="nd">@ggb</span><span class="w"> </span><span class="n">I_s_int</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Intersect</span><span class="p">(</span><span class="ss">:wa_s</span><span class="p">,</span><span class="w"> </span><span class="ss">:wb_s</span><span class="p">)</span><span class="w">               </span><span class="c"># ルート b</span>
 
-<span class="c"># 「元の内心をせん断で移した点」(これとせん断後の内心がずれる = 計量の証拠)</span>
+<span class="c"># @ggb I_int = Intersect(:wa, :wb)             # ルート b（a と同じ点になるはず）</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="c"># 「元の内心をせん断で移した点」(これとせん断後の内心がずれる = 計量の証拠)</span>
 <span class="nd">@ggb</span><span class="w"> </span><span class="n">I_byS</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ApplyMatrix</span><span class="p">(</span><span class="ss">:S</span><span class="p">,</span><span class="w"> </span><span class="ss">:I_tc</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -611,9 +629,9 @@
 <p>L5 で導入した Construction Protocol → DataFrame を、今日は <strong>再利用</strong> する。三本の角の二等分線の交点が本当に一点か、データで確かめる。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="nd">@ggb</span><span class="w"> </span><span class="n">I</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Intersect</span><span class="p">(</span><span class="ss">:wa</span><span class="p">,</span><span class="w"> </span><span class="ss">:wb</span><span class="p">)</span><span class="w">          </span><span class="c"># 内心（規律1: 入れ子にしない）</span>
-<span class="nd">@ggb</span><span class="w"> </span><span class="n">I2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Intersect</span><span class="p">(</span><span class="ss">:wb</span><span class="p">,</span><span class="w"> </span><span class="ss">:wc</span><span class="p">)</span><span class="w">         </span><span class="c"># 別の二本の交点</span>
-<span class="nd">@ggb</span><span class="w"> </span><span class="n">I3</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Intersect</span><span class="p">(</span><span class="ss">:wa</span><span class="p">,</span><span class="w"> </span><span class="ss">:wc</span><span class="p">)</span><span class="w">         </span><span class="c"># さらに別の二本</span>
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="nd">@ggb</span><span class="w"> </span><span class="n">I</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Intersect</span><span class="p">(</span><span class="ss">:wa_s</span><span class="p">,</span><span class="w"> </span><span class="ss">:wb_s</span><span class="p">)</span><span class="w">          </span><span class="c"># 内心（規律1: 入れ子にしない）</span>
+<span class="nd">@ggb</span><span class="w"> </span><span class="n">I2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Intersect</span><span class="p">(</span><span class="ss">:wb_s</span><span class="p">,</span><span class="w"> </span><span class="ss">:wc_s</span><span class="p">)</span><span class="w">         </span><span class="c"># 別の二本の交点</span>
+<span class="nd">@ggb</span><span class="w"> </span><span class="n">I3</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Intersect</span><span class="p">(</span><span class="ss">:wa_s</span><span class="p">,</span><span class="w"> </span><span class="ss">:wc_s</span><span class="p">)</span><span class="w">         </span><span class="c"># さらに別の二本</span>
 </pre></div>
 </div>
 </div>
@@ -623,7 +641,7 @@
 <div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="c"># 内接円も構成して、三辺に接することを確認する</span>
 <span class="nd">@ggb</span><span class="w"> </span><span class="n">c_AB</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Line</span><span class="p">(</span><span class="ss">:A</span><span class="p">,</span><span class="w"> </span><span class="ss">:B</span><span class="p">)</span><span class="w">              </span><span class="c"># 辺 AB の直線</span>
 <span class="nd">@ggb</span><span class="w"> </span><span class="n">r</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Distance</span><span class="p">(</span><span class="ss">:I</span><span class="p">,</span><span class="w"> </span><span class="ss">:c_AB</span><span class="p">)</span><span class="w">          </span><span class="c"># I から辺への距離 = 内接円半径</span>
-<span class="nd">@ggb</span><span class="w"> </span><span class="n">incircle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Circle</span><span class="p">(</span><span class="ss">:I</span><span class="p">,</span><span class="w"> </span><span class="n">r</span><span class="p">)</span>
+<span class="nd">@ggb</span><span class="w"> </span><span class="n">incircle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Circle</span><span class="p">(</span><span class="ss">:I</span><span class="p">,</span><span class="w"> </span><span class="ss">:r</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -650,6 +668,14 @@
 <span class="n">df</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nd">@await</span><span class="w"> </span><span class="n">ConstructionIO</span><span class="o">.</span><span class="n">initialize_dataframe</span><span class="p">(</span><span class="n">ggb</span><span class="p">,</span><span class="w"> </span><span class="n">use_applet</span><span class="o">=</span><span class="nb">true</span><span class="p">)</span>
 <span class="n">df_I</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">df</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">pl</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s">&quot;Name&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">is_in</span><span class="p">([</span><span class="s">&quot;I&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;I2&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;I3&quot;</span><span class="p">]))</span><span class="w">   </span><span class="c"># polars の絞り込み構文</span>
 <span class="n">df_I</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">pl</span><span class="o">.</span><span class="n">Config</span><span class="o">.</span><span class="n">set_fmt_str_lengths</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
+<span class="n">df_I</span><span class="p">[</span><span class="s">&quot;Value&quot;</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
@@ -736,7 +762,7 @@
         },
         kernelOptions: {
             name: "julia-1.12",
-            path: "./chapters/06"
+            path: "./chapters/07"
         },
         predefinedOutput: true
     }
@@ -753,6 +779,24 @@
                 <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
+    <a class="left-prev"
+       href="../../intro.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">textbook-2026: プログラミングで遡る科学史</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../06/lesson_05_centroid_dataframe.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">第5回: 重心を Archimedes の天秤で正当化する — アフィンの細片と DataFrame 外部化</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
 </div>
                 </footer>
               
