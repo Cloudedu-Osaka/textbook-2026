@@ -1,0 +1,954 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>第7回: 垂心と Euler 線 — 三中心が一直線に並ぶ「隠れた構造」を有向グラフで見る &#8212; プログラミングで遡る科学史</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=3c74b3bc" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css?v=8cd3d715" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=fab101a9"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'chapters/08/lesson_07_orthocenter_euler';</script>
+    <link rel="canonical" href="https://cloudedu-osaka.github.io/textbook-2026/chapters/08/lesson_07_orthocenter_euler.html" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="第8回: 傍心と四中心の対称性 — 内心の「双子」を依存構造の鏡像として見る" href="lesson_08_excenter_symmetry.html" />
+    <link rel="prev" title="textbook-2026: プログラミングで遡る科学史" href="../../intro.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/vioras-logo.png" class="logo__image only-light" alt="プログラミングで遡る科学史 - Home"/>
+    <img src="../../_static/vioras-logo.png" class="logo__image only-dark pst-js-only" alt="プログラミングで遡る科学史 - Home"/>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">2026/06/10</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">垂心と Euler 線 — 三中心が一直線に並ぶ「隠れた構造」を有向グラフで見る</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lesson_08_excenter_symmetry.html">傍心と四中心の対称性 — 内心の「双子」を依存構造の鏡像として見る</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">2026/06/03</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../07/lesson_06_incenter_mtric.html">内心と角の二等分線 — 計量が要る場面（重心のアフィンとの対比）</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">2026/05/27</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../06/lesson_05_centroid_dataframe.html">同じ点を三つの前提から導く — 重心と DataFrame 外部化</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">2026/05/20</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../05/lesson_04_thales_circumcenter.html">前提・発見・連鎖 — Thales の定理から外心へ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../05/lesson_05_centroid_dataframe.html">同じ点を三つの前提から導く — 重心と DataFrame 外部化</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">2026/05/13</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../04/lesson_00_about_this_textbook.html">この教材はどう作られているか — AI と人間の役割分担</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../04/lesson_04_thales_circumcenter.html">前提・発見・連鎖 — Thales の定理から外心へ</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">2026/05/08</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../03/03_01.html">第3回: 試験問題の記述とこの授業のルール</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../03/02_13.html">入試問題を解く (その2) 記述する・解答する 4</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../03/02_11.html">入試問題を解く (その2) 記述する・解答する 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../03/02_12.html">入試問題を解く (その2) 記述する・解答する 3</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">2026/04/22</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../02/02_01.html">入試問題を解く (その2) 記述する・解答する 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../02/02_11.html">入試問題を解く (その2) 記述する・解答する 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../02/02_12.html">入試問題を解く (その2) 記述する・解答する 3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../02/02_13.html">入試問題を解く (その2) 記述する・解答する 4</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../02/02_02.html">入試問題を解く (その2) 記述する・解答する 5</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">2026/04/15</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../01/01_00_intro.html">How to connect and use JupyterHub</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../01/01_01.html">入試問題を解く (その1) 記述する 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../01/01_02.html">入試問題を解く (その1) 記述する 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../01/01_03.html">入試問題を解く (その1) 記述する 3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../01/01_04.html">入試問題を解く (その1) 記述する 4</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../01/01_05.html">入試問題を解く (その1) 記述する 5</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../01/01_11.html">入試問題を解く (その1) 記述する 6</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../01/01_12.html">入試問題を解く (その1) 記述する 7</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../01/01_13.html">入試問題を解く (その1) 記述する 8</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://vioras-jh2500.japaneast.cloudapp.azure.com/hub/user-redirect/git-pull?repo=https%3A//github.com/Cloudedu-Osaka/textbook-2026&urlpath=lab/tree/textbook-2026/chapters/08/lesson_07_orthocenter_euler.ipynb&branch=main" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on JupyterHub"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="JupyterHub logo" src="../../_static/images/logo_jupyterhub.svg">
+  </span>
+<span class="btn__text-container">JupyterHub</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+<a href="https://github.com/Cloudedu-Osaka/textbook-2026" target="_blank"
+   class="btn btn-sm btn-source-repository-button"
+   title="Source repository"
+   data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+
+</a>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/chapters/08/lesson_07_orthocenter_euler.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button pst-navbar-icon"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm pst-navbar-icon" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>第7回: 垂心と Euler 線 — 三中心が一直線に並ぶ「隠れた構造」を有向グラフで見る</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">0. 前回 (第 6 回) の振り返り — そして今日の「隠れた直線」</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">1. 垂心への道 — 頂点から対辺への垂線（高さ）</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ggblab">2. ggblab セットアップと三角形の準備</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">3. 解くべき命題を発見する</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">4. 証明（既知への帰着 + ベクトル）</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#l4">4.1 垂線の共点性 —— 外心 (L4) へ帰着する</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">4.2 Euler 線 —— 外心を原点に取る</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ggblab-extra-dataframe">5. ggblab_extra 第二段 —— DataFrame を「有向グラフ」へ進める</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">6. 停滞と画期の照射 —— 「隠れた直線」と、次の傍心</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pythagoras">発展 —— 直角三角形への退化: 高さから Pythagoras が立ち上がる</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">7. 次回への接続</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">参考文献</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="euler">
+<h1>第7回: 垂心と Euler 線 — 三中心が一直線に並ぶ「隠れた構造」を有向グラフで見る<a class="headerlink" href="#euler" title="Link to this heading">#</a></h1>
+<p><strong>主題</strong>: 五心の四つ目、垂心 (Orthocenter) を <strong>頂点から対辺への垂線（高さ）</strong> から組み立てる。そして外心 <span class="math notranslate nohighlight">\(O\)</span>（L4）・重心 <span class="math notranslate nohighlight">\(G\)</span>（L5）・垂心 <span class="math notranslate nohighlight">\(H\)</span>（本日）の <strong>三つが一直線上に並ぶ</strong>（<strong>Euler 線</strong>）という事実に出会う。</p>
+<p><strong>副題</strong>: 座標で計算すると、三中心の共線は <strong>偶然</strong> に見える。だが「どのオブジェクトがどのオブジェクトから作られたか」 の <strong>依存構造（有向グラフ）</strong> で見ると、共線は偶然ではなく <strong>共通の前提から派生する必然</strong> だと分かる。Construction Protocol を <strong>DataFrame の一歩先＝グラフ</strong> へ進める回。</p>
+<p><strong>学習目標</strong></p>
+<ol class="arabic simple">
+<li><p>垂心を <strong>「各頂点から対辺へ下ろした垂線は一点で交わる」</strong> という命題から、L4（外心）の結果に帰着させる形で Euclid 流に導けるようになる。</p></li>
+<li><p><strong>Euler 線</strong>（<span class="math notranslate nohighlight">\(O\)</span>, <span class="math notranslate nohighlight">\(G\)</span>, <span class="math notranslate nohighlight">\(H\)</span> が一直線、<span class="math notranslate nohighlight">\(OG : GH = 1 : 2\)</span>）を、外心を原点に取ったベクトルで確かめられるようになる。</p></li>
+<li><p>Construction Protocol → DataFrame を一歩進め、<strong>有向グラフ (networkx)</strong> へ変換して、三中心が <strong>共通の頂点 <span class="math notranslate nohighlight">\(A,B,C\)</span> から派生する依存構造</strong> を持つことを「目で見える形」 にする（ggblab_extra 機能の第二段、DAG 初出）。</p></li>
+<li><p><strong>(伏線継続・接線方向への一歩)</strong> Euler 線は三角形に隠れていた <strong>一本の直線</strong> だった。後の円錐曲線では、図形に隠れた <strong>軸・準線</strong> という直線が主役になる。「隠れた直線を構造から見つける」 という今日の経験は、その予行演習である。</p></li>
+</ol>
+<section id="id1">
+<h2>0. 前回 (第 6 回) の振り返り — そして今日の「隠れた直線」<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
+<p>前回は <strong>内心</strong> を角の二等分線（＝二辺から等距離）で導き、それが <strong>計量（角度・距離）に依存</strong> する点であることを、剪断で内心が動くことから確かめた。L5 の重心（アフィン）と L6 の内心（計量）—— 「何が座標選択に依らず、何が依るか」 の対比だった。</p>
+<p>ここまでで三つの中心を <strong>別々に</strong> 作ってきた：外心 <span class="math notranslate nohighlight">\(O\)</span>（弦の垂直二等分線、L4）、重心 <span class="math notranslate nohighlight">\(G\)</span>（中線、L5）、内心 <span class="math notranslate nohighlight">\(I\)</span>（角の二等分線、L6）。今日は四つ目の <strong>垂心 <span class="math notranslate nohighlight">\(H\)</span></strong>（高さ）を作る。そして —— ここからが今日の主題 —— <strong>外心 <span class="math notranslate nohighlight">\(O\)</span>・重心 <span class="math notranslate nohighlight">\(G\)</span>・垂心 <span class="math notranslate nohighlight">\(H\)</span> の三つは、どんな三角形でも一直線上に並ぶ</strong>。この直線を <strong>Euler 線</strong> と呼ぶ。</p>
+<p>三角形を眺めても、この直線は見えない。座標を入れて計算すると三点が確かに一直線に乗るが、それは「<strong>たまたまそうなった</strong>」 ように見える。今日はこの「たまたま」 を、<strong>依存構造（どの点がどの点から作られたか）の有向グラフ</strong> に外部化して、「偶然ではなく、共通の前提から来る必然」 として読み解く。</p>
+<div class="note admonition">
+<p class="admonition-title">Note</p>
+<p>目標の確認 —— &#64;Codex で達成目標を引く
+達成目標を <strong>&#64;Codex に lancedb-rag（教材ドメイン RAG）で確認</strong>してもらえる（L5 から運用）。
+（プロンプト例）&#64;Codex この回（L7 垂心・Euler 線）の達成目標を lancedb-rag で調べて、要点を整理して。
+特に「三中心の共線は座標では偶然に見えるが、依存グラフでは必然」 という主張が腑に落ちるか、自分の理解と照らしてから先へ進む。</p>
+<div class="docutils">
+</div>
+</div>
+</section>
+<section id="id2">
+<h2>1. 垂心への道 — 頂点から対辺への垂線（高さ）<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
+<p>垂心は次の一つの命題から出発する：</p>
+<blockquote>
+<div><p><strong>垂線（高さ）の共点性</strong>: 三角形 <span class="math notranslate nohighlight">\(\triangle ABC\)</span> の各頂点から対辺へ下ろした垂線（<strong>高さ</strong>）は、一点で交わる。</p>
+</div></blockquote>
+<p>L4（外心 = 弦の垂直二等分線の交点）、L6（内心 = 角の二等分線の交点）と同じ「三本が一点で交わる」 型だが、今日の三本は <strong>垂線（高さ）</strong> である。注目したいのは、この共点性が <strong>新しい証明を要しない</strong> こと —— うまく補助線を引くと、<strong>L4（外心）の結果にそのまま帰着する</strong>。「既に証明したことに帰着させる」 のは、Euclid 流の命題連鎖の核である。</p>
+</section>
+<section id="ggblab">
+<h2>2. ggblab セットアップと三角形の準備<a class="headerlink" href="#ggblab" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="k">using</span><span class="w"> </span><span class="n">Pkg</span>
+<span class="n">Pkg</span><span class="o">.</span><span class="n">activate</span><span class="p">(</span><span class="s">&quot;../..&quot;</span><span class="p">)</span><span class="w">   </span><span class="c"># この教材プロジェクトの環境を有効化</span>
+<span class="n">Pkg</span><span class="o">.</span><span class="n">resolve</span><span class="p">()</span>
+<span class="n">Pkg</span><span class="o">.</span><span class="n">instantiate</span><span class="p">()</span><span class="w">       </span><span class="c"># 必要なパッケージを用意（初回は少し時間がかかる）</span>
+<span class="k">using</span><span class="w"> </span><span class="n">GeoGebra</span>
+<span class="nb">ENV</span><span class="p">[</span><span class="s">&quot;GGB_DIRECT_TRANSPORT&quot;</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;true&quot;</span><span class="w">   </span><span class="c"># ggblab とアプレットの直接通信を有効化</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">inject_applet</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="nd">@ggb</span><span class="w"> </span><span class="ss">:const</span><span class="w"> </span><span class="ss">:new</span>
+<span class="nd">@ggb</span><span class="w"> </span><span class="n">A</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span>
+<span class="nd">@ggb</span><span class="w"> </span><span class="n">B</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span>
+<span class="nd">@ggb</span><span class="w"> </span><span class="n">C</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">)</span>
+<span class="nd">@ggb</span><span class="w"> </span><span class="n">Polygon</span><span class="p">(</span><span class="ss">:A</span><span class="p">,</span><span class="w"> </span><span class="ss">:B</span><span class="p">,</span><span class="w"> </span><span class="ss">:C</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="note admonition">
+<p class="admonition-title">Note</p>
+<p>記法メモ —— <code class="docutils literal notranslate"><span class="pre">&#64;ggb</span></code> と <code class="docutils literal notranslate"><span class="pre">:A</span></code> のコロン（L4–L6 と同じ作法）
+新しく作るときは左辺コロン無し（<code class="docutils literal notranslate"><span class="pre">A=(0,0)</span></code>）、既存の点を <strong>名前で参照</strong> するときはコロン付きシンボル（<code class="docutils literal notranslate"><span class="pre">Line(:B,</span> <span class="pre">:C)</span></code>）。そして本日の鍵となる <strong>規律1</strong>: 各オブジェクトを <strong>一意のシンボル</strong> に束縛し、<strong>入れ子にしない</strong>（<code class="docutils literal notranslate"><span class="pre">Intersect(Line(...),</span> <span class="pre">Line(...))</span></code> のように中間を名無しにしない）。理由は §5 で効いてくる —— <strong>名前のないオブジェクトは、依存グラフのノードにできない</strong> からである。</p>
+</div>
+</section>
+<section id="id3">
+<h2>3. 解くべき命題を発見する<a class="headerlink" href="#id3" title="Link to this heading">#</a></h2>
+<p>各頂点から対辺へ垂線を下ろし、さらに外心・重心も置いて観察する（規律1: 各オブジェクトを一意のシンボルに、入れ子にしない）。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="c"># 対辺の直線（高さを下ろす相手）</span>
+<span class="nd">@ggb</span><span class="w"> </span><span class="n">a_BC</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Line</span><span class="p">(</span><span class="ss">:B</span><span class="p">,</span><span class="w"> </span><span class="ss">:C</span><span class="p">)</span><span class="w">   </span><span class="c"># 頂点 A の対辺</span>
+<span class="nd">@ggb</span><span class="w"> </span><span class="n">b_CA</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Line</span><span class="p">(</span><span class="ss">:C</span><span class="p">,</span><span class="w"> </span><span class="ss">:A</span><span class="p">)</span><span class="w">   </span><span class="c"># 頂点 B の対辺</span>
+<span class="nd">@ggb</span><span class="w"> </span><span class="n">c_AB</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Line</span><span class="p">(</span><span class="ss">:A</span><span class="p">,</span><span class="w"> </span><span class="ss">:B</span><span class="p">)</span><span class="w">   </span><span class="c"># 頂点 C の対辺</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="c"># 各頂点から対辺への垂線（高さ）</span>
+<span class="nd">@ggb</span><span class="w"> </span><span class="n">ha</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">PerpendicularLine</span><span class="p">(</span><span class="ss">:A</span><span class="p">,</span><span class="w"> </span><span class="ss">:a_BC</span><span class="p">)</span>
+<span class="nd">@ggb</span><span class="w"> </span><span class="n">hb</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">PerpendicularLine</span><span class="p">(</span><span class="ss">:B</span><span class="p">,</span><span class="w"> </span><span class="ss">:b_CA</span><span class="p">)</span>
+<span class="nd">@ggb</span><span class="w"> </span><span class="n">hc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">PerpendicularLine</span><span class="p">(</span><span class="ss">:C</span><span class="p">,</span><span class="w"> </span><span class="ss">:c_AB</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="c"># 三つの中心を、それぞれ別経路で置く（規律1: 入れ子にしない）</span>
+<span class="nd">@ggb</span><span class="w"> </span><span class="n">O</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">TriangleCenter</span><span class="p">(</span><span class="ss">:A</span><span class="p">,</span><span class="w"> </span><span class="ss">:B</span><span class="p">,</span><span class="w"> </span><span class="ss">:C</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">)</span><span class="w">   </span><span class="c"># 外心（L4）</span>
+<span class="nd">@ggb</span><span class="w"> </span><span class="n">G</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">TriangleCenter</span><span class="p">(</span><span class="ss">:A</span><span class="p">,</span><span class="w"> </span><span class="ss">:B</span><span class="p">,</span><span class="w"> </span><span class="ss">:C</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="w">   </span><span class="c"># 重心（L5）</span>
+<span class="nd">@ggb</span><span class="w"> </span><span class="n">H</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Intersect</span><span class="p">(</span><span class="ss">:ha</span><span class="p">,</span><span class="w"> </span><span class="ss">:hb</span><span class="p">)</span><span class="w">             </span><span class="c"># 垂心 = 高さ二本の交点（本日）</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>観察1</strong>: 三本の高さ <span class="math notranslate nohighlight">\(h_a, h_b, h_c\)</span> が一点 <span class="math notranslate nohighlight">\(H\)</span> で交わる（<code class="docutils literal notranslate"><span class="pre">Intersect(:ha,</span> <span class="pre">:hc)</span></code> も同じ点になる）。</p>
+<p><strong>観察2</strong>: 外心 <span class="math notranslate nohighlight">\(O\)</span>・重心 <span class="math notranslate nohighlight">\(G\)</span>・垂心 <span class="math notranslate nohighlight">\(H\)</span> の三点が <strong>一直線</strong> 上に並ぶ。</p>
+<p><strong>問い</strong>: <span class="math notranslate nohighlight">\(A, B, C\)</span> の取り方を変えても、この二つは成り立つか？ 成り立つなら、なぜか？ —— L4–L6 と同じ「観察から命題への移行」 である。</p>
+</section>
+<section id="id4">
+<h2>4. 証明（既知への帰着 + ベクトル）<a class="headerlink" href="#id4" title="Link to this heading">#</a></h2>
+<section id="l4">
+<h3>4.1 垂線の共点性 —— 外心 (L4) へ帰着する<a class="headerlink" href="#l4" title="Link to this heading">#</a></h3>
+<p><strong>主命題1</strong>: 三角形 <span class="math notranslate nohighlight">\(\triangle ABC\)</span> の三つの高さは一点 <span class="math notranslate nohighlight">\(H\)</span> で交わる。</p>
+<p><em>証明</em>: 各頂点を通り、対辺に <strong>平行な</strong> 三直線を引く。それらで囲まれる大きな三角形を <span class="math notranslate nohighlight">\(\triangle A'B'C'\)</span> とする（<span class="math notranslate nohighlight">\(A\)</span> は辺 <span class="math notranslate nohighlight">\(B'C'\)</span> の中点、<span class="math notranslate nohighlight">\(B\)</span> は <span class="math notranslate nohighlight">\(C'A'\)</span> の中点、<span class="math notranslate nohighlight">\(C\)</span> は <span class="math notranslate nohighlight">\(A'B'\)</span> の中点になる）。</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(BC \parallel B'C'\)</span> であり、<span class="math notranslate nohighlight">\(A\)</span> から <span class="math notranslate nohighlight">\(BC\)</span> への高さ <span class="math notranslate nohighlight">\(h_a\)</span> は <span class="math notranslate nohighlight">\(B'C'\)</span> にも垂直。さらに <span class="math notranslate nohighlight">\(A\)</span> は <span class="math notranslate nohighlight">\(B'C'\)</span> の中点。ゆえに <span class="math notranslate nohighlight">\(h_a\)</span> は <strong>辺 <span class="math notranslate nohighlight">\(B'C'\)</span> の垂直二等分線</strong> である。</p></li>
+<li><p>同様に <span class="math notranslate nohighlight">\(h_b\)</span>, <span class="math notranslate nohighlight">\(h_c\)</span> は <span class="math notranslate nohighlight">\(\triangle A'B'C'\)</span> の辺 <span class="math notranslate nohighlight">\(C'A'\)</span>, <span class="math notranslate nohighlight">\(A'B'\)</span> の垂直二等分線になる。</p></li>
+<li><p>三辺の垂直二等分線は一点で交わる —— これは <strong>L4 で証明した外心の共点性</strong> そのもの。</p></li>
+</ul>
+<p>ゆえに <span class="math notranslate nohighlight">\(\triangle ABC\)</span> の三つの高さは、<span class="math notranslate nohighlight">\(\triangle A'B'C'\)</span> の外心という一点で交わる。<span class="math notranslate nohighlight">\(\blacksquare\)</span></p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>定義
+この交点 <span class="math notranslate nohighlight">\(H\)</span> を三角形 <span class="math notranslate nohighlight">\(\triangle ABC\)</span> の <strong>垂心 (Orthocenter)</strong> と呼ぶ。<span class="math notranslate nohighlight">\(\triangle ABC\)</span> の垂心は、頂点を通り対辺に平行な線で囲んだ大三角形 <span class="math notranslate nohighlight">\(\triangle A'B'C'\)</span> の <strong>外心</strong> に等しい。</p>
+</div>
+</section>
+<section id="id5">
+<h3>4.2 Euler 線 —— 外心を原点に取る<a class="headerlink" href="#id5" title="Link to this heading">#</a></h3>
+<p><strong>主命題2（Euler, 1765）</strong>: 外心 <span class="math notranslate nohighlight">\(O\)</span>・重心 <span class="math notranslate nohighlight">\(G\)</span>・垂心 <span class="math notranslate nohighlight">\(H\)</span> は一直線上にあり、<span class="math notranslate nohighlight">\(OG : GH = 1 : 2\)</span>（すなわち <span class="math notranslate nohighlight">\(\overrightarrow{OH} = 3\,\overrightarrow{OG}\)</span>）。</p>
+<p><em>証明</em>: 外心 <span class="math notranslate nohighlight">\(O\)</span> を原点に取る。<span class="math notranslate nohighlight">\(\mathbf a = \overrightarrow{OA}\)</span>, <span class="math notranslate nohighlight">\(\mathbf b = \overrightarrow{OB}\)</span>, <span class="math notranslate nohighlight">\(\mathbf c = \overrightarrow{OC}\)</span> とすると、外心の定義より <span class="math notranslate nohighlight">\(|\mathbf a| = |\mathbf b| = |\mathbf c| = R\)</span>（外接円半径）。</p>
+<p>ここで点 <span class="math notranslate nohighlight">\(H\)</span> を <span class="math notranslate nohighlight">\(\overrightarrow{OH} = \mathbf a + \mathbf b + \mathbf c\)</span> で定める。この <span class="math notranslate nohighlight">\(H\)</span> が垂心であることを示す：
+$<span class="math notranslate nohighlight">\(\overrightarrow{AH}\cdot\overrightarrow{BC} = (\mathbf b + \mathbf c)\cdot(\mathbf c - \mathbf b) = |\mathbf c|^2 - |\mathbf b|^2 = R^2 - R^2 = 0.\)</span><span class="math notranslate nohighlight">\(
+ゆえに \)</span>AH \perp BC<span class="math notranslate nohighlight">\(、つまり \)</span>H<span class="math notranslate nohighlight">\( は \)</span>A<span class="math notranslate nohighlight">\( からの高さ上にある。三頂点で同様だから、\)</span>H = \mathbf a + \mathbf b + \mathbf c$ は三つの高さの交点 = 垂心。</p>
+<p>一方、重心は <span class="math notranslate nohighlight">\(\overrightarrow{OG} = \dfrac{\mathbf a + \mathbf b + \mathbf c}{3} = \dfrac{1}{3}\overrightarrow{OH}\)</span>。</p>
+<p>よって <span class="math notranslate nohighlight">\(O\)</span>（原点）, <span class="math notranslate nohighlight">\(G\)</span>, <span class="math notranslate nohighlight">\(H\)</span> は同一直線上にあり、<span class="math notranslate nohighlight">\(OG : GH = 1 : 2\)</span>。<span class="math notranslate nohighlight">\(\blacksquare\)</span></p>
+<div class="attention admonition">
+<p class="admonition-title">Attention</p>
+<p>三つの中心を一枚に並べる —— Euler 線という「隠れた直線」</p>
+<p>L4–L7 で作った四つの中心を、性質で並べる：</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>中心</p></th>
+<th class="head"><p>定義</p></th>
+<th class="head"><p>L</p></th>
+<th class="head"><p>Euler 線上か</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>外心 <span class="math notranslate nohighlight">\(O\)</span></p></td>
+<td><p>弦の垂直二等分線（三点から等距離）</p></td>
+<td><p>L4</p></td>
+<td><p>○</p></td>
+</tr>
+<tr class="row-odd"><td><p>重心 <span class="math notranslate nohighlight">\(G\)</span></p></td>
+<td><p>中線（アフィン量）</p></td>
+<td><p>L5</p></td>
+<td><p>○（<span class="math notranslate nohighlight">\(OH\)</span> を <span class="math notranslate nohighlight">\(1:2\)</span> に内分）</p></td>
+</tr>
+<tr class="row-even"><td><p>垂心 <span class="math notranslate nohighlight">\(H\)</span></p></td>
+<td><p>高さ（外心へ帰着）</p></td>
+<td><p>L7</p></td>
+<td><p>○</p></td>
+</tr>
+<tr class="row-odd"><td><p>内心 <span class="math notranslate nohighlight">\(I\)</span></p></td>
+<td><p>角の二等分線（計量量）</p></td>
+<td><p>L6</p></td>
+<td><p><strong>×</strong>（一般には乗らない）</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>→ 三つ（<span class="math notranslate nohighlight">\(O, G, H\)</span>）は一直線（Euler 線）に乗るが、<strong>内心 <span class="math notranslate nohighlight">\(I\)</span> は乗らない</strong>。なぜ内心だけ外れるのか —— <span class="math notranslate nohighlight">\(O, G, H\)</span> はいずれも頂点 <span class="math notranslate nohighlight">\(\mathbf a, \mathbf b, \mathbf c\)</span> の <strong>一次結合（重み和）</strong> で書けるが、内心は <span class="math notranslate nohighlight">\((\,a\mathbf a + b\mathbf b + c\mathbf c\,)/(a{+}b{+}c)\)</span> と <strong>辺長 <span class="math notranslate nohighlight">\(a,b,c\)</span>（計量）が重みに入る</strong> ため、線形の物語から外れる。L5–L6 で見た「アフィン量で済むか、計量が要るか」 の区別が、ここでも効いている。</p>
+<p>そして Euler 線は、<strong>三角形を眺めても見えない直線</strong> だった。それを「中心たちの一次結合」 という構造から取り出した。図形に隠れた直線を構造から見つける —— この経験は、後の円錐曲線で <strong>軸・準線</strong> という隠れた直線を扱うときの足場になる（L10+ で回収）。</p>
+</div>
+</section>
+</section>
+<section id="ggblab-extra-dataframe">
+<h2>5. ggblab_extra 第二段 —— DataFrame を「有向グラフ」へ進める<a class="headerlink" href="#ggblab-extra-dataframe" title="Link to this heading">#</a></h2>
+<p>L5–L6 では Construction Protocol を <strong>DataFrame</strong>（表）に外部化した。今日はもう一歩進めて、それを <strong>有向グラフ (directed graph)</strong> に変換する。各オブジェクトを <strong>ノード</strong>、「Y は X から作られた」 という依存関係を <strong>矢印（X → Y）</strong> にする。狙いは、<span class="math notranslate nohighlight">\(O, G, H\)</span> が <strong>共通の頂点 <span class="math notranslate nohighlight">\(A, B, C\)</span> から派生している</strong> ことを「目で見える形」 にして、Euler 共線が偶然でないことを構造として示すことである。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="c"># L5–L6 と同じ作法で、現在の作図状態を DataFrame に取り出す（Julia から Python の道具を借りる）</span>
+<span class="k">using</span><span class="w"> </span><span class="n">PythonCall</span>
+<span class="n">pl</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pyimport</span><span class="p">(</span><span class="s">&quot;polars&quot;</span><span class="p">)</span>
+<span class="n">nx</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pyimport</span><span class="p">(</span><span class="s">&quot;networkx&quot;</span><span class="p">)</span><span class="w">            </span><span class="c"># 本日の新顔: 有向グラフの道具</span>
+<span class="n">ggb</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pyimport</span><span class="p">(</span><span class="s">&quot;ggblab&quot;</span><span class="p">)</span>
+<span class="n">ggblab_extra</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pyimport</span><span class="p">(</span><span class="s">&quot;ggblab_extra&quot;</span><span class="p">)</span>
+<span class="n">ggb</span><span class="o">.</span><span class="n">file</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pyimport</span><span class="p">(</span><span class="s">&quot;ggblab.file&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">ggb_file</span><span class="p">()</span>
+<span class="n">ggb</span><span class="o">.</span><span class="n">parser</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pyimport</span><span class="p">(</span><span class="s">&quot;ggblab.parser&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">ggb_parser</span><span class="p">()</span>
+<span class="n">ggb</span><span class="o">.</span><span class="n">schema</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pyimport</span><span class="p">(</span><span class="s">&quot;ggblab.schema&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">ggb_schema</span><span class="p">()</span>
+<span class="n">ConstructionIO</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ggblab_extra</span><span class="o">.</span><span class="n">ConstructionIO</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="c"># 作図全体を DataFrame に。各行は (Name, Definition, Value) を持つ。</span>
+<span class="n">df</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nd">@await</span><span class="w"> </span><span class="n">ConstructionIO</span><span class="o">.</span><span class="n">initialize_dataframe</span><span class="p">(</span><span class="n">ggb</span><span class="p">,</span><span class="w"> </span><span class="n">use_applet</span><span class="o">=</span><span class="nb">true</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s">&quot;Name&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Command&quot;</span><span class="p">]</span><span class="w">   </span><span class="c"># 各オブジェクトが「何から作られたか」の定義列を見る</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="c"># Definition 列に現れる「既存オブジェクト名」を依存関係 (X → Y) として有向グラフに積む。</span>
+<span class="c"># ここで規律1（各オブジェクトに一意の名前・入れ子にしない）が効く: 名前があるから矢印を張れる。</span>
+<span class="k">using</span><span class="w"> </span><span class="n">PythonCall</span>
+<span class="n">names</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="n">pyconvert</span><span class="p">(</span><span class="kt">String</span><span class="p">,</span><span class="w"> </span><span class="n">n</span><span class="p">)</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">df</span><span class="p">[</span><span class="s">&quot;Name&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">to_list</span><span class="p">()]</span>
+<span class="n">G_dag</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">nx</span><span class="o">.</span><span class="n">DiGraph</span><span class="p">()</span>
+<span class="k">for</span><span class="w"> </span><span class="n">row</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">df</span><span class="o">.</span><span class="n">iter_rows</span><span class="p">(</span><span class="n">named</span><span class="o">=</span><span class="nb">true</span><span class="p">)</span>
+<span class="w">    </span><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pyconvert</span><span class="p">(</span><span class="kt">String</span><span class="p">,</span><span class="w"> </span><span class="n">row</span><span class="p">[</span><span class="s">&quot;Name&quot;</span><span class="p">])</span>
+<span class="w">    </span><span class="n">defn</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pyconvert</span><span class="p">(</span><span class="kt">String</span><span class="p">,</span><span class="w"> </span><span class="n">row</span><span class="p">[</span><span class="s">&quot;Command&quot;</span><span class="p">])</span>
+<span class="w">    </span><span class="n">G_dag</span><span class="o">.</span><span class="n">add_node</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="n">src</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">names</span>
+<span class="w">        </span><span class="c"># 自分以外の既存名が定義式に現れたら「src → name」の依存辺を張る</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="n">src</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">name</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">occursin</span><span class="p">(</span><span class="kt">Regex</span><span class="p">(</span><span class="s">&quot;</span><span class="se">\\</span><span class="s">b&quot;</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">src</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="s">&quot;</span><span class="se">\\</span><span class="s">b&quot;</span><span class="p">),</span><span class="w"> </span><span class="n">defn</span><span class="p">)</span>
+<span class="w">            </span><span class="n">G_dag</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="n">src</span><span class="p">,</span><span class="w"> </span><span class="n">name</span><span class="p">)</span>
+<span class="w">        </span><span class="k">end</span>
+<span class="w">    </span><span class="k">end</span>
+<span class="k">end</span>
+<span class="n">println</span><span class="p">(</span><span class="s">&quot;ノード数 = &quot;</span><span class="p">,</span><span class="w"> </span><span class="n">pyconvert</span><span class="p">(</span><span class="kt">Int</span><span class="p">,</span><span class="w"> </span><span class="n">G_dag</span><span class="o">.</span><span class="n">number_of_nodes</span><span class="p">()),</span>
+<span class="w">        </span><span class="s">&quot; / 辺数 = &quot;</span><span class="p">,</span><span class="w"> </span><span class="n">pyconvert</span><span class="p">(</span><span class="kt">Int</span><span class="p">,</span><span class="w"> </span><span class="n">G_dag</span><span class="o">.</span><span class="n">number_of_edges</span><span class="p">()))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">nx</span><span class="o">.</span><span class="n">write_network_text</span><span class="p">(</span><span class="n">G_dag</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="c"># 三中心 O, G, H それぞれの「祖先」（それを作るのに使われた全オブジェクト）を取り出す。</span>
+<span class="n">anc_O</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kt">Set</span><span class="p">(</span><span class="n">pyconvert</span><span class="p">(</span><span class="kt">String</span><span class="p">,</span><span class="w"> </span><span class="n">x</span><span class="p">)</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">nx</span><span class="o">.</span><span class="n">ancestors</span><span class="p">(</span><span class="n">G_dag</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;O&quot;</span><span class="p">))</span>
+<span class="n">anc_G</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kt">Set</span><span class="p">(</span><span class="n">pyconvert</span><span class="p">(</span><span class="kt">String</span><span class="p">,</span><span class="w"> </span><span class="n">x</span><span class="p">)</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">nx</span><span class="o">.</span><span class="n">ancestors</span><span class="p">(</span><span class="n">G_dag</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;G&quot;</span><span class="p">))</span>
+<span class="n">anc_H</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kt">Set</span><span class="p">(</span><span class="n">pyconvert</span><span class="p">(</span><span class="kt">String</span><span class="p">,</span><span class="w"> </span><span class="n">x</span><span class="p">)</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">nx</span><span class="o">.</span><span class="n">ancestors</span><span class="p">(</span><span class="n">G_dag</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;H&quot;</span><span class="p">))</span>
+<span class="n">println</span><span class="p">(</span><span class="s">&quot;O の祖先: &quot;</span><span class="p">,</span><span class="w"> </span><span class="n">sort</span><span class="p">(</span><span class="n">collect</span><span class="p">(</span><span class="n">anc_O</span><span class="p">)))</span>
+<span class="n">println</span><span class="p">(</span><span class="s">&quot;G の祖先: &quot;</span><span class="p">,</span><span class="w"> </span><span class="n">sort</span><span class="p">(</span><span class="n">collect</span><span class="p">(</span><span class="n">anc_G</span><span class="p">)))</span>
+<span class="n">println</span><span class="p">(</span><span class="s">&quot;H の祖先: &quot;</span><span class="p">,</span><span class="w"> </span><span class="n">sort</span><span class="p">(</span><span class="n">collect</span><span class="p">(</span><span class="n">anc_H</span><span class="p">)))</span>
+<span class="n">println</span><span class="p">(</span><span class="s">&quot;三中心が共有する祖先: &quot;</span><span class="p">,</span><span class="w"> </span><span class="n">sort</span><span class="p">(</span><span class="n">collect</span><span class="p">(</span><span class="n">intersect</span><span class="p">(</span><span class="n">anc_O</span><span class="p">,</span><span class="w"> </span><span class="n">anc_G</span><span class="p">,</span><span class="w"> </span><span class="n">anc_H</span><span class="p">))))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>グラフで見ると</strong>: <span class="math notranslate nohighlight">\(O, G, H\)</span> の祖先をたどると、<strong>いずれも頂点 <span class="math notranslate nohighlight">\(A, B, C\)</span>（と、それらから作った辺・高さ）に収束する</strong>。三中心は別々の経路（垂直二等分線 / 中線 / 高さ）で作られたが、<strong>根は同じ三頂点</strong> —— Euler 共線は「無関係な三点がたまたま並んだ」 のではなく、<strong>同じ前提から派生した三点だから並ぶ</strong>。座標値の一致（DataFrame の <code class="docutils literal notranslate"><span class="pre">Value</span></code> 列）が「結果」 なら、依存グラフ（祖先の共有）は「理由」 を示している。</p>
+<div class="tip admonition">
+<p class="admonition-title">Tip</p>
+<p>進捗の確認 —— セル出力を &#64;Codex に読ませる
+&#64;Codex は <strong>jupyter-server-mcp であなたのセル出力を直接読む</strong>（プロンプトだけの対話ではない）。
+（プロンプト例）&#64;Codex ここまでのセル出力を読んで、達成目標①（垂心を外心へ帰着）②（Euler 線をベクトルで確認）③（依存グラフで三中心の共有祖先を可視化）にどこまで到達したか、まだ埋まっていないセルはどこか、具体的に挙げて。</p>
+</div>
+</section>
+<section id="id6">
+<h2>6. 停滞と画期の照射 —— 「隠れた直線」と、次の傍心<a class="headerlink" href="#id6" title="Link to this heading">#</a></h2>
+<p>Euler が 1765 年にこの共線を見つけるまで、外心・重心・垂心は二千年「別々の中心」 だった。三つを一本の直線が貫いていることは、座標幾何（Descartes 以降）で計算すれば確かめられるが、<strong>計算は「並ぶ」 ことを教えても「なぜ並ぶか」 を教えない</strong>。今日 §5 で依存グラフに外部化したのは、その「なぜ」 —— 共通の前提から派生する構造 —— を可視化するためだった。</p>
+<p>次回（第 8 回）は <strong>傍心 (Excenter)</strong> に進む。内角の二等分線が内心を生んだなら、<strong>外角の二等分線</strong> は何を生むか。一つの内角と二つの外角の二等分線は傍心で交わり、内心と合わせて <strong>四つの中心</strong> が三角形の辺について対称に配置される。この対称性は、さらに先（L9）で学生自身が発見する山場になり、L12–L13 で <strong>Dandelin 球による楕円二焦点の対称性</strong> の二次元版だと分かる。</p>
+<div class="note admonition">
+<p class="admonition-title">Note</p>
+<p>伏線 —— Euler 線（隠れた直線）から、円錐曲線の「軸・準線」へ
+今日の Euler 線は、三角形に隠れていた <strong>一本の直線</strong> を、中心たちの一次結合という構造から取り出したものだった。後の円錐曲線では、図形に隠れた直線が再び主役になる：楕円・放物線・双曲線の <strong>対称軸</strong>、そして焦点と対をなす <strong>準線</strong> である。</p>
+<p>しかも —— L6 の伏線（「等距離」 → 「距離の比」）とここでつながる —— 準線は「焦点からの距離と準線からの距離の <strong>比</strong> が一定（離心率）」 という形で図形を定義する隠れた直線である。Euler 線を「中心たちの構造から見つけた」 経験は、準線を「円錐曲線の構造から見つける」 ための予行演習になる。</p>
+<p>ここで出てくる軸・準線・離心率・Dandelin といった語は、<strong>今は分からなくて正常</strong>。L10+ で必ず戻ってくる。今日は「図形に隠れた直線を、構造から取り出せる」 という<strong>手応えだけ</strong>持って先へ進めばよい。</p>
+</div>
+</section>
+<section id="pythagoras">
+<h2>発展 —— 直角三角形への退化: 高さから Pythagoras が立ち上がる<a class="headerlink" href="#pythagoras" title="Link to this heading">#</a></h2>
+<p>§4 で垂心を「高さ三本の交点」として定義した。この垂心を <strong>直角三角形</strong> へ退化させると、二千年前の Pythagoras の定理が、今日の「高さ」の一番素直な特殊化として立ち上がる。</p>
+<div class="attention admonition">
+<p class="admonition-title">Attention</p>
+<p>高さ → 等積変形 → Pythagoras —— 受験数学の到達点</p>
+<p><strong>① 垂心が直角の頂点に潰れる。</strong> 直角をはさむ二辺は、それぞれ互いの「高さ」でもある（脚 <span class="math notranslate nohighlight">\(\perp\)</span> 脚）。だから二本の高さは直角の頂点で交わり、第三の高さ（直角の頂点から斜辺へ下ろした垂線）もそこを通る。→ <strong>直角三角形の垂心は、直角の頂点に一致する</strong>。一般には三角形の内外を動き回る <span class="math notranslate nohighlight">\(H\)</span> が、ここでは一点へ縮む。</p>
+<p><strong>② その「高さ」は、Euclid が Pythagoras を証明した補助線そのもの。</strong> 原論 I.47（風車の図）は、直角の頂点から斜辺へ垂線を下ろし、それを斜辺の正方形まで延長して、正方形を二つの長方形に分ける。今日 §4 で引いた <strong>高さ</strong> が、そのまま二千年前の証明の主役だった。</p>
+<p><strong>③ 証明の心臓は「等積変形」。</strong> 「同じ底辺・平行線の間にある三角形は等積」（I.35–41）を使い、脚の正方形 <span class="math notranslate nohighlight">\(\to\)</span> 三角形 <span class="math notranslate nohighlight">\(\to\)</span> 平行移動した三角形 <span class="math notranslate nohighlight">\(\to\)</span> 斜辺側の長方形、と <strong>面積を保ったまま形を滑らせて</strong> 移す。脚二つの正方形が、斜辺の正方形の二つの長方形にぴたりと収まる —— これが <span class="math notranslate nohighlight">\(a^2 + b^2 = c^2\)</span>。</p>
+<p>つまり <strong>垂心（計量概念）の最も退化した姿が、等積変形（アフィン操作）で Pythagoras を成立させる</strong>。§4 末尾の囲み（Euler 線の表）で立てた「アフィン量で済むか、計量が要るか」の対比が、ここでも顔を出す —— 直角という <strong>計量</strong> から入り、保存則は <strong>アフィン</strong> で回す。L5 の天秤（斜行細片の積分でアフィンに正当）と同じ呼吸である。</p>
+<p>そして等積変形は、<strong>受験数学の到達点</strong>。その到達点が、今日の「高さ」の最も素直な特殊化として目の前に立ち上がる。</p>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="c"># 直角三角形を一つ作る（直角は P）。§2–§3 の一般の三角形とは別物なので作図をまっさらにする。</span>
+<span class="c"># （§5 の Euler-DAG はこの上のセルで済んでいるので、ここで :new してよい）</span>
+<span class="nd">@ggb</span><span class="w"> </span><span class="ss">:const</span><span class="w"> </span><span class="ss">:new</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="nd">@ggb</span><span class="w"> </span><span class="n">P</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span>
+<span class="nd">@ggb</span><span class="w"> </span><span class="n">Q</span><span class="o">=</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span>
+<span class="nd">@ggb</span><span class="w"> </span><span class="n">R</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">)</span>
+<span class="nd">@ggb</span><span class="w"> </span><span class="n">Polygon</span><span class="p">(</span><span class="ss">:P</span><span class="p">,</span><span class="w"> </span><span class="ss">:Q</span><span class="p">,</span><span class="w"> </span><span class="ss">:R</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="c"># 垂心を直接置く（TriangleCenter ..., 4 = 垂心）。直角の頂点 P に重なるはず。</span>
+<span class="nd">@ggb</span><span class="w"> </span><span class="n">Hr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">TriangleCenter</span><span class="p">(</span><span class="ss">:P</span><span class="p">,</span><span class="w"> </span><span class="ss">:Q</span><span class="p">,</span><span class="w"> </span><span class="ss">:R</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">)</span>
+<span class="nd">@ggb</span><span class="w"> </span><span class="kt">d_</span><span class="p">{</span><span class="kt">HrP</span><span class="p">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Distance</span><span class="p">(</span><span class="ss">:Hr</span><span class="p">,</span><span class="w"> </span><span class="ss">:P</span><span class="p">)</span><span class="w">   </span><span class="c"># 0 になる ← 直角三角形の垂心は直角の頂点</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="c"># 直角の頂点 P から斜辺 QR へ下ろした垂線 = Euclid I.47 の補助線そのもの。</span>
+<span class="nd">@ggb</span><span class="w"> </span><span class="n">hyp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Line</span><span class="p">(</span><span class="ss">:Q</span><span class="p">,</span><span class="w"> </span><span class="ss">:R</span><span class="p">)</span><span class="w">                 </span><span class="c"># 斜辺</span>
+<span class="nd">@ggb</span><span class="w"> </span><span class="n">altitude</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">PerpendicularLine</span><span class="p">(</span><span class="ss">:P</span><span class="p">,</span><span class="w"> </span><span class="ss">:hyp</span><span class="p">)</span><span class="w">  </span><span class="c"># 高さ（= 補助線）。延ばすと斜辺の正方形を二分する</span>
+<span class="nd">@ggb</span><span class="w"> </span><span class="n">Foot</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Intersect</span><span class="p">(</span><span class="ss">:altitude</span><span class="p">,</span><span class="w"> </span><span class="ss">:hyp</span><span class="p">)</span><span class="w">       </span><span class="c"># 垂線の足（斜辺の正方形を二つの長方形に分ける起点）</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="c"># 三辺の上に外向きの正方形を立てる（Pythagoras の図）。</span>
+<span class="c"># 規約: Polygon(X, Y, 4) は有向辺 X→Y の「左側」に正方形を作る。向きを選んで外側へ出す。</span>
+<span class="nd">@ggb</span><span class="w"> </span><span class="n">sqPQ</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Polygon</span><span class="p">(</span><span class="ss">:Q</span><span class="p">,</span><span class="w"> </span><span class="ss">:P</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">)</span><span class="w">   </span><span class="c"># 脚 PQ の上（下向き＝外）</span>
+<span class="nd">@ggb</span><span class="w"> </span><span class="n">sqPR</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Polygon</span><span class="p">(</span><span class="ss">:P</span><span class="p">,</span><span class="w"> </span><span class="ss">:R</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">)</span><span class="w">   </span><span class="c"># 脚 PR の上（左向き＝外）</span>
+<span class="nd">@ggb</span><span class="w"> </span><span class="n">sqQR</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Polygon</span><span class="p">(</span><span class="ss">:R</span><span class="p">,</span><span class="w"> </span><span class="ss">:Q</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">)</span><span class="w">   </span><span class="c"># 斜辺 QR の上（原点と反対側＝外）</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>読み方</strong>: 高さ <code class="docutils literal notranslate"><span class="pre">alt</span></code> を斜辺の正方形 <code class="docutils literal notranslate"><span class="pre">sqQR</span></code> まで延ばすと、正方形が <code class="docutils literal notranslate"><span class="pre">Foot</span></code> を境に <strong>二つの長方形</strong> に分かれる。等積変形（同じ底辺・平行線間の三角形は等積）で滑らせると、<strong>左の長方形 = 脚 <code class="docutils literal notranslate"><span class="pre">sqPR</span></code> の正方形</strong>、<strong>右の長方形 = 脚 <code class="docutils literal notranslate"><span class="pre">sqPQ</span></code> の正方形</strong> とそれぞれ等積になる。脚二つの正方形が斜辺の正方形に過不足なく収まる —— これが <span class="math notranslate nohighlight">\(|PQ|^2 + |PR|^2 = |QR|^2\)</span>。今日の「高さ」が、受験幾何の華である等積変形を経由して、Pythagoras に直結している。</p>
+<div class="tip admonition">
+<p class="admonition-title">今回の課題</p>
+<p><strong>必修</strong></p>
+<ol class="arabic simple">
+<li><p>三角形を一つ作図し、三本の高さの交点 <span class="math notranslate nohighlight">\(H\)</span>（垂心）を構成せよ。さらに外心 <span class="math notranslate nohighlight">\(O\)</span>・重心 <span class="math notranslate nohighlight">\(G\)</span> を置き、三点を通る直線（Euler 線）を引いて、<span class="math notranslate nohighlight">\(G\)</span> が線分 <span class="math notranslate nohighlight">\(OH\)</span> を <span class="math notranslate nohighlight">\(1:2\)</span> に内分すること（<code class="docutils literal notranslate"><span class="pre">Distance</span></code> で <span class="math notranslate nohighlight">\(OG\)</span> と <span class="math notranslate nohighlight">\(GH\)</span> を測る）を確かめよ。</p></li>
+<li><p>Construction Protocol を DataFrame に取り出し、<strong>依存関係を有向グラフ (networkx)</strong> に変換せよ。<span class="math notranslate nohighlight">\(O, G, H\)</span> の <strong>共有する祖先</strong> に頂点 <span class="math notranslate nohighlight">\(A, B, C\)</span> が含まれることを <code class="docutils literal notranslate"><span class="pre">nx.ancestors</span></code> で示せ。</p></li>
+</ol>
+<p><strong>思考課題</strong>
+3. 内心 <span class="math notranslate nohighlight">\(I\)</span> も置いて、<span class="math notranslate nohighlight">\(I\)</span> が Euler 線に <strong>乗らない</strong> ことを作図で確かめよ。<span class="math notranslate nohighlight">\(O, G, H\)</span> は乗るのに内心だけ外れる理由を、§4 の「一次結合 vs 辺長で重みづけ（計量）」 を手がかりに、自分の言葉で書き留めよ（L5–L6 の「アフィン vs 計量」 の延長線、第 10–15 回の立論の素材）。</p>
+</div>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>授業末尾の自己評価 —— <code class="docutils literal notranslate"><span class="pre">&#64;Codex</span></code> に聞いてみる（任意、L4–L6 から継続）</p>
+<p>L4–L6 と同じ template で、本回の自己評価を試してください。<strong>任意</strong>です。&#64;Codex は <strong>jupyter-server-mcp で全セルの入出力を読み</strong>、lancedb-rag で lesson 文脈を参照して個別評価を返します。</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>@Codex 今日のノートブックを全 cell 読んで評価してください。
+次の三つを区別して articulate してください:
+
+1. 自分で考えて書いた cell — 思考の痕跡が残っている部分
+2. AI 委託で書いたが、理解して受け入れた cell — 動いて、なぜ動くか説明できる部分
+3. AI 委託で書いたが、なぜ動くか説明できない cell — 動いているが、理解で未到達の部分
+
+加えて: 今日の主題（垂心 / 外心へ帰着する証明 / Euler 線 / DataFrame → 有向グラフ）
+に対する到達度、完成しないまま残った問い、次回（L8 傍心）への接続点。
+
+特に §5 の「依存グラフで三中心の共有祖先が見える」 が、Euler 共線を
+「偶然」 から「構造的必然」 へ読み替える助けになったか、誤魔化さず正直に articulate してください。
+</pre></div>
+</div>
+<p>JupyterAI のやり取り log は LMS 経由で先生に届きます —— 学期末立論（第 15 回）の materials として毎週蓄積。「<strong>先週は気付かなかったことに今週は気付けた</strong>」 が回を重ねるごとに起こるか、皆さん自身でも観察してください。</p>
+</div>
+</section>
+<section id="id7">
+<h2>7. 次回への接続<a class="headerlink" href="#id7" title="Link to this heading">#</a></h2>
+<p>次回（第 8 回）は <strong>傍心 (Excenter)</strong> に進む。<strong>外角の二等分線</strong> が作る三つの傍心と、L6 の内心とを合わせた <strong>四つの中心</strong> の、辺に関する <strong>対称的な配置</strong> を見る。道具としては、本日導入した <strong>DataFrame → 有向グラフ</strong> を <strong>復習</strong> し（ggblab_extra ロードマップ（MCP <code class="docutils literal notranslate"><span class="pre">lancedb-rag</span></code>「ggblab_extra 機能配置 ロードマップ」project=textbook） L8）、内心と傍心が依存構造の上で「鏡像」 の関係にあることを確かめる。</p>
+<p>そして本日の規律1（各オブジェクトを一意のシンボルに束縛し、入れ子にしない）が、引き続き効く —— 名前のないオブジェクトは、グラフのノードにできないからである（教材オーサリング規約（MCP <code class="docutils literal notranslate"><span class="pre">lancedb-rag</span></code>「教材オーサリング規約 ggblab セル シンボル」project=textbook） 規律1）。</p>
+</section>
+<section id="id8">
+<h2>参考文献<a class="headerlink" href="#id8" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Altitude_(triangle)">Orthocenter / Altitude - Wikipedia</a></p></li>
+<li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Euler_line">Euler line - Wikipedia</a>（<span class="math notranslate nohighlight">\(O, G, H\)</span> 共線・<span class="math notranslate nohighlight">\(OG:GH=1:2\)</span>）</p></li>
+<li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Triangle_center">Triangle center - Wikipedia</a>（Kimberling 番号: <span class="math notranslate nohighlight">\(X_2\)</span> 重心, <span class="math notranslate nohighlight">\(X_3\)</span> 外心, <span class="math notranslate nohighlight">\(X_4\)</span> 垂心）</p></li>
+<li><p><a class="reference external" href="https://networkx.org/">NetworkX documentation</a>（<code class="docutils literal notranslate"><span class="pre">DiGraph</span></code>, <code class="docutils literal notranslate"><span class="pre">ancestors</span></code>）</p></li>
+<li><p>前回 第6回(内心)（MCP <code class="docutils literal notranslate"><span class="pre">lancedb-rag</span></code>「第6回 内心 角の二等分線 計量 アフィン」project=textbook） — 内心（計量）、Construction Protocol → DataFrame</p></li>
+<li><p>隠れた直線と対称の系譜 discussion_memo（MCP <code class="docutils literal notranslate"><span class="pre">lancedb-rag</span></code>「内心傍心 Dandelin 二焦点 対称 / 軸 準線 離心率」project=conversations）</p></li>
+<li><p>道具のロードマップ ggblab_extra ロードマップ（MCP <code class="docutils literal notranslate"><span class="pre">lancedb-rag</span></code>「ggblab_extra 機能配置 ロードマップ」project=textbook） / 著者規約 教材オーサリング規約（MCP <code class="docutils literal notranslate"><span class="pre">lancedb-rag</span></code>「教材オーサリング規約 ggblab セル シンボル」project=textbook）</p></li>
+</ul>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "julia-1.12"
+        },
+        kernelOptions: {
+            name: "julia-1.12",
+            path: "./chapters/08"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'julia-1.12'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../../intro.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">textbook-2026: プログラミングで遡る科学史</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="lesson_08_excenter_symmetry.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">第8回: 傍心と四中心の対称性 — 内心の「双子」を依存構造の鏡像として見る</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item"><div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">0. 前回 (第 6 回) の振り返り — そして今日の「隠れた直線」</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">1. 垂心への道 — 頂点から対辺への垂線（高さ）</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ggblab">2. ggblab セットアップと三角形の準備</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">3. 解くべき命題を発見する</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">4. 証明（既知への帰着 + ベクトル）</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#l4">4.1 垂線の共点性 —— 外心 (L4) へ帰着する</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">4.2 Euler 線 —— 外心を原点に取る</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ggblab-extra-dataframe">5. ggblab_extra 第二段 —— DataFrame を「有向グラフ」へ進める</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">6. 停滞と画期の照射 —— 「隠れた直線」と、次の傍心</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pythagoras">発展 —— 直角三角形への退化: 高さから Pythagoras が立ち上がる</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">7. 次回への接続</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">参考文献</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Manabu Higashida, D3 Center, Osaka University, Japan
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2026.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
