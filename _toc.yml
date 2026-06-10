@@ -3,6 +3,13 @@
 format: jb-book
 root: intro.md
 parts:
+- caption: 2026/06/10
+  numbered: false
+  chapters:
+  - file: chapters/08/lesson_07_orthocenter_euler.ipynb
+    title: 垂心と Euler 線 — 三中心が一直線に並ぶ「隠れた構造」を有向グラフで見る
+  - file: chapters/08/lesson_08_excenter_symmetry.ipynb
+    title: 傍心と四中心の対称性 — 内心の「双子」を依存構造の鏡像として見る
 - caption: 2026/06/03
   numbered: false
   chapters:
