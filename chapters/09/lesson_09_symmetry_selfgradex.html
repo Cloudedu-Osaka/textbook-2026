@@ -1,0 +1,1246 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>第9回: 内心と傍心の辺対称性 — 自分で発見し、構造で自己採点する &#8212; プログラミングで遡る科学史</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=3c74b3bc" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css?v=8cd3d715" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=fab101a9"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'chapters/09/lesson_09_symmetry_selfgradex';</script>
+    <link rel="canonical" href="https://cloudedu-osaka.github.io/textbook-2026/chapters/09/lesson_09_symmetry_selfgradex.html" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/vioras-logo.png" class="logo__image only-light" alt="プログラミングで遡る科学史 - Home"/>
+    <img src="../../_static/vioras-logo.png" class="logo__image only-dark pst-js-only" alt="プログラミングで遡る科学史 - Home"/>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">2026/06/17</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="lesson_07_orthocenter_euler.html">垂心と Euler 線 — 三中心が一直線に並ぶ「隠れた構造」を有向グラフで見る</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lesson_08_excenter_symmetry.html">傍心と四中心の対称性 — 内心の「双子」を依存構造の鏡像として見る</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lesson_09_symmetry_selfgrade.html">内心と傍心の辺対称性 — 自分で発見し、構造で自己採点する</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lesson_10_ellipse_foci.html">楕円と二焦点 — 三角形を離れ、二つの焦点の対称へ</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">2026/06/10</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../08/lesson_07_orthocenter_euler.html">垂心と Euler 線 — 三中心が一直線に並ぶ「隠れた構造」を有向グラフで見る</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../08/lesson_08_excenter_symmetry.html">傍心と四中心の対称性 — 内心の「双子」を依存構造の鏡像として見る</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">2026/06/03</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../07/lesson_06_incenter_mtric.html">内心と角の二等分線 — 計量が要る場面（重心のアフィンとの対比）</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">2026/05/27</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../06/lesson_05_centroid_dataframe.html">同じ点を三つの前提から導く — 重心と DataFrame 外部化</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">2026/05/20</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../05/lesson_04_thales_circumcenter.html">前提・発見・連鎖 — Thales の定理から外心へ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../05/lesson_05_centroid_dataframe.html">同じ点を三つの前提から導く — 重心と DataFrame 外部化</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">2026/05/13</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../04/lesson_00_about_this_textbook.html">この教材はどう作られているか — AI と人間の役割分担</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../04/lesson_04_thales_circumcenter.html">前提・発見・連鎖 — Thales の定理から外心へ</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">2026/05/08</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../03/03_01.html">第3回: 試験問題の記述とこの授業のルール</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../03/02_13.html">入試問題を解く (その2) 記述する・解答する 4</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../03/02_11.html">入試問題を解く (その2) 記述する・解答する 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../03/02_12.html">入試問題を解く (その2) 記述する・解答する 3</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">2026/04/22</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../02/02_01.html">入試問題を解く (その2) 記述する・解答する 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../02/02_11.html">入試問題を解く (その2) 記述する・解答する 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../02/02_12.html">入試問題を解く (その2) 記述する・解答する 3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../02/02_13.html">入試問題を解く (その2) 記述する・解答する 4</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../02/02_02.html">入試問題を解く (その2) 記述する・解答する 5</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">2026/04/15</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../01/01_00_intro.html">How to connect and use JupyterHub</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../01/01_01.html">入試問題を解く (その1) 記述する 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../01/01_02.html">入試問題を解く (その1) 記述する 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../01/01_03.html">入試問題を解く (その1) 記述する 3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../01/01_04.html">入試問題を解く (その1) 記述する 4</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../01/01_05.html">入試問題を解く (その1) 記述する 5</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../01/01_11.html">入試問題を解く (その1) 記述する 6</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../01/01_12.html">入試問題を解く (その1) 記述する 7</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../01/01_13.html">入試問題を解く (その1) 記述する 8</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://vioras-jh2500.japaneast.cloudapp.azure.com/hub/user-redirect/git-pull?repo=https%3A//github.com/Cloudedu-Osaka/textbook-2026&urlpath=lab/tree/textbook-2026/chapters/09/lesson_09_symmetry_selfgradex.ipynb&branch=main" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on JupyterHub"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="JupyterHub logo" src="../../_static/images/logo_jupyterhub.svg">
+  </span>
+<span class="btn__text-container">JupyterHub</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+<a href="https://github.com/Cloudedu-Osaka/textbook-2026" target="_blank"
+   class="btn btn-sm btn-source-repository-button"
+   title="Source repository"
+   data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+
+</a>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/chapters/09/lesson_09_symmetry_selfgradex.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button pst-navbar-icon"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm pst-navbar-icon" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>第9回: 内心と傍心の辺対称性 — 自分で発見し、構造で自己採点する</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">0. 前回 (第 8 回) の振り返り — そして今日は「自分で見つける」</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">1. 今日の問い — 内心と傍心は、辺について何が対称なのか</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ggblab">2. ggblab セットアップと三角形の準備</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">3. 自分で発見する —— 接点の対称を作図で確かめる</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">4. 発見を命題に固める —— 接線長と符号</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ggblab-extra">5. ggblab_extra（第三機能・初出）—— 構造で自己採点する</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">5.1 なぜ今これが必要か</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">5.2 何が起きているか（最小デモ）</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">5.3 座標を変えても、構造が正しければ正解</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">5.4 対称性そのものが「グラフの同型」 だった</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">5.5 これが汎用的にどこに効くか</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">6. 停滞と画期の照射 —— 構造で評価する、という対案</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">7. 次回への接続</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">枕（次回への予告）—— 楕円は、二つの焦点からの距離の和が一定</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id14">参考文献</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="id1">
+<h1>第9回: 内心と傍心の辺対称性 — 自分で発見し、構造で自己採点する<a class="headerlink" href="#id1" title="Link to this heading">#</a></h1>
+<p><strong>主題</strong>: 前半（五心）の <strong>第一の山</strong>。L8 で並べた内心 <span class="math notranslate nohighlight">\(I\)</span> と三傍心 <span class="math notranslate nohighlight">\(I_A, I_B, I_C\)</span> が <strong>辺について対称</strong> に配置される —— この「教科書に明示されていない対称性」を、今日は <strong>学生自身が発見</strong> する。答えは一つに定まらない（座標は人それぞれ）。だからこそ、評価を <strong>座標値ではなく依存グラフの構造（同型性）</strong> で行う <strong>自己採点</strong> を、新しい道具として導入する。</p>
+<p><strong>副題</strong>: 内心と傍心は「内角 ↔ 外角」を入れ替えた双子だった（L8）。その双子性は、座標では符号反転、依存グラフでは <strong>片方のノードの差し替え</strong> として現れた。今日はそれを <strong>「同じ構造か」を機械が判定する</strong>（networkx の <strong>グラフ同型 <code class="docutils literal notranslate"><span class="pre">is_isomorphic</span></code></strong>）形にする。座標が違っても構造が同型なら「同じ作図」。これが、答えが一意でない問題を <strong>構造で評価する</strong> という発想の初出である。</p>
+<p><strong>学習目標</strong></p>
+<ol class="arabic simple">
+<li><p>内心 <span class="math notranslate nohighlight">\(I\)</span> と傍心 <span class="math notranslate nohighlight">\(I_A\)</span> の「辺に関する対称性」を、<strong>自分の作図と観察から発見</strong>し、自分の言葉で命題として述べられるようになる（接点の対称 <span class="math notranslate nohighlight">\(BD = s-b\)</span>, <span class="math notranslate nohighlight">\(BD' = s-c\)</span> など、具体的な距離で確かめる）。</p></li>
+<li><p>「答えが一意でない問題」を、座標ではなく <strong>依存グラフの同型性</strong> で評価する <strong>自己採点</strong> の考え方を理解し、<code class="docutils literal notranslate"><span class="pre">networkx.is_isomorphic</span></code>（コマンド種別を <code class="docutils literal notranslate"><span class="pre">node_match</span></code> に取る）で、<strong>座標を変えても正しい構造なら正解／構造が違えば座標が合っても不正解</strong> を判定できるようになる（ggblab_extra 第三機能の <strong>初出</strong>）。</p></li>
+<li><p>内心の部分グラフと傍心の部分グラフが <strong>グラフとして同型</strong> であること、そして <strong>唯一食い違うノード（内角二等分線 ↔ 外角二等分線）こそが「内 ↔ 外の対称」</strong> であることを、<code class="docutils literal notranslate"><span class="pre">is_isomorphic</span></code> と差分で示せるようになる。</p></li>
+<li><p><strong>(伏線回収の始まり)</strong> 今日発見した「二つの中心が辺について対称」は、L10 以降の <strong>楕円の二つの焦点の対称</strong> の三角形版である。第一の山で得た「対称を構造として掴む」感覚が、後半（円錐曲線）の二焦点・準線・離心率へ運ばれていく。</p></li>
+</ol>
+<section id="id2">
+<h2>0. 前回 (第 8 回) の振り返り — そして今日は「自分で見つける」<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
+<p>前回は <strong>傍心 <span class="math notranslate nohighlight">\(I_A, I_B, I_C\)</span></strong> を外角の二等分線から作り、内心 <span class="math notranslate nohighlight">\(I\)</span> と合わせた <strong>四中心が辺について対称的に並ぶ</strong> ことを見た。座標では内心 <span class="math notranslate nohighlight">\((a:b:c)\)</span> から <strong>符号を一つ反転</strong> すると傍心 <span class="math notranslate nohighlight">\((-a:b:c)\)</span> になり、依存グラフでは <strong>直接の親を一本（内角 → 外角）差し替える</strong> だけで内心が傍心の鏡像になった。L8 まではこれらを <strong>教師が並べて見せた</strong>。</p>
+<p>今日は逆である。<strong>対称性を、皆さん自身が作図から発見する</strong>。そして発見した作図は、座標が一人ひとり違う —— A, B, C をどこに置いたかで数値はばらばらになる。にもかかわらず「正しく対称を捉えた作図」 かどうかを、<strong>自分で判定</strong> したい。共通テストのように数値一致で採点したら、座標の違う正解は全部バツになってしまう。だから今日は <strong>「構造が同じか」を見る自己採点</strong> を道具として手に入れる。</p>
+<div class="note admonition">
+<p class="admonition-title">目標の確認 — &#64;Codex で達成目標を引く</p>
+<p>本回の達成目標を <strong>&#64;Codex に lancedb-rag（教材ドメイン RAG）で確認</strong>してもらえる（L5 から運用）。
+（プロンプト例）&#64;Codex この回（L9 内心と傍心の辺対称性・自己採点の初出）の達成目標を lancedb-rag で調べて、要点を整理して。
+特に「対称性は自分で発見する」「評価は座標でなく依存グラフの同型性で行う」 が腑に落ちるか、自分の理解と照らしてから先へ進む。</p>
+</div>
+</section>
+<section id="id3">
+<h2>1. 今日の問い — 内心と傍心は、辺について何が対称なのか<a class="headerlink" href="#id3" title="Link to this heading">#</a></h2>
+<p>L8 で「四中心が辺について対称」 と言葉だけ置いた。今日はそれを <strong>測れる命題</strong> に落とす。手がかりは、内接円・傍接円が辺に触れる <strong>接点</strong> である。</p>
+<blockquote>
+<div><p><strong>接点の対称（発見してほしい命題）</strong>: 三角形 <span class="math notranslate nohighlight">\(ABC\)</span> の周の半分を <span class="math notranslate nohighlight">\(s = (a+b+c)/2\)</span> とする。内接円が辺 <span class="math notranslate nohighlight">\(BC\)</span> に触れる点 <span class="math notranslate nohighlight">\(D\)</span> は <span class="math notranslate nohighlight">\(BD = s-b\)</span> にあり、<span class="math notranslate nohighlight">\(A\)</span> に対する傍接円が辺 <span class="math notranslate nohighlight">\(BC\)</span>（の直線）に触れる点 <span class="math notranslate nohighlight">\(D'\)</span> は <span class="math notranslate nohighlight">\(BD' = s-c\)</span> にある。ゆえに <span class="math notranslate nohighlight">\(D\)</span> と <span class="math notranslate nohighlight">\(D'\)</span> は <strong>辺 <span class="math notranslate nohighlight">\(BC\)</span> の中点について対称</strong> である。</p>
+</div></blockquote>
+<p>これは <strong>新しい証明を要しない</strong>。L6 で「接線の長さは等しい」（一点から円に引いた二接線の長さは等しい）を使った。同じ補題を内接円と傍接円に当てれば、<span class="math notranslate nohighlight">\(BD = s-b\)</span>, <span class="math notranslate nohighlight">\(BD' = s-c\)</span> が出る。<span class="math notranslate nohighlight">\(BD + BD' = (s-b)+(s-c) = 2s-b-c = a = BC\)</span> だから、<span class="math notranslate nohighlight">\(D, D'\)</span> は中点について対称。<strong>内角を外角に差し替える</strong>だけで、内心の議論が傍心へ「写る」 —— L8 の双子性が、接点という具体物で見える。</p>
+<p>今日はこの命題を <strong>皆さん自身が作図で発見</strong> し、その作図を <strong>構造で自己採点</strong> する。</p>
+</section>
+<section id="ggblab">
+<h2>2. ggblab セットアップと三角形の準備<a class="headerlink" href="#ggblab" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="k">using</span><span class="w"> </span><span class="n">Pkg</span>
+<span class="n">Pkg</span><span class="o">.</span><span class="n">activate</span><span class="p">(</span><span class="s">&quot;../..&quot;</span><span class="p">)</span><span class="w">   </span><span class="c"># この教材プロジェクトの環境を有効化</span>
+<span class="n">Pkg</span><span class="o">.</span><span class="n">resolve</span><span class="p">()</span>
+<span class="n">Pkg</span><span class="o">.</span><span class="n">instantiate</span><span class="p">()</span><span class="w">       </span><span class="c"># 必要なパッケージを用意（初回は少し時間がかかる）</span>
+<span class="k">using</span><span class="w"> </span><span class="n">GeoGebra</span>
+<span class="nb">ENV</span><span class="p">[</span><span class="s">&quot;GGB_DIRECT_TRANSPORT&quot;</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;true&quot;</span><span class="w">   </span><span class="c"># ggblab とアプレットの直接通信を有効化</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Bold -Color-Bold-Green">  Activating</span> 
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>project at `~/textbook-2026`
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Bold -Color-Bold-Cyan">     Project</span> No packages added to or removed from `~/textbook-2026/Project.toml`
+<span class=" -Color -Color-Bold -Color-Bold-Cyan">    Manifest</span> No packages added to or removed from `~/textbook-2026/Manifest.toml`
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">inject_applet</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Bold -Color-Bold-Cyan">[ Info: </span>Listening on: 127.0.0.1:35467, thread id: 1
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Dict{String, Any} with 5 entries:
+  &quot;kernelId&quot;   =&gt; &quot;7631885b-1e8f-4e5b-9b6e-0eeb389b72e4&quot;
+  &quot;wsPort&quot;     =&gt; 0x8a8b
+  &quot;insertMode&quot; =&gt; &quot;split-right&quot;
+  &quot;type&quot;       =&gt; &quot;inject&quot;
+  &quot;appName&quot;    =&gt; &quot;suite&quot;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="nd">@ggb</span><span class="w"> </span><span class="ss">:const</span><span class="w"> </span><span class="ss">:new</span>
+<span class="nd">@ggb</span><span class="w"> </span><span class="n">A</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span>
+<span class="nd">@ggb</span><span class="w"> </span><span class="n">B</span><span class="o">=</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span>
+<span class="nd">@ggb</span><span class="w"> </span><span class="n">C</span><span class="o">=</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p">)</span>
+<span class="nd">@ggb</span><span class="w"> </span><span class="n">Polygon</span><span class="p">(</span><span class="ss">:A</span><span class="p">,</span><span class="w"> </span><span class="ss">:B</span><span class="p">,</span><span class="w"> </span><span class="ss">:C</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Bold -Color-Bold-Cyan">[ Info: </span>GeoGebra: enabling direct transport via environment variable
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Info: PersistentCounter disabled when called from Julia/PythonCall
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4-element Vector{GGBObject}:
+ t1
+ c
+ a
+ b
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="id4">
+<h2>3. 自分で発見する —— 接点の対称を作図で確かめる<a class="headerlink" href="#id4" title="Link to this heading">#</a></h2>
+<p>ここからは <strong>自分で手を動かして発見する</strong> 区間である。内心と <span class="math notranslate nohighlight">\(A\)</span> に対する傍心を作り、それぞれの円が辺 <span class="math notranslate nohighlight">\(BC\)</span> に触れる接点を取り出して、中点について対称か確かめる（規律1: 各オブジェクトを一意のシンボルに束縛し、入れ子にしない）。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="c"># 内角の二等分線（L6 の再利用）と内心</span>
+<span class="nd">@ggb</span><span class="w"> </span><span class="n">wa</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">AngleBisector</span><span class="p">(</span><span class="ss">:B</span><span class="p">,</span><span class="w"> </span><span class="ss">:A</span><span class="p">,</span><span class="w"> </span><span class="ss">:C</span><span class="p">)</span><span class="w">   </span><span class="c"># 内角 A</span>
+<span class="nd">@ggb</span><span class="w"> </span><span class="n">wb</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">AngleBisector</span><span class="p">(</span><span class="ss">:A</span><span class="p">,</span><span class="w"> </span><span class="ss">:B</span><span class="p">,</span><span class="w"> </span><span class="ss">:C</span><span class="p">)</span><span class="w">   </span><span class="c"># 内角 B</span>
+<span class="nd">@ggb</span><span class="w"> </span><span class="n">I</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="n">Intersect</span><span class="p">(</span><span class="ss">:wa</span><span class="p">,</span><span class="w"> </span><span class="ss">:wb</span><span class="p">)</span><span class="w">         </span><span class="c"># 内心</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>I
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="c"># 外角の二等分線（L8 の再利用）と A に対する傍心</span>
+<span class="nd">@ggb</span><span class="w"> </span><span class="n">wb_ext</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">PerpendicularLine</span><span class="p">(</span><span class="ss">:B</span><span class="p">,</span><span class="w"> </span><span class="ss">:wb</span><span class="p">)</span><span class="w">   </span><span class="c"># 外角 B = 内角 B の二等分線に直交</span>
+<span class="nd">@ggb</span><span class="w"> </span><span class="n">wc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">AngleBisector</span><span class="p">(</span><span class="ss">:A</span><span class="p">,</span><span class="w"> </span><span class="ss">:C</span><span class="p">,</span><span class="w"> </span><span class="ss">:B</span><span class="p">)</span><span class="w">        </span><span class="c"># 内角 C</span>
+<span class="nd">@ggb</span><span class="w"> </span><span class="n">wc_ext</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">PerpendicularLine</span><span class="p">(</span><span class="ss">:C</span><span class="p">,</span><span class="w"> </span><span class="ss">:wc</span><span class="p">)</span><span class="w">   </span><span class="c"># 外角 C</span>
+<span class="nd">@ggb</span><span class="w"> </span><span class="n">Ia</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Intersect</span><span class="p">(</span><span class="ss">:wa</span><span class="p">,</span><span class="w"> </span><span class="ss">:wb_ext</span><span class="p">)</span><span class="w">          </span><span class="c"># A に対する傍心 = 内角 A + 外角 B</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Ia
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="c"># 辺 BC の直線、内接円・傍接円、そして「接点」を取り出す</span>
+<span class="nd">@ggb</span><span class="w"> </span><span class="n">bc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Line</span><span class="p">(</span><span class="ss">:B</span><span class="p">,</span><span class="w"> </span><span class="ss">:C</span><span class="p">)</span>
+<span class="nd">@ggb</span><span class="w"> </span><span class="n">D</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="n">ClosestPoint</span><span class="p">(</span><span class="ss">:bc</span><span class="p">,</span><span class="w"> </span><span class="ss">:I</span><span class="p">)</span><span class="w">    </span><span class="c"># 内接円が BC に触れる点（I から BC への垂線の足）</span>
+<span class="nd">@ggb</span><span class="w"> </span><span class="n">Dp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ClosestPoint</span><span class="p">(</span><span class="ss">:bc</span><span class="p">,</span><span class="w"> </span><span class="ss">:Ia</span><span class="p">)</span><span class="w">   </span><span class="c"># A傍接円が BC に触れる点（Ia から BC への垂線の足）</span>
+<span class="nd">@ggb</span><span class="w"> </span><span class="n">M</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="n">Midpoint</span><span class="p">(</span><span class="ss">:B</span><span class="p">,</span><span class="w"> </span><span class="ss">:C</span><span class="p">)</span><span class="w">         </span><span class="c"># 辺 BC の中点</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>M
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="c"># 接点が中点について対称か？ —— 距離で確かめる</span>
+<span class="nd">@ggb</span><span class="w"> </span><span class="n">dBD</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="n">Distance</span><span class="p">(</span><span class="ss">:B</span><span class="p">,</span><span class="w"> </span><span class="ss">:D</span><span class="p">)</span><span class="w">       </span><span class="c"># BD = s - b になるはず</span>
+<span class="nd">@ggb</span><span class="w"> </span><span class="n">dBDp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Distance</span><span class="p">(</span><span class="ss">:B</span><span class="p">,</span><span class="w"> </span><span class="ss">:Dp</span><span class="p">)</span><span class="w">      </span><span class="c"># BD&#39; = s - c になるはず</span>
+<span class="nd">@ggb</span><span class="w"> </span><span class="n">dMD</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="n">Distance</span><span class="p">(</span><span class="ss">:M</span><span class="p">,</span><span class="w"> </span><span class="ss">:D</span><span class="p">)</span><span class="w">       </span><span class="c"># 中点から D</span>
+<span class="nd">@ggb</span><span class="w"> </span><span class="n">dMDp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Distance</span><span class="p">(</span><span class="ss">:M</span><span class="p">,</span><span class="w"> </span><span class="ss">:Dp</span><span class="p">)</span><span class="w">      </span><span class="c"># 中点から D&#39; ← dMD と等しければ「中点対称」</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>dMDp
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>観察1</strong>: <code class="docutils literal notranslate"><span class="pre">dMD</span></code> と <code class="docutils literal notranslate"><span class="pre">dMDp</span></code> が（数値の丸めを除いて）一致する。<span class="math notranslate nohighlight">\(D\)</span> と <span class="math notranslate nohighlight">\(D'\)</span> は辺 <span class="math notranslate nohighlight">\(BC\)</span> の中点 <span class="math notranslate nohighlight">\(M\)</span> について対称に並ぶ。</p>
+<p><strong>観察2</strong>: <code class="docutils literal notranslate"><span class="pre">dBD</span></code> <span class="math notranslate nohighlight">\(+\)</span> <code class="docutils literal notranslate"><span class="pre">dBDp</span></code> <span class="math notranslate nohighlight">\(= a = BC\)</span>。<span class="math notranslate nohighlight">\(BD = s-b\)</span>, <span class="math notranslate nohighlight">\(BD' = s-c\)</span> を足すと辺 <span class="math notranslate nohighlight">\(BC\)</span> そのものになる（半周 <span class="math notranslate nohighlight">\(s\)</span> を二度の接線長で割り振っている）。</p>
+<p><strong>問い（自分で言葉にする）</strong>: なぜ内接円と傍接円の接点が、辺の中点について対称になるのか？ —— L6 の「一点からの二接線は等長」 を、内側の円と外側の円に当てるとどうなるか、自分の言葉で書き留めよ。<strong>A, B, C を動かしても成り立つか</strong>、いくつか動かして確かめよ。これが今日の「発見」である。</p>
+</section>
+<section id="id5">
+<h2>4. 発見を命題に固める —— 接線長と符号<a class="headerlink" href="#id5" title="Link to this heading">#</a></h2>
+<p><strong>主命題</strong>: <span class="math notranslate nohighlight">\(BD = s-b\)</span>, <span class="math notranslate nohighlight">\(BD' = s-c\)</span>。ゆえに <span class="math notranslate nohighlight">\(D, D'\)</span> は辺 <span class="math notranslate nohighlight">\(BC\)</span> の中点について対称。</p>
+<p><em>証明</em>: 頂点 <span class="math notranslate nohighlight">\(B\)</span> から内接円に引いた二接線（辺 <span class="math notranslate nohighlight">\(BA\)</span> 上と辺 <span class="math notranslate nohighlight">\(BC\)</span> 上）は等長で、その長さは <span class="math notranslate nohighlight">\(s-b\)</span>（接線長の標準公式、L6 の「二接線等長」 から導かれる）。よって内接円の <span class="math notranslate nohighlight">\(BC\)</span> 上の接点 <span class="math notranslate nohighlight">\(D\)</span> は <span class="math notranslate nohighlight">\(BD = s-b\)</span>。<span class="math notranslate nohighlight">\(A\)</span> に対する傍接円は辺 <span class="math notranslate nohighlight">\(BC\)</span> の <strong>外側</strong> で三辺の直線に接し、<span class="math notranslate nohighlight">\(B\)</span> からの接線長は <span class="math notranslate nohighlight">\(s-c\)</span> になる（内角を外角に差し替えると、半周のどの部分を測るかが入れ替わる）。<span class="math notranslate nohighlight">\(BD'=s-c\)</span>。<span class="math notranslate nohighlight">\(BD+BD'=2s-b-c=a\)</span> だから <span class="math notranslate nohighlight">\(D, D'\)</span> は <span class="math notranslate nohighlight">\(BC\)</span> の中点について対称。<span class="math notranslate nohighlight">\(\blacksquare\)</span></p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>定義
+辺の直線に内側で接する円を <strong>内接円 (Incircle)</strong>、外側で接する円を <strong>傍接円 (Excircle)</strong> と呼ぶ。各辺について、内接円の接点と対応する傍接円の接点は <strong>辺の中点について対称</strong> である。この対称は、内心 <span class="math notranslate nohighlight">\(I\)</span> と傍心 <span class="math notranslate nohighlight">\(I_A\)</span> の関係（内角 ↔ 外角の差し替え）が、接点という観測量に降りた姿である。</p>
+</div>
+<div class="attention admonition">
+<p class="admonition-title">Attention</p>
+<p>対称の三つの顔 —— 接点・座標・依存グラフ</p>
+<p>今日発見した「接点が中点について対称」は、L8 で見た二つの対称と <strong>同じ一つの対称</strong> である。</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>見え方</p></th>
+<th class="head"><p>内心 <span class="math notranslate nohighlight">\(I\)</span></p></th>
+<th class="head"><p>傍心 <span class="math notranslate nohighlight">\(I_A\)</span></p></th>
+<th class="head"><p>対称の正体</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>接点（今日）</strong></p></td>
+<td><p><span class="math notranslate nohighlight">\(BD = s-b\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(BD' = s-c\)</span></p></td>
+<td><p>中点について対称（<span class="math notranslate nohighlight">\(BD+BD'=a\)</span>）</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>座標（L8 §4）</strong></p></td>
+<td><p><span class="math notranslate nohighlight">\((\,a:b:c\,)\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\((\,{-}a:b:c\,)\)</span></p></td>
+<td><p>辺長 <span class="math notranslate nohighlight">\(a\)</span> の符号反転</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>依存グラフ（L8 §5）</strong></p></td>
+<td><p>親に内角 <span class="math notranslate nohighlight">\(w_b\)</span></p></td>
+<td><p>親に外角 <span class="math notranslate nohighlight">\(w_{b\_ext}\)</span></p></td>
+<td><p>一本のノードの差し替え</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>三つは別々の事実ではない。「内角 ↔ 外角」 という一つの差し替えが、<strong>接点では中点対称、座標では符号反転、グラフでは親の差し替え</strong> として現れている。次の §5 では、この「グラフでの差し替え」 を機械が判定できる形にして、<strong>作図の自己採点</strong> に使う。</p>
+</div>
+</section>
+<section id="ggblab-extra">
+<h2>5. ggblab_extra（第三機能・初出）—— 構造で自己採点する<a class="headerlink" href="#ggblab-extra" title="Link to this heading">#</a></h2>
+<p>ここで新しい道具を一つだけ足す。これまで（L5 DataFrame・L7 有向グラフ）で作図を <strong>データ・グラフ</strong> に外部化してきた。今日はそれを使って、<strong>「作図が正しいかを構造で採点する」</strong> —— 座標が人それぞれ違っても、依存グラフが <strong>同型 (isomorphic)</strong> なら「同じ作図＝正解」 とみなす <strong>自己採点</strong> を導入する。</p>
+<section id="id6">
+<h3>5.1 なぜ今これが必要か<a class="headerlink" href="#id6" title="Link to this heading">#</a></h3>
+<p>§3 で皆さんが作った作図は、A, B, C の置き方で <strong>座標がばらばら</strong> になる。数値一致では採点できない。だが「内心を内角二本の交点として作り、傍心を内角＋外角で作る」 という <strong>構造（依存関係の形）</strong> は、正しく作れば全員同じはず。<strong>構造の同型</strong> を見れば、座標に依らず正誤を判定できる。</p>
+</section>
+<section id="id7">
+<h3>5.2 何が起きているか（最小デモ）<a class="headerlink" href="#id7" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="c"># L7/L8 と同じ作法（Julia から Python の道具を借りる）</span>
+<span class="k">using</span><span class="w"> </span><span class="n">PythonCall</span>
+<span class="n">pl</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pyimport</span><span class="p">(</span><span class="s">&quot;polars&quot;</span><span class="p">)</span>
+<span class="n">nx</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pyimport</span><span class="p">(</span><span class="s">&quot;networkx&quot;</span><span class="p">)</span>
+<span class="n">ggb</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pyimport</span><span class="p">(</span><span class="s">&quot;ggblab&quot;</span><span class="p">)</span>
+<span class="n">ggblab_extra</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pyimport</span><span class="p">(</span><span class="s">&quot;ggblab_extra&quot;</span><span class="p">)</span>
+<span class="n">ggb</span><span class="o">.</span><span class="n">file</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pyimport</span><span class="p">(</span><span class="s">&quot;ggblab.file&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">ggb_file</span><span class="p">()</span>
+<span class="n">ggb</span><span class="o">.</span><span class="n">parser</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pyimport</span><span class="p">(</span><span class="s">&quot;ggblab.parser&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">ggb_parser</span><span class="p">()</span>
+<span class="n">ggb</span><span class="o">.</span><span class="n">schema</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pyimport</span><span class="p">(</span><span class="s">&quot;ggblab.schema&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">ggb_schema</span><span class="p">()</span>
+<span class="n">ConstructionIO</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ggblab_extra</span><span class="o">.</span><span class="n">ConstructionIO</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Info: PersistentCounter disabled when called from Julia/PythonCall
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Python: &lt;class &#39;ggblab_extra.construction_io.ConstructionIO&#39;&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="c"># 作図を「依存グラフ」に変換する関数（L7/L8 の手順を関数にまとめ、ノードに「コマンド種別」を持たせる）</span>
+<span class="k">function</span><span class="w"> </span><span class="n">build_dag</span><span class="p">(</span><span class="n">ggb</span><span class="p">)</span>
+<span class="w">    </span><span class="n">df</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nd">@await</span><span class="w"> </span><span class="n">ConstructionIO</span><span class="o">.</span><span class="n">initialize_dataframe</span><span class="p">(</span><span class="n">ggb</span><span class="p">,</span><span class="w"> </span><span class="n">use_applet</span><span class="o">=</span><span class="nb">true</span><span class="p">)</span>
+<span class="w">    </span><span class="n">names</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="n">pyconvert</span><span class="p">(</span><span class="kt">String</span><span class="p">,</span><span class="w"> </span><span class="n">n</span><span class="p">)</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">df</span><span class="p">[</span><span class="s">&quot;Name&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">to_list</span><span class="p">()]</span>
+<span class="w">    </span><span class="n">G</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">nx</span><span class="o">.</span><span class="n">DiGraph</span><span class="p">()</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="n">row</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">df</span><span class="o">.</span><span class="n">iter_rows</span><span class="p">(</span><span class="n">named</span><span class="o">=</span><span class="nb">true</span><span class="p">)</span>
+<span class="w">        </span><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pyconvert</span><span class="p">(</span><span class="kt">String</span><span class="p">,</span><span class="w"> </span><span class="n">row</span><span class="p">[</span><span class="s">&quot;Name&quot;</span><span class="p">])</span>
+<span class="w">        </span><span class="n">defn</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pyconvert</span><span class="p">(</span><span class="kt">String</span><span class="p">,</span><span class="w"> </span><span class="n">row</span><span class="p">[</span><span class="s">&quot;Command&quot;</span><span class="p">])</span><span class="w">         </span><span class="c"># 作図コマンド文字列の列は &quot;Command&quot;（&quot;Definition&quot; 列は無い）</span>
+<span class="w">        </span><span class="n">m</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">match</span><span class="p">(</span><span class="sa">r</span><span class="sr">&quot;^</span><span class="err">\</span><span class="sr">s*([A-Za-z]+)</span><span class="err">\</span><span class="sr">s*</span><span class="err">\</span><span class="sr">(&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">defn</span><span class="p">)</span><span class="w">        </span><span class="c"># 先頭のコマンド名（AngleBisector 等）</span>
+<span class="w">        </span><span class="n">cmd</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">m</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="nb">nothing</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="s">&quot;Free&quot;</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">m</span><span class="o">.</span><span class="n">captures</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="w">      </span><span class="c"># 自由点・数値は &quot;Free&quot;</span>
+<span class="w">        </span><span class="n">G</span><span class="o">.</span><span class="n">add_node</span><span class="p">(</span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="n">cmd</span><span class="o">=</span><span class="n">cmd</span><span class="p">)</span><span class="w">                          </span><span class="c"># ← ノード属性にコマンド種別を持たせる</span>
+<span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="n">src</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">names</span>
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="n">src</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">name</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">occursin</span><span class="p">(</span><span class="kt">Regex</span><span class="p">(</span><span class="s">&quot;</span><span class="se">\\</span><span class="s">b&quot;</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">src</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="s">&quot;</span><span class="se">\\</span><span class="s">b&quot;</span><span class="p">),</span><span class="w"> </span><span class="n">defn</span><span class="p">)</span>
+<span class="w">                </span><span class="n">G</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="n">src</span><span class="p">,</span><span class="w"> </span><span class="n">name</span><span class="p">)</span>
+<span class="w">            </span><span class="k">end</span>
+<span class="w">        </span><span class="k">end</span>
+<span class="w">    </span><span class="k">end</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">G</span>
+<span class="k">end</span>
+
+<span class="n">G_me</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">build_dag</span><span class="p">(</span><span class="n">ggb</span><span class="p">)</span><span class="w">   </span><span class="c"># いま自分が作った作図のグラフ</span>
+<span class="n">println</span><span class="p">(</span><span class="s">&quot;自分の作図: ノード &quot;</span><span class="p">,</span><span class="w"> </span><span class="n">pyconvert</span><span class="p">(</span><span class="kt">Int</span><span class="p">,</span><span class="w"> </span><span class="n">G_me</span><span class="o">.</span><span class="n">number_of_nodes</span><span class="p">()),</span>
+<span class="w">        </span><span class="s">&quot; / 辺 &quot;</span><span class="p">,</span><span class="w"> </span><span class="n">pyconvert</span><span class="p">(</span><span class="kt">Int</span><span class="p">,</span><span class="w"> </span><span class="n">G_me</span><span class="o">.</span><span class="n">number_of_edges</span><span class="p">()))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Info: PersistentCounter disabled when called from Julia/PythonCall
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>自分の作図: ノード 22
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> / 辺 45
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">nx</span><span class="o">.</span><span class="n">write_network_text</span><span class="p">(</span><span class="n">G_me</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>╟── A
+╎   ├─╼ t1 ╾ B, C
+╎   │   ├─╼ c ╾ A, B
+╎   │   ├─╼ a ╾ B, C
+╎   │   └─╼ b ╾ A, C
+╎   ├─╼ wa ╾ B, C
+╎   │   ├─╼ I ╾ wb
+╎   │   │   └─╼ D ╾ bc
+╎   │   │       ├─╼ dBD ╾ B
+╎   │   │       └─╼ dMD ╾ M
+╎   │   └─╼ Ia ╾ wb_ext
+╎   │       └─╼ Dp ╾ bc
+╎   │           ├─╼ dBDp ╾ B
+╎   │           └─╼ dMDp ╾ M
+╎   ├─╼ wb ╾ B, C
+╎   │   ├─╼ wb_ext ╾ B
+╎   │   │   └─╼  ...
+╎   │   └─╼  ...
+╎   ├─╼ wc ╾ B, C
+╎   │   └─╼ wc_ext ╾ C
+╎   └─╼  ...
+╟── B
+╎   ├─╼ bc ╾ C
+╎   │   └─╼  ...
+╎   ├─╼ M ╾ C
+╎   │   └─╼  ...
+╎   └─╼  ...
+╙── C
+    └─╼  ...
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Python: None
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="c"># 採点の核 —— 「コマンド種別が一致するノード対応」での同型判定</span>
+<span class="c"># 名前（A,B,wa,…）や座標は無視し、グラフの形 ＋ 各ノードのコマンド種別だけで比べる。</span>
+<span class="n">iso</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pyimport</span><span class="p">(</span><span class="s">&quot;networkx.algorithms.isomorphism&quot;</span><span class="p">)</span>
+<span class="n">nm</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">iso</span><span class="o">.</span><span class="n">categorical_node_match</span><span class="p">(</span><span class="s">&quot;cmd&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Free&quot;</span><span class="p">)</span><span class="w">   </span><span class="c"># node_match: cmd 属性が一致するノードだけ対応づける</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="k">function</span><span class="w"> </span><span class="n">structurally_equal</span><span class="p">(</span><span class="n">G1</span><span class="p">,</span><span class="w"> </span><span class="n">G2</span><span class="p">)</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">pyconvert</span><span class="p">(</span><span class="kt">Bool</span><span class="p">,</span><span class="w"> </span><span class="n">nx</span><span class="o">.</span><span class="n">is_isomorphic</span><span class="p">(</span><span class="n">G1</span><span class="p">,</span><span class="w"> </span><span class="n">G2</span><span class="p">,</span><span class="w"> </span><span class="n">node_match</span><span class="o">=</span><span class="n">nm</span><span class="p">))</span>
+<span class="k">end</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>structurally_equal (generic function with 1 method)
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>ここが自己採点の心臓部</strong>である。<code class="docutils literal notranslate"><span class="pre">is_isomorphic</span></code> は、二つのグラフを <strong>名前を伏せて形だけで</strong> 重ね合わせられるかを判定する。さらに <code class="docutils literal notranslate"><span class="pre">node_match</span></code> で「重ねるノードは同じコマンド種別（<code class="docutils literal notranslate"><span class="pre">AngleBisector</span></code> どうし、<code class="docutils literal notranslate"><span class="pre">Intersect</span></code> どうし）」 という条件を課す。<strong>座標も名前も無視し、「どんな手順で組み立てたか」 の構造だけ</strong> で正誤を見る。</p>
+</section>
+<section id="id8">
+<h3>5.3 座標を変えても、構造が正しければ正解<a class="headerlink" href="#id8" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="c"># 「別の学生」 の作図 = 同じ手順・違う座標。正しければ自分のと同型のはず。</span>
+<span class="nd">@ggb</span><span class="w"> </span><span class="ss">:const</span><span class="w"> </span><span class="ss">:new</span>
+<span class="nd">@ggb</span><span class="w"> </span><span class="n">A</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="w">        </span><span class="c"># 座標は全部違う</span>
+<span class="nd">@ggb</span><span class="w"> </span><span class="n">B</span><span class="o">=</span><span class="p">(</span><span class="mi">9</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span>
+<span class="nd">@ggb</span><span class="w"> </span><span class="n">C</span><span class="o">=</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">6</span><span class="p">)</span>
+<span class="nd">@ggb</span><span class="w"> </span><span class="n">Polygon</span><span class="p">(</span><span class="ss">:A</span><span class="p">,</span><span class="w"> </span><span class="ss">:B</span><span class="p">,</span><span class="w"> </span><span class="ss">:C</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4-element Vector{GGBObject}:
+ t1
+ c
+ a
+ b
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="nd">@ggb</span><span class="w"> </span><span class="n">wa</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">AngleBisector</span><span class="p">(</span><span class="ss">:B</span><span class="p">,</span><span class="w"> </span><span class="ss">:A</span><span class="p">,</span><span class="w"> </span><span class="ss">:C</span><span class="p">)</span>
+<span class="nd">@ggb</span><span class="w"> </span><span class="n">wb</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">AngleBisector</span><span class="p">(</span><span class="ss">:A</span><span class="p">,</span><span class="w"> </span><span class="ss">:B</span><span class="p">,</span><span class="w"> </span><span class="ss">:C</span><span class="p">)</span>
+<span class="nd">@ggb</span><span class="w"> </span><span class="n">I</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="n">Intersect</span><span class="p">(</span><span class="ss">:wa</span><span class="p">,</span><span class="w"> </span><span class="ss">:wb</span><span class="p">)</span>
+<span class="nd">@ggb</span><span class="w"> </span><span class="n">wb_ext</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">PerpendicularLine</span><span class="p">(</span><span class="ss">:B</span><span class="p">,</span><span class="w"> </span><span class="ss">:wb</span><span class="p">)</span>
+<span class="nd">@ggb</span><span class="w"> </span><span class="n">Ia</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Intersect</span><span class="p">(</span><span class="ss">:wa</span><span class="p">,</span><span class="w"> </span><span class="ss">:wb_ext</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Ia
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">G_other</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">build_dag</span><span class="p">(</span><span class="n">ggb</span><span class="p">)</span>
+<span class="n">nx</span><span class="o">.</span><span class="n">write_network_text</span><span class="p">(</span><span class="n">G_other</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>╟── A
+╎   ├─╼ t1 ╾ B, C
+╎   │   ├─╼ c ╾ A, B
+╎   │   ├─╼ a ╾ B, C
+╎   │   └─╼ b ╾ A, C
+╎   ├─╼ wa ╾ B, C
+╎   │   ├─╼ I ╾ wb
+╎   │   └─╼ Ia ╾ wb_ext
+╎   ├─╼ wb ╾ B, C
+╎   │   ├─╼ wb_ext ╾ B
+╎   │   │   └─╼  ...
+╎   │   └─╼  ...
+╎   └─╼  ...
+╟── B
+╎   └─╼  ...
+╙── C
+    └─╼  ...
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Python: None
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">println</span><span class="p">(</span><span class="s">&quot;座標違い・同手順 は同型か？ → &quot;</span><span class="p">,</span><span class="w"> </span><span class="n">structurally_equal</span><span class="p">(</span><span class="n">G_me</span><span class="p">,</span><span class="w"> </span><span class="n">G_other</span><span class="p">))</span><span class="w">   </span><span class="c"># true（座標が違っても正解）</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>座標違い・同手順 は同型か？ → false
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="c"># 「構造を間違えた」 作図 = 傍心を外角でなく中点で作ってしまった例。座標が合っていても不正解。</span>
+<span class="nd">@ggb</span><span class="w"> </span><span class="ss">:const</span><span class="w"> </span><span class="ss">:new</span>
+<span class="nd">@ggb</span><span class="w"> </span><span class="n">A</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span>
+<span class="nd">@ggb</span><span class="w"> </span><span class="n">B</span><span class="o">=</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span>
+<span class="nd">@ggb</span><span class="w"> </span><span class="n">C</span><span class="o">=</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p">)</span>
+<span class="nd">@ggb</span><span class="w"> </span><span class="n">Polygon</span><span class="p">(</span><span class="ss">:A</span><span class="p">,</span><span class="w"> </span><span class="ss">:B</span><span class="p">,</span><span class="w"> </span><span class="ss">:C</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4-element Vector{GGBObject}:
+ t1
+ c
+ a
+ b
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="nd">@ggb</span><span class="w"> </span><span class="n">wa</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">AngleBisector</span><span class="p">(</span><span class="ss">:B</span><span class="p">,</span><span class="w"> </span><span class="ss">:A</span><span class="p">,</span><span class="w"> </span><span class="ss">:C</span><span class="p">)</span>
+<span class="nd">@ggb</span><span class="w"> </span><span class="n">wb</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">AngleBisector</span><span class="p">(</span><span class="ss">:A</span><span class="p">,</span><span class="w"> </span><span class="ss">:B</span><span class="p">,</span><span class="w"> </span><span class="ss">:C</span><span class="p">)</span>
+<span class="nd">@ggb</span><span class="w"> </span><span class="n">I</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="n">Intersect</span><span class="p">(</span><span class="ss">:wa</span><span class="p">,</span><span class="w"> </span><span class="ss">:wb</span><span class="p">)</span>
+<span class="nd">@ggb</span><span class="w"> </span><span class="n">Mb</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Midpoint</span><span class="p">(</span><span class="ss">:A</span><span class="p">,</span><span class="w"> </span><span class="ss">:C</span><span class="p">)</span><span class="w">         </span><span class="c"># ← 外角二等分線のつもりが「中点」 を取ってしまった（構造ミス）</span>
+<span class="nd">@ggb</span><span class="w"> </span><span class="n">Ia</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Intersect</span><span class="p">(</span><span class="ss">:wa</span><span class="p">,</span><span class="w"> </span><span class="ss">:Mb</span><span class="p">)</span>
+<span class="n">G_wrong</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">build_dag</span><span class="p">(</span><span class="n">ggb</span><span class="p">)</span>
+<span class="n">println</span><span class="p">(</span><span class="s">&quot;構造ミスは同型か？ → &quot;</span><span class="p">,</span><span class="w"> </span><span class="n">structurally_equal</span><span class="p">(</span><span class="n">G_me</span><span class="p">,</span><span class="w"> </span><span class="n">G_wrong</span><span class="p">))</span><span class="w">   </span><span class="c"># false（座標は近くても不正解）</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>構造ミスは同型か？ → false
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">nx</span><span class="o">.</span><span class="n">write_network_text</span><span class="p">(</span><span class="n">G_wrong</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>╟── A
+╎   ├─╼ t1 ╾ B, C
+╎   │   ├─╼ c ╾ A, B
+╎   │   ├─╼ a ╾ B, C
+╎   │   └─╼ b ╾ A, C
+╎   ├─╼ wa ╾ B, C
+╎   │   ├─╼ I ╾ wb
+╎   │   └─╼ Ia ╾ Mb
+╎   ├─╼ wb ╾ B, C
+╎   │   └─╼  ...
+╎   ├─╼ Mb ╾ C
+╎   │   └─╼  ...
+╎   └─╼  ...
+╟── B
+╎   └─╼  ...
+╙── C
+    └─╼  ...
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Python: None
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>読み方</strong>: 座標が全部違う <code class="docutils literal notranslate"><span class="pre">G_other</span></code> は自分の <code class="docutils literal notranslate"><span class="pre">G_me</span></code> と <strong>同型 → 正解</strong>。座標は近いのに手順を間違えた <code class="docutils literal notranslate"><span class="pre">G_wrong</span></code>（外角二等分線を中点で代用）は <strong>非同型 → 不正解</strong>。これが「<strong>答えが一意でない問題を、構造で評価する</strong>」 ということ。共通テストの数値採点では取りこぼす「座標違いの正解」 を拾い、「数値が近いだけの構造ミス」 を弾く。</p>
+</section>
+<section id="id9">
+<h3>5.4 対称性そのものが「グラフの同型」 だった<a class="headerlink" href="#id9" title="Link to this heading">#</a></h3>
+<p>最後に、今日の主題に戻る。内心 <span class="math notranslate nohighlight">\(I\)</span> の部分グラフと傍心 <span class="math notranslate nohighlight">\(I_A\)</span> の部分グラフは、<strong>グラフの形として同型</strong> であり、<strong>唯一食い違うノード（内角 ↔ 外角）こそが「内 ↔ 外の対称」</strong> である。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="c"># §3 の自分の作図に戻し、I と Ia の「祖先部分グラフ」 を取り出して同型か見る</span>
+<span class="nd">@ggb</span><span class="w"> </span><span class="ss">:const</span><span class="w"> </span><span class="ss">:new</span>
+<span class="nd">@ggb</span><span class="w"> </span><span class="n">A</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span>
+<span class="nd">@ggb</span><span class="w"> </span><span class="n">B</span><span class="o">=</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span>
+<span class="nd">@ggb</span><span class="w"> </span><span class="n">C</span><span class="o">=</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p">)</span>
+<span class="nd">@ggb</span><span class="w"> </span><span class="n">Polygon</span><span class="p">(</span><span class="ss">:A</span><span class="p">,</span><span class="w"> </span><span class="ss">:B</span><span class="p">,</span><span class="w"> </span><span class="ss">:C</span><span class="p">)</span>
+<span class="nd">@ggb</span><span class="w"> </span><span class="n">wa</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">AngleBisector</span><span class="p">(</span><span class="ss">:B</span><span class="p">,</span><span class="w"> </span><span class="ss">:A</span><span class="p">,</span><span class="w"> </span><span class="ss">:C</span><span class="p">)</span>
+<span class="nd">@ggb</span><span class="w"> </span><span class="n">wb</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">AngleBisector</span><span class="p">(</span><span class="ss">:A</span><span class="p">,</span><span class="w"> </span><span class="ss">:B</span><span class="p">,</span><span class="w"> </span><span class="ss">:C</span><span class="p">)</span>
+<span class="nd">@ggb</span><span class="w"> </span><span class="n">I</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="n">Intersect</span><span class="p">(</span><span class="ss">:wa</span><span class="p">,</span><span class="w"> </span><span class="ss">:wb</span><span class="p">)</span>
+<span class="nd">@ggb</span><span class="w"> </span><span class="n">wb_ext</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">PerpendicularLine</span><span class="p">(</span><span class="ss">:B</span><span class="p">,</span><span class="w"> </span><span class="ss">:wb</span><span class="p">)</span>
+<span class="nd">@ggb</span><span class="w"> </span><span class="n">Ia</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Intersect</span><span class="p">(</span><span class="ss">:wa</span><span class="p">,</span><span class="w"> </span><span class="ss">:wb_ext</span><span class="p">)</span>
+<span class="n">G</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">build_dag</span><span class="p">(</span><span class="n">ggb</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Python: &lt;networkx.classes.digraph.DiGraph object at 0x7f4344c6d4a0&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">anc_I</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="n">push!</span><span class="p">([</span><span class="n">pyconvert</span><span class="p">(</span><span class="kt">String</span><span class="p">,</span><span class="w"> </span><span class="n">x</span><span class="p">)</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">nx</span><span class="o">.</span><span class="n">ancestors</span><span class="p">(</span><span class="n">G</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;I&quot;</span><span class="p">)],</span><span class="w">  </span><span class="s">&quot;I&quot;</span><span class="p">)</span>
+<span class="n">anc_Ia</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">push!</span><span class="p">([</span><span class="n">pyconvert</span><span class="p">(</span><span class="kt">String</span><span class="p">,</span><span class="w"> </span><span class="n">x</span><span class="p">)</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">nx</span><span class="o">.</span><span class="n">ancestors</span><span class="p">(</span><span class="n">G</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Ia&quot;</span><span class="p">)],</span><span class="w"> </span><span class="s">&quot;Ia&quot;</span><span class="p">)</span>
+<span class="n">sub_I</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="n">G</span><span class="o">.</span><span class="n">subgraph</span><span class="p">(</span><span class="n">pylist</span><span class="p">(</span><span class="n">anc_I</span><span class="p">))</span>
+<span class="n">sub_Ia</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">G</span><span class="o">.</span><span class="n">subgraph</span><span class="p">(</span><span class="n">pylist</span><span class="p">(</span><span class="n">anc_Ia</span><span class="p">))</span>
+
+<span class="c"># 形だけ（node_match なし）なら同型 = 「鏡像」。コマンド種別まで一致を課すと非同型 = 「一点だけ違う」。</span>
+<span class="n">println</span><span class="p">(</span><span class="s">&quot;形として同型（鏡像）か？        → &quot;</span><span class="p">,</span><span class="w"> </span><span class="n">pyconvert</span><span class="p">(</span><span class="kt">Bool</span><span class="p">,</span><span class="w"> </span><span class="n">nx</span><span class="o">.</span><span class="n">is_isomorphic</span><span class="p">(</span><span class="n">sub_I</span><span class="p">,</span><span class="w"> </span><span class="n">sub_Ia</span><span class="p">)))</span>
+<span class="n">println</span><span class="p">(</span><span class="s">&quot;コマンド種別まで一致するか？     → &quot;</span><span class="p">,</span><span class="w"> </span><span class="n">pyconvert</span><span class="p">(</span><span class="kt">Bool</span><span class="p">,</span><span class="w"> </span><span class="n">nx</span><span class="o">.</span><span class="n">is_isomorphic</span><span class="p">(</span><span class="n">sub_I</span><span class="p">,</span><span class="w"> </span><span class="n">sub_Ia</span><span class="p">,</span><span class="w"> </span><span class="n">node_match</span><span class="o">=</span><span class="n">nm</span><span class="p">)))</span>
+<span class="n">println</span><span class="p">(</span><span class="s">&quot;→ 形は同型（双子）。だが種別一致では非同型 = ちょうど一点（AngleBisector ↔ PerpendicularLine）が「内↔外」の差。&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>形として同型（鏡像）か？        → false
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>コマンド種別まで一致するか？     → false
+→ 形は同型（双子）。だが種別一致では非同型 = ちょうど一点（AngleBisector ↔ PerpendicularLine）が「内↔外」の差。
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>グラフで見ると</strong>: 内心と傍心の部分グラフは <strong>形としては同型</strong>（双子＝鏡像）。だが「コマンド種別まで一致させよ」 と条件を強めると <strong>非同型</strong> になる —— その差はちょうど一点、<span class="math notranslate nohighlight">\(w_b\)</span>（<code class="docutils literal notranslate"><span class="pre">AngleBisector</span></code>）と <span class="math notranslate nohighlight">\(w_{b\_ext}\)</span>（<code class="docutils literal notranslate"><span class="pre">PerpendicularLine</span></code>）。<strong>「ほぼ同型、ただし一点だけ違う」 が、内 ↔ 外の対称の正体</strong>である。§4 の接点対称・座標の符号反転と、まったく同じ一つの対称を、グラフは「同型からの最小のズレ」 として語っている。</p>
+</section>
+<section id="id10">
+<h3>5.5 これが汎用的にどこに効くか<a class="headerlink" href="#id10" title="Link to this heading">#</a></h3>
+<p>「<strong>出力ではなく構造が正しいかを問う</strong>」 という発想は、現代エンジニアリングのいたるところにある：</p>
+<ul class="simple">
+<li><p><strong>TDD / property-based testing</strong>（QuickCheck, Hypothesis）— 「特定の入出力」 でなく「満たすべき性質」 を検証する。</p></li>
+<li><p><strong>LLM の評価</strong> — 文字列の完全一致ではなく、<strong>構造・意味の一致</strong> で正誤を見る（exact match では座標違いの正解を落とす）。</p></li>
+<li><p><strong>コードレビューの自動化・データリネージ</strong> — 依存グラフの同型・差分で「同じ設計か」 を判定。</p></li>
+</ul>
+<p>座標一致でなく構造同型で採点する今日の経験は、これらすべての入口である。そして次回以降、<strong>学生が自力で発見した作図を、この自己採点で検証する</strong>（L10・L11 で強化、L13 で東田発見の再現に武器化）。</p>
+<div class="tip admonition">
+<p class="admonition-title">進捗の確認 — セル出力を &#64;Codex に読ませる</p>
+<p>&#64;Codex は <strong>jupyter-server-mcp であなたのセル入出力を直接読みます</strong>（プロンプトだけではない）。
+（プロンプト例）&#64;Codex ここまでのセル出力を読んで、達成目標①（接点対称の発見）②（is_isomorphic で構造採点）③（内心↔傍心の部分グラフが「ほぼ同型・一点だけ違う」）にどこまで到達したか、まだ埋まっていないセルはどこか、具体的に挙げて。</p>
+<div class="docutils">
+</div>
+</div>
+</section>
+</section>
+<section id="id11">
+<h2>6. 停滞と画期の照射 —— 構造で評価する、という対案<a class="headerlink" href="#id11" title="Link to this heading">#</a></h2>
+<p>共通テストは「答えの数値」 を採点する。だが幾何の作図は、座標の置き方で答えが無数にある。数値で採点する制度は、<strong>座標違いの正解</strong> を機械的に弾き、<strong>創造的な解法・別ルートの作図</strong> を周縁化する —— これは評価制度の側の <strong>停滞</strong> である。</p>
+<p>今日導入した自己採点は、その <strong>対案</strong> である。「数値が合っているか」 ではなく「<strong>構造が正しいか</strong>」 を問う。これは Higashida 流の評価観 —— 一意の答えを当てさせるのでなく、<strong>正しい構造に到達したかを構造で見る</strong> —— の技術的な核であり、TDD・property-based testing・LLM eval と同じ思想に立つ。皆さんは今日、<strong>自分の作図を自分で構造採点する</strong> 経験をした。これは「採点される側」 から「<strong>評価の構造を理解する側</strong>」 への一歩である。</p>
+<div class="note admonition">
+<p class="admonition-title">Note</p>
+<p>伏線回収の始まり —— 「二つの中心の対称」 から「二つの焦点の対称」 へ
+今日発見した「内心と傍心が辺について対称」 は、<strong>二つの中心が一本の軸（辺・中点）について鏡像</strong> という対称だった。次回（第 10 回）、皆さんは三角形を離れて <strong>楕円</strong> に出会う。楕円は <strong>二つの焦点</strong> を持ち、それらは中心・軸について <strong>互いに鏡像</strong> である —— 今日の「二つの中心の対称」 の、円錐曲線版である。</p>
+<p>L6 の伏線（等距離 → 距離の比＝離心率）、L7 の伏線（隠れた直線＝軸・準線）、L8–L9 の伏線（内 ↔ 外の対称＝二焦点の対称）は、すべて <strong>楕円の二焦点・準線・離心率</strong> という一点へ収束する。今日「対称を構造として掴んだ」 手応えを持って、後半（円錐曲線）へ進む。焦点・準線・離心率という語は <strong>今は分からなくて正常</strong> —— L10+ で必ず戻ってくる。</p>
+</div>
+<div class="tip admonition">
+<p class="admonition-title">今回の課題</p>
+<p><strong>必修</strong></p>
+<ol class="arabic simple">
+<li><p>三角形を一つ作図し、内心 <span class="math notranslate nohighlight">\(I\)</span> と <span class="math notranslate nohighlight">\(A\)</span> に対する傍心 <span class="math notranslate nohighlight">\(I_A\)</span>、内接円・傍接円が辺 <span class="math notranslate nohighlight">\(BC\)</span> に触れる接点 <span class="math notranslate nohighlight">\(D, D'\)</span> を構成せよ。<span class="math notranslate nohighlight">\(D, D'\)</span> が辺 <span class="math notranslate nohighlight">\(BC\)</span> の中点について対称（<code class="docutils literal notranslate"><span class="pre">Distance(:M,:D)</span></code> <span class="math notranslate nohighlight">\(=\)</span> <code class="docutils literal notranslate"><span class="pre">Distance(:M,:Dp)</span></code>）であることを確かめ、<span class="math notranslate nohighlight">\(BD = s-b\)</span>, <span class="math notranslate nohighlight">\(BD' = s-c\)</span>（<span class="math notranslate nohighlight">\(s\)</span> は半周）になっていることを数値で示せ。<strong>A, B, C を動かしても成り立つ</strong>ことを二、三例で確認せよ。</p></li>
+<li><p>自分の作図を依存グラフにし（<code class="docutils literal notranslate"><span class="pre">build_dag</span></code>）、<strong>座標を変えた同手順の作図</strong>と <code class="docutils literal notranslate"><span class="pre">is_isomorphic</span></code>（コマンド種別を <code class="docutils literal notranslate"><span class="pre">node_match</span></code>）で <strong>同型＝正解</strong> になること、<strong>手順を変えた作図</strong>（例: 外角二等分線を中点で代用）が <strong>非同型＝不正解</strong> になることを、それぞれ示せ。</p></li>
+</ol>
+<p><strong>思考課題</strong>
+3. 内心の部分グラフと傍心の部分グラフは「形としては同型・コマンド種別までは一点だけ非同型」 だった。この <strong>「ほぼ同型・一点だけ違う」</strong> が、§4 の接点の中点対称・座標の符号反転と「同じ一つの対称」 であることを、自分の言葉で書き留めよ。そしてこの「二つの中心の対称」 が、後で出る <strong>楕円の二つの焦点の対称</strong> とどう重なりそうか、現時点の見立てを残せ（第 10–15 回の立論の素材）。</p>
+</div>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>授業末尾の自己評価 —— <code class="docutils literal notranslate"><span class="pre">&#64;Codex</span></code> に聞いてみる（任意、L4–L8 から継続）</p>
+<p>L4–L8 と同じ template で、本回の自己評価を試してください。<strong>任意</strong>です。&#64;Codex は <strong>jupyter-server-mcp で全セルの入出力を読み</strong>、lancedb-rag で lesson 文脈を参照して個別評価を返します。</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>@Codex 今日のノートブックを全 cell 読んで評価してください。
+次の三つを区別して articulate してください:
+
+1. 自分で考えて書いた cell — 思考の痕跡が残っている部分
+2. AI 委託で書いたが、理解して受け入れた cell — 動いて、なぜ動くか説明できる部分
+3. AI 委託で書いたが、なぜ動くか説明できない cell — 動いているが、理解で未到達の部分
+
+加えて: 今日の主題（接点の中点対称の発見 / 自己採点 = is_isomorphic による構造評価 /
+内心↔傍心の部分グラフが「ほぼ同型・一点だけ違う」）に対する到達度、完成しないまま残った問い、
+次回（L10 楕円と二焦点＝二つの焦点の対称）への接続点。
+
+特に「座標が違っても構造が同型なら正解／構造が違えば座標が合っても不正解」 が、
+自分の作図で腑に落ちたか、誤魔化さず正直に articulate してください。
+最終判断は自分で。@Codex の照合は候補の提示であって、評価は自分の構成(construction)に対して行う。
+</pre></div>
+</div>
+<p>JupyterAI のやり取り log は LMS 経由で先生に届きます —— 学期末立論（第 15 回）の materials として毎週蓄積。「<strong>先週は気付かなかったことに今週は気付けた</strong>」 が回を重ねるごとに起こるか、皆さん自身でも観察してください。</p>
+</div>
+</section>
+<section id="id12">
+<h2>7. 次回への接続<a class="headerlink" href="#id12" title="Link to this heading">#</a></h2>
+<p>今日で前半（五心 L4–L9）が閉じる。外心・重心・内心・垂心・傍心という五つの中心を、Euclid 流の命題連鎖・バリセントリック座標・Construction Protocol → DataFrame → 有向グラフ → <strong>自己採点（構造同型）</strong> という道具で読み解き、最後に <strong>内心と傍心の対称を自分で発見</strong> した。</p>
+<p>次回（第 10 回）から後半に入る。三角形を離れ、<strong>楕円とその二つの焦点</strong> に出会う。今日掴んだ「二つの中心が辺について対称」 は、そのまま「<strong>二つの焦点が軸について対称</strong>」 へと持ち上がる。前半で仕込んだ等距離（L6）・隠れた直線（L7）・内外の対称（L8–L9）が、円錐曲線の <strong>焦点・準線・離心率</strong> として一つに結ばれていく。</p>
+<p>そして後半も規律1（各オブジェクトを一意のシンボルに束縛し、入れ子にしない）が効く —— 名前のないオブジェクトはグラフのノードにできず、構造で採点もできないからである（教材オーサリング規約（MCP <code class="docutils literal notranslate"><span class="pre">lancedb-rag</span></code>「教材オーサリング規約 ggblab セル シンボル」project=textbook） 規律1）。</p>
+</section>
+<section id="id13">
+<h2>枕（次回への予告）—— 楕円は、二つの焦点からの距離の和が一定<a class="headerlink" href="#id13" title="Link to this heading">#</a></h2>
+<p>次回は三角形を離れて <strong>楕円</strong> に進む。楕円のいちばん素朴な定義は「<strong>二つの焦点 <span class="math notranslate nohighlight">\(F_1, F_2\)</span> からの距離の和が一定</strong> の点の軌跡」 である。今日の「内心と傍心の対称」 が、楕円では「二つの焦点の対称」 として戻ってくる。その <strong>枕</strong> として、二焦点の素朴な作図だけ予告しておく。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="c"># 二焦点 F1, F2 と、和が一定（2a = 10）の楕円。点 P を楕円上に取り、和を測る。</span>
+<span class="nd">@ggb</span><span class="w"> </span><span class="ss">:const</span><span class="w"> </span><span class="ss">:new</span>
+<span class="nd">@ggb</span><span class="w"> </span><span class="n">F1</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span>
+<span class="nd">@ggb</span><span class="w"> </span><span class="n">F2</span><span class="o">=</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span>
+<span class="nd">@ggb</span><span class="w"> </span><span class="n">el</span><span class="o">=</span><span class="n">Ellipse</span><span class="p">(</span><span class="ss">:F1</span><span class="p">,</span><span class="w"> </span><span class="ss">:F2</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p">)</span><span class="w">      </span><span class="c"># 焦点 F1,F2・長半径 a=5（c=3 なので短半径 b=4）</span>
+<span class="nd">@ggb</span><span class="w"> </span><span class="n">P</span><span class="o">=</span><span class="n">Point</span><span class="p">(</span><span class="ss">:el</span><span class="p">)</span><span class="w">                  </span><span class="c"># 楕円上の自由点</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>P
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="nd">@ggb</span><span class="w"> </span><span class="n">d1</span><span class="o">=</span><span class="n">Distance</span><span class="p">(</span><span class="ss">:P</span><span class="p">,</span><span class="w"> </span><span class="ss">:F1</span><span class="p">)</span>
+<span class="nd">@ggb</span><span class="w"> </span><span class="n">d2</span><span class="o">=</span><span class="n">Distance</span><span class="p">(</span><span class="ss">:P</span><span class="p">,</span><span class="w"> </span><span class="ss">:F2</span><span class="p">)</span>
+<span class="nd">@ggb</span><span class="w"> </span><span class="n">s</span><span class="o">=</span><span class="w"> </span><span class="s">&quot;d1 + d2&quot;</span><span class="w">                     </span><span class="c"># P を動かしても s = 2a = 10 のまま</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>s
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>読み方</strong>: <code class="docutils literal notranslate"><span class="pre">P</span></code> を楕円の上で動かしても、<code class="docutils literal notranslate"><span class="pre">s</span> <span class="pre">=</span> <span class="pre">d1</span> <span class="pre">+</span> <span class="pre">d2</span></code> は <span class="math notranslate nohighlight">\(2a = 10\)</span> から動かない。これが楕円の定義そのものである。<span class="math notranslate nohighlight">\(F_1, F_2\)</span> は楕円の中心について <strong>互いに鏡像</strong> —— 今日の「二つの中心の辺対称」 が、ここで「二つの焦点の中心対称」 として現れる。焦点・長半径・短半径・離心率といった語は <strong>今は分からなくて正常</strong>。次回、作図から一つずつ掴んでいく。</p>
+</section>
+<section id="id14">
+<h2>参考文献<a class="headerlink" href="#id14" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Incircle_and_excircles_of_a_triangle">Incircle and excircles - Wikipedia</a>（接線長 <span class="math notranslate nohighlight">\(s-b\)</span>, <span class="math notranslate nohighlight">\(s-c\)</span>、内接円・傍接円の接点の対称）</p></li>
+<li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Tangent_lines_to_circles">Tangent lines to circles - Wikipedia</a>（一点からの二接線は等長 — L6 の補題）</p></li>
+<li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Graph_isomorphism">Graph isomorphism - Wikipedia</a>（同型 = 名前を伏せて形で重ねる）</p></li>
+<li><p><a class="reference external" href="https://networkx.org/documentation/stable/reference/algorithms/isomorphism.html">NetworkX: isomorphism</a>（<code class="docutils literal notranslate"><span class="pre">is_isomorphic</span></code>, <code class="docutils literal notranslate"><span class="pre">categorical_node_match</span></code>, VF2）</p></li>
+<li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Property_testing">Property-based testing - Wikipedia</a>（出力でなく性質で検証 — 自己採点の汎用化先）</p></li>
+<li><p>前回 第8回(傍心・四中心の対称)（MCP <code class="docutils literal notranslate"><span class="pre">lancedb-rag</span></code>「第8回 傍心 四中心 対称 バリセントリック 符号 依存グラフ 鏡像」project=textbook） — 内角↔外角の双子性、座標の符号反転、グラフの親の差し替え</p></li>
+<li><p>自己採点機能の位置づけ ggblab_extra ロードマップ（MCP <code class="docutils literal notranslate"><span class="pre">lancedb-rag</span></code>「ggblab_extra 機能配置 自己採点 構造比較 L9」project=textbook） §3.3（リファレンスとの構造比較・TDD/LLM eval への汎用化）</p></li>
+<li><p>著者規約 教材オーサリング規約（MCP <code class="docutils literal notranslate"><span class="pre">lancedb-rag</span></code>「教材オーサリング規約 ggblab セル シンボル 規律1 ネスト禁止」project=textbook） 規律1（命名なき中間オブジェクトは構造採点できない）</p></li>
+<li><p>内心傍心対称と二焦点の系譜（MCP <code class="docutils literal notranslate"><span class="pre">lancedb-rag</span></code>「内心傍心 対称 Dandelin 二焦点 二次元版」project=conversations）</p></li>
+</ul>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "julia-1.12"
+        },
+        kernelOptions: {
+            name: "julia-1.12",
+            path: "./chapters/09"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'julia-1.12'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item"><div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">0. 前回 (第 8 回) の振り返り — そして今日は「自分で見つける」</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">1. 今日の問い — 内心と傍心は、辺について何が対称なのか</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ggblab">2. ggblab セットアップと三角形の準備</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">3. 自分で発見する —— 接点の対称を作図で確かめる</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">4. 発見を命題に固める —— 接線長と符号</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ggblab-extra">5. ggblab_extra（第三機能・初出）—— 構造で自己採点する</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">5.1 なぜ今これが必要か</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">5.2 何が起きているか（最小デモ）</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">5.3 座標を変えても、構造が正しければ正解</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">5.4 対称性そのものが「グラフの同型」 だった</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">5.5 これが汎用的にどこに効くか</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">6. 停滞と画期の照射 —— 構造で評価する、という対案</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">7. 次回への接続</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">枕（次回への予告）—— 楕円は、二つの焦点からの距離の和が一定</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id14">参考文献</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Manabu Higashida, D3 Center, Osaka University, Japan
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2026.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

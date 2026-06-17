@@ -1,0 +1,867 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>第10回: 楕円と二焦点 — 三角形を離れ、二つの焦点の対称へ &#8212; プログラミングで遡る科学史</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=3c74b3bc" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css?v=8cd3d715" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=fab101a9"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'chapters/09/lesson_10_ellipse_foci';</script>
+    <link rel="canonical" href="https://cloudedu-osaka.github.io/textbook-2026/chapters/09/lesson_10_ellipse_foci.html" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="第7回: 垂心と Euler 線 — 三中心が一直線に並ぶ「隠れた構造」を有向グラフで見る" href="../08/lesson_07_orthocenter_euler.html" />
+    <link rel="prev" title="第9回: 内心と傍心の辺対称性 — 自分で発見し、構造で自己採点する" href="lesson_09_symmetry_selfgrade.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/vioras-logo.png" class="logo__image only-light" alt="プログラミングで遡る科学史 - Home"/>
+    <img src="../../_static/vioras-logo.png" class="logo__image only-dark pst-js-only" alt="プログラミングで遡る科学史 - Home"/>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">2026/06/17</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="lesson_07_orthocenter_euler.html">垂心と Euler 線 — 三中心が一直線に並ぶ「隠れた構造」を有向グラフで見る</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lesson_08_excenter_symmetry.html">傍心と四中心の対称性 — 内心の「双子」を依存構造の鏡像として見る</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lesson_09_symmetry_selfgrade.html">内心と傍心の辺対称性 — 自分で発見し、構造で自己採点する</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">楕円と二焦点 — 三角形を離れ、二つの焦点の対称へ</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">2026/06/10</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../08/lesson_07_orthocenter_euler.html">垂心と Euler 線 — 三中心が一直線に並ぶ「隠れた構造」を有向グラフで見る</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../08/lesson_08_excenter_symmetry.html">傍心と四中心の対称性 — 内心の「双子」を依存構造の鏡像として見る</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">2026/06/03</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../07/lesson_06_incenter_mtric.html">内心と角の二等分線 — 計量が要る場面（重心のアフィンとの対比）</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">2026/05/27</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../06/lesson_05_centroid_dataframe.html">同じ点を三つの前提から導く — 重心と DataFrame 外部化</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">2026/05/20</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../05/lesson_04_thales_circumcenter.html">前提・発見・連鎖 — Thales の定理から外心へ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../05/lesson_05_centroid_dataframe.html">同じ点を三つの前提から導く — 重心と DataFrame 外部化</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">2026/05/13</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../04/lesson_00_about_this_textbook.html">この教材はどう作られているか — AI と人間の役割分担</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../04/lesson_04_thales_circumcenter.html">前提・発見・連鎖 — Thales の定理から外心へ</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">2026/05/08</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../03/03_01.html">第3回: 試験問題の記述とこの授業のルール</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../03/02_13.html">入試問題を解く (その2) 記述する・解答する 4</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../03/02_11.html">入試問題を解く (その2) 記述する・解答する 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../03/02_12.html">入試問題を解く (その2) 記述する・解答する 3</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">2026/04/22</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../02/02_01.html">入試問題を解く (その2) 記述する・解答する 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../02/02_11.html">入試問題を解く (その2) 記述する・解答する 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../02/02_12.html">入試問題を解く (その2) 記述する・解答する 3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../02/02_13.html">入試問題を解く (その2) 記述する・解答する 4</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../02/02_02.html">入試問題を解く (その2) 記述する・解答する 5</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">2026/04/15</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../01/01_00_intro.html">How to connect and use JupyterHub</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../01/01_01.html">入試問題を解く (その1) 記述する 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../01/01_02.html">入試問題を解く (その1) 記述する 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../01/01_03.html">入試問題を解く (その1) 記述する 3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../01/01_04.html">入試問題を解く (その1) 記述する 4</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../01/01_05.html">入試問題を解く (その1) 記述する 5</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../01/01_11.html">入試問題を解く (その1) 記述する 6</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../01/01_12.html">入試問題を解く (その1) 記述する 7</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../01/01_13.html">入試問題を解く (その1) 記述する 8</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://vioras-jh2500.japaneast.cloudapp.azure.com/hub/user-redirect/git-pull?repo=https%3A//github.com/Cloudedu-Osaka/textbook-2026&urlpath=lab/tree/textbook-2026/chapters/09/lesson_10_ellipse_foci.ipynb&branch=main" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on JupyterHub"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="JupyterHub logo" src="../../_static/images/logo_jupyterhub.svg">
+  </span>
+<span class="btn__text-container">JupyterHub</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+<a href="https://github.com/Cloudedu-Osaka/textbook-2026" target="_blank"
+   class="btn btn-sm btn-source-repository-button"
+   title="Source repository"
+   data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+
+</a>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/chapters/09/lesson_10_ellipse_foci.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button pst-navbar-icon"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm pst-navbar-icon" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>第10回: 楕円と二焦点 — 三角形を離れ、二つの焦点の対称へ</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">0. 前回 (第 9 回) の振り返り — そして三角形を離れる</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">1. 今日の問い — 「二つの点からの距離の和が一定」 とは何の形か</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ggblab">2. ggblab セットアップと二焦点の準備</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">3. 定義を作図で確かめる —— 和は一定、二焦点は対称</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">4. 観測量に固める —— 離心率、そして準線への予告</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ggblab-extra-dataframe">5. ggblab_extra 復習 —— DataFrame で「二焦点の対称」 をデータで確かめる</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#apollonius-kepler">6. 停滞と画期の照射 —— Apollonius から Kepler へ、そして代数へ</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">7. 次回への接続</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">枕（次回への予告）—— 円錐を切ると、楕円が現れる</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">参考文献</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="id1">
+<h1>第10回: 楕円と二焦点 — 三角形を離れ、二つの焦点の対称へ<a class="headerlink" href="#id1" title="Link to this heading">#</a></h1>
+<p><strong>主題</strong>: 後半（円錐曲線）の入り口。三角形の五心（L4–L9）を離れ、<strong>楕円</strong> に出会う。楕円のいちばん素朴な定義は「<strong>二つの焦点 <span class="math notranslate nohighlight">\(F_1, F_2\)</span> からの距離の和が一定</strong> の点の軌跡」 である。今日は作図でこの定義を確かめ、楕円の <strong>中心・長半径 <span class="math notranslate nohighlight">\(a\)</span>・短半径 <span class="math notranslate nohighlight">\(b\)</span>・焦点距離 <span class="math notranslate nohighlight">\(c\)</span></strong>（<span class="math notranslate nohighlight">\(a^2 = b^2 + c^2\)</span>）と <strong>離心率 <span class="math notranslate nohighlight">\(e = c/a\)</span></strong> を、観測量として手にする。</p>
+<p><strong>副題</strong>: L8–L9 で発見した「<strong>内心と傍心が辺について対称</strong>」 —— 二つの中心が一本の軸について鏡像 —— が、ここで「<strong>二つの焦点が軸について対称</strong>」 として戻ってくる。今日の楕円は、前半で仕込んだ伏線（L6 等距離 → 距離の比、L7 隠れた直線、L8–L9 内外の対称）が一つに結ばれ始める場所である。道具は新しく足さない。L5 の <strong>Construction Protocol → DataFrame</strong> を復習し、二焦点の対称と和一定を <strong>データで確認</strong> する（10%）。</p>
+<p><strong>学習目標</strong></p>
+<ol class="arabic simple">
+<li><p>楕円を「<strong>二焦点からの距離の和が一定</strong>（<span class="math notranslate nohighlight">\(|PF_1| + |PF_2| = 2a\)</span>）」 という定義から作図し、楕円上の点 <span class="math notranslate nohighlight">\(P\)</span> をどこに動かしても和が一定であることを <code class="docutils literal notranslate"><span class="pre">Distance</span></code> で確かめられるようになる。</p></li>
+<li><p>楕円の <strong>中心 <span class="math notranslate nohighlight">\(M\)</span>・長半径 <span class="math notranslate nohighlight">\(a\)</span>・短半径 <span class="math notranslate nohighlight">\(b\)</span>・焦点距離 <span class="math notranslate nohighlight">\(c\)</span></strong> を作図から取り出し、<span class="math notranslate nohighlight">\(a^2 = b^2 + c^2\)</span> が成り立つこと、二焦点 <span class="math notranslate nohighlight">\(F_1, F_2\)</span> が <strong>中心について互いに鏡像</strong> であることを確かめられるようになる。</p></li>
+<li><p><strong>離心率 <span class="math notranslate nohighlight">\(e = c/a\)</span></strong> を観測量として計算し、<span class="math notranslate nohighlight">\(e\)</span> が「焦点がどれだけ中心から離れているか＝楕円のつぶれ具合」 を表すこと、<span class="math notranslate nohighlight">\(e \to 0\)</span> で円・<span class="math notranslate nohighlight">\(e \to 1\)</span> で細長くなることを、焦点を動かして体感できるようになる。</p></li>
+<li><p><strong>(伏線回収の始まり・L11–L13 への一歩)</strong> 二焦点の対称は、L8–L9 の「二中心の対称」 の円錐曲線版である。そして今日「定義」 として与えた楕円は、L11 で <strong>円錐の切断面</strong> として、L12–L13 で <strong>Dandelin 球の二接点</strong> として、別の顔から再構成される。今日の和一定・離心率・準線（予告）は、その「なぜ」 への入り口である。</p></li>
+</ol>
+<section id="id2">
+<h2>0. 前回 (第 9 回) の振り返り — そして三角形を離れる<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
+<p>前回は前半（五心）の第一の山だった。内心 <span class="math notranslate nohighlight">\(I\)</span> と傍心 <span class="math notranslate nohighlight">\(I_A\)</span> の <strong>辺に関する対称</strong> を自分で発見し（接点が辺の中点について対称）、それを <strong>座標でなく依存グラフの同型性</strong> で自己採点した。「二つの中心が一本の軸について鏡像」 —— この対称を、構造として掴んだ。</p>
+<p>今日からは三角形を離れる。だが手にした道具と感覚は持っていく。<strong>二つの焦点が軸について鏡像</strong> という楕円の対称は、前回の「二つの中心の対称」 の正統な続きである。三角形の内心・傍心が二焦点に、辺・中点が楕円の軸・中心に置き換わるだけ —— <strong>同じ scope の違う実装</strong> として、皆さんは楕円に出会う。</p>
+<div class="note admonition">
+<p class="admonition-title">目標の確認 — &#64;Codex で達成目標を引く</p>
+<p>本回の達成目標を <strong>&#64;Codex に lancedb-rag（教材ドメイン RAG）で確認</strong>してもらえる（L5 から運用）。
+（プロンプト例）&#64;Codex この回（L10 楕円と二焦点）の達成目標を lancedb-rag で調べて、要点を整理して。
+特に「楕円 = 二焦点からの距離の和が一定」「二焦点は中心について対称（前回の二中心対称の続き）」 が腑に落ちるか、自分の理解と照らしてから先へ進む。</p>
+<div class="docutils">
+</div>
+</div>
+</section>
+<section id="id3">
+<h2>1. 今日の問い — 「二つの点からの距離の和が一定」 とは何の形か<a class="headerlink" href="#id3" title="Link to this heading">#</a></h2>
+<p>円は「一つの中心からの距離が一定」 の点の軌跡だった。では <strong>二つの点からの距離の和が一定</strong> にすると、何の形になるか。</p>
+<blockquote>
+<div><p><strong>楕円の定義（焦点による）</strong>: 平面上の二定点 <span class="math notranslate nohighlight">\(F_1, F_2\)</span>（<strong>焦点 (foci)</strong>）からの距離の和が一定（<span class="math notranslate nohighlight">\(|PF_1| + |PF_2| = 2a\)</span>、ただし <span class="math notranslate nohighlight">\(2a &gt; |F_1F_2|\)</span>）である点 <span class="math notranslate nohighlight">\(P\)</span> の軌跡を <strong>楕円 (ellipse)</strong> と呼ぶ。</p>
+</div></blockquote>
+<p>園芸で「二本の杭にひもを掛け、ぴんと張って鉛筆を回す」 と楕円が描けるのは、まさにこの定義である（ひもの長さ <span class="math notranslate nohighlight">\(= 2a\)</span> が一定）。今日はこれを作図で確かめ、<span class="math notranslate nohighlight">\(F_1, F_2\)</span> を近づけたり離したりすると形がどう変わるか —— 焦点が重なれば円、離れるほど細長く —— を観察する。<strong>二定点・和一定</strong> という最小の約束から、楕円のすべての性質（中心・軸・離心率・準線）が出てくる。</p>
+</section>
+<section id="ggblab">
+<h2>2. ggblab セットアップと二焦点の準備<a class="headerlink" href="#ggblab" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="k">using</span><span class="w"> </span><span class="n">Pkg</span>
+<span class="n">Pkg</span><span class="o">.</span><span class="n">activate</span><span class="p">(</span><span class="s">&quot;../..&quot;</span><span class="p">)</span><span class="w">   </span><span class="c"># この教材プロジェクトの環境を有効化</span>
+<span class="n">Pkg</span><span class="o">.</span><span class="n">resolve</span><span class="p">()</span>
+<span class="n">Pkg</span><span class="o">.</span><span class="n">instantiate</span><span class="p">()</span><span class="w">       </span><span class="c"># 必要なパッケージを用意（初回は少し時間がかかる）</span>
+<span class="k">using</span><span class="w"> </span><span class="n">GeoGebra</span>
+<span class="nb">ENV</span><span class="p">[</span><span class="s">&quot;GGB_DIRECT_TRANSPORT&quot;</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;true&quot;</span><span class="w">   </span><span class="c"># ggblab とアプレットの直接通信を有効化</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">inject_applet</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="c"># 二焦点と楕円。長半径 a=5、焦点距離 c=3（短半径 b=4 になるはず）。</span>
+<span class="nd">@ggb</span><span class="w"> </span><span class="ss">:const</span><span class="w"> </span><span class="ss">:new</span>
+<span class="nd">@ggb</span><span class="w"> </span><span class="n">F1</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span>
+<span class="nd">@ggb</span><span class="w"> </span><span class="n">F2</span><span class="o">=</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span>
+<span class="nd">@ggb</span><span class="w"> </span><span class="n">el</span><span class="o">=</span><span class="n">Ellipse</span><span class="p">(</span><span class="ss">:F1</span><span class="p">,</span><span class="w"> </span><span class="ss">:F2</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p">)</span><span class="w">    </span><span class="c"># 焦点 F1,F2・長半径 a=5</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="id4">
+<h2>3. 定義を作図で確かめる —— 和は一定、二焦点は対称<a class="headerlink" href="#id4" title="Link to this heading">#</a></h2>
+<p>楕円上に点 <span class="math notranslate nohighlight">\(P\)</span> を取り、<span class="math notranslate nohighlight">\(|PF_1| + |PF_2|\)</span> が一定であることを確かめる。続いて中心・長軸・短軸の頂点を取り出し、二焦点が中心について対称であることを見る（規律1: 各オブジェクトを一意のシンボルに束縛し、入れ子にしない）。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="c"># 和が一定 —— P を楕円の上で動かしても s = 2a = 10 のまま</span>
+<span class="nd">@ggb</span><span class="w"> </span><span class="n">P</span><span class="o">=</span><span class="n">Point</span><span class="p">(</span><span class="ss">:el</span><span class="p">)</span>
+<span class="nd">@ggb</span><span class="w"> </span><span class="n">d1</span><span class="o">=</span><span class="n">Distance</span><span class="p">(</span><span class="ss">:P</span><span class="p">,</span><span class="w"> </span><span class="ss">:F1</span><span class="p">)</span>
+<span class="nd">@ggb</span><span class="w"> </span><span class="n">d2</span><span class="o">=</span><span class="n">Distance</span><span class="p">(</span><span class="ss">:P</span><span class="p">,</span><span class="w"> </span><span class="ss">:F2</span><span class="p">)</span>
+<span class="nd">@ggb</span><span class="w"> </span><span class="n">s</span><span class="o">=</span><span class="n">d1</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">d2</span><span class="w">                  </span><span class="c"># = 2a = 10（P をドラッグして確かめる）</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="c"># 中心と長軸・短軸の頂点</span>
+<span class="nd">@ggb</span><span class="w"> </span><span class="n">M</span><span class="o">=</span><span class="n">Midpoint</span><span class="p">(</span><span class="ss">:F1</span><span class="p">,</span><span class="w"> </span><span class="ss">:F2</span><span class="p">)</span><span class="w">       </span><span class="c"># 楕円の中心 = 二焦点の中点</span>
+<span class="nd">@ggb</span><span class="w"> </span><span class="n">major</span><span class="o">=</span><span class="n">Line</span><span class="p">(</span><span class="ss">:F1</span><span class="p">,</span><span class="w"> </span><span class="ss">:F2</span><span class="p">)</span><span class="w">       </span><span class="c"># 長軸の直線</span>
+<span class="nd">@ggb</span><span class="w"> </span><span class="n">V1</span><span class="o">=</span><span class="n">Intersect</span><span class="p">(</span><span class="ss">:el</span><span class="p">,</span><span class="w"> </span><span class="ss">:major</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w">   </span><span class="c"># 長軸の頂点</span>
+<span class="nd">@ggb</span><span class="w"> </span><span class="n">V2</span><span class="o">=</span><span class="n">Intersect</span><span class="p">(</span><span class="ss">:el</span><span class="p">,</span><span class="w"> </span><span class="ss">:major</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span>
+<span class="nd">@ggb</span><span class="w"> </span><span class="n">minor</span><span class="o">=</span><span class="n">PerpendicularLine</span><span class="p">(</span><span class="ss">:M</span><span class="p">,</span><span class="w"> </span><span class="ss">:major</span><span class="p">)</span><span class="w">   </span><span class="c"># 短軸の直線（中心で長軸に直交）</span>
+<span class="nd">@ggb</span><span class="w"> </span><span class="n">W1</span><span class="o">=</span><span class="n">Intersect</span><span class="p">(</span><span class="ss">:el</span><span class="p">,</span><span class="w"> </span><span class="ss">:minor</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w">   </span><span class="c"># 短軸の頂点</span>
+<span class="nd">@ggb</span><span class="w"> </span><span class="n">W2</span><span class="o">=</span><span class="n">Intersect</span><span class="p">(</span><span class="ss">:el</span><span class="p">,</span><span class="w"> </span><span class="ss">:minor</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="c"># 三つの長さ（半径と焦点距離）と関係 a^2 = b^2 + c^2</span>
+<span class="nd">@ggb</span><span class="w"> </span><span class="n">a</span><span class="o">=</span><span class="n">Distance</span><span class="p">(</span><span class="ss">:M</span><span class="p">,</span><span class="w"> </span><span class="ss">:V1</span><span class="p">)</span><span class="w">        </span><span class="c"># 長半径 = 5</span>
+<span class="nd">@ggb</span><span class="w"> </span><span class="n">b</span><span class="o">=</span><span class="n">Distance</span><span class="p">(</span><span class="ss">:M</span><span class="p">,</span><span class="w"> </span><span class="ss">:W1</span><span class="p">)</span><span class="w">        </span><span class="c"># 短半径 = 4</span>
+<span class="nd">@ggb</span><span class="w"> </span><span class="n">c</span><span class="o">=</span><span class="n">Distance</span><span class="p">(</span><span class="ss">:M</span><span class="p">,</span><span class="w"> </span><span class="ss">:F1</span><span class="p">)</span><span class="w">        </span><span class="c"># 焦点距離 = 3</span>
+<span class="nd">@ggb</span><span class="w"> </span><span class="n">chk</span><span class="o">=</span><span class="n">a</span><span class="o">^</span><span class="mi">2</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">b</span><span class="o">^</span><span class="mi">2</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">c</span><span class="o">^</span><span class="mi">2</span><span class="w">        </span><span class="c"># = 0 になるはず（a^2 = b^2 + c^2）</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="c"># 二焦点は中心について対称 —— F1 を中心 M で対称にすると F2 に一致する</span>
+<span class="nd">@ggb</span><span class="w"> </span><span class="n">F2chk</span><span class="o">=</span><span class="n">Reflect</span><span class="p">(</span><span class="ss">:F1</span><span class="p">,</span><span class="w"> </span><span class="ss">:M</span><span class="p">)</span>
+<span class="nd">@ggb</span><span class="w"> </span><span class="n">dsym</span><span class="o">=</span><span class="n">Distance</span><span class="p">(</span><span class="ss">:F2</span><span class="p">,</span><span class="w"> </span><span class="ss">:F2chk</span><span class="p">)</span><span class="w">  </span><span class="c"># ≈ 0（F1 と F2 は中心について鏡像）</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>観察1</strong>: <code class="docutils literal notranslate"><span class="pre">P</span></code> を楕円上で動かしても <code class="docutils literal notranslate"><span class="pre">s</span> <span class="pre">=</span> <span class="pre">d1</span> <span class="pre">+</span> <span class="pre">d2</span></code> は <span class="math notranslate nohighlight">\(2a = 10\)</span> から動かない。これが楕円の定義そのもの。</p>
+<p><strong>観察2</strong>: <code class="docutils literal notranslate"><span class="pre">chk</span></code> <span class="math notranslate nohighlight">\(\approx 0\)</span>、すなわち <span class="math notranslate nohighlight">\(a^2 = b^2 + c^2\)</span>（<span class="math notranslate nohighlight">\(5^2 = 4^2 + 3^2\)</span>）。長半径・短半径・焦点距離が直角三角形をなす —— 短軸の頂点 <span class="math notranslate nohighlight">\(W_1\)</span> から二焦点までの距離はどちらも <span class="math notranslate nohighlight">\(a\)</span>（<span class="math notranslate nohighlight">\(|W_1F_1| = |W_1F_2| = a = 5\)</span>）で、<span class="math notranslate nohighlight">\(M\)</span> で直角に切ると <span class="math notranslate nohighlight">\(a^2 = b^2 + c^2\)</span> が出る。</p>
+<p><strong>観察3</strong>: <code class="docutils literal notranslate"><span class="pre">dsym</span></code> <span class="math notranslate nohighlight">\(\approx 0\)</span>。<span class="math notranslate nohighlight">\(F_1\)</span> を中心 <span class="math notranslate nohighlight">\(M\)</span> で対称にすると <span class="math notranslate nohighlight">\(F_2\)</span> に重なる —— <strong>二焦点は中心について互いに鏡像</strong>。前回の「二中心の対称」 が、ここで「二焦点の対称」 になっている。</p>
+<p><strong>問い</strong>: <span class="math notranslate nohighlight">\(F_1, F_2\)</span> を近づける（<span class="math notranslate nohighlight">\(c \to 0\)</span>）と楕円はどうなるか？ 離す（<span class="math notranslate nohighlight">\(c \to a\)</span>）とどうなるか？ —— 焦点を動かして、形の変化を観察せよ。これが次の §4 の <strong>離心率</strong> につながる。</p>
+</section>
+<section id="id5">
+<h2>4. 観測量に固める —— 離心率、そして準線への予告<a class="headerlink" href="#id5" title="Link to this heading">#</a></h2>
+<p><strong>主命題</strong>: 楕円の長半径 <span class="math notranslate nohighlight">\(a\)</span>・短半径 <span class="math notranslate nohighlight">\(b\)</span>・焦点距離 <span class="math notranslate nohighlight">\(c\)</span> は <span class="math notranslate nohighlight">\(a^2 = b^2 + c^2\)</span> をみたす。二焦点 <span class="math notranslate nohighlight">\(F_1, F_2\)</span> は中心 <span class="math notranslate nohighlight">\(M\)</span> について対称。楕円の <strong>離心率</strong> を <span class="math notranslate nohighlight">\(e = c/a\)</span>（<span class="math notranslate nohighlight">\(0 \le e &lt; 1\)</span>）で定める。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="c"># 離心率 e = c/a。焦点を動かすと e が変わり、形が変わる。</span>
+<span class="nd">@ggb</span><span class="w"> </span><span class="n">e</span><span class="o">=</span><span class="n">c</span><span class="o">/</span><span class="n">a</span><span class="w">            </span><span class="c"># = 3/5 = 0.6</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>定義
+二焦点 <span class="math notranslate nohighlight">\(F_1, F_2\)</span> からの距離の和が一定 <span class="math notranslate nohighlight">\(2a\)</span> の点の軌跡を <strong>楕円</strong> と呼ぶ。中心 <span class="math notranslate nohighlight">\(M\)</span> は二焦点の中点、<span class="math notranslate nohighlight">\(|F_1F_2| = 2c\)</span> を <strong>焦点間距離</strong>、<span class="math notranslate nohighlight">\(a\)</span> を <strong>長半径</strong>、<span class="math notranslate nohighlight">\(b = \sqrt{a^2 - c^2}\)</span> を <strong>短半径</strong> と呼ぶ。<span class="math notranslate nohighlight">\(e = c/a\)</span> を <strong>離心率</strong> と呼び、<span class="math notranslate nohighlight">\(e=0\)</span> で円、<span class="math notranslate nohighlight">\(e \to 1\)</span> で限りなく細長い楕円になる。</p>
+</div>
+<div class="attention admonition">
+<p class="admonition-title">Attention</p>
+<p>二焦点の対称・離心率・準線 —— 前半の伏線がここで一つに結ばれ始める</p>
+<p>今日出てきた三つの量は、すべて前半（L6–L9）で仕込んだ伏線の回収である。</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>今日の量</p></th>
+<th class="head"><p>前半の伏線</p></th>
+<th class="head"><p>結ばれ方</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>二焦点の対称</strong>（<span class="math notranslate nohighlight">\(F_1 \leftrightarrow F_2\)</span>）</p></td>
+<td><p>L8–L9 内心と傍心の対称（二中心の鏡像）</p></td>
+<td><p>二つの中心の対称 → 二つの焦点の対称（軸・中心について鏡像）</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>離心率</strong> <span class="math notranslate nohighlight">\(e = c/a\)</span></p></td>
+<td><p>L6 「等距離」 から「距離の比」 へ</p></td>
+<td><p>焦点からの距離と準線までの距離の <strong>比</strong> が一定 <span class="math notranslate nohighlight">\(= e\)</span>（焦点・準線の定義、L11+）</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>準線（予告）</strong></p></td>
+<td><p>L7 「隠れた直線」（Euler 線）</p></td>
+<td><p>楕円には焦点ごとに、軸に直交する <strong>隠れた直線（準線 directrix）</strong> があり、$\dfrac{</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>L6 で「内接円は三辺から <strong>等距離</strong>」 を見た。楕円はそれを一段ゆるめ、「焦点からの距離と準線までの距離の <strong>比</strong> が一定」 になっている。その比こそ離心率 <span class="math notranslate nohighlight">\(e\)</span>。<strong>等距離（<span class="math notranslate nohighlight">\(e\)</span> が暗に <span class="math notranslate nohighlight">\(0\)</span> や <span class="math notranslate nohighlight">\(1\)</span>）から距離の比（任意の <span class="math notranslate nohighlight">\(e\)</span>）へ</strong> —— これが円から円錐曲線への拡張である。準線は今日は作図しない（L11 で円錐切断と一緒に立ち上げる）。今日は「焦点・離心率」 と「二焦点の対称」 を手応えとして持てばよい。</p>
+</div>
+</section>
+<section id="ggblab-extra-dataframe">
+<h2>5. ggblab_extra 復習 —— DataFrame で「二焦点の対称」 をデータで確かめる<a class="headerlink" href="#ggblab-extra-dataframe" title="Link to this heading">#</a></h2>
+<p>新しい道具は足さない。L5 で導入した <strong>Construction Protocol → DataFrame</strong> を復習し、作図の内部状態をデータに取り出して、<strong>二焦点が中心について対称</strong> であることを <strong>座標の数値</strong> で確かめる。前回（L9）の自己採点（構造の同型）に対し、今日は <strong>観測量（座標）の対称</strong> をデータで読む —— 構造とデータの両面から「対称」 を捉える練習である。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="c"># L5/L7/L8 と同じ作法（Julia から Python の道具を借りる）</span>
+<span class="k">using</span><span class="w"> </span><span class="n">PythonCall</span>
+<span class="n">pl</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pyimport</span><span class="p">(</span><span class="s">&quot;polars&quot;</span><span class="p">)</span>
+<span class="n">ggblab_extra</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pyimport</span><span class="p">(</span><span class="s">&quot;ggblab_extra&quot;</span><span class="p">)</span>
+<span class="n">ConstructionIO</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ggblab_extra</span><span class="o">.</span><span class="n">ConstructionIO</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="c"># 作図全体を DataFrame に取り出す（L5 §… と同じ手順）</span>
+<span class="n">df</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nd">@await</span><span class="w"> </span><span class="n">ConstructionIO</span><span class="o">.</span><span class="n">initialize_dataframe</span><span class="p">(</span><span class="n">ggb</span><span class="p">,</span><span class="w"> </span><span class="n">use_applet</span><span class="o">=</span><span class="nb">true</span><span class="p">)</span>
+<span class="c"># 焦点・中心・頂点の「値（座標）」 列を見る</span>
+<span class="n">cols</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="n">pyconvert</span><span class="p">(</span><span class="kt">String</span><span class="p">,</span><span class="w"> </span><span class="n">x</span><span class="p">)</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">]</span>
+<span class="n">println</span><span class="p">(</span><span class="s">&quot;列: &quot;</span><span class="p">,</span><span class="w"> </span><span class="n">cols</span><span class="p">)</span>
+<span class="n">df</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="n">pl</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s">&quot;Name&quot;</span><span class="p">),</span><span class="w"> </span><span class="n">pl</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s">&quot;Value&quot;</span><span class="p">))</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span>
+<span class="w">    </span><span class="n">pl</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s">&quot;Name&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">is_in</span><span class="p">(</span><span class="n">pylist</span><span class="p">([</span><span class="s">&quot;F1&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;F2&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;M&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;V1&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;V2&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;W1&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;W2&quot;</span><span class="p">])))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="c"># 二焦点の座標を取り出し、中点が中心 M と一致する（= 対称）ことをデータで確認</span>
+<span class="k">function</span><span class="w"> </span><span class="n">coord</span><span class="p">(</span><span class="n">df</span><span class="p">,</span><span class="w"> </span><span class="n">name</span><span class="p">)</span>
+<span class="w">    </span><span class="n">row</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">df</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">pl</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s">&quot;Name&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">name</span><span class="p">)</span>
+<span class="w">    </span><span class="n">val</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pyconvert</span><span class="p">(</span><span class="kt">String</span><span class="p">,</span><span class="w"> </span><span class="n">row</span><span class="p">[</span><span class="s">&quot;Value&quot;</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span><span class="w">           </span><span class="c"># 点の値文字列（例 &quot;(-3, 0)&quot;）</span>
+<span class="w">    </span><span class="n">nums</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="n">parse</span><span class="p">(</span><span class="kt">Float64</span><span class="p">,</span><span class="w"> </span><span class="n">mm</span><span class="o">.</span><span class="n">match</span><span class="p">)</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">mm</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">eachmatch</span><span class="p">(</span><span class="sa">r</span><span class="sr">&quot;-?</span><span class="err">\</span><span class="sr">d+</span><span class="err">\</span><span class="sr">.?</span><span class="err">\</span><span class="sr">d*&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">val</span><span class="p">)]</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="p">(</span><span class="n">nums</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="w"> </span><span class="n">nums</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
+<span class="k">end</span>
+
+<span class="n">f1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">coord</span><span class="p">(</span><span class="n">df</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;F1&quot;</span><span class="p">);</span><span class="w">  </span><span class="n">f2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">coord</span><span class="p">(</span><span class="n">df</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;F2&quot;</span><span class="p">);</span><span class="w">  </span><span class="n">m</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">coord</span><span class="p">(</span><span class="n">df</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;M&quot;</span><span class="p">)</span>
+<span class="n">mid</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">((</span><span class="n">f1</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">f2</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="n">f1</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">f2</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span>
+<span class="n">println</span><span class="p">(</span><span class="s">&quot;F1 = &quot;</span><span class="p">,</span><span class="w"> </span><span class="n">f1</span><span class="p">,</span><span class="w"> </span><span class="s">&quot; / F2 = &quot;</span><span class="p">,</span><span class="w"> </span><span class="n">f2</span><span class="p">)</span>
+<span class="n">println</span><span class="p">(</span><span class="s">&quot;二焦点の中点 = &quot;</span><span class="p">,</span><span class="w"> </span><span class="n">mid</span><span class="p">,</span><span class="w"> </span><span class="s">&quot; / 作図上の中心 M = &quot;</span><span class="p">,</span><span class="w"> </span><span class="n">m</span><span class="p">)</span>
+<span class="n">println</span><span class="p">(</span><span class="s">&quot;一致（= 二焦点は中心について対称）か？ → &quot;</span><span class="p">,</span><span class="w"> </span><span class="n">isapprox</span><span class="p">(</span><span class="n">mid</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="w"> </span><span class="n">m</span><span class="p">[</span><span class="mi">1</span><span class="p">];</span><span class="w"> </span><span class="n">atol</span><span class="o">=</span><span class="mf">1e-9</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">isapprox</span><span class="p">(</span><span class="n">mid</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span><span class="w"> </span><span class="n">m</span><span class="p">[</span><span class="mi">2</span><span class="p">];</span><span class="w"> </span><span class="n">atol</span><span class="o">=</span><span class="mf">1e-9</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>読み方</strong>: アプレットの内部状態（construction protocol）を DataFrame に取り出すと、<span class="math notranslate nohighlight">\(F_1, F_2\)</span> の座標から計算した中点が、作図上の中心 <span class="math notranslate nohighlight">\(M\)</span> にぴたり一致する —— <strong>二焦点の対称が、データの上でも閉じる</strong>。L9 では「構造（依存グラフ）の同型」 で対称を見た。今日は「観測量（座標）」 で同じ対称を見た。<strong>構造とデータ、二つの言葉で同じ対称を語れる</strong> ことが、ここまでの道具立ての到達点である。</p>
+<div class="tip admonition">
+<p class="admonition-title">進捗の確認 — セル出力を &#64;Codex に読ませる</p>
+<p>&#64;Codex は <strong>jupyter-server-mcp であなたのセル入出力を直接読みます</strong>（プロンプトだけではない）。
+（プロンプト例）&#64;Codex ここまでのセル出力を読んで、達成目標①（和一定）②（<span class="math notranslate nohighlight">\(a^2=b^2+c^2\)</span> と二焦点の中心対称）③（離心率 <span class="math notranslate nohighlight">\(e=c/a\)</span>）にどこまで到達したか、まだ埋まっていないセルはどこか、具体的に挙げて。</p>
+<div class="docutils">
+</div>
+</div>
+</section>
+<section id="apollonius-kepler">
+<h2>6. 停滞と画期の照射 —— Apollonius から Kepler へ、そして代数へ<a class="headerlink" href="#apollonius-kepler" title="Link to this heading">#</a></h2>
+<p>楕円・放物線・双曲線という名は、紀元前 3 世紀の <strong>Apollonius</strong>（『円錐曲線論』）に遡る。彼は円錐を平面で切るだけでこの三曲線を統一的に記述した —— 今日われわれが「二焦点・和一定」 から入ったのとは別の入り口、<strong>円錐の切断</strong> からである（L11 でこちらの顔に出会う）。だが Apollonius の記述は <strong>斜交座標系による局所的なもの</strong> で、「焦点」 という言葉も概念も、まだ前面には出ていなかった（焦点を表す語 <em>focus</em>〔ラテン語で「炉・かまど」〕は、ずっと後に Kepler が与えたものである）。</p>
+<p>転機は二つ。一つは <strong>Kepler</strong>（1609）が、火星の軌道を円ではなく <strong>楕円</strong> とし、太陽がその <strong>一方の焦点</strong> にあると見抜いたこと —— 天が円でなく楕円で動くという、円中心の宇宙観を覆す画期だった。もう一つは <strong>Descartes / Fermat</strong>（1637 前後）が、Apollonius が幾何で 1800 年保ったものを <strong>代数（座標と方程式）</strong> で書き直したこと —— 「観察された曲線」 を <span class="math notranslate nohighlight">\(x^2/a^2 + y^2/b^2 = 1\)</span> という <strong>方程式</strong> に移す、解析幾何の誕生である。</p>
+<p>皆さんは今日、楕円を <strong>作図（観察）</strong> から入った。L11 で <strong>円錐の切断</strong> という別の顔に出会い、SymPy で <strong>方程式</strong> へ移す（Descartes の画期の現代的再演）。そして L12–L13 で、二焦点が <strong>Dandelin 球の二つの接点</strong> であること —— 今日「定義」 として天下りに置いた二焦点が、円錐の中に <strong>必然として現れる</strong> こと —— を見る。今日の「二焦点・和一定」 は、その長い回収の出発点である。</p>
+<div class="note admonition">
+<p class="admonition-title">Note</p>
+<p>伏線回収 —— 「二中心の対称」 から「二焦点の対称」、そして Dandelin へ
+L8–L9 で発見した「内心と傍心が辺について対称」 は、今日「二焦点が中心について対称」 として円錐曲線に持ち上がった。だが今日の二焦点は、まだ「和が一定になるように置いた二点」 という <strong>定義</strong> にすぎない。</p>
+<p>L12–L13 で、この二焦点が <strong>円錐を切る平面に内側から接する二つの球（Dandelin 球）の接点</strong> であることが分かる。二つの球は切断面の上下から接し、互いに鏡像 —— だから二焦点も鏡像になる。今日「なぜ二つあるのか・なぜ対称なのか」 を天下りに受け取った二焦点が、円錐の三次元構成から <strong>必然</strong> として立ち上がる。L6（等距離）・L7（隠れた直線＝準線）・L8–L9（内外の対称）・L10（二焦点）の伏線は、すべて Dandelin の二球で一つに結ばれる。焦点・準線・離心率・Dandelin という語は、<strong>今は分からなくて正常</strong>。L11–L13 で必ず戻ってくる。</p>
+</div>
+<div class="tip admonition">
+<p class="admonition-title">今回の課題</p>
+<p><strong>必修</strong></p>
+<ol class="arabic simple">
+<li><p>二焦点 <span class="math notranslate nohighlight">\(F_1, F_2\)</span> と長半径 <span class="math notranslate nohighlight">\(a\)</span> を自分で決めて楕円を作図し（<span class="math notranslate nohighlight">\(2a &gt; |F_1F_2|\)</span> に注意）、楕円上の点 <span class="math notranslate nohighlight">\(P\)</span> をいくつか動かして <span class="math notranslate nohighlight">\(|PF_1| + |PF_2| = 2a\)</span> が一定であることを <code class="docutils literal notranslate"><span class="pre">Distance</span></code> で確かめよ。</p></li>
+<li><p>中心 <span class="math notranslate nohighlight">\(M\)</span>・長半径 <span class="math notranslate nohighlight">\(a\)</span>・短半径 <span class="math notranslate nohighlight">\(b\)</span>・焦点距離 <span class="math notranslate nohighlight">\(c\)</span> を作図から取り出し、<span class="math notranslate nohighlight">\(a^2 = b^2 + c^2\)</span>（<code class="docutils literal notranslate"><span class="pre">chk</span></code> <span class="math notranslate nohighlight">\(\approx 0\)</span>）と、二焦点が中心について対称（<code class="docutils literal notranslate"><span class="pre">Reflect(:F1,:M)</span></code> <span class="math notranslate nohighlight">\(= F_2\)</span>）であることを示せ。離心率 <span class="math notranslate nohighlight">\(e = c/a\)</span> を計算せよ。</p></li>
+</ol>
+<p><strong>思考課題</strong>
+3. 焦点 <span class="math notranslate nohighlight">\(F_1, F_2\)</span> を中心に近づける（<span class="math notranslate nohighlight">\(c \to 0\)</span>）と <span class="math notranslate nohighlight">\(e \to 0\)</span> で円に、離す（<span class="math notranslate nohighlight">\(c \to a\)</span>）と <span class="math notranslate nohighlight">\(e \to 1\)</span> で細長くなる。<strong>離心率 <span class="math notranslate nohighlight">\(e\)</span> が「楕円のつぶれ具合」 を一つの数で表す</strong>ことを、いくつかの <span class="math notranslate nohighlight">\(e\)</span> の値と作図で確かめ、自分の言葉で書き留めよ。そして、今日の「二焦点の対称」 が前回（L9）の「内心と傍心の対称」 とどう重なるか、後の <strong>Dandelin 球（二焦点 = 二つの内接球の接点）</strong> とどう繋がりそうか、現時点の見立てを残せ（第 11–15 回の立論の素材）。</p>
+</div>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>授業末尾の自己評価 —— <code class="docutils literal notranslate"><span class="pre">&#64;Codex</span></code> に聞いてみる（任意、L4–L9 から継続）</p>
+<p>L4–L9 と同じ template で、本回の自己評価を試してください。<strong>任意</strong>です。&#64;Codex は <strong>jupyter-server-mcp で全セルの入出力を読み</strong>、lancedb-rag で lesson 文脈を参照して個別評価を返します。</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>@Codex 今日のノートブックを全 cell 読んで評価してください。
+次の三つを区別して articulate してください:
+
+1. 自分で考えて書いた cell — 思考の痕跡が残っている部分
+2. AI 委託で書いたが、理解して受け入れた cell — 動いて、なぜ動くか説明できる部分
+3. AI 委託で書いたが、なぜ動くか説明できない cell — 動いているが、理解で未到達の部分
+
+加えて: 今日の主題（楕円 = 二焦点からの距離の和が一定 / a^2=b^2+c^2 と二焦点の中心対称 /
+離心率 e=c/a / DataFrame で対称をデータ確認）に対する到達度、完成しないまま残った問い、
+次回（L11 円錐の切断面と SymPy 初出）への接続点。
+
+特に「前半の二中心の対称が、後半の二焦点の対称として戻ってきた」 ことと、
+「楕円は今は定義で与えたが、後で円錐切断・Dandelin から必然として立ち上がる」 という見通しが
+腑に落ちたか、誤魔化さず正直に articulate してください。
+最終判断は自分で。@Codex の照合は候補の提示であって、評価は自分の構成(construction)に対して行う。
+</pre></div>
+</div>
+<p>JupyterAI のやり取り log は LMS 経由で先生に届きます —— 学期末立論（第 15 回）の materials として毎週蓄積。「<strong>先週は気付かなかったことに今週は気付けた</strong>」 が回を重ねるごとに起こるか、皆さん自身でも観察してください。</p>
+</div>
+</section>
+<section id="id6">
+<h2>7. 次回への接続<a class="headerlink" href="#id6" title="Link to this heading">#</a></h2>
+<p>今日は楕円を <strong>二焦点・和一定</strong> という素朴な定義から作図し、中心・半径・焦点距離・離心率という観測量を手にした。だがこれは楕円の <strong>一つの顔</strong> にすぎない。</p>
+<p>次回（第 11 回）は、楕円の <strong>もう一つの顔</strong> —— <strong>円錐を平面で切ると現れる切断面</strong> —— に出会う。観察された切断面が、なぜ今日の「二焦点・和一定」 の楕円と同じものなのか。その問いに答えるため、観察を <strong>方程式 <span class="math notranslate nohighlight">\(x^2/a^2 + y^2/b^2 = 1\)</span></strong> へ移す道具として <strong>SymPy（記号計算）</strong> を初めて導入する（ggblab_extra 第四機能の初出）。Apollonius が幾何で保ったものを Descartes が代数で書き直した画期を、現代のツールで再演する。</p>
+<p>後半も規律1（各オブジェクトを一意のシンボルに束縛し、入れ子にしない）が効く —— 作図を DataFrame・依存グラフ・SymPy 式へ渡す下流処理は、すべて命名されたオブジェクトを前提とするからである（教材オーサリング規約（MCP <code class="docutils literal notranslate"><span class="pre">lancedb-rag</span></code>「教材オーサリング規約 ggblab セル シンボル」project=textbook） 規律1）。</p>
+</section>
+<section id="id7">
+<h2>枕（次回への予告）—— 円錐を切ると、楕円が現れる<a class="headerlink" href="#id7" title="Link to this heading">#</a></h2>
+<p>次回は楕円を「作るもの」 から「<strong>切り出すもの</strong>」 へ視点を変える。円錐（アイスクリームのコーン）を、軸に対して斜めの平面でスパッと切ると、切り口は <strong>楕円</strong> になる。今日「二焦点からの距離の和が一定」 と定義した楕円と、円錐の切り口が <strong>同じ形</strong> だというのは、当たり前ではない。その <strong>枕</strong> として、円錐切断の予告だけ置く。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="c"># 円錐を斜めの平面で切る（3D）。切り口が楕円になることを目で見る予告。</span>
+<span class="nd">@ggb</span><span class="w"> </span><span class="ss">:const</span><span class="w"> </span><span class="ss">:new</span>
+<span class="nd">@ggb</span><span class="w"> </span><span class="n">cone</span><span class="o">=</span><span class="n">Cone</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span><span class="w"> </span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span><span class="w"> </span><span class="mf">0.6</span><span class="p">)</span><span class="w">   </span><span class="c"># 頂点・軸方向・半開角 0.6 rad の円錐</span>
+<span class="nd">@ggb</span><span class="w"> </span><span class="n">pl</span><span class="o">=</span><span class="n">Plane</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span><span class="w"> </span><span class="p">(</span><span class="mf">0.4</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">))</span><span class="w">      </span><span class="c"># 軸に対して斜めの平面（法線が傾いている）</span>
+<span class="nd">@ggb</span><span class="w"> </span><span class="n">section</span><span class="o">=</span><span class="n">IntersectConic</span><span class="p">(</span><span class="ss">:cone</span><span class="p">,</span><span class="w"> </span><span class="ss">:pl</span><span class="p">)</span><span class="w">   </span><span class="c"># 円錐と平面の交わり = 切断面（斜めなら楕円）</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>読み方</strong>: 軸に <strong>垂直</strong> に切れば円、<strong>斜め</strong> に切れば楕円、もっと寝かせれば放物線・双曲線になる。同じ円錐から、平面の傾きだけで三つの曲線が出てくる —— これが Apollonius の統一的視点である。次回は、この切り口の楕円が、今日の「二焦点・和一定」 の楕円と同じものであることを、SymPy で <strong>方程式</strong> に落として確かめる。そして L12 で、その二焦点が <strong>円錐に内接する二つの球（Dandelin 球）の接点</strong> として、円錐の中から必然的に現れる。</p>
+</section>
+<section id="id8">
+<h2>参考文献<a class="headerlink" href="#id8" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Ellipse">Ellipse - Wikipedia</a>（二焦点・和一定の定義、<span class="math notranslate nohighlight">\(a^2=b^2+c^2\)</span>、離心率 <span class="math notranslate nohighlight">\(e=c/a\)</span>）</p></li>
+<li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Focus_(geometry)">Focus (geometry) - Wikipedia</a>（焦点・準線、焦点距離と距離の比 = 離心率）</p></li>
+<li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Apollonius_of_Perga">Apollonius of Perga - Wikipedia</a>（『円錐曲線論』、楕円・放物線・双曲線の命名と斜交座標系）</p></li>
+<li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Kepler%27s_laws_of_planetary_motion">Kepler’s laws of planetary motion - Wikipedia</a>（第一法則：惑星は焦点に太陽を置く楕円軌道。focus の語は Kepler 由来）</p></li>
+<li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Dandelin_spheres">Dandelin spheres - Wikipedia</a>（円錐切断の二焦点 = 内接二球の接点。L12–L13 への伏線）</p></li>
+<li><p>前回 第9回(内心と傍心の対称・自己採点)（MCP <code class="docutils literal notranslate"><span class="pre">lancedb-rag</span></code>「第9回 内心 傍心 対称 自己採点 グラフ同型 is_isomorphic」project=textbook） — 二中心の対称、構造同型による評価</p></li>
+<li><p>楕円二焦点と円錐曲線統一スレッド（MCP <code class="docutils literal notranslate"><span class="pre">lancedb-rag</span></code>「重なって混乱する画面 統一 式と構造 円錐曲線」project=textbook） — 縦軸（Apollonius→Kepler→Descartes）と機能配置の串刺し</p></li>
+<li><p>道具配置 ggblab_extra ロードマップ（MCP <code class="docutils literal notranslate"><span class="pre">lancedb-rag</span></code>「ggblab_extra 機能配置 L10 楕円 焦点 DataFrame」project=textbook） §4（L10 = DataFrame で焦点性を確認・10%）</p></li>
+<li><p>著者規約 教材オーサリング規約（MCP <code class="docutils literal notranslate"><span class="pre">lancedb-rag</span></code>「教材オーサリング規約 ggblab セル シンボル 規律1」project=textbook） 規律1（命名なきオブジェクトは下流処理に渡せない）</p></li>
+</ul>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "julia-1.12"
+        },
+        kernelOptions: {
+            name: "julia-1.12",
+            path: "./chapters/09"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'julia-1.12'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="lesson_09_symmetry_selfgrade.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">第9回: 内心と傍心の辺対称性 — 自分で発見し、構造で自己採点する</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../08/lesson_07_orthocenter_euler.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">第7回: 垂心と Euler 線 — 三中心が一直線に並ぶ「隠れた構造」を有向グラフで見る</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item"><div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">0. 前回 (第 9 回) の振り返り — そして三角形を離れる</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">1. 今日の問い — 「二つの点からの距離の和が一定」 とは何の形か</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ggblab">2. ggblab セットアップと二焦点の準備</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">3. 定義を作図で確かめる —— 和は一定、二焦点は対称</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">4. 観測量に固める —— 離心率、そして準線への予告</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ggblab-extra-dataframe">5. ggblab_extra 復習 —— DataFrame で「二焦点の対称」 をデータで確かめる</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#apollonius-kepler">6. 停滞と画期の照射 —— Apollonius から Kepler へ、そして代数へ</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">7. 次回への接続</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">枕（次回への予告）—— 円錐を切ると、楕円が現れる</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">参考文献</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Manabu Higashida, D3 Center, Osaka University, Japan
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2026.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
