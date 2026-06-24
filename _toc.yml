@@ -3,6 +3,22 @@
 format: jb-book
 root: intro.md
 parts:
+- caption: 2026/06/24
+  numbered: false
+  chapters:
+  - file: chapters/10/lesson_10_ellipse_foci.ipynb
+    title: 楕円と二焦点 — 三角形を離れ、二つの焦点の対称へ
+- caption: 2026/06/17
+  numbered: false
+  chapters:
+  - file: chapters/09/lesson_07_orthocenter_euler.ipynb
+    title: 垂心と Euler 線 — 三中心が一直線に並ぶ「隠れた構造」を有向グラフで見る
+  - file: chapters/09/lesson_08_excenter_symmetry.ipynb
+    title: 傍心と四中心の対称性 — 内心の「双子」を依存構造の鏡像として見る
+  - file: chapters/09/lesson_09_symmetry_selfgrade.ipynb
+    title: 内心と傍心の辺対称性 — 自分で発見し、構造で自己採点する
+  - file: chapters/09/lesson_10_ellipse_foci.ipynb
+    title: 楕円と二焦点 — 三角形を離れ、二つの焦点の対称へ
 - caption: 2026/06/10
   numbered: false
   chapters:
