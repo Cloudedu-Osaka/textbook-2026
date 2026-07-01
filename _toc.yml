@@ -3,6 +3,13 @@
 format: jb-book
 root: intro.md
 parts:
+- caption: 2026/07/01
+  numbered: false
+  chapters:
+  - file: chapters/11/lesson_11_conic_section_sympy.ipynb
+    title: 円錐の切断と方程式 — 楕円のもう一つの顔、観察を式へ（Descartes の画期）
+  - file: chapters/11/lesson_12_dandelin_spheres.ipynb
+    title: Dandelin 球 — 二焦点はなぜ二つあり、なぜ「距離の和が一定」なのか（円錐の中の必然）
 - caption: 2026/06/24
   numbered: false
   chapters:
