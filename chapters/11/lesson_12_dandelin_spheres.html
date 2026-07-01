@@ -1,0 +1,964 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>第12回: Dandelin 球 — 二焦点はなぜ二つあり、なぜ「距離の和が一定」なのか（円錐の中の必然） &#8212; プログラミングで遡る科学史</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=3c74b3bc" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css?v=8cd3d715" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=fab101a9"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'chapters/11/lesson_12_dandelin_spheres';</script>
+    <link rel="canonical" href="https://cloudedu-osaka.github.io/textbook-2026/chapters/11/lesson_12_dandelin_spheres.html" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="第10回: 楕円と二焦点 — 三角形を離れ、二つの焦点の対称へ" href="../10/lesson_10_ellipse_foci.html" />
+    <link rel="prev" title="第11回: 円錐の切断と方程式 — 楕円のもう一つの顔、観察を式へ（Descartes の画期）" href="lesson_11_conic_section_sympy.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/vioras-logo.png" class="logo__image only-light" alt="プログラミングで遡る科学史 - Home"/>
+    <img src="../../_static/vioras-logo.png" class="logo__image only-dark pst-js-only" alt="プログラミングで遡る科学史 - Home"/>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">2026/07/01</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="lesson_11_conic_section_sympy.html">円錐の切断と方程式 — 楕円のもう一つの顔、観察を式へ（Descartes の画期）</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Dandelin 球 — 二焦点はなぜ二つあり、なぜ「距離の和が一定」なのか（円錐の中の必然）</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">2026/06/24</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../10/lesson_10_ellipse_foci.html">楕円と二焦点 — 三角形を離れ、二つの焦点の対称へ</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">2026/06/17</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../09/lesson_07_orthocenter_euler.html">垂心と Euler 線 — 三中心が一直線に並ぶ「隠れた構造」を有向グラフで見る</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../09/lesson_08_excenter_symmetry.html">傍心と四中心の対称性 — 内心の「双子」を依存構造の鏡像として見る</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../09/lesson_09_symmetry_selfgrade.html">内心と傍心の辺対称性 — 自分で発見し、構造で自己採点する</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../09/lesson_10_ellipse_foci.html">楕円と二焦点 — 三角形を離れ、二つの焦点の対称へ</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">2026/06/10</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../08/lesson_07_orthocenter_euler.html">垂心と Euler 線 — 三中心が一直線に並ぶ「隠れた構造」を有向グラフで見る</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../08/lesson_08_excenter_symmetry.html">傍心と四中心の対称性 — 内心の「双子」を依存構造の鏡像として見る</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">2026/06/03</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../07/lesson_06_incenter_mtric.html">内心と角の二等分線 — 計量が要る場面（重心のアフィンとの対比）</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">2026/05/27</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../06/lesson_05_centroid_dataframe.html">同じ点を三つの前提から導く — 重心と DataFrame 外部化</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">2026/05/20</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../05/lesson_04_thales_circumcenter.html">前提・発見・連鎖 — Thales の定理から外心へ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../05/lesson_05_centroid_dataframe.html">同じ点を三つの前提から導く — 重心と DataFrame 外部化</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">2026/05/13</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../04/lesson_00_about_this_textbook.html">この教材はどう作られているか — AI と人間の役割分担</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../04/lesson_04_thales_circumcenter.html">前提・発見・連鎖 — Thales の定理から外心へ</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">2026/05/08</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../03/03_01.html">第3回: 試験問題の記述とこの授業のルール</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../03/02_13.html">入試問題を解く (その2) 記述する・解答する 4</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../03/02_11.html">入試問題を解く (その2) 記述する・解答する 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../03/02_12.html">入試問題を解く (その2) 記述する・解答する 3</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">2026/04/22</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../02/02_01.html">入試問題を解く (その2) 記述する・解答する 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../02/02_11.html">入試問題を解く (その2) 記述する・解答する 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../02/02_12.html">入試問題を解く (その2) 記述する・解答する 3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../02/02_13.html">入試問題を解く (その2) 記述する・解答する 4</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../02/02_02.html">入試問題を解く (その2) 記述する・解答する 5</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">2026/04/15</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../01/01_00_intro.html">How to connect and use JupyterHub</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../01/01_01.html">入試問題を解く (その1) 記述する 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../01/01_02.html">入試問題を解く (その1) 記述する 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../01/01_03.html">入試問題を解く (その1) 記述する 3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../01/01_04.html">入試問題を解く (その1) 記述する 4</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../01/01_05.html">入試問題を解く (その1) 記述する 5</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../01/01_11.html">入試問題を解く (その1) 記述する 6</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../01/01_12.html">入試問題を解く (その1) 記述する 7</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../01/01_13.html">入試問題を解く (その1) 記述する 8</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://vioras-jh2500.japaneast.cloudapp.azure.com/hub/user-redirect/git-pull?repo=https%3A//github.com/Cloudedu-Osaka/textbook-2026&urlpath=lab/tree/textbook-2026/chapters/11/lesson_12_dandelin_spheres.ipynb&branch=main" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on JupyterHub"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="JupyterHub logo" src="../../_static/images/logo_jupyterhub.svg">
+  </span>
+<span class="btn__text-container">JupyterHub</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+<a href="https://github.com/Cloudedu-Osaka/textbook-2026" target="_blank"
+   class="btn btn-sm btn-source-repository-button"
+   title="Source repository"
+   data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+
+</a>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/chapters/11/lesson_12_dandelin_spheres.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button pst-navbar-icon"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm pst-navbar-icon" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>第12回: Dandelin 球 — 二焦点はなぜ二つあり、なぜ「距離の和が一定」なのか（円錐の中の必然）</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">0. 前回 (第 11 回) の振り返り — 「同じ方程式」までは来たが、「なぜ」は残った</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">1. 今日の問い — 切り口の二焦点は、どこから来るのか</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ggblab-l11">2. ggblab セットアップと円錐切断（L11 と同じ立体）</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">3. 円錐に二つの球を入れる —— 接点が焦点になる</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">3.1 切断面に上下から接する二つの球</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">3.2 接点を焦点として取り出す —— 中心から切断面への垂線の足</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#p-2a">3.3 距離の和は一定 —— <span class="math notranslate nohighlight">\(P\)</span> をどこに動かしても <span class="math notranslate nohighlight">\(2a\)</span></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">3.4 なぜ和が一定か —— 接線の長さの等しさ + 母線に沿った一定距離</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">4. 観測量に固める —— 二焦点 = 二接点、和一定 = 母線長</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">5. 二焦点の対称は、どこから来るのか —— 球の合同 <em>ではない</em></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">6. 停滞と画期の照射 —— 1822 年、総合幾何の最後の宝石</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">7. 次回への接続</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">枕（次回への予告）—— 接触円が、隠れた直線（準線）を呼ぶ</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">参考文献</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="dandelin">
+<h1>第12回: Dandelin 球 — 二焦点はなぜ二つあり、なぜ「距離の和が一定」なのか（円錐の中の必然）<a class="headerlink" href="#dandelin" title="Link to this heading">#</a></h1>
+<p><strong>主題</strong>: L10 で楕円を「<strong>二焦点からの距離の和が一定</strong>」と <strong>定義</strong> し、L11 で円錐の切り口が同じ方程式に落ちることを SymPy で確かめた。だが L11 の最後に正直に残した問いがあった —— <strong>なぜ切り口の二焦点が、定義の二焦点と同じ場所に来るのか</strong>。今日はその「なぜ」に、<strong>Dandelin 球</strong>（円錐に内側から接する二つの球）で答える。切断面に上下から接する二つの球の <strong>接点</strong> が、まさに二焦点である。「二焦点が二つあること」も「距離の和が一定であること」も、円錐の三次元構成から <strong>必然</strong> として立ち上がる —— 天下りだった定義が、立体の幾何に接地する回である。</p>
+<p><strong>副題</strong>: 今日の道具立ては「<strong>立体で見る → 接点として取り出す → 長さの等しさで言い切る</strong>」。新しいソフトウェア機能は足さない（L11 までの ggblab・SymPy で足りる）。足すのは <strong>一つの古典的アイデア</strong> —— <em>球外の一点から球へ引いた二本の接線の長さは等しい</em>（L4 の円の接線、円の冪の三次元版）。この一手だけで、二千年あいだ別々だった「円錐の切り口」と「二焦点・和一定」が <strong>一つ</strong> に結ばれる。1822 年、Germinal Dandelin の作図的一撃である（§6）。</p>
+<p><strong>学習目標</strong></p>
+<ol class="arabic simple">
+<li><p>円錐の斜めの切断面に <strong>上下から接する二つの球（Dandelin 球）</strong> を 3D 作図で入れ、二つの球が <strong>大きさの違う</strong>こと（斜めの切り口では合同でない）を観察できるようになる。</p></li>
+<li><p>各球と切断面の <strong>接点</strong> を、球の中心から切断面へ下ろした <strong>垂線の足</strong> として作図で取り出し、それが L10/L11 の <strong>二焦点 <span class="math notranslate nohighlight">\(F_1, F_2\)</span> と一致</strong>することを確かめられるようになる。</p></li>
+<li><p>切り口の楕円上の点 <span class="math notranslate nohighlight">\(P\)</span> をどこに動かしても <span class="math notranslate nohighlight">\(|PF_1| + |PF_2|\)</span> が一定 <span class="math notranslate nohighlight">\(=2a\)</span> であることを作図で確かめ、その理由が「<strong>球外の点 <span class="math notranslate nohighlight">\(P\)</span> から各球への二接線が等長</strong>」＋「二つの接触円のあいだの <strong>母線に沿った長さ <span class="math notranslate nohighlight">\(|AB|\)</span> が一定</strong>」であることを、自分の言葉で説明できるようになる。</p></li>
+<li><p><strong>(伏線回収の到達点・L8–L11 が一つに結ばれる)</strong> 「二焦点が中心について対称」は、二つの球が鏡像だから <strong>ではなく</strong>、図全体が長軸を含む面について左右対称だからである。L8–L9 の「二中心の対称」から始まった糸が、ここで円錐の三次元構成として閉じる。</p></li>
+</ol>
+<div class="note admonition">
+<p class="admonition-title">目標の確認 — &#64;Codex で達成目標を引く</p>
+<p>本回の達成目標を <strong>&#64;Codex に lancedb-rag（教材ドメイン RAG）で確認</strong>してもらえる（L5 から運用）。
+（プロンプト例）&#64;Codex この回（L12 Dandelin 球）の達成目標を lancedb-rag で調べて、要点を整理して。
+特に「切断面に接する二球の接点 = 二焦点」「距離の和が一定 = 母線に沿った接点間距離 |AB| が一定」「二球は大きさが違う（鏡像ではない）」 が腑に落ちるか、自分の理解と照らしてから先へ進む。</p>
+</div>
+<section id="id1">
+<h2>0. 前回 (第 11 回) の振り返り — 「同じ方程式」までは来たが、「なぜ」は残った<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
+<p>前回は、円錐を斜めに切った切り口の楕円が、L10 で「二焦点・和一定」と定義した楕円と <strong>同じ方程式 <span class="math notranslate nohighlight">\(x^2/a^2 + y^2/b^2 = 1\)</span></strong> に落ちることを SymPy で確かめた。焦点 <span class="math notranslate nohighlight">\((\pm c, 0)\)</span>・離心率 <span class="math notranslate nohighlight">\(e=c/a\)</span>・準線 <span class="math notranslate nohighlight">\(x=\pm a^2/c\)</span> が、方程式の側から計算で戻ってきた。Apollonius の幾何を Descartes の代数で書き直す画期（解析幾何）の再演だった。</p>
+<p>だが最後に <strong>正直な留保</strong> を置いた —— 「切り口の二焦点」と「定義の二焦点」が同じ場所に来ることは、<strong>両方とも同じ方程式になったから</strong> と式の上で重ねただけで、その <strong>理由</strong> は示していない。今日はその理由を、式ではなく <strong>立体そのもの</strong> から取り出す。前回までの観測量（<span class="math notranslate nohighlight">\(a, b, c, e\)</span>）はそのまま持っていく。今日の主役は新しい道具ではなく、<strong>円錐の中に隠れていた二つの球</strong> である。</p>
+</section>
+<section id="id2">
+<h2>1. 今日の問い — 切り口の二焦点は、どこから来るのか<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
+<p>L11 までで、楕円には二つの顔があった —— 「二焦点からの距離の和が一定」（定義）と「円錐の斜めの切り口」（観察）。同じ方程式に落ちることは確かめた。だが切り口を見ても、<strong>焦点はどこにも描かれていない</strong>。切断面はただの楕円の縁であって、その内側の二点（焦点）が立体のどこから来るのかは、見えないままだった。</p>
+<blockquote>
+<div><p><strong>今日の問い</strong>: 円錐の切り口（楕円）の <strong>二焦点</strong> は、円錐の三次元構成の <strong>どこ</strong> にあるのか。そして「距離の和が一定」は、立体の幾何から <strong>必然</strong> として出てくるのか。</p>
+</div></blockquote>
+<p>答えは、円錐の中に <strong>二つの球</strong> を入れることにある。切断面に上下から接するように球を膨らませると、ちょうど一点で切断面に触れる球が、上下に一つずつ取れる。その <strong>二つの接点</strong> が二焦点である —— というのが Dandelin（1822）の発見だった。今日はそれを作図で再現し、なぜそうなるのかを「接線の長さの等しさ」一つで説明する。</p>
+</section>
+<section id="ggblab-l11">
+<h2>2. ggblab セットアップと円錐切断（L11 と同じ立体）<a class="headerlink" href="#ggblab-l11" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="k">using</span><span class="w"> </span><span class="n">Pkg</span>
+<span class="n">Pkg</span><span class="o">.</span><span class="n">activate</span><span class="p">(</span><span class="s">&quot;../..&quot;</span><span class="p">)</span><span class="w">   </span><span class="c"># この教材プロジェクトの環境を有効化</span>
+<span class="n">Pkg</span><span class="o">.</span><span class="n">resolve</span><span class="p">()</span>
+<span class="n">Pkg</span><span class="o">.</span><span class="n">instantiate</span><span class="p">()</span><span class="w">       </span><span class="c"># 必要なパッケージを用意（初回は少し時間がかかる）</span>
+<span class="k">using</span><span class="w"> </span><span class="n">GeoGebra</span>
+<span class="nb">ENV</span><span class="p">[</span><span class="s">&quot;GGB_DIRECT_TRANSPORT&quot;</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;true&quot;</span><span class="w">   </span><span class="c"># ggblab とアプレットの直接通信を有効化</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">inject_applet</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="warning admonition">
+<p class="admonition-title">3D ビューに切り替える（手作業・重要）</p>
+<p>本回は <strong>3D の作図</strong> です。<code class="docutils literal notranslate"><span class="pre">inject_applet()</span></code> 直後のアプレットは平面（2D）表示なので、そのままでは次のセルで作る円錐・球・切断面が <strong>見えません</strong>。アプレット左上の <strong>メニュー（☰）→「アプリの切り替え」→「空間図形」</strong> を選び、<strong>空間図形（3D ビュー）</strong> に切り替えてください。以降のセルはすべてこの 3D ビュー上に描かれます。</p>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="c"># L11 §2 と同じ「有限の」円錐を斜めの平面で切る。切り口の楕円を作る。</span>
+<span class="c"># 規律1: 各オブジェクトを一意のシンボルに束縛し、入れ子にしない。</span>
+<span class="c"># 注意: 3D で `名前=(x,y,z)` と代入すると点でなく **ベクトル** が描かれる。点は Point(...) で作る。</span>
+<span class="c">#   さらにリスト {…} はマクロ制約で文字列にエスケープ（&quot;{...}&quot;）して渡す。→ Point(&quot;{0, 0, 0}&quot;)</span>
+<span class="nd">@ggb</span><span class="w"> </span><span class="ss">:const</span><span class="w"> </span><span class="ss">:new</span>
+<span class="nd">@ggb</span><span class="w"> </span><span class="n">apex</span><span class="o">=</span><span class="n">Point</span><span class="p">(</span><span class="s">&quot;{0, 0, 0}&quot;</span><span class="p">)</span><span class="w">               </span><span class="c"># 円錐の頂点（下）</span>
+<span class="nd">@ggb</span><span class="w"> </span><span class="n">top</span><span class="o">=</span><span class="n">Point</span><span class="p">(</span><span class="s">&quot;{0, 0, 5.4}&quot;</span><span class="p">)</span><span class="w">              </span><span class="c"># 底面の中心（上）— 有限の円錐</span>
+<span class="nd">@ggb</span><span class="w"> </span><span class="n">cone</span><span class="o">=</span><span class="n">Cone</span><span class="p">(</span><span class="ss">:top</span><span class="p">,</span><span class="w"> </span><span class="ss">:apex</span><span class="p">,</span><span class="w"> </span><span class="mf">1.9712</span><span class="p">)</span><span class="w">        </span><span class="c"># 底面中心・頂点・底面半径（半開角 0.35 rad）</span>
+<span class="nd">@ggb</span><span class="w"> </span><span class="n">nrm</span><span class="o">=</span><span class="kt">Vector</span><span class="p">((</span><span class="mf">0.4</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">))</span>
+<span class="nd">@ggb</span><span class="w"> </span><span class="n">pl</span><span class="o">=</span><span class="n">PerpendicularPlane</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mf">2.5</span><span class="p">),</span><span class="w"> </span><span class="ss">:nrm</span><span class="p">)</span><span class="w">   </span><span class="c"># 軸に対して斜めの平面</span>
+<span class="nd">@ggb</span><span class="w"> </span><span class="n">section</span><span class="o">=</span><span class="n">IntersectConic</span><span class="p">(</span><span class="ss">:pl</span><span class="p">,</span><span class="w"> </span><span class="ss">:cone</span><span class="p">)</span><span class="w">    </span><span class="c"># 平面 ∩ 円錐 = 切り口の楕円。※平面が第一引数</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>観察1</strong>: 切り口 <code class="docutils literal notranslate"><span class="pre">section</span></code> は楕円。L11 で「これは <span class="math notranslate nohighlight">\(a^2=b^2+c^2\)</span> の楕円だ」と方程式で言い切ったが、その焦点は画面のどこにも無い。今日はそれを立体から取り出す。</p>
+</section>
+<section id="id3">
+<h2>3. 円錐に二つの球を入れる —— 接点が焦点になる<a class="headerlink" href="#id3" title="Link to this heading">#</a></h2>
+<section id="id4">
+<h3>3.1 切断面に上下から接する二つの球<a class="headerlink" href="#id4" title="Link to this heading">#</a></h3>
+<p>円錐の内壁にぴったり接しながら（＝円錐に内接しながら）膨らむ球を考える。中心を軸の上に置くと、球は円錐の内壁に <strong>一つの円</strong> で接する。その球を切断面に <strong>触れる</strong>まで膨らませると、切断面の <strong>下側</strong> に一つ、<strong>上側</strong> に一つ、ちょうど接する球が取れる。これが <strong>Dandelin 球</strong> である。</p>
+<p>軸上に中心を置いた半径 <span class="math notranslate nohighlight">\(r\)</span> の球が円錐に内接する条件は、中心の高さ <span class="math notranslate nohighlight">\(h\)</span>（頂点からの距離）に対して <span class="math notranslate nohighlight">\(r = h\sin\alpha\)</span>（<span class="math notranslate nohighlight">\(\alpha\)</span> は半開角）。さらに切断面に接する条件（中心から切断面までの距離 <span class="math notranslate nohighlight">\(=r\)</span>）を課すと、上下それぞれの球の中心と半径が <strong>一意に決まる</strong>。下の式の値は、その二条件を解いたものである（導出は思考課題3）。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="c"># 切断面に上下から接する二つの Dandelin 球。中心は軸上、半径は「円錐に内接 かつ 切断面に接する」</span>
+<span class="c"># 二条件から確定した値（思考課題3で導出）。中心を名前付き点にしておく（規律1）。</span>
+<span class="nd">@ggb</span><span class="w"> </span><span class="n">C1</span><span class="o">=</span><span class="n">Point</span><span class="p">(</span><span class="s">&quot;{0, 0, 1.8257}&quot;</span><span class="p">)</span><span class="w">            </span><span class="c"># 下の球の中心（軸上、切断面より下）※点は Point(&quot;{…}&quot;) で</span>
+<span class="nd">@ggb</span><span class="w"> </span><span class="n">sph1</span><span class="o">=</span><span class="n">Sphere</span><span class="p">(</span><span class="ss">:C1</span><span class="p">,</span><span class="w"> </span><span class="mf">0.6260</span><span class="p">)</span><span class="w">              </span><span class="c"># 下の Dandelin 球（切断面に下から接する）</span>
+<span class="nd">@ggb</span><span class="w"> </span><span class="n">C2</span><span class="o">=</span><span class="n">Point</span><span class="p">(</span><span class="s">&quot;{0, 0, 3.9639}&quot;</span><span class="p">)</span><span class="w">            </span><span class="c"># 上の球の中心（軸上、切断面より上）</span>
+<span class="nd">@ggb</span><span class="w"> </span><span class="n">sph2</span><span class="o">=</span><span class="n">Sphere</span><span class="p">(</span><span class="ss">:C2</span><span class="p">,</span><span class="w"> </span><span class="mf">1.3592</span><span class="p">)</span><span class="w">              </span><span class="c"># 上の Dandelin 球（切断面に上から接する）</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>観察2</strong>: 二つの球は <strong>大きさが違う</strong>（下 <span class="math notranslate nohighlight">\(r_1 \approx 0.63\)</span>、上 <span class="math notranslate nohighlight">\(r_2 \approx 1.36\)</span>）。これは斜めの切り口では避けられない —— 頂点に近い下の球は細い場所に入るので小さく、上の球は広い場所なので大きい。<strong>二つの球は「鏡像」ではない</strong>。軸に垂直に切れば（円のとき）二球は同じ大きさになるが、斜めにした瞬間に非対称になる。この点はあとで「二焦点の対称」を語るとき（§5）に効いてくる。</p>
+</section>
+<section id="id5">
+<h3>3.2 接点を焦点として取り出す —— 中心から切断面への垂線の足<a class="headerlink" href="#id5" title="Link to this heading">#</a></h3>
+<p>球が平面に接する点は、<strong>球の中心から平面へ下ろした垂線の足</strong> である（接点では半径が平面に直交するから）。これを作図でそのまま取る。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="c"># 各球の中心から切断面へ垂線を下ろし、その足（= 接点）を取る。これが焦点になる。</span>
+<span class="nd">@ggb</span><span class="w"> </span><span class="n">perp1</span><span class="o">=</span><span class="n">PerpendicularLine</span><span class="p">(</span><span class="ss">:C1</span><span class="p">,</span><span class="w"> </span><span class="ss">:pl</span><span class="p">)</span><span class="w">     </span><span class="c"># C1 から切断面 pl への垂線</span>
+<span class="nd">@ggb</span><span class="w"> </span><span class="n">F1</span><span class="o">=</span><span class="n">Intersect</span><span class="p">(</span><span class="ss">:perp1</span><span class="p">,</span><span class="w"> </span><span class="ss">:pl</span><span class="p">)</span><span class="w">             </span><span class="c"># 垂線の足 = 下の球と切断面の接点 = 焦点その1</span>
+<span class="nd">@ggb</span><span class="w"> </span><span class="n">perp2</span><span class="o">=</span><span class="n">PerpendicularLine</span><span class="p">(</span><span class="ss">:C2</span><span class="p">,</span><span class="w"> </span><span class="ss">:pl</span><span class="p">)</span><span class="w">     </span><span class="c"># C2 から切断面への垂線</span>
+<span class="nd">@ggb</span><span class="w"> </span><span class="n">F2</span><span class="o">=</span><span class="n">Intersect</span><span class="p">(</span><span class="ss">:perp2</span><span class="p">,</span><span class="w"> </span><span class="ss">:pl</span><span class="p">)</span><span class="w">             </span><span class="c"># 上の球と切断面の接点 = 焦点その2</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="c"># F1, F2 が本当に切り口の楕円 section の焦点か —— 中心 M（長軸の中点）と並べて見る。</span>
+<span class="nd">@ggb</span><span class="w"> </span><span class="n">M</span><span class="o">=</span><span class="n">Midpoint</span><span class="p">(</span><span class="ss">:F1</span><span class="p">,</span><span class="w"> </span><span class="ss">:F2</span><span class="p">)</span><span class="w">                  </span><span class="c"># 二接点の中点（= 楕円の中心になるはず）</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>観察3</strong>: <code class="docutils literal notranslate"><span class="pre">F1</span></code>, <code class="docutils literal notranslate"><span class="pre">F2</span></code> は切断面の上、楕円 <code class="docutils literal notranslate"><span class="pre">section</span></code> の内側に落ちる。座標はおよそ <span class="math notranslate nohighlight">\(F_1 \approx (0.23, 0, 2.41)\)</span>, <span class="math notranslate nohighlight">\(F_2 \approx (-0.50, 0, 2.70)\)</span>、中点 <span class="math notranslate nohighlight">\(M \approx (-0.14, 0, 2.55)\)</span>。この二点は、<strong>この切り口の楕円の二焦点</strong> —— すなわち L10 の定義「距離の和が一定」を満たす二点（次の §3.3 で確認）であり、L11 §3 のように方程式に落として計算しても同じ二点が出る（L11 §3 の数値例は <span class="math notranslate nohighlight">\(a=5\)</span> の別の楕円なので座標値は違うが、手順は同じ）。<strong>画面のどこにも描かれていなかった焦点が、二つの球の接点として立体から現れた</strong>。</p>
+</section>
+<section id="p-2a">
+<h3>3.3 距離の和は一定 —— <span class="math notranslate nohighlight">\(P\)</span> をどこに動かしても <span class="math notranslate nohighlight">\(2a\)</span><a class="headerlink" href="#p-2a" title="Link to this heading">#</a></h3>
+<p>楕円の定義（L10）は「<span class="math notranslate nohighlight">\(|PF_1| + |PF_2| = 2a\)</span>」だった。切り口の楕円 <code class="docutils literal notranslate"><span class="pre">section</span></code> の上に点 <span class="math notranslate nohighlight">\(P\)</span> を取り、いま立体から取り出した二接点 <span class="math notranslate nohighlight">\(F_1, F_2\)</span> について、この和が一定であることを確かめる。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="c"># 切り口の楕円上の点 P をドラッグしても、二接点までの距離の和が一定であることを見る。</span>
+<span class="nd">@ggb</span><span class="w"> </span><span class="n">P</span><span class="o">=</span><span class="n">Point</span><span class="p">(</span><span class="ss">:section</span><span class="p">)</span><span class="w">                     </span><span class="c"># 切り口の楕円の上の点（ドラッグできる）</span>
+<span class="nd">@ggb</span><span class="w"> </span><span class="n">d1</span><span class="o">=</span><span class="n">Distance</span><span class="p">(</span><span class="ss">:P</span><span class="p">,</span><span class="w"> </span><span class="ss">:F1</span><span class="p">)</span>
+<span class="nd">@ggb</span><span class="w"> </span><span class="n">d2</span><span class="o">=</span><span class="n">Distance</span><span class="p">(</span><span class="ss">:P</span><span class="p">,</span><span class="w"> </span><span class="ss">:F2</span><span class="p">)</span>
+<span class="nd">@ggb</span><span class="w"> </span><span class="n">s</span><span class="o">=</span><span class="s">&quot;d1 + d2&quot;</span><span class="w">                             </span><span class="c"># = 2a ≈ 2.009（P をどこに動かしても一定）</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>観察4</strong>: <code class="docutils literal notranslate"><span class="pre">P</span></code> を楕円 <code class="docutils literal notranslate"><span class="pre">section</span></code> の上でどこに動かしても、<code class="docutils literal notranslate"><span class="pre">s</span> <span class="pre">=</span> <span class="pre">d1</span> <span class="pre">+</span> <span class="pre">d2</span></code> は <span class="math notranslate nohighlight">\(2a \approx 2.009\)</span> から動かない。<strong>L10 で「紐の長さ一定」として天下りに置いた和一定が、ここでは「二つの球の接点までの距離の和」として、円錐の中から出てきた</strong>。だが「なぜ一定なのか」はまだ作図が示しただけ。次の §3.4 でその理由を言い切る。</p>
+</section>
+<section id="id6">
+<h3>3.4 なぜ和が一定か —— 接線の長さの等しさ + 母線に沿った一定距離<a class="headerlink" href="#id6" title="Link to this heading">#</a></h3>
+<p>理由は、<strong>たった一つの古典的事実</strong>から出る。</p>
+<blockquote>
+<div><p><strong>球の接線の長さ（L4 の円の接線の三次元版）</strong>: 球の外の一点 <span class="math notranslate nohighlight">\(P\)</span> から球に引いた接線（接点までの線分）の長さは、<strong>どの方向に引いても等しい</strong>。</p>
+</div></blockquote>
+<p>切り口の点 <span class="math notranslate nohighlight">\(P\)</span> は円錐の表面にある。<span class="math notranslate nohighlight">\(P\)</span> を通る <strong>母線</strong>（頂点から <span class="math notranslate nohighlight">\(P\)</span> を通ってまっすぐ伸びる円錐表面の直線）を考える。この母線は、下の球が円錐に接する円 <span class="math notranslate nohighlight">\(k_1\)</span> を点 <span class="math notranslate nohighlight">\(A\)</span> で、上の球が接する円 <span class="math notranslate nohighlight">\(k_2\)</span> を点 <span class="math notranslate nohighlight">\(B\)</span> で貫く。すると：</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(|PF_1|\)</span> と <span class="math notranslate nohighlight">\(|PA|\)</span> は、どちらも <strong><span class="math notranslate nohighlight">\(P\)</span> から下の球への接線</strong> —— <span class="math notranslate nohighlight">\(PF_1\)</span> は切断面での接点 <span class="math notranslate nohighlight">\(F_1\)</span> まで、<span class="math notranslate nohighlight">\(PA\)</span> は円錐に沿った接点 <span class="math notranslate nohighlight">\(A\)</span> まで。同じ球への二接線だから <strong><span class="math notranslate nohighlight">\(|PF_1| = |PA|\)</span></strong>。</p></li>
+<li><p>同様に <span class="math notranslate nohighlight">\(|PF_2| = |PB|\)</span>（上の球への二接線）。</p></li>
+</ul>
+<p>したがって、</p>
+<div class="math notranslate nohighlight">
+\[|PF_1| + |PF_2| = |PA| + |PB| = |AB|.\]</div>
+<p><span class="math notranslate nohighlight">\(A\)</span> は接触円 <span class="math notranslate nohighlight">\(k_1\)</span>（高さ一定）の上、<span class="math notranslate nohighlight">\(B\)</span> は接触円 <span class="math notranslate nohighlight">\(k_2\)</span>（高さ一定）の上にあり、両方とも <strong>同じ母線</strong> の上にある。母線に沿った <span class="math notranslate nohighlight">\(k_1\)</span> と <span class="math notranslate nohighlight">\(k_2\)</span> のあいだの長さ <span class="math notranslate nohighlight">\(|AB|\)</span> は、<strong>どの母線でも同じ</strong>（円錐の回転対称性）。ゆえに <span class="math notranslate nohighlight">\(|PF_1| + |PF_2| = |AB| = \)</span> 一定 <span class="math notranslate nohighlight">\(= 2a\)</span>。これが「距離の和が一定」の <strong>理由</strong> である。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="c"># §3.4 を数値で確かめる —— 二つの接触円のあいだの「母線に沿った長さ |AB|」が、</span>
+<span class="c"># どの母線（角度 θ）でも一定であることを Julia で計算する（カーネルは Julia）。</span>
+<span class="n">α</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.35</span>
+<span class="n">ta</span><span class="p">,</span><span class="w"> </span><span class="n">ca</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">tan</span><span class="p">(</span><span class="n">α</span><span class="p">),</span><span class="w"> </span><span class="n">cos</span><span class="p">(</span><span class="n">α</span><span class="p">)</span>
+<span class="n">z1c</span><span class="p">,</span><span class="w"> </span><span class="n">z2c</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">1.6111</span><span class="p">,</span><span class="w"> </span><span class="mf">3.4979</span><span class="w">        </span><span class="c"># 二つの接触円の高さ（球が円錐に接する円の z）</span>
+<span class="k">for</span><span class="w"> </span><span class="n">θ</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span><span class="w"> </span><span class="mf">1.0</span><span class="p">,</span><span class="w"> </span><span class="mf">2.0</span><span class="p">,</span><span class="w"> </span><span class="mf">3.5</span><span class="p">,</span><span class="w"> </span><span class="mf">5.0</span><span class="p">)</span>
+<span class="w">    </span><span class="n">A</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">z1c</span><span class="o">*</span><span class="n">ta</span><span class="o">*</span><span class="n">cos</span><span class="p">(</span><span class="n">θ</span><span class="p">),</span><span class="w"> </span><span class="n">z1c</span><span class="o">*</span><span class="n">ta</span><span class="o">*</span><span class="n">sin</span><span class="p">(</span><span class="n">θ</span><span class="p">),</span><span class="w"> </span><span class="n">z1c</span><span class="p">)</span><span class="w">   </span><span class="c"># 下の接触円 k1 上の点（母線 θ）</span>
+<span class="w">    </span><span class="n">B</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">z2c</span><span class="o">*</span><span class="n">ta</span><span class="o">*</span><span class="n">cos</span><span class="p">(</span><span class="n">θ</span><span class="p">),</span><span class="w"> </span><span class="n">z2c</span><span class="o">*</span><span class="n">ta</span><span class="o">*</span><span class="n">sin</span><span class="p">(</span><span class="n">θ</span><span class="p">),</span><span class="w"> </span><span class="n">z2c</span><span class="p">)</span><span class="w">   </span><span class="c"># 上の接触円 k2 上の点（同じ母線 θ）</span>
+<span class="w">    </span><span class="n">AB</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sqrt</span><span class="p">(</span><span class="n">sum</span><span class="p">((</span><span class="n">B</span><span class="w"> </span><span class="o">.-</span><span class="w"> </span><span class="n">A</span><span class="p">)</span><span class="o">.^</span><span class="mi">2</span><span class="p">))</span>
+<span class="w">    </span><span class="n">println</span><span class="p">(</span><span class="s">&quot;θ = </span><span class="si">$θ</span><span class="s">:  |AB| = &quot;</span><span class="p">,</span><span class="w"> </span><span class="n">round</span><span class="p">(</span><span class="n">AB</span><span class="p">,</span><span class="w"> </span><span class="n">digits</span><span class="o">=</span><span class="mi">5</span><span class="p">))</span>
+<span class="k">end</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>観察5</strong>: <code class="docutils literal notranslate"><span class="pre">|AB|</span></code> は <span class="math notranslate nohighlight">\(\theta\)</span>（どの母線か）に依らず <span class="math notranslate nohighlight">\(\approx 2.00856\)</span> で一定 —— これがそのまま <span class="math notranslate nohighlight">\(2a\)</span> である。母線に沿った接点間の長さが一定だから、<span class="math notranslate nohighlight">\(P\)</span> をどこに置いても <span class="math notranslate nohighlight">\(|PF_1| + |PF_2|\)</span> が同じになる。<strong>和一定は「紐の長さ」という約束ではなく、円錐の回転対称性 ＋ 接線の等長性から出る幾何の必然だった</strong>。L10 で <code class="docutils literal notranslate"><span class="pre">Distance</span></code> を足し算した手つきと、L11 で根号がほどけて <span class="math notranslate nohighlight">\(2a\)</span> になった式（<span class="math notranslate nohighlight">\(d_1 = a + \tfrac{c}{a}x\)</span> など）が、ここで立体の一本の母線として <strong>意味</strong> を持つ。</p>
+</section>
+</section>
+<section id="id7">
+<h2>4. 観測量に固める —— 二焦点 = 二接点、和一定 = 母線長<a class="headerlink" href="#id7" title="Link to this heading">#</a></h2>
+<p><strong>主命題（Dandelin）</strong>: 円錐を斜めの平面で切るとき、切断面に内側から接する二つの球（Dandelin 球）が上下に一意に定まる。各球と切断面の <strong>接点 <span class="math notranslate nohighlight">\(F_1, F_2\)</span></strong> は、切り口の楕円の <strong>二焦点</strong> である。切り口の点 <span class="math notranslate nohighlight">\(P\)</span> について <span class="math notranslate nohighlight">\(|PF_1| + |PF_2|\)</span> は、二つの球が円錐に接する円のあいだの <strong>母線に沿った長さ <span class="math notranslate nohighlight">\(|AB|\)</span> に等しく、<span class="math notranslate nohighlight">\(P\)</span> によらず一定 <span class="math notranslate nohighlight">\(=2a\)</span></strong> である。</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>定義・命題のまとめ（L10–L12 を一つに）</p>
+<ul class="simple">
+<li><p><strong>二焦点</strong>（L10 の定義） ＝ Dandelin 二球と切断面の <strong>二つの接点</strong>（L12 の立体）。</p></li>
+<li><p><strong>距離の和が一定 <span class="math notranslate nohighlight">\(2a\)</span></strong>（L10） ＝ 二つの接触円のあいだの <strong>母線長 <span class="math notranslate nohighlight">\(|AB|\)</span></strong>（L12）。</p></li>
+<li><p>球が円錐に内接する条件 <span class="math notranslate nohighlight">\(r = h\sin\alpha\)</span> と、切断面に接する条件（中心-平面間距離 <span class="math notranslate nohighlight">\(=r\)</span>）の二つで、上下の球の中心・半径が一意に決まる。</p></li>
+<li><p>斜めの切り口では <strong>上下の球は大きさが違う</strong>（<span class="math notranslate nohighlight">\(r_1 \ne r_2\)</span>）。軸に垂直（円）のときだけ等しい。</p></li>
+</ul>
+</div>
+<div class="attention admonition">
+<p class="admonition-title">Attention</p>
+<p>立体 → 接点 → 長さ —— 「定義」が「必然」に変わった</p>
+<p>L10 で楕円を <strong>定義</strong>（距離の和が一定）から入り、L11 で <strong>方程式</strong>（<span class="math notranslate nohighlight">\(x^2/a^2+y^2/b^2=1\)</span>）に固定した。今日 L12 で、その定義が <strong>円錐の三次元構成からの必然</strong> に変わった。</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>回</p></th>
+<th class="head"><p>楕円をどう捉えたか</p></th>
+<th class="head"><p>二焦点はどこにあるか</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>L10</strong></p></td>
+<td><p>二焦点からの距離の和が一定（定義・天下り）</p></td>
+<td><p>紐の二つの杭（与えるもの）</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>L11</strong></p></td>
+<td><p><span class="math notranslate nohighlight">\(x^2/a^2+y^2/b^2=1\)</span>（方程式・SymPy）</p></td>
+<td><p><span class="math notranslate nohighlight">\((\pm c, 0)\)</span>（式から計算で出る）</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>L12</strong></p></td>
+<td><p>円錐の切り口 ＝ Dandelin 二球の接点（立体・必然）</p></td>
+<td><p>二つの球が切断面に触れる点（立体から現れる）</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>「天下りに与えた二点」が「式から計算される二点」になり、ついに「<strong>円錐の中から必然として現れる二点</strong>」になった。同じ二焦点を、約束・式・立体の三つの言葉で語れる —— これが L10–L12 の到達点である。</p>
+</div>
+</section>
+<section id="id8">
+<h2>5. 二焦点の対称は、どこから来るのか —— 球の合同 <em>ではない</em><a class="headerlink" href="#id8" title="Link to this heading">#</a></h2>
+<p>L8–L9 で「内心と傍心が辺について対称」を発見し、L10 でそれを「二焦点が中心 <span class="math notranslate nohighlight">\(M\)</span> について対称」として持ち上げた。その対称は今日も正しい（<span class="math notranslate nohighlight">\(F_1\)</span> を <span class="math notranslate nohighlight">\(M\)</span> で対称にすると <span class="math notranslate nohighlight">\(F_2\)</span> に重なる）。だが <strong>その理由を取り違えてはいけない</strong>。</p>
+<p>二焦点が対称なのは、<strong>二つの球が鏡像だから ではない</strong> —— §3.2 で見たとおり、上下の球は大きさが違う。では何が対称を生むのか。<strong>図全体が、長軸（と円錐の軸）を含む一枚の平面について左右対称</strong>だからである。いまの作図では、円錐の軸（<span class="math notranslate nohighlight">\(z\)</span> 軸）と切断面の傾き方向（<span class="math notranslate nohighlight">\(x\)</span> 方向）が作る <span class="math notranslate nohighlight">\(xz\)</span> 平面が、その対称面になっている。この鏡映で円錐・切断面・上下二球はそれぞれ自分自身に写り、楕円は長軸について折り返される。焦点 <span class="math notranslate nohighlight">\(F_1, F_2\)</span> はこの長軸上に乗り、<strong>長軸の中点 <span class="math notranslate nohighlight">\(M\)</span> について対称</strong>になる。</p>
+<p>もう一段だけ、答えを言わずに <strong>入口</strong> を開けておく。二つの球はどちらも「切断面」と「円錐の母線」の両方に接している。球が二つのものに接するなら、その中心は両者の <strong>なす角を二等分する</strong> 位置に来る（L4 で「円の中心は二接線の角の二等分線上」と見たのと同じ理屈）。上下の球は、母線と切断面のなす角を、切断面を挟んで <strong>一方は内側から・もう一方は外側から</strong> 二等分する位置に、それぞれ座る。<strong>「内側からの二等分」と「外側からの二等分」が対で現れて、辺（切断面）について対称な二点（＝二焦点）を生む</strong> —— この構造を、前半（L8–L9）のどこかで見なかっただろうか。二本の角の二等分線が一点で交わり、内側と外側の二等分が対の中心を作った、あの図である。答えは今日は書かない。今回の思考課題で、二次元（三角形）と三次元（円錐）を自分の手で重ねてほしい。</p>
+<div class="note admonition">
+<p class="admonition-title">Note</p>
+<p>取り違えやすい「対称」—— 名前や見た目でなく構造で帰属する（L9 の作法）
+「二球が上下に一つずつあるのだから鏡像だろう」 と思い込むと誤る（斜めの切り口では球の大きさが違う）。二焦点の対称は <strong>球の合同</strong> からではなく、<strong>図全体の鏡映対称面</strong>（長軸を含む面）から来る。L9 で「座標や見た目でなく、構造（依存グラフの同型）で型を帰属する」 採点を練習した —— ここでも、見た目の「上下一対」 に引きずられず、どの対称操作が図を不変に保つかで対称を帰属する。これが L8–L11 から続く「構造で見る」 一貫した作法である。</p>
+</div>
+<p><strong>伏線回収（到達点）</strong>: L6（等距離）→ L7（隠れた直線＝準線）→ L8–L9（内外の二中心の対称）→ L10（二焦点・和一定）→ L11（方程式）と仕込んできた糸が、ここで円錐の三次元構成として一つに結ばれた。「二つあること」は二つの球（上下）から、「和が一定」は母線長 <span class="math notranslate nohighlight">\(|AB|\)</span> から、「対称」は図の鏡映面から —— それぞれ別の理由で、しかし同じ一つの立体の中から出てくる。</p>
+</section>
+<section id="id9">
+<h2>6. 停滞と画期の照射 —— 1822 年、総合幾何の最後の宝石<a class="headerlink" href="#id9" title="Link to this heading">#</a></h2>
+<p>円錐の切り口（Apollonius、前 3 世紀）と「二焦点・距離の和が一定」（同じく Apollonius が性質として証明）は、二千年のあいだ <strong>別々の顔</strong> として知られていた。両者が「同じ楕円」 であることは、L11 で見たように Descartes/Fermat 以降は <strong>代数</strong> で確かめられた —— 座標を立て、両方を方程式に落とし、一致を計算する。だがそれは「式が一致した」 のであって、<strong>幾何的な理由</strong> を見せるものではなかった。</p>
+<p>その理由を、座標も方程式も使わず、<strong>純粋に総合幾何（作図的議論）だけ</strong> で一撃で示したのが、<strong>Germinal Pierre Dandelin</strong>（1794–1847、ベルギーの数学者・技師）である（1822）。彼の二つの球は、§3.4 で見たとおり「接線の長さの等しさ」 という古典的事実一つで、切り口と二焦点を結んだ。同時代の <strong>Adolphe Quetelet</strong>（統計学で有名だが、若い頃は幾何学者）も近い結果に到達しており、準線まで含めた形は <strong>Dandelin–Quetelet の定理</strong> と呼ばれる（準線は L13）。</p>
+<p>これは数学史の文脈で見ると印象深い位置にある。1822 年は、解析幾何（Descartes）と微積分（Newton/Leibniz）が幾何学の主役になって久しく、<strong>総合幾何はもう古い道具</strong> と見なされ始めていた時期である。そこへ Dandelin は、座標を一切使わない作図的議論で、二千年の二つの顔を結ぶ宝石のような証明を出した —— いわば <strong>総合幾何が最後に見せた切れ味</strong> である。</p>
+<p>そして、ここが一番明るい含意である。Dandelin の球は、円錐・平面・球というユークリッド幾何の範囲だけでできていて、<strong>古代ギリシア人が見つけていてもおかしくなかった</strong> —— それでも見つかるまでに <strong>二千百年</strong> かかった。同じことが二十世紀にも起きる。<strong>Feynman</strong>（1964・失われた講義）は、Newton の逆二乗則から Kepler の楕円軌道を、微積分を使わず <strong>初等幾何だけ</strong> で導く「円形ホドグラフ／円形準線」を組み立てた（L13–L15 で扱う）。これも Newton 自身が見つけていてもおかしくない構成で、やはり二世紀以上見過ごされていた。円錐曲線という <strong>二千三百年前に始まった</strong> 分野で、19 世紀（Dandelin）と 20 世紀（Feynman）に、初等幾何のレベルの新発見があった —— <strong>二千年をかけても発見できない美しい真実が、まだ残っている</strong>。数学は完成された遺産ではなく、いまも開いている営みである。次に二千年見落とされてきた構成を見つけるのは、この教室の誰かかもしれない。</p>
+<div class="note admonition">
+<p class="admonition-title">なぜ「式の一致」より「球の議論」 が腑に落ちるのか</p>
+<p>L11 で SymPy が示したのは「両方とも同じ方程式になる」 という <strong>計算上の一致</strong> だった。正しいが、なぜそうなるかは見えない。L12 の Dandelin 球は、同じことを <strong>見える理由</strong> にした —— <span class="math notranslate nohighlight">\(P\)</span> から二つの球への接線が等長で、母線に沿った長さが一定だから。同じ命題でも、「計算で一致する」 と「なぜ一致するかが見える」 は別の理解である。前者は機械（SymPy・Lean）が得意で、後者は人間が「ああ」 と言う瞬間に宿る。L11（式で検証）と L12（立体で理解）を両方やる意味はここにある。<strong>検証できること</strong> と <strong>腑に落ちること</strong> は、重なるが同じではない。</p>
+</div>
+<div class="tip admonition">
+<p class="admonition-title">進捗の確認 — セル出力を &#64;Codex に読ませる</p>
+<p>&#64;Codex は <strong>jupyter-server-mcp であなたのセル入出力を直接読みます</strong>（プロンプトだけではない）。
+（プロンプト例）&#64;Codex ここまでのセル出力を読んで、達成目標①（上下の球は大きさが違う）②（接点 = 二焦点、垂線の足として取り出した）③（和一定 = 母線長 |AB| が一定）にどこまで到達したか、まだ埋まっていないセルはどこか、具体的に挙げて。</p>
+<div class="docutils">
+</div>
+</div>
+<div class="tip admonition">
+<p class="admonition-title">今回の課題</p>
+<p><strong>必修</strong></p>
+<ol class="arabic simple">
+<li><p>円錐に二つの Dandelin 球を入れ（§3.1）、各球の中心から切断面への垂線の足として接点 <span class="math notranslate nohighlight">\(F_1, F_2\)</span> を取り出せ（§3.2）。<span class="math notranslate nohighlight">\(F_1, F_2\)</span> が切り口の楕円 <code class="docutils literal notranslate"><span class="pre">section</span></code> の内側に落ち、上下の球の <strong>大きさが違う</strong>ことを観察せよ。</p></li>
+<li><p>楕円上の点 <span class="math notranslate nohighlight">\(P\)</span> をドラッグし、<span class="math notranslate nohighlight">\(|PF_1| + |PF_2|\)</span> が一定 <span class="math notranslate nohighlight">\(\approx 2a\)</span> であることを <code class="docutils literal notranslate"><span class="pre">Distance</span></code> で確かめよ（§3.3）。さらに §3.4 の Julia セルで、母線に沿った接点間距離 <span class="math notranslate nohighlight">\(|AB|\)</span> が母線（角度 <span class="math notranslate nohighlight">\(\theta\)</span>）に依らず一定で、その値が <span class="math notranslate nohighlight">\(2a\)</span> に等しいことを確かめよ。</p></li>
+</ol>
+<p><strong>思考課題</strong>
+3. 球が軸上の高さ <span class="math notranslate nohighlight">\(h\)</span>（頂点からの距離）に中心を持ち円錐に内接するとき半径が <span class="math notranslate nohighlight">\(r = h\sin\alpha\)</span> になる理由を、頂点・中心・接点の作る直角三角形から説明せよ。そのうえで「切断面に接する」 条件（中心から切断面までの距離 <span class="math notranslate nohighlight">\(=r\)</span>）を加えると上下の球が一意に決まることを、自分の言葉で述べよ（中心の高さを未知数に、一次方程式が一本立つ）。
+4. 「距離の和が一定」 の証明（§3.4）で本質的に使ったのは「<strong>球外の一点から球への二接線は等長</strong>」 という一事実だけである。これは L4 で扱った「<strong>円の外の点から円への二接線は等長</strong>」 の三次元版である。L4 の二次元の事実と L12 の三次元の事実が「同じ scope の違う実装」 であることを述べ、さらに L13 で扱う <strong>準線</strong>（焦点までの距離と準線までの距離の比 <span class="math notranslate nohighlight">\(=e\)</span>）が、Dandelin 球からどう出てきそうか、現時点の見立てを残せ（第 13–15 回の立論の素材）。</p>
+<ol class="arabic simple" start="5">
+<li><p><strong>(発見してほしい問い)</strong> §5 の入口で「二つの球の中心は、母線と切断面のなす角を <strong>内側から／外側から</strong> 二等分する位置に来る」と置いた。前半 L8–L9 で、<strong>内角の二等分線</strong> の交点（内心）と、<strong>外角の二等分線</strong> を含む交点（傍心）が、辺について対称な対を作ったことを思い出せ。三角形（二次元）の「辺・内接円・傍接円・内心・傍心」と、円錐（三次元）の「切断面・上の球・下の球・二焦点」を <strong>一つずつ対応させる表</strong> を、自分で作ってみよ。そのうえで「<strong>楕円の焦点には何があるか</strong>（片方は太陽だが、幾何的には何か）」に、現時点の自分の言葉で答えを書き留めよ（第 13–15 回の立論の素材。教科書が省く「二焦点がなぜ対称か」の根源に、自分の手で触れる課題）。</p></li>
+</ol>
+</div>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>授業末尾の自己評価 —— <code class="docutils literal notranslate"><span class="pre">&#64;Codex</span></code> に聞いてみる（任意、L4–L11 から継続）</p>
+<p>L4–L11 と同じ template で、本回の自己評価を試してください。<strong>任意</strong>です。&#64;Codex は <strong>jupyter-server-mcp で全セルの入出力を読み</strong>、lancedb-rag で lesson 文脈を参照して個別評価を返します。</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>@Codex 今日のノートブックを全 cell 読んで評価してください。
+次の三つを区別して articulate してください:
+
+1. 自分で考えて書いた cell — 思考の痕跡が残っている部分
+2. AI 委託で書いたが、理解して受け入れた cell — 動いて、なぜ動くか説明できる部分
+3. AI 委託で書いたが、なぜ動くか説明できない cell — 動いているが、理解で未到達の部分
+
+加えて: 今日の主題（Dandelin 二球の接点 = 二焦点 / 距離の和が一定 = 母線長 |AB| が一定 /
+二球は大きさが違い鏡像ではない / 焦点の対称は図の鏡映面から）に対する到達度、
+完成しないまま残った問い、次回（L13 準線と離心率）への接続点。
+
+特に「L11 では式の一致だったものが、L12 では球の接線で『なぜ』が見えた」ことと、
+「二焦点の対称は球の合同からではなく図全体の鏡映対称からだ」 という区別が
+腑に落ちたか、誤魔化さず正直に articulate してください。
+最終判断は自分で。@Codex の照合は候補の提示であって、評価は自分の構成(construction)に対して行う。
+</pre></div>
+</div>
+<p>JupyterAI のやり取り log は LMS 経由で先生に届きます —— 学期末立論（第 15 回）の materials として毎週蓄積。「<strong>先週は気付かなかったことに今週は気付けた</strong>」 が回を重ねるごとに起こるか、皆さん自身でも観察してください。</p>
+</div>
+</section>
+<section id="id10">
+<h2>7. 次回への接続<a class="headerlink" href="#id10" title="Link to this heading">#</a></h2>
+<p>今日は、L10 で天下りに与えた二焦点が、円錐に内接する二つの球（Dandelin 球）の接点として <strong>立体から必然的に現れる</strong>ことを見た。「二つあること」「和が一定であること」「中心について対称であること」 が、それぞれ別の理由で同じ立体から出てきた。L8–L11 の伏線が、ここで一つに結ばれた。</p>
+<p>次回（第 13 回）は、もう一つの隠れた登場人物 —— <strong>準線（directrix）</strong> に Dandelin 球から会う。L10/L11 で「焦点までの距離と準線までの距離の <strong>比</strong> が一定 <span class="math notranslate nohighlight">\(=e\)</span>（離心率）」 と予告し、L11 で SymPy で一点だけ確かめた。その準線が、Dandelin 球が円錐に接する <strong>接触円を含む平面</strong> と切断面の交わりとして立体から現れる。和一定（楕円）から比一定（焦点・準線）へ、そして離心率 <span class="math notranslate nohighlight">\(e\)</span> が三曲線（楕円・放物線・双曲線）を一つの数で連続的に並べる —— その統一を、立体の側から締めくくる。</p>
+<p>後半も規律1（各オブジェクトを一意のシンボルに束縛し、入れ子にしない）が効く —— Dandelin 球の三次元構成を DataFrame・依存グラフ・SymPy 式へ渡す下流処理は、すべて命名されたオブジェクトを前提とするからである（教材オーサリング規約は &#64;Codex に lancedb-rag で「教材オーサリング規約 ggblab セル シンボル 規律1」を尋ねる、project=textbook）。</p>
+</section>
+<section id="id11">
+<h2>枕（次回への予告）—— 接触円が、隠れた直線（準線）を呼ぶ<a class="headerlink" href="#id11" title="Link to this heading">#</a></h2>
+<p>次回は、二つの Dandelin 球が円錐に接する <strong>二つの円（接触円 <span class="math notranslate nohighlight">\(k_1, k_2\)</span>）</strong> に注目する。その円を含む平面と、切断面との <strong>交わりの直線</strong> —— それが準線である。焦点（接点）と準線（接触円の平面との交わり）が、どちらも Dandelin 球から出てくる。その <strong>枕</strong> として、下の球の接触円だけ予告で描く。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="c"># 下の Dandelin 球が円錐に接する円（接触円 k1）の予告。高さ z ≈ 1.611、半径 ≈ 0.588。</span>
+<span class="c"># 次回、この円を含む平面と切断面の交わりとして「準線」が立ち上がる。</span>
+<span class="nd">@ggb</span><span class="w"> </span><span class="n">nrm0</span><span class="o">=</span><span class="kt">Vector</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">))</span><span class="w">                </span><span class="c"># 円の面の法線（軸方向）= 水平な円</span>
+<span class="nd">@ggb</span><span class="w"> </span><span class="n">Ck1</span><span class="o">=</span><span class="n">Point</span><span class="p">(</span><span class="s">&quot;{0, 0, 1.6111}&quot;</span><span class="p">)</span><span class="w">           </span><span class="c"># 接触円の中心（軸上）※点は Point(&quot;{…}&quot;) で</span>
+<span class="nd">@ggb</span><span class="w"> </span><span class="n">k1</span><span class="o">=</span><span class="n">Circle</span><span class="p">(</span><span class="ss">:Ck1</span><span class="p">,</span><span class="w"> </span><span class="mf">0.5881</span><span class="p">,</span><span class="w"> </span><span class="ss">:nrm0</span><span class="p">)</span><span class="w">        </span><span class="c"># 接触円（中心・半径・面の法線）</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>読み方</strong>: 下の球は円錐の内壁に、この水平な円 <code class="docutils literal notranslate"><span class="pre">k1</span></code> でぐるりと接している。次回はこの円を含む平面（水平面）と、斜めの切断面 <code class="docutils literal notranslate"><span class="pre">pl</span></code> との交わりの直線を取る —— それが楕円の <strong>準線</strong> である。焦点が「接点」 から来たように、準線は「接触円の平面」 から来る。Dandelin の二球は、焦点と準線の両方を一度に円錐の中へ埋め込んでいた。</p>
+</section>
+<section id="id12">
+<h2>参考文献<a class="headerlink" href="#id12" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Dandelin_spheres">Dandelin spheres - Wikipedia</a>（円錐切断の二焦点 = 内接二球の接点。接線等長による和一定の証明。Dandelin 1822 / Quetelet）</p></li>
+<li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Germinal_Pierre_Dandelin">Germinal Pierre Dandelin - Wikipedia</a>（1794–1847、ベルギーの数学者・技師。Dandelin 球、1822）</p></li>
+<li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Conic_section#Dandelin_spheres">Conic section - Wikipedia</a>（切断面と焦点・準線の Dandelin 球による統一）</p></li>
+<li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Tangent_lines_to_circles">Tangent lines to circles - Wikipedia</a>（外部点からの二接線は等長 —— L4 の事実、その三次元版が球の接線）</p></li>
+<li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Ellipse">Ellipse - Wikipedia</a>（二焦点・和一定 <span class="math notranslate nohighlight">\(2a\)</span>、<span class="math notranslate nohighlight">\(a^2=b^2+c^2\)</span>、離心率 <span class="math notranslate nohighlight">\(e=c/a\)</span>）</p></li>
+<li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Feynman%27s_Lost_Lecture">Feynman’s Lost Lecture - Wikipedia</a>（1964・Newton 逆二乗則 → Kepler 楕円軌道を初等幾何で。円形ホドグラフ／円形準線。§6 の 20 世紀の echo・L13–L15）</p></li>
+<li><p>焦点の対称性と五心（内心・傍心の三次元 lift）・Dandelin/Feynman の系譜は &#64;Codex に lancedb-rag で「焦点 対称性 五心 内心 傍心 Dandelin Feynman 数学史」を尋ねる（project=conversations） — 先生の数学史叙述（2026-05-11 discussion_memo §8, §10。§5 hook と思考課題5の背景）</p></li>
+<li><p>前回 第11回（円錐の切断と SymPy・方程式）は &#64;Codex に lancedb-rag で「第11回 円錐 切断 SymPy 方程式 焦点 離心率 Descartes」を尋ねる（project=textbook） — 観察を方程式へ、焦点・離心率を式から復元</p></li>
+<li><p>第10回（楕円と二焦点・和一定）は &#64;Codex に lancedb-rag で「第10回 楕円 二焦点 距離の和 離心率 a^2=b^2+c^2」を尋ねる（project=textbook） — 二焦点・和一定の定義、中心対称</p></li>
+<li><p>第4回（円の接線・Thales）は &#64;Codex に lancedb-rag で「第4回 Thales 円 接線 外部点 二接線 等長」を尋ねる（project=textbook） — 外部点からの二接線等長（§3.4 の二次元版）</p></li>
+<li><p>ggblab_extra 機能配置ロードマップは &#64;Codex に lancedb-rag で「ggblab_extra 機能配置 ロードマップ Dandelin L12」を尋ねる（project=textbook） — L12 = 立体で必然を見る・新機能は足さない</p></li>
+<li><p>著者規約は &#64;Codex に lancedb-rag で「教材オーサリング規約 ggblab セル シンボル 規律1」を尋ねる（project=textbook） 規律1（命名なきオブジェクトは下流の SymPy 復元に渡せない）</p></li>
+</ul>
+<div class="note admonition">
+<p class="admonition-title">著者ノート —— 3D 作図の数値は外部検証済み（学生用ではない）</p>
+<p>本回の 3D 構成（円錐・切断面・二つの Dandelin 球・二焦点）の数値は、GeoGebra とは独立に numpy で <strong>厳密に検証</strong>してから確定した（著者・研究用メモ、学生向け本文ではない）。検証した不変量：</p>
+<ul class="simple">
+<li><p>切断面 ∩ 円錐 ＝ 閉じた楕円（<span class="math notranslate nohighlight">\(a=1.0043,\ b=0.9225,\ c=0.3971,\ e=0.3954\)</span>、<span class="math notranslate nohighlight">\(a^2=b^2+c^2\)</span> 残差 <span class="math notranslate nohighlight">\(10^{-17}\)</span>）。</p></li>
+<li><p>二球の <strong>切断面接触</strong>（中心-平面距離 <span class="math notranslate nohighlight">\(=\)</span> 半径、残差 <span class="math notranslate nohighlight">\(10^{-16}\)</span>）と <strong>円錐内接</strong>（中心-円錐面距離 <span class="math notranslate nohighlight">\(=\)</span> 半径、残差 <span class="math notranslate nohighlight">\(10^{-6}\)</span>）。</p></li>
+<li><p>二接点 <span class="math notranslate nohighlight">\(T_1, T_2\)</span> ＝ PCA で出した焦点と一致し、<span class="math notranslate nohighlight">\(|PT_1|+|PT_2|\)</span> が楕円上で一定（広がり <span class="math notranslate nohighlight">\(10^{-15}\)</span>）。</p></li>
+<li><p>母線に沿った接触円間距離 <span class="math notranslate nohighlight">\(|AB| = 2a = 2.00856\)</span>（一致 <span class="math notranslate nohighlight">\(4\times10^{-16}\)</span>）。</p></li>
+</ul>
+<p>確定値: 円錐 <code class="docutils literal notranslate"><span class="pre">Cone((0,0,5.4),(0,0,0),1.9712)</span></code>（半開角 <span class="math notranslate nohighlight">\(0.35\)</span>）、切断面 <code class="docutils literal notranslate"><span class="pre">PerpendicularPlane((0,0,2.5),(0.4,0,1))</span></code>、下球 <code class="docutils literal notranslate"><span class="pre">Sphere((0,0,1.8257),0.6260)</span></code>、上球 <code class="docutils literal notranslate"><span class="pre">Sphere((0,0,3.9639),1.3592)</span></code>、接触円高さ <span class="math notranslate nohighlight">\(z_1=1.6111,\ z_2=3.4979\)</span>。</p>
+<p><strong>3D の落とし穴（要・著者注意）</strong>: 初稿は (1) <strong>無限円錐</strong> <code class="docutils literal notranslate"><span class="pre">Cone(点,ベクトル,角度)</span></code> を使い切断に見えなかった、(2) <code class="docutils literal notranslate"><span class="pre">IntersectConic</span></code> の <strong>引数順が逆</strong>（平面が第一引数）、(3) Dandelin 球の半径が <strong>仮値で実際には接していなかった</strong>（上球 <code class="docutils literal notranslate"><span class="pre">Sphere((0,0,3.0),1.2)</span></code> は浮く）、(4) 「二球は互いに鏡像」 という <strong>誤った主張</strong>（斜めの切り口では球の大きさが違う）。いずれも「コードは妥当に見えるが 3D の帰結が誤り」 という型で、<strong>実際に描画・数値検証して初めて発覚</strong>した。L10/L11 の該当箇所も修正済み（球の鏡像 → 大きさが違う、焦点の対称は図の鏡映面から）。さらに実機実行で判明した ggblab/UI 側の二点：(5) 3D 作図は <code class="docutils literal notranslate"><span class="pre">inject_applet()</span></code> 後に <strong>アプレットを手動で「空間図形」ビューへ切替</strong>（☰→アプリの切り替え）しないと描画が見えない、(6) <code class="docutils literal notranslate"><span class="pre">名前=(x,y,z)</span></code> の座標代入は 3D では <strong>点でなくベクトル</strong>になるため、点は <code class="docutils literal notranslate"><span class="pre">Point(&quot;{x,</span> <span class="pre">y,</span> <span class="pre">z}&quot;)</span></code>（リスト <code class="docutils literal notranslate"><span class="pre">{…}</span></code> はマクロ制約で文字列エスケープ）で作る。L11 も同じ二点を修正済み。</p>
+</div>
+<div class="note admonition">
+<p class="admonition-title">著者ノート —— 五心（内心・傍心）↔ Dandelin 二球の対応（出題設計・研究用、学生向け本文ではない）</p>
+<p>§5 の「二焦点はなぜ対称か」の幾何学的根源は、先生の独創的読みでは <strong>三角形の内心・傍心の対称の三次元 lift</strong> である（2026-05-11 数学史対話メモ §10）。<strong>この対応表は本文に置かない</strong> —— §5 の入口 hook（内側／外側からの二等分）と思考課題5で学生に自己発見させる設計ゆえ。以下は出題・評価・後続回（L13–L15）接続のための著者用クロスウォーク。</p>
+<p>二つの Dandelin 球は「母線」と「切断面」の双方に接するので、中心は両者のなす角の二等分面上に来る。上球は角を <strong>内側から</strong>、下球は <strong>外側から</strong> 二等分する位置に座る（内角二等分 vs 外角二等分）。これがそのまま内心・傍心の構成：</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>二次元（三角形 <span class="math notranslate nohighlight">\(ABC\)</span>）</p></th>
+<th class="head"><p>三次元（円錐 × 切断面）</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>三角形 <span class="math notranslate nohighlight">\(ABC\)</span></p></td>
+<td><p>円錐</p></td>
+</tr>
+<tr class="row-odd"><td><p>辺 <span class="math notranslate nohighlight">\(BC\)</span></p></td>
+<td><p>切断面</p></td>
+</tr>
+<tr class="row-even"><td><p>内接円</p></td>
+<td><p>切断面 上側の Dandelin 球</p></td>
+</tr>
+<tr class="row-odd"><td><p>辺 <span class="math notranslate nohighlight">\(BC\)</span> の傍接円</p></td>
+<td><p>切断面 下側の Dandelin 球</p></td>
+</tr>
+<tr class="row-even"><td><p>内心（内角二等分の交点）</p></td>
+<td><p>上球の中心（角を内側から二等分）</p></td>
+</tr>
+<tr class="row-odd"><td><p>傍心（外角二等分の交点）</p></td>
+<td><p>下球の中心（角を外側から二等分）</p></td>
+</tr>
+<tr class="row-even"><td><p>内接円が <span class="math notranslate nohighlight">\(BC\)</span> に接する点</p></td>
+<td><p>上球が切断面に接する点 ＝ 焦点 <span class="math notranslate nohighlight">\(F_1\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p>傍接円が <span class="math notranslate nohighlight">\(BC\)</span> に接する点</p></td>
+<td><p>下球が切断面に接する点 ＝ 焦点 <span class="math notranslate nohighlight">\(F_2\)</span></p></td>
+</tr>
+<tr class="row-even"><td><p>内心・傍心の <strong>辺 <span class="math notranslate nohighlight">\(BC\)</span> についての対称</strong></p></td>
+<td><p><strong>二焦点の 楕円中心 <span class="math notranslate nohighlight">\(M\)</span> についての対称</strong></p></td>
+</tr>
+<tr class="row-odd"><td><p>半周長 <span class="math notranslate nohighlight">\(s\)</span> と <span class="math notranslate nohighlight">\(s-a\)</span> 等の関係</p></td>
+<td><p>母線に沿った接点間距離 $</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>「焦点には何があるか」の層構造（物理＝太陽〔Kepler〕／ Apollonius＝距離和一定／ Pappus＝焦点準線比／ Dandelin＝内接球接点／ <strong>Higashida＝五心の 3D 類比</strong>／ Newton–Feynman＝ホドグラフ中心）はメモ §6・§10 の表を参照。<strong>標準的な Dandelin 解説は「なぜ二焦点が対称か」を省く</strong>ことが多く、その欠落を五心の対称から埋めるのが本回の隠し骨格（先生 五年の物語紡ぎの到達点）。出典: <code class="docutils literal notranslate"><span class="pre">get_design_notes(query=&quot;焦点</span> <span class="pre">対称性</span> <span class="pre">五心</span> <span class="pre">内心</span> <span class="pre">傍心</span> <span class="pre">Dandelin</span> <span class="pre">三次元</span> <span class="pre">lift&quot;,</span> <span class="pre">project=&quot;conversations&quot;)</span></code>（2026-05-11 discussion_memo §10）。</p>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "julia-1.12"
+        },
+        kernelOptions: {
+            name: "julia-1.12",
+            path: "./chapters/11"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'julia-1.12'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="lesson_11_conic_section_sympy.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">第11回: 円錐の切断と方程式 — 楕円のもう一つの顔、観察を式へ（Descartes の画期）</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../10/lesson_10_ellipse_foci.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">第10回: 楕円と二焦点 — 三角形を離れ、二つの焦点の対称へ</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item"><div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">0. 前回 (第 11 回) の振り返り — 「同じ方程式」までは来たが、「なぜ」は残った</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">1. 今日の問い — 切り口の二焦点は、どこから来るのか</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ggblab-l11">2. ggblab セットアップと円錐切断（L11 と同じ立体）</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">3. 円錐に二つの球を入れる —— 接点が焦点になる</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">3.1 切断面に上下から接する二つの球</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">3.2 接点を焦点として取り出す —— 中心から切断面への垂線の足</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#p-2a">3.3 距離の和は一定 —— <span class="math notranslate nohighlight">\(P\)</span> をどこに動かしても <span class="math notranslate nohighlight">\(2a\)</span></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">3.4 なぜ和が一定か —— 接線の長さの等しさ + 母線に沿った一定距離</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">4. 観測量に固める —— 二焦点 = 二接点、和一定 = 母線長</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">5. 二焦点の対称は、どこから来るのか —— 球の合同 <em>ではない</em></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">6. 停滞と画期の照射 —— 1822 年、総合幾何の最後の宝石</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">7. 次回への接続</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">枕（次回への予告）—— 接触円が、隠れた直線（準線）を呼ぶ</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">参考文献</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Manabu Higashida, D3 Center, Osaka University, Japan
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2026.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
