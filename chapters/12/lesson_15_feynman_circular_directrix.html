@@ -1,0 +1,908 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>第15回: Feynman の円と接線の束 — 古い道具の新しい画期、そして転生無双の発表会 &#8212; プログラミングで遡る科学史</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=3c74b3bc" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css?v=8cd3d715" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=fab101a9"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'chapters/12/lesson_15_feynman_circular_directrix';</script>
+    <link rel="canonical" href="https://cloudedu-osaka.github.io/textbook-2026/chapters/12/lesson_15_feynman_circular_directrix.html" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="第11回: 円錐の切断と方程式 — 楕円のもう一つの顔、観察を式へ（Descartes の画期）" href="../11/lesson_11_conic_section_sympy.html" />
+    <link rel="prev" title="第14回: 接線と判別式 — 「接する」とき交点は何個か（二千年かかった言語化）" href="lesson_14_tangent_discriminant.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/vioras-logo.png" class="logo__image only-light" alt="プログラミングで遡る科学史 - Home"/>
+    <img src="../../_static/vioras-logo.png" class="logo__image only-dark pst-js-only" alt="プログラミングで遡る科学史 - Home"/>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">2026/07/08</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="lesson_13_directrix_eccentricity.html">準線と離心率 — 変わる二つの距離、変わらない一つの比（隠れた直線が立体から現れる）</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lesson_14_tangent_discriminant.html">接線と判別式 — 「接する」とき交点は何個か（二千年かかった言語化）</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Feynman の円と接線の束 — 古い道具の新しい画期、そして転生無双の発表会</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">2026/07/01</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../11/lesson_11_conic_section_sympy.html">円錐の切断と方程式 — 楕円のもう一つの顔、観察を式へ（Descartes の画期）</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../11/lesson_12_dandelin_spheres.html">Dandelin 球 — 二焦点はなぜ二つあり、なぜ「距離の和が一定」なのか（円錐の中の必然）</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">2026/06/24</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../10/lesson_10_ellipse_foci.html">楕円と二焦点 — 三角形を離れ、二つの焦点の対称へ</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">2026/06/17</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../09/lesson_07_orthocenter_euler.html">垂心と Euler 線 — 三中心が一直線に並ぶ「隠れた構造」を有向グラフで見る</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../09/lesson_08_excenter_symmetry.html">傍心と四中心の対称性 — 内心の「双子」を依存構造の鏡像として見る</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../09/lesson_09_symmetry_selfgrade.html">内心と傍心の辺対称性 — 自分で発見し、構造で自己採点する</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../09/lesson_10_ellipse_foci.html">楕円と二焦点 — 三角形を離れ、二つの焦点の対称へ</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">2026/06/10</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../08/lesson_07_orthocenter_euler.html">垂心と Euler 線 — 三中心が一直線に並ぶ「隠れた構造」を有向グラフで見る</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../08/lesson_08_excenter_symmetry.html">傍心と四中心の対称性 — 内心の「双子」を依存構造の鏡像として見る</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">2026/06/03</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../07/lesson_06_incenter_mtric.html">内心と角の二等分線 — 計量が要る場面（重心のアフィンとの対比）</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">2026/05/27</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../06/lesson_05_centroid_dataframe.html">同じ点を三つの前提から導く — 重心と DataFrame 外部化</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">2026/05/20</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../05/lesson_04_thales_circumcenter.html">前提・発見・連鎖 — Thales の定理から外心へ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../05/lesson_05_centroid_dataframe.html">同じ点を三つの前提から導く — 重心と DataFrame 外部化</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">2026/05/13</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../04/lesson_00_about_this_textbook.html">この教材はどう作られているか — AI と人間の役割分担</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../04/lesson_04_thales_circumcenter.html">前提・発見・連鎖 — Thales の定理から外心へ</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">2026/05/08</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../03/03_01.html">第3回: 試験問題の記述とこの授業のルール</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../03/02_13.html">入試問題を解く (その2) 記述する・解答する 4</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../03/02_11.html">入試問題を解く (その2) 記述する・解答する 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../03/02_12.html">入試問題を解く (その2) 記述する・解答する 3</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">2026/04/22</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../02/02_01.html">入試問題を解く (その2) 記述する・解答する 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../02/02_11.html">入試問題を解く (その2) 記述する・解答する 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../02/02_12.html">入試問題を解く (その2) 記述する・解答する 3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../02/02_13.html">入試問題を解く (その2) 記述する・解答する 4</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../02/02_02.html">入試問題を解く (その2) 記述する・解答する 5</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">2026/04/15</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../01/01_00_intro.html">How to connect and use JupyterHub</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../01/01_01.html">入試問題を解く (その1) 記述する 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../01/01_02.html">入試問題を解く (その1) 記述する 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../01/01_03.html">入試問題を解く (その1) 記述する 3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../01/01_04.html">入試問題を解く (その1) 記述する 4</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../01/01_05.html">入試問題を解く (その1) 記述する 5</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../01/01_11.html">入試問題を解く (その1) 記述する 6</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../01/01_12.html">入試問題を解く (その1) 記述する 7</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../01/01_13.html">入試問題を解く (その1) 記述する 8</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://vioras-jh2500.japaneast.cloudapp.azure.com/hub/user-redirect/git-pull?repo=https%3A//github.com/Cloudedu-Osaka/textbook-2026&urlpath=lab/tree/textbook-2026/chapters/12/lesson_15_feynman_circular_directrix.ipynb&branch=main" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on JupyterHub"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="JupyterHub logo" src="../../_static/images/logo_jupyterhub.svg">
+  </span>
+<span class="btn__text-container">JupyterHub</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+<a href="https://github.com/Cloudedu-Osaka/textbook-2026" target="_blank"
+   class="btn btn-sm btn-source-repository-button"
+   title="Source repository"
+   data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+
+</a>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/chapters/12/lesson_15_feynman_circular_directrix.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button pst-navbar-icon"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm pst-navbar-icon" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>第15回: Feynman の円と接線の束 — 古い道具の新しい画期、そして転生無双の発表会</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">1. 束にする —— 一本では見えなかったものが浮かび上がる</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">1.1 予測 —— 掃いた跡には何が残るか</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">1.2 なぜ楕円か —— 一行で言い切る</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#f-1">2. 一つの作図が全族を生む —— <span class="math notranslate nohighlight">\(F_1\)</span> をドラッグする</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">3. 1964 年 —— 古い道具しか使わずに、新しい証明が生まれた</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">3.1 失われた講義</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">3.2 二千年の見落とし・二例目 —— ただし、帰属は正確に</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">4. 発表と議論 —— 転生無双レポートを持ち寄る</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">4.1 議論の共通レンズ —— 三角構造</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">4.2 発表の形式</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">4.3 議論の口火 —— 皆さん自身が、いまどの三角の中にいるか</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">4.4 発表を構造化して集約する</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">5. 結び —— 半円の直角から、ここまで</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">参考文献</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="feynman">
+<h1>第15回: Feynman の円と接線の束 — 古い道具の新しい画期、そして転生無双の発表会<a class="headerlink" href="#feynman" title="Link to this heading">#</a></h1>
+<p><strong>主題</strong>: 最終回。L14 の枕で引いた <strong>一本の垂直二等分線</strong> を、今日は <strong>束</strong> にする。一本一本はただの直線なのに、束にした瞬間、この学期の主役 —— 楕円 —— が <strong>浮かび上がる</strong>。しかもその一本一本は、L14 で言葉にしたばかりの <strong>接線</strong> である。この「円と垂直二等分線だけで楕円が立ち上がる」構成は、1964 年、Richard Feynman が Newton の重力法則から惑星の楕円軌道を <strong>微積分を使わず初等幾何だけで</strong> 導いた講義（失われた講義）の中核の道具と同じ族に属する。Euclid が使えた道具しか使っていないのに、証明は 20 世紀の新作 —— Dandelin（1822・L12）に続く「二千年の見落とし」の二例目である。</p>
+<p><strong>副題</strong>: そして今日の後半は、道具の回ではなく <strong>発表と議論</strong> の回である（新しいソフトウェア機能はゼロ。作図も冒頭の一つだけ）。L13 で出題し L14 で冷間チェックを通した <strong>科学史転生無双・最終レポート</strong> を持ち寄り、互いの転生を聴き、一撃を交わす。L4 §0 の founding questions ——「画期はいかに起こるか、停滞はなぜ続くか、なぜ歴史を遡るのか」—— に、皆さん自身の声で答える時間である。</p>
+<p><strong>学習目標</strong></p>
+<ol class="arabic simple">
+<li><p>円上の点 <span class="math notranslate nohighlight">\(Q\)</span> と円内の点 <span class="math notranslate nohighlight">\(F_1\)</span> の垂直二等分線の <strong>束</strong> から楕円を浮かび上がらせ、「なぜ楕円か」を <strong>一行</strong>（<span class="math notranslate nohighlight">\(|PF_1| = |PQ|\)</span>）で言い切れるようになる。</p></li>
+<li><p><span class="math notranslate nohighlight">\(F_1\)</span> をドラッグするだけで、同じ一つの作図から円・楕円・双曲線の <strong>全族</strong> が生まれることを、予測してから確かめられるようになる（L13 の <span class="math notranslate nohighlight">\(e\)</span> 統一の作図版）。</p></li>
+<li><p>Dandelin（1822）と Feynman（1964）を「古い道具で成った新しい画期」として位置づけ、しかも <strong>帰属を言いすぎずに</strong>（Hamilton・19 世紀の部品と、Feynman の編み直しを区別して）述べられるようになる。</p></li>
+<li><p>転生無双レポートを <strong>発表</strong> し、聴衆として <strong>一番痛い一撃を一つ</strong> 選んで突き、突かれた側として <strong>修復</strong> する —— 学期を貫いた三角構造と反証条件の作法を、対話の中で運用できるようになる。</p></li>
+</ol>
+<div class="note admonition">
+<p class="admonition-title">目標の確認 — &#64;Codex で達成目標を引く</p>
+<p>最終回の達成目標を <strong>&#64;Codex に lancedb-rag（教材ドメイン RAG）で確認</strong>してもらえる（L5 から運用）。
+（プロンプト例）&#64;Codex この回（L15 Feynman・転生無双発表会）の達成目標を lancedb-rag で調べて、要点を整理して。
+特に今日の山場は後半の <strong>発表と議論</strong> である —— 道具の使い方ではなく、自分の転生を語り、一撃を受けて
+立つ回だということを、最初に確認してから進む。</p>
+</div>
+<section id="id1">
+<h2>1. 束にする —— 一本では見えなかったものが浮かび上がる<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
+<section id="id2">
+<h3>1.1 予測 —— 掃いた跡には何が残るか<a class="headerlink" href="#id2" title="Link to this heading">#</a></h3>
+<p>L14 の枕で、円 <code class="docutils literal notranslate"><span class="pre">lk</span></code>（中心 <span class="math notranslate nohighlight">\(F_2\)</span>・半径 4）の上の点 <span class="math notranslate nohighlight">\(Q\)</span> と、円の中の点 <span class="math notranslate nohighlight">\(F_1 = (1.5, 0)\)</span> の垂直二等分線 <code class="docutils literal notranslate"><span class="pre">m</span></code> を一本だけ引いた。<span class="math notranslate nohighlight">\(Q\)</span> をドラッグすると <code class="docutils literal notranslate"><span class="pre">m</span></code> が動く —— その <strong>掃いていく跡</strong> に何が浮かぶか、予測は書き留めてあるだろうか。まだなら、いま書く。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="k">using</span><span class="w"> </span><span class="n">Pkg</span>
+<span class="n">Pkg</span><span class="o">.</span><span class="n">activate</span><span class="p">(</span><span class="s">&quot;../..&quot;</span><span class="p">)</span>
+<span class="n">Pkg</span><span class="o">.</span><span class="n">resolve</span><span class="p">()</span>
+<span class="n">Pkg</span><span class="o">.</span><span class="n">instantiate</span><span class="p">()</span>
+<span class="k">using</span><span class="w"> </span><span class="n">GeoGebra</span>
+<span class="nb">ENV</span><span class="p">[</span><span class="s">&quot;GGB_DIRECT_TRANSPORT&quot;</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;true&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">inject_applet</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="c"># L14 の枕の再現 + 今日の主役たち。規律1: 各オブジェクトを一意のシンボルに束縛。</span>
+<span class="nd">@ggb</span><span class="w"> </span><span class="ss">:const</span><span class="w"> </span><span class="ss">:new</span>
+<span class="nd">@ggb</span><span class="w"> </span><span class="n">F_2</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span>
+<span class="nd">@ggb</span><span class="w"> </span><span class="n">lk</span><span class="o">=</span><span class="n">Circle</span><span class="p">(</span><span class="ss">:F_2</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">)</span><span class="w">                    </span><span class="c"># 円（半径 4 = のちに 2a になる）</span>
+<span class="nd">@ggb</span><span class="w"> </span><span class="n">F_1</span><span class="o">=</span><span class="p">(</span><span class="mf">1.5</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w">                          </span><span class="c"># 円の中の点（あとでドラッグする）</span>
+<span class="nd">@ggb</span><span class="w"> </span><span class="n">Q</span><span class="o">=</span><span class="n">Point</span><span class="p">(</span><span class="ss">:lk</span><span class="p">)</span><span class="w">                          </span><span class="c"># 円の上の点</span>
+<span class="nd">@ggb</span><span class="w"> </span><span class="n">m</span><span class="o">=</span><span class="n">PerpendicularBisector</span><span class="p">(</span><span class="ss">:F_1</span><span class="p">,</span><span class="w"> </span><span class="ss">:Q</span><span class="p">)</span><span class="w">     </span><span class="c"># 垂直二等分線（これが「一本」）</span>
+<span class="nd">@ggb</span><span class="w"> </span><span class="n">rq</span><span class="o">=</span><span class="n">Segment</span><span class="p">(</span><span class="ss">:F_2</span><span class="p">,</span><span class="w"> </span><span class="ss">:Q</span><span class="p">)</span><span class="w">                  </span><span class="c"># 中心から Q への半径</span>
+<span class="nd">@ggb</span><span class="w"> </span><span class="n">P</span><span class="o">=</span><span class="n">Intersect</span><span class="p">(</span><span class="ss">:m</span><span class="p">,</span><span class="w"> </span><span class="ss">:rq</span><span class="p">)</span><span class="w">                  </span><span class="c"># 半径と垂直二等分線の交点（今日の主役）</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="c"># P の軌跡（Q を一周させたときの P の跡）と、m の束の跡を見る。</span>
+<span class="c"># アプレット上で m を右クリック →「残像を表示」(Trace On) にしてから Q をドラッグすると</span>
+<span class="c"># 「束」が掃く跡が見える。軌跡コマンドでも確かめる:</span>
+<span class="nd">@ggb</span><span class="w"> </span><span class="n">loc</span><span class="o">=</span><span class="n">Locus</span><span class="p">(</span><span class="ss">:P</span><span class="p">,</span><span class="w"> </span><span class="ss">:Q</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>観察1</strong>: <span class="math notranslate nohighlight">\(P\)</span> の軌跡 <code class="docutils literal notranslate"><span class="pre">loc</span></code> は <strong>楕円</strong>。そして残像にした <code class="docutils literal notranslate"><span class="pre">m</span></code> の束は、その楕円を <strong>外側から包む</strong> —— どの一本も楕円に <strong>接して</strong> いる（L14 の言葉で言えば、束のどの一本も接線であり、楕円は束が浮かび上がらせた <strong>包絡線</strong> である）。一本の直線はただの直線なのに、束が曲線を運んでいた。</p>
+</section>
+<section id="id3">
+<h3>1.2 なぜ楕円か —— 一行で言い切る<a class="headerlink" href="#id3" title="Link to this heading">#</a></h3>
+<p><span class="math notranslate nohighlight">\(P\)</span> は垂直二等分線 <code class="docutils literal notranslate"><span class="pre">m</span></code> の上にいるから <span class="math notranslate nohighlight">\(|PF_1| = |PQ|\)</span>。<span class="math notranslate nohighlight">\(P\)</span> は半径 <span class="math notranslate nohighlight">\(F_2Q\)</span> の上にもいるから</p>
+<div class="math notranslate nohighlight">
+\[|PF_1| + |PF_2| = |PQ| + |PF_2| = |F_2Q| = 4 \quad (\text{半径・一定}).\]</div>
+<p><strong>和が一定 —— L10 の楕円の定義そのもの</strong>である。<span class="math notranslate nohighlight">\(2a = 4\)</span>、焦点は <span class="math notranslate nohighlight">\(F_1\)</span> と <span class="math notranslate nohighlight">\(F_2\)</span>。L10 では紐で楕円を描いた。今日は <strong>紐の長さが円の半径に化けている</strong> —— 紐の一端を円周まで伸ばしておいて、垂直二等分線で「折り返した」だけである。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="c"># 一行証明を数値でも: P をどこへ動かしても和は半径 4 のまま。</span>
+<span class="nd">@ggb</span><span class="w"> </span><span class="n">d1</span><span class="o">=</span><span class="n">Distance</span><span class="p">(</span><span class="ss">:P</span><span class="p">,</span><span class="w"> </span><span class="ss">:F_1</span><span class="p">)</span>
+<span class="nd">@ggb</span><span class="w"> </span><span class="n">d2</span><span class="o">=</span><span class="n">Distance</span><span class="p">(</span><span class="ss">:P</span><span class="p">,</span><span class="w"> </span><span class="ss">:F_2</span><span class="p">)</span>
+<span class="nd">@ggb</span><span class="w"> </span><span class="n">s</span><span class="o">=</span><span class="s">&quot;d1 + d2&quot;</span><span class="w">                             </span><span class="c"># = 4（Q をドラッグしても一定）</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>観察2</strong>: <code class="docutils literal notranslate"><span class="pre">s</span> <span class="pre">=</span> <span class="pre">4</span></code> から動かない。ついでに <code class="docutils literal notranslate"><span class="pre">m</span></code> と <code class="docutils literal notranslate"><span class="pre">loc</span></code> の交点を GeoGebra に数えさせてみると（L14 §2 の再演）、undefined の席が混じる —— <code class="docutils literal notranslate"><span class="pre">m</span></code> は <code class="docutils literal notranslate"><span class="pre">loc</span></code> に <strong>接して</strong> いる（重解）。L14 で言葉にした「接する」が、束の一本一本で起こっている。</p>
+</section>
+</section>
+<section id="f-1">
+<h2>2. 一つの作図が全族を生む —— <span class="math notranslate nohighlight">\(F_1\)</span> をドラッグする<a class="headerlink" href="#f-1" title="Link to this heading">#</a></h2>
+<div class="important admonition">
+<p class="admonition-title">予測を書き留める —— 動かす前に</p>
+<p><span class="math notranslate nohighlight">\(F_1\)</span> を (1) 中心 <span class="math notranslate nohighlight">\(F_2\)</span> にぴったり重ねたら、(2) 円周のすぐ内側まで寄せたら、(3) <strong>円の外</strong> に出したら、
+軌跡 <code class="docutils literal notranslate"><span class="pre">loc</span></code> はそれぞれ何になるか。L13 の「<span class="math notranslate nohighlight">\(e\)</span> が三曲線を貫く」（<span class="math notranslate nohighlight">\(e = \)</span> 焦点間距離 <span class="math notranslate nohighlight">\(/\,2a\)</span> に注意）を
+手掛かりに、三つの予測を書き留めてから動かす。</p>
+</div>
+<p><strong>観察3</strong>: (1) <span class="math notranslate nohighlight">\(F_1 = F_2\)</span> のとき軌跡は <strong>円</strong>（<span class="math notranslate nohighlight">\(e = 0\)</span>）。(2) 円周に近づくほど楕円は細長くなる（<span class="math notranslate nohighlight">\(e \to 1\)</span>）。(3) <span class="math notranslate nohighlight">\(F_1\)</span> を円の外に出すと、軌跡は <strong>双曲線</strong> になる —— このとき <span class="math notranslate nohighlight">\(P\)</span> は <span class="math notranslate nohighlight">\(|PF_2| - |PF_1| = \pm 4\)</span>（<strong>差</strong> が一定・半径のまま）を満たす（垂直二等分線の同じ一行が、和ではなく差を作る。どちら側の枝かは <span class="math notranslate nohighlight">\(Q\)</span> の位置による）。円 → 楕円 → 双曲線の全族が、<strong>点を一つ動かすだけ</strong> で連続に生まれた。L13 では切断面の傾きが、今日は <span class="math notranslate nohighlight">\(F_1\)</span> の位置が、一族を貫くつまみである。</p>
+<p>境界はどこか —— <span class="math notranslate nohighlight">\(F_1\)</span> が <strong>円周上</strong> に来た瞬間である（軌跡は退化する。どう退化するかは自分の目で）。L13 の <span class="math notranslate nohighlight">\(e = 1\)</span>、L14 の <span class="math notranslate nohighlight">\(D = 0\)</span> に続いて、今日も境界は「あいだの一瞬」として現れる。三回とも同じ型 —— <strong>族の全体を見ると、特別に見えたもの（放物線・接線・退化）は境界だった</strong>。</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>円形準線 —— L13 の準線との対応（発展）
+L13 の準線は <strong>直線</strong> で、性質は「焦点までの距離と準線までの <strong>距離の比</strong> が一定 <span class="math notranslate nohighlight">\(=e\)</span>」だった。
+今日の円 <code class="docutils literal notranslate"><span class="pre">lk</span></code> は同じ役を <strong>円</strong> で務めている: <span class="math notranslate nohighlight">\(|PF_1| = |PQ|\)</span> とは「焦点 <span class="math notranslate nohighlight">\(F_1\)</span> までの距離が、
+円 <code class="docutils literal notranslate"><span class="pre">lk</span></code> までの距離（半径に沿って測る）に等しい」ということ —— 比 <span class="math notranslate nohighlight">\(1\)</span> の焦点-準線関係の、準線が
+円になった版である。この意味で <code class="docutils literal notranslate"><span class="pre">lk</span></code> を <strong>円形準線</strong>（Leitkreis, 準円）と呼ぶ。
+では L13 の <strong>直線の</strong> 準線は、円形準線のどんな極限か —— 円の半径をどんどん大きくしたら円周は
+どう見えてくるか。ここは答えを書かない。思考課題2 で自分の手で確かめてほしい。</p>
+</div>
+</section>
+<section id="id4">
+<h2>3. 1964 年 —— 古い道具しか使わずに、新しい証明が生まれた<a class="headerlink" href="#id4" title="Link to this heading">#</a></h2>
+<section id="id5">
+<h3>3.1 失われた講義<a class="headerlink" href="#id5" title="Link to this heading">#</a></h3>
+<p>1964 年 3 月、Caltech の一年生向け講義で Feynman は「惑星の太陽のまわりの運動」と題した特別講義をした。目標は Newton の主定理 —— <strong>逆二乗の引力から、軌道が楕円になることを導く</strong> —— を、<strong>微積分を使わずに</strong> 示すこと。Feynman は Newton の『Principia』（1687）の幾何学的証明を途中まで追い、Newton が円錐曲線の古典的性質（まさに Apollonius 流）に頼る箇所で「私はこの性質をよく知らないので、自分の証明を作った」と道を逸れる。そこで彼が組み立てたのが、<strong>速度の図</strong> を使う初等幾何の証明である。Feynman 自身の言葉 —— 「学生にこれをやってみせるのはひどく難しい。だが私は最も簡素なものを見つけようとした」。</p>
+<p>骨子は五段でスケッチできる（完全な再構成は参考文献の Goodstein 夫妻の本に）:</p>
+<ol class="arabic simple">
+<li><p>軌道を <strong>等しい角度</strong> で分割する（Newton は等しい <strong>時間</strong> で分割した。<strong>等角度に切り替えるのが Feynman の本質的な一手</strong>）。</p></li>
+<li><p>逆二乗則と等角度分割を組み合わせると、一区間ごとの速度の変化 <span class="math notranslate nohighlight">\(\Delta v\)</span> が、<strong>どの区間でも同じ大きさ</strong> になる。</p></li>
+<li><p>だから速度の矢印を一点から並べて描くと（この図を <strong>ホドグラフ</strong> と呼ぶ）、矢印の先端は等間隔の折れ線 —— 極限で <strong>完全な円</strong> —— を描く。円の中心が原点からずれている分が、軌道の離心率になる。</p></li>
+<li><p>この速度の円の図を 90° 回転して置き直すと、そこに現れるのが —— <strong>円と、円の中の一点と、垂直二等分線の束</strong>。今日 §1 でやった、あの構成である。</p></li>
+<li><p>その構成から軌道を再構成すると、楕円が得られる（§1.2 の一行証明がそのまま働く）。</p></li>
+</ol>
+<p>ここで L10 の Kepler を思い出してほしい。Kepler は <strong>速度の変化のパターン</strong> を観測データの手計算から抽出し（面積の法則・1602）、楕円という <strong>形</strong> はその三年後（1605）に、運動と辻褄の合う形として後から見つけた —— 形より運動が先だった。Feynman のホドグラフは、<strong>Kepler が数の表の中に見た速度のパターンを、定規とコンパスで作図できる一つの円</strong> に変えたものである。三百年を隔てて、同じ「速度が先、形が後」の道筋が、計算から作図へ翻訳された。</p>
+<p>この講義は録音とメモが長く行方不明で、「失われた講義」と呼ばれた。1990 年代に発掘・再構成されて出版されている。</p>
+</section>
+<section id="id6">
+<h3>3.2 二千年の見落とし・二例目 —— ただし、帰属は正確に<a class="headerlink" href="#id6" title="Link to this heading">#</a></h3>
+<p>L12 §6 で Dandelin（1822）についてこう言った —— 円錐・平面・球というユークリッド幾何の範囲だけでできていて、古代ギリシア人が見つけていてもおかしくなかったのに、見つかるまで二千百年かかった、と。Feynman の証明も同じ型である。使った道具は円と直線と相似 —— <strong>Euclid が全部持っていた</strong>。Newton 自身が『Principia』の中でやっていてもおかしくなかった。それでも、この形の証明は 20 世紀後半まで現れなかった。</p>
+<p>ここで一つ、<strong>言いすぎない</strong> 練習をする（L14 §6 の作法の実演である）。「Feynman が円形準線を発見した」と書きたくなる —— が、それは <strong>帰属として言いすぎ</strong> である。速度図が円になることは 19 世紀に Hamilton が見つけていた。円形準線（Leitkreis）も 19 世紀の総合幾何では標準装備だった。Feynman の功績は「発見」ではなく、ばらばらに存在していた部品を <strong>微積分ぬきの一本の証明に編み直し、作図できる装置として復権させた</strong> ことである —— それで十分に偉大であり、正確に言った方が、彼が何をしたのかがむしろ鮮明になる（Kepler の功績が「点の発見」ではなく「命名と同定」だったのと同じ構図である —— L13 §5.1）。</p>
+<ul class="simple">
+<li><p><strong>Dandelin 1822</strong>: 道具は Euclid のまま。見つかったのは Apollonius から二千百年後。</p></li>
+<li><p><strong>Feynman 1964</strong>: 部品は Euclid と 19 世紀のまま。編み直されたのは Newton から三百年近く後。</p></li>
+</ul>
+<p><strong>画期は、最新の道具を要求しない</strong>。要求するのは、見る場所を変えること —— Dandelin は円錐の「中の球」を、Feynman は「速度の空間」を見た。逆に言えば、<strong>道具が全部そろっていても、見る場所が固定されていれば、二千年でも見落とし続ける</strong>。これが、皆さんに渡す最後の観察である。</p>
+</section>
+</section>
+<section id="id7">
+<h2>4. 発表と議論 —— 転生無双レポートを持ち寄る<a class="headerlink" href="#id7" title="Link to this heading">#</a></h2>
+<p>今日の後半は、L13 で出題し L14 で冷間チェックを通した <strong>科学史転生無双・最終レポート</strong> の発表と議論である。</p>
+<section id="id8">
+<h3>4.1 議論の共通レンズ —— 三角構造<a class="headerlink" href="#id8" title="Link to this heading">#</a></h3>
+<p>発表を聴くとき・議論するときの共通レンズとして、学期を貫いた <strong>三角構造</strong> を確認しておく:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>   譲らない構成                     実を取る譲歩
+   （厳密さを手放さない側）          （厳密さを一部保留して前進する側）
+        \                                  /
+         \                                /
+          \_________ 運用統合 _________/
+          （両方の良いところを回して前進させる誰か）
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Euclid は「入り込めない」で譲らず（L14）、Apollonius は 487 命題で体系を譲らず（L11–L13）—— そして体系の外（準線・重解）が二千年見えなくなった。</p></li>
+<li><p>Descartes は代数で譲らない基盤を作り、Fermat は「重なる二交点」という危うい譲歩（adequality）で実を取り、Newton がそれらを <strong>決着を保留したまま運用統合</strong> して力学が走り出した（L14 §4.3）。</p></li>
+<li><p>Dandelin と Feynman は、固定された「見る場所」の外に立った（L12・今日）。</p></li>
+</ul>
+<p><strong>停滞は、多くの場合、誰かが悪いのではなく、この三角のどこかが欠けている状態</strong> である —— 譲らない側しかいない（動けない）、譲歩だけがある（土台が腐る）、統合者が現れない（両者が並走したまま）。皆さんが転生した先の人物も、必ずこの三角のどこかに立っていたはずである。</p>
+</section>
+<section id="id9">
+<h3>4.2 発表の形式<a class="headerlink" href="#id9" title="Link to this heading">#</a></h3>
+<p>一人（または班）<strong>5 分 + 議論数分</strong>。話すことは四つ:</p>
+<ol class="arabic simple">
+<li><p><strong>誰に転生し、何を「半歩先」として見せたか</strong> —— その人の時代の道具でどこまで話せたか、決め台詞は何か。</p></li>
+<li><p><strong>無双できた場面と、できなかった場面</strong> —— 書き始める前の <code class="docutils literal notranslate"><span class="pre">&#64;Codex</span></code> の自己評価（無双できるか?）と、実際に書いてみた結果はどうずれたか。AI に任せられた部分と、自分の頭でしか埋まらなかった部分の境界。</p></li>
+<li><p><strong>転生先の人が立っていた三角の角</strong> —— その人は譲らなかったのか、譲歩したのか、統合したのか。その時代の停滞は、どの角が欠けていたのか。</p></li>
+<li><p><strong>冷間一撃の報告</strong> —— L14 の作法で受けた一番痛い一撃と、それをどう修復したか（一撃が当たらなかった場合は、その一撃と防御をそのまま話す）。</p></li>
+</ol>
+<p><strong>聴衆の役 = 冷間一撃係</strong>である。発表ごとに、聴衆から <strong>一番痛い一撃を一つだけ</strong>（あら探しのリストではなく、急所を一つ。敬意をもって、しかし遠慮なく）。突かれて立っていた発表が、強い発表である —— 五年の物語が太字一行の修復でむしろ強くなったのと同じで、<strong>一撃は発表への攻撃ではなく、発表を本物にする工程</strong> である。</p>
+</section>
+<section id="id10">
+<h3>4.3 議論の口火 —— 皆さん自身が、いまどの三角の中にいるか<a class="headerlink" href="#id10" title="Link to this heading">#</a></h3>
+<p>全発表のあとの全体議論は、この問いから始める。今度の題材は、皆さん自身が <strong>当事者</strong> のものだ:</p>
+<blockquote>
+<div><p><strong>題材: 学校と AI</strong>。いま多くの教室で、AI は「宿題に使ってはいけない」か「黙認で使い放題」かの
+<strong>二極</strong> に振れている。ところで皆さんはこの一学期、第三の道を <strong>実際に生きてきた</strong> —— 使ってよい、
+ただしログを出し、何を任せ何を自分で考えたかを毎週 articulate する、という道である。
+では診断せよ: 二極化は停滞か。停滞だとしたら、三角のどの角が欠けているのか。この講義の方式は
+「運用統合」の角に立てているか、それとも別の何かか。—— そして <strong>反証条件</strong>: 自分の診断が
+間違っていたら、この教室の一学期分のログ（皆さん自身の一次データである）に何が見えるはずか。</p>
+</div></blockquote>
+<p>この題材が例題である理由は三つ。皆さんが当事者であること。一学期分の自分のログという <strong>一次データ</strong> を全員が持っていること。そして診断の結論を、明日からの自分の AI の使い方として <strong>自分で実行できる</strong> こと —— 転生無双の主人公が持ち込んだ「現代知識」とは、皆さんにとって、たとえばこれである。</p>
+</section>
+<section id="id11">
+<h3>4.4 発表を構造化して集約する<a class="headerlink" href="#id11" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="c"># 発表の要点を構造化して提出する（L5 以来の作法: 主張をデータにする）。</span>
+<span class="c"># 下の値を自分の発表で書き換えること。columns は変えない（全員分を集約し、相互レビューに使う）。</span>
+<span class="k">using</span><span class="w"> </span><span class="n">DataFrames</span>
+<span class="n">presentation</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">DataFrame</span><span class="p">(</span>
+<span class="w">    </span><span class="n">項目</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s">&quot;転生先&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;半歩先として見せたもの&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;決め台詞(自分の語彙)&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s">&quot;AI が無双できた場面&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;自分の頭でしか埋まらなかった場面&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s">&quot;転生先が立っていた三角の角&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;受けた冷間一撃&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;修復（または防御）&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s">&quot;反証条件(この再構成が間違っていたら何で分かるか)&quot;</span><span class="p">],</span>
+<span class="w">    </span><span class="n">内容</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s">&quot;&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;&quot;</span><span class="p">],</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="tip admonition">
+<p class="admonition-title">発表前の最終壁打ち — &#64;Codex を聴衆にする</p>
+<p>発表の前に、&#64;Codex を <strong>最初の聴衆</strong> にして 5 分の流れを話してみる（書いた文章を読ませるのではなく、
+話す順で要点を並べて見せる）。
+（プロンプト例）&#64;Codex 上の DataFrame と、このノートの発表メモを読んで、聴衆として一番痛い一撃を
+一つだけ突いて。特に「半歩先」が本当にその人に伝わる形か、「反証条件」が観察可能かを。
+最終判断は自分で。壇上で立っているのは &#64;Codex ではなく、あなたである。</p>
+</div>
+<div class="tip admonition">
+<p class="admonition-title">進捗の確認 — セル出力を &#64;Codex に読ませる</p>
+<p>（プロンプト例）&#64;Codex ここまでのセル出力を読んで、達成目標①（束から楕円・一行証明）②（F1 ドラッグで
+全族）④（発表 DataFrame が反証条件・冷間一撃の行まで埋まっているか）にどこまで到達したか、具体的に挙げて。</p>
+</div>
+<div class="tip admonition">
+<p class="admonition-title">今回の課題（学期末）</p>
+<p><strong>必修</strong></p>
+<ol class="arabic simple">
+<li><p>垂直二等分線の束と軌跡 <code class="docutils literal notranslate"><span class="pre">loc</span></code> を作図し、和一定 <span class="math notranslate nohighlight">\(s = 4\)</span> を確かめ、「なぜ楕円か」の一行証明（<span class="math notranslate nohighlight">\(|PF_1| = |PQ|\)</span>）を自分の言葉で書け（§1）。<span class="math notranslate nohighlight">\(F_1\)</span> をドラッグして円・楕円・双曲線の全族と、境界（<span class="math notranslate nohighlight">\(F_1\)</span> が円周上）を観察せよ（§2）。</p></li>
+<li><p>転生無双・最終レポートを提出し（詳細は LMS）、§4.4 の発表 DataFrame を完成させよ。<strong>反証条件の行が空欄のレポートは受け取らない</strong>（L13 出題時の評価軸のとおり）。発表で受けた冷間一撃と修復も、発表後に DataFrame へ追記して再提出する。</p></li>
+</ol>
+<p><strong>思考課題</strong>
+3. 円形準線の半径を大きくしていくと（<span class="math notranslate nohighlight">\(F_1\)</span> と円周の最寄り点の距離を保ったまま）、軌跡と円形準線はどうなっていくか。作図か式で確かめ、L13 の直線準線・放物線とつなげよ（§2 の note の続き。「曲がったものの極限に直線が出る」型は、この講義のどこかでもう一度見なかったか）。
+4. Feynman の証明は「速度の空間」という見る場所の変更だった。この学期で <strong>見る場所を変えたら見えた</strong> ものを三つ挙げよ（例: L5 作図をデータとして見る、L7 依存として見る、L12 円錐の中の球を見る…）。それらに共通する手つきを一行で述べよ。
+5. <strong>(学期を締める問い)</strong> L4 §0 の founding question ③「なぜ歴史を遡るのか」に、いまの自分の答えを書け。4 月の自分の答え（L4 のノート）と並べて、何が変わったかを articulate せよ。</p>
+</div>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>学期末の自己評価 —— <code class="docutils literal notranslate"><span class="pre">&#64;Codex</span></code> に聞いてみる（最終回・拡張版）</p>
+<p>最終回は、本日分に加えて <strong>学期全体</strong> を振り返ります。</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>@Codex 今日のノートブックを全 cell 読んで、さらに lancedb-rag で L4 からの各回の達成目標を引いて、
+学期全体の自己評価を手伝ってください。
+
+本日分: 今日の主題（束が浮かび上がらせる楕円 / 一つの作図が生む全族 / 古い道具の新しい画期・帰属を
+言いすぎない / 発表と冷間一撃）に対する到達度と、自分のレポートの反証条件が観察可能な形になっているか。
+
+学期分: 次の三つの軸で、各回の自分を振り返って:
+1. 手で作図して確かめたこと（L4 の Thales から今日の束まで）
+2. 見る場所を変えたら見えたこと（データ・構造・式・立体・速度空間）
+3. 「先週は気付かなかったことに今週は気付けた」が実際に起きた回はどこか
+
+最終判断は自分で。@Codex の照合は候補の提示であって、評価は自分の構成(construction)に対して行う。
+</pre></div>
+</div>
+<p>JupyterAI のやり取り log は LMS 経由で先生に届きます。学期末レポートの評価は、この log の蓄積（毎週の
+自己評価）と、レポート本体・発表 DataFrame（冷間一撃と修復の追記込み）をあわせて行います。</p>
+</div>
+</section>
+</section>
+<section id="id12">
+<h2>5. 結び —— 半円の直角から、ここまで<a class="headerlink" href="#id12" title="Link to this heading">#</a></h2>
+<p>最終回なので、種明かしを一つ。今日の構成の芯 —— 垂直二等分線と、半径との交点 —— を支えていたのは、<span class="math notranslate nohighlight">\(|PF_1| = |PQ|\)</span> という <strong>等距離</strong> だった。等距離を運ぶ垂直二等分線は L4 で外心を組み立てた道具であり、Thales の「半円に内接する角は直角」は L14 の接線作図で最後まで働いていた。<strong>第 4 回に置いた最小の公準が、第 15 回の Feynman まで、一度も途切れずに通っている</strong>。</p>
+<p>そして Dandelin と Feynman が示した通り、道具がそろっていることと、画期が起こることのあいだには、二千年の隙間が空きうる。隙間を埋めるのは新しい道具ではなく、見る場所の変更だった。円錐曲線という二千三百年前に始まった分野で、19 世紀と 20 世紀に初等幾何の新発見があった —— 二千年をかけても発見できない美しい真実が、まだ残っている（L12 §6）。皆さんが今日語った転生 —— 過去の一人の隣に立ち、その人の半歩先を一緒に見ようとした練習 —— は、その「見る場所」を動かす稽古である。</p>
+<p>この講義で渡したかったのは、円錐曲線でも Julia でもなく、この診断装置である。どこかで停滞に出会ったら —— それは必ず出会う —— 三角を描き、反証条件を書き、冷間で一撃を探し、そして見る場所を疑ってほしい。Menaechmus の直交から Feynman の速度の円まで、この物語の円環は閉じていない。今も開いている —— 次の一筆を書き加えるのが誰かは、決まっていない。</p>
+</section>
+<section id="id13">
+<h2>参考文献<a class="headerlink" href="#id13" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>David L. Goodstein &amp; Judith R. Goodstein, <em>Feynman’s Lost Lecture: The Motion of Planets Around the Sun</em> (1996)（失われた講義の発掘と完全な再構成。本回 §3 の一次資料）</p></li>
+<li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Feynman%27s_Lost_Lecture">Feynman’s Lost Lecture - Wikipedia</a>（1964 年講義の経緯）</p></li>
+<li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Hodograph">Hodograph - Wikipedia</a>（速度図。逆二乗則の下で円になる。Hamilton 1847）</p></li>
+<li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Philosophi%C3%A6_Naturalis_Principia_Mathematica">Isaac Newton, <em>Principia</em> Book 1 - Wikipedia</a>（Proposition 11: 楕円軌道と逆二乗則。Feynman が途中まで追った幾何学的証明）</p></li>
+<li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Ellipse#Directrix">Director circle / Circular directrix (Leitkreis) - Wikipedia</a>（円形準線による楕円の定義と垂直二等分線・包絡線構成）</p></li>
+<li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Envelope_(mathematics)">Envelope (mathematics) - Wikipedia</a>（接線の束が浮かび上がらせる曲線 = 包絡線）</p></li>
+<li><p>第12回（Dandelin・二千年の見落とし一例目）は &#64;Codex に lancedb-rag で「第12回 Dandelin 総合幾何 1822 二千年」を尋ねる（project=textbook）</p></li>
+<li><p>第13回（準線・離心率の統一）/ 第14回（接する = 重解）は &#64;Codex に lancedb-rag で「第13回 準線 離心率」「第14回 接線 判別式 重解」を尋ねる（project=textbook）</p></li>
+<li><p>全体の縦軸（画期と停滞・三角構造・founding questions）は &#64;Codex に lancedb-rag で「画期と停滞 三角構造 譲らない 譲歩 運用統合」を尋ねる（project=textbook）</p></li>
+<li><p>§3 の歴史叙述（ホドグラフ五段・Kepler 運動学優位・Hamilton/Leitkreis の帰属）の原典は &#64;Codex に lancedb-rag で「Feynman 失われた講義 円形ホドグラフ 円形準線 Kepler 面積律 先行 数学史対話」を尋ねる（project=conversations） —— 先生五年の物語の総括（2026-05-11 discussion_memo §7–§8）と冷間再検証（2026-07-03 REVIEW F3）</p></li>
+</ul>
+<div class="note admonition">
+<p class="admonition-title">著者ノート —— 数値検証・語の区別・発表会の設計（学生用ではない）</p>
+<p><strong>数値は事前検証済み</strong>（本 session・2026-07-06、GeoGebra とは独立に Julia/Python で計算）:
+円形準線 <span class="math notranslate nohighlight">\(R=4\)</span>・<span class="math notranslate nohighlight">\(F_1=(1.5,0)\)</span> で <span class="math notranslate nohighlight">\(a=2,\ c=0.75,\ e=0.375,\ b=1.85405\)</span>。垂直二等分線と半径の交点 <span class="math notranslate nohighlight">\(P\)</span> の
+閉形式 <span class="math notranslate nohighlight">\(t = (R^2 - |F_1|^2)/(2(R^2 - Q\cdot F_1))\)</span> による掃引で <strong><span class="math notranslate nohighlight">\(|PF_1|+|PF_2| = 4\)</span> が全 <span class="math notranslate nohighlight">\(\theta\)</span> で厳密に一定</strong>
+（広がり <span class="math notranslate nohighlight">\(0.0\)</span>）。接線性: <code class="docutils literal notranslate"><span class="pre">m</span></code> 上の <span class="math notranslate nohighlight">\(P\)</span> 以外の点では和 <span class="math notranslate nohighlight">\(&gt; 4\)</span>（<span class="math notranslate nohighlight">\(P\)</span> が唯一の接触点 = 包絡線）。
+<span class="math notranslate nohighlight">\(F_1 = (5,0)\)</span>（円の外）では <span class="math notranslate nohighlight">\(||PF_2| - |PF_1|| = 4\)</span> が全 <span class="math notranslate nohighlight">\(\theta\)</span> で厳密に一定（双曲線・観察3 の裏取り）。</p>
+<p><strong>語の区別（重要・混同しやすい）</strong>: 本回は二つの円を扱っている。(1) <strong>円形準線（Leitkreis）</strong> = 作図空間の
+円 <code class="docutils literal notranslate"><span class="pre">lk</span></code>（§1–§2）。(2) <strong>Feynman のホドグラフ円</strong> = <strong>速度空間</strong> の円（§3.1）。両者は「円 + 内点 + 垂直
+二等分線」という同じ型の構成が現れるという意味で同族だが、<strong>住んでいる空間が違う</strong>。§3.1 は意図的に
+「同じ族の道具」という表現に留め、「同じもの」とは書いていない。ここの精密な言い分け（と、Feynman の
+証明のどこまでを授業で追うか）は先生 curation 待ち。関連の罠: <code class="docutils literal notranslate"><span class="pre">parabola</span> <span class="pre">by</span> <span class="pre">newton</span></code> ファイル名から
+「放物線も円形準線」と誤読する件（THREAD の構造帰属ノート参照 — 放物線は直線準線）。</p>
+<p><strong>§4 の改版（2026-07-06・先生指示）</strong>: 旧案の「学生個々の停滞立論」を、<strong>転生無双・最終レポートの
+発表会 + 議論</strong> に差し替え（L13 出題 → L14 冷間チェック → L15 発表の三段。先生指示 2026-07-06）。
+旧例題の <strong>GPU 一強は削除</strong>（先生: 「もうあんまり興味ない・学生がどうできるものでもない」）。代案として
+§4.3 に <strong>「学校と AI の二極化」</strong> を採用 —— 採用理由: (1) 学生が当事者 (2) 一学期分の自分の &#64;Codex ログ
+という一次データを全員が持つ (3) 診断の結論を自分の行動として実行できる。lesson_00 §6（AI 委託は許容、
+curation は自分）と仏の境地 stance の教材側回収でもある。診断の結論 (a)/(b)/(c) 相当は本文で言い切って
+いない（結論は学生の議論と先生の講評に属する）。差し替えのさらなる代案が要る場合の予備: QWERTY 配列
+（古典的 lock-in・毎日触る・安全）/ 紙の教科書とデジタル教材。</p>
+<p><strong>discussion_memo の埋め込み（2026-07-06 改版）</strong>: §3.1 の五段スケッチ（等角度分割が本質・<span class="math notranslate nohighlight">\(|\Delta v|\)</span> 等大・
+正多角形→円・90° 回転・準線円から再構成）= discussion_memo §8。§3.1 末尾の「Kepler は速度が先・形が後」
+との接続 = memo §7（面積律 1602 が楕円 1605 に三年先行・運動学優位）。§3.2 の「帰属を言いすぎない」段落
+= 冷間スイープ F3 の教材化（Leitkreis は 19 世紀総合幾何の標準装備・Feynman の功績は教育的再構成/復権 ——
+「Feynman が円形準線を発見」とは書かない）+ memo §6 の「Kepler は命名と同定」構図の再演。§5 結びの
+「円環は閉じていない。今も開いている」= memo §11 の言葉（先生の五年の物語の締め）。</p>
+<p><strong>antidescartes との対応（研究側 register・本文には出さない）</strong>: §1.1 の予測 admonition と §2 の三段予測
+= predict-then-reveal。観察2 の「m と loc の交点に undefined の席」= L14 の重解 = <code class="docutils literal notranslate"><span class="pre">tangent_dag</span></code> の
+ON_CIRCLE 節の再演。§2 の「境界は族の中の一瞬」= 境界を貫く継続の平語化（L13 §4・L14 §5.3 と三点で
+同じ型を踏ませる設計）。§4.2 発表項目 4 と §4.3 の反証条件の要求 = 判別器の設計原理（検証可能な形にして
+から主張する）の対話版。内部用語は本文に出していない（G-C 授業投入は先生 review 後）。</p>
+<p><strong>実機確認が必要な点（授業前・G-C gate）</strong>: (1) <code class="docutils literal notranslate"><span class="pre">m</span></code> の残像（Trace On）の UI 手順の記述が現行版と合うか。
+(2) <code class="docutils literal notranslate"><span class="pre">Locus(P,</span> <span class="pre">Q)</span></code> が <code class="docutils literal notranslate"><span class="pre">P=Intersect(m,</span> <span class="pre">rq)</span></code> 経由で正しく引けるか（Intersect 依存の Locus は版により不安定な
+ことがある。不安定なら <code class="docutils literal notranslate"><span class="pre">P</span></code> を <code class="docutils literal notranslate"><span class="pre">rq</span></code> 上の比で構成し直す）。(3) F_1 を円の外に出したときの <code class="docutils literal notranslate"><span class="pre">P=Intersect(m,</span> <span class="pre">rq)</span></code>
+は <strong>線分</strong> <code class="docutils literal notranslate"><span class="pre">rq</span></code> との交点なので双曲線の片枝しか出ない可能性 — その場合 <code class="docutils literal notranslate"><span class="pre">rq</span></code> を <code class="docutils literal notranslate"><span class="pre">Line(F_2,</span> <span class="pre">Q)</span></code> に替えるか、
+その挙動自体を観察3 の教材にする（線分と直線の違いで枝が欠ける、は L9 の構造の話としても面白い）。</p>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "julia-1.12"
+        },
+        kernelOptions: {
+            name: "julia-1.12",
+            path: "./chapters/12"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'julia-1.12'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="lesson_14_tangent_discriminant.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">第14回: 接線と判別式 — 「接する」とき交点は何個か（二千年かかった言語化）</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../11/lesson_11_conic_section_sympy.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">第11回: 円錐の切断と方程式 — 楕円のもう一つの顔、観察を式へ（Descartes の画期）</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item"><div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">1. 束にする —— 一本では見えなかったものが浮かび上がる</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">1.1 予測 —— 掃いた跡には何が残るか</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">1.2 なぜ楕円か —— 一行で言い切る</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#f-1">2. 一つの作図が全族を生む —— <span class="math notranslate nohighlight">\(F_1\)</span> をドラッグする</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">3. 1964 年 —— 古い道具しか使わずに、新しい証明が生まれた</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">3.1 失われた講義</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">3.2 二千年の見落とし・二例目 —— ただし、帰属は正確に</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">4. 発表と議論 —— 転生無双レポートを持ち寄る</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">4.1 議論の共通レンズ —— 三角構造</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">4.2 発表の形式</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">4.3 議論の口火 —— 皆さん自身が、いまどの三角の中にいるか</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">4.4 発表を構造化して集約する</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">5. 結び —— 半円の直角から、ここまで</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">参考文献</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Manabu Higashida, D3 Center, Osaka University, Japan
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2026.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
