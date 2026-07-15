@@ -62,12 +62,10 @@
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'chapters/12/lesson_13_directrix_eccentricity';</script>
-    <link rel="canonical" href="https://cloudedu-osaka.github.io/textbook-2026/chapters/12/lesson_13_directrix_eccentricity.html" />
+    <script>DOCUMENTATION_OPTIONS.pagename = 'chapters/13/lesson_13_directrix_eccentricity';</script>
+    <link rel="canonical" href="https://cloudedu-osaka.github.io/textbook-2026/chapters/13/lesson_13_directrix_eccentricity.html" />
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="第14回: 接線と判別式 — 「接する」とき交点は何個か（二千年かかった言語化）" href="lesson_14_tangent_discriminant.html" />
-    <link rel="prev" title="第15回: Feynman の円と接線の束 — 古い道具の新しい画期、そして転生無双の発表会" href="../13/lesson_15_feynman_circular_directrix.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
@@ -119,6 +117,8 @@
       
       
       
+        
+      
       <dialog id="pst-primary-sidebar-modal"></dialog>
       <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
         
@@ -165,14 +165,14 @@
     <div class="bd-toc-item navbar-nav active">
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">2026/07/15</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../13/lesson_14_tangent_discriminant.html">接線と判別式 — 「接する」とき交点は何個か（二千年かかった言語化）</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../13/lesson_15_feynman_circular_directrix.html">Feynman の円と接線の束 — 古い道具の新しい画期、そして転生無双の発表会</a></li>
-</ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">2026/07/08</span></p>
-<ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">準線と離心率 — 変わる二つの距離、変わらない一つの比（隠れた直線が立体から現れる）</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lesson_14_tangent_discriminant.html">接線と判別式 — 「接する」とき交点は何個か（二千年かかった言語化）</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lesson_15_feynman_circular_directrix.html">Feynman の円と接線の束 — 古い道具の新しい画期、そして転生無双の発表会</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">2026/07/08</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../12/lesson_13_directrix_eccentricity.html">準線と離心率 — 変わる二つの距離、変わらない一つの比（隠れた直線が立体から現れる）</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../12/lesson_14_tangent_discriminant.html">接線と判別式 — 「接する」とき交点は何個か（二千年かかった言語化）</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../12/lesson_15_feynman_circular_directrix.html">Feynman の円と接線の束 — 古い道具の新しい画期、そして転生無双の発表会</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">2026/07/01</span></p>
 <ul class="nav bd-sidenav">
@@ -299,7 +299,7 @@
       
       
       
-      <li><a href="https://vioras-jh2500.japaneast.cloudapp.azure.com/hub/user-redirect/git-pull?repo=https%3A//github.com/Cloudedu-Osaka/textbook-2026&urlpath=lab/tree/textbook-2026/chapters/12/lesson_13_directrix_eccentricity.ipynb&branch=main" target="_blank"
+      <li><a href="https://vioras-jh2500.japaneast.cloudapp.azure.com/hub/user-redirect/git-pull?repo=https%3A//github.com/Cloudedu-Osaka/textbook-2026&urlpath=lab/tree/textbook-2026/chapters/13/lesson_13_directrix_eccentricity.ipynb&branch=main" target="_blank"
    class="btn btn-sm dropdown-item"
    title="Launch on JupyterHub"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -345,7 +345,7 @@
       
       
       
-      <li><a href="../../_sources/chapters/12/lesson_13_directrix_eccentricity.ipynb" target="_blank"
+      <li><a href="../../_sources/chapters/13/lesson_13_directrix_eccentricity.ipynb" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -577,7 +577,7 @@
 <span class="nd">@ggb</span><span class="w"> </span><span class="n">P</span><span class="o">=</span><span class="n">Point</span><span class="p">(</span><span class="ss">:section</span><span class="p">)</span><span class="w">                     </span><span class="c"># 切り口の楕円上の点（ドラッグできる）</span>
 <span class="nd">@ggb</span><span class="w"> </span><span class="n">dPF</span><span class="o">=</span><span class="n">Distance</span><span class="p">(</span><span class="ss">:P</span><span class="p">,</span><span class="w"> </span><span class="ss">:F1</span><span class="p">)</span><span class="w">                 </span><span class="c"># 焦点までの距離（変わる）</span>
 <span class="nd">@ggb</span><span class="w"> </span><span class="n">dPd</span><span class="o">=</span><span class="n">Distance</span><span class="p">(</span><span class="ss">:P</span><span class="p">,</span><span class="w"> </span><span class="ss">:dir1</span><span class="p">)</span><span class="w">               </span><span class="c"># 準線までの距離（変わる）</span>
-<span class="nd">@ggb</span><span class="w"> </span><span class="n">ratio</span><span class="o">=</span><span class="s">&quot;dPF / dPd&quot;</span><span class="w">                       </span><span class="c"># 比（さて、どうなるか）</span>
+<span class="nd">@ggb</span><span class="w"> </span><span class="n">ratio</span><span class="o">=</span><span class="n">dPF</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">dPd</span><span class="w">                       </span><span class="c"># 比（さて、どうなるか）</span>
 </pre></div>
 </div>
 </div>
@@ -626,7 +626,7 @@
 <span class="nd">@ggb</span><span class="w"> </span><span class="n">dir2</span><span class="o">=</span><span class="n">Intersect</span><span class="p">(</span><span class="ss">:pk2</span><span class="p">,</span><span class="w"> </span><span class="ss">:pl</span><span class="p">)</span><span class="w">             </span><span class="c"># 第二の準線（楕円の反対側の外）</span>
 <span class="nd">@ggb</span><span class="w"> </span><span class="n">dPF2</span><span class="o">=</span><span class="n">Distance</span><span class="p">(</span><span class="ss">:P</span><span class="p">,</span><span class="w"> </span><span class="ss">:F2</span><span class="p">)</span>
 <span class="nd">@ggb</span><span class="w"> </span><span class="n">dPd2</span><span class="o">=</span><span class="n">Distance</span><span class="p">(</span><span class="ss">:P</span><span class="p">,</span><span class="w"> </span><span class="ss">:dir2</span><span class="p">)</span>
-<span class="nd">@ggb</span><span class="w"> </span><span class="n">ratio2</span><span class="o">=</span><span class="s">&quot;dPF2 / dPd2&quot;</span><span class="w">                    </span><span class="c"># こちらも 0.3954 で一定になるか</span>
+<span class="nd">@ggb</span><span class="w"> </span><span class="n">ratio2</span><span class="o">=</span><span class="n">dPF2</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">dPd2</span><span class="w">                    </span><span class="c"># こちらも 0.3954 で一定になるか</span>
 </pre></div>
 </div>
 </div>
@@ -760,7 +760,14 @@ L11 で三曲線の離心率を式から計算したこと、L12 §6 の「双�
 <li><p><strong>「半歩先」の例</strong>: Apollonius に準線を見せる（今日の接触円の平面を、彼の言葉でどう説明する?）。Euclid に「接するとき交点は二つ重なっている」を見せる（→ 次回 L14 が丸ごと素材になる）。Kepler に、彼が手計算でやった系統的パターン抽出を現代の道具で再演して見せる。Newton に速度の円を見せる（→ L15）。Pappus に「あなたの層は二千年後に主役になる」と伝える。</p></li>
 <li><p><strong>規律は L4 §7 と同じ</strong>: <code class="docutils literal notranslate"><span class="pre">&#64;Codex</span></code> と協力して構成、ただし最後の articulation（決め台詞）は自分の語彙で。末尾に AI とのやり取り要点と「何を AI に任せ、何を自分で考えたか」を明示。</p></li>
 <li><p><strong>無双可能性の自己評価</strong>: 書き始める前に、「この転生先で本当に無双できるか」を <code class="docutils literal notranslate"><span class="pre">&#64;Codex</span></code> 自身にも自己評価させよ（L4 §7.3 で見た、AI が Turing では無双できないと正直に認めて Neumann に乗り換えた逸話を思い出すこと）。AI が無双できる場面とできない場面の <strong>境界</strong> が、そのままレポートの厚みになる。</p></li>
-<li><p><strong>評価軸</strong>: L4 §7.2 の三軸（伝達可能性 / synthesis の独自性 / AI 役割分担の自覚）に、今回は一つ足す —— <strong>反証可能性</strong>: 「この人はこれを見られなかった」という主張の根拠と、自分の再構成が <strong>間違っていたら何で分かるか</strong>。</p></li>
+<li><p><strong>評価軸（四つ・最終版）</strong> —— L4 §7.2 の三軸に、最終版は <strong>反証可能性</strong> を一つ足す。この転生無双レポートでは、各軸を具体的に次のように見る（各末尾は自分でできる自己点検の問い）:</p>
+<ol class="arabic simple">
+<li><p><strong>伝達可能性</strong> —— 転生先その人が読んで頷けるか。「半歩先」を、その人の時代の語彙へ <strong>橋渡し</strong> して説明したか（現代記号は使ってよい。ただし翻訳の一言を添える）。〔自己点検〕本人に見せたら「それは私の言葉でいう〜のことか」と言ってもらえるか。</p></li>
+<li><p><strong>synthesis の独自性</strong> —— <code class="docutils literal notranslate"><span class="pre">&#64;Codex</span></code> 単独生成では出てこない、あなた固有の <strong>組み合わせ・反転・伏線回収</strong> が一つ以上あるか。この学期に手で確かめたこと（§5.1 の四層 / 接触円の平面 / 比一定 / …これから出会う重解（→ L14）や速度の円（→ L15）でもよい）のどれと結びつけたか。〔自己点検〕白紙の <code class="docutils literal notranslate"><span class="pre">&#64;Codex</span></code> に同じ課題を投げても出てこない一手が、本文に一つあるか。</p></li>
+<li><p><strong>AI 役割分担の自覚</strong> —— ログと本文から、<strong>何を AI に任せ、何を自分で考えたか</strong> の境界が第三者に見えるか。書き始める前の「無双できるか」自己評価（上の項目）と、書き終えた実際とのずれ —— その境界の広さが、そのままレポートの厚みになる。〔自己点検〕AI が埋めた部分と、自分にしか埋められなかった部分を、ログの箇所を指して言えるか。</p></li>
+<li><p><strong>反証可能性（最終版で追加）</strong> —— 二つを分けて書く。(a) 歴史の主張「この人はこれを見られなかった」の <strong>根拠</strong> —— 「そう感じる」ではなく、引ける原典・事実で（例: §5.2 の『Conica』487 命題に準線がほぼ現れないこと）。(b) 自分の <strong>再構成が間違っていたら何で分かるか</strong> —— どのセルを走らせ・どの数値がずれ・どの原典を引けば露見するかを、<strong>観察可能な形</strong> で書く。〔自己点検〕あなたの「半歩先」が偽だったら、読者は何を見れば気づけるか（この軸は L14 の冷間チェックで研ぎ、L15 の発表で「反証条件が観察可能な形になっているか」を問われる）。</p></li>
+</ol>
+</li>
 <li><p><strong>日程</strong>: 次回 L14 で <strong>冷間チェックの作法</strong>（書いた直後の熱を冷ましてから自分の一番痛い穴を探す方法）を渡す。<strong>L15 で発表</strong>（形式は L15 で告知）。提出詳細は LMS。</p></li>
 </ul>
 </div>
@@ -853,6 +860,7 @@ L11 で三曲線の離心率を式から計算したこと、L12 §6 の「双�
 §5.2 の「診断（証明された因果ではなく、読み）」の register は冷間スイープ F1（封印テーゼは L3・因果事実の
 register で書かない）の反映。学期末レポート出題（科学史転生無双・最終版）は先生指示（2026-07-06）—— L4 §7 の
 inaugural を最終版として再出題、L14 冷間チェック → L15 発表の三段。転生先候補と「半歩先」例は memo §9 年表から。</p>
+<p><strong>評価軸の四軸具体化（2026-07-15 追記）</strong>: L4 §7.2 の三軸（伝達可能性 / synthesis 独自性 / AI 役割分担の自覚）を転生無双文脈に具体化し（伝達可能性の宛先を「BC 6 世紀の数学者」から「各自の転生先本人」へ sharpen）、最終版で <strong>反証可能性</strong> を追加。反証可能性軸 (b) =「自分の再構成が間違っていたら何で分かるか」= drag-invariance oracle の「間違っていたら何で分かるか」discipline の平語化で、L15 の「自分のレポートの反証条件が観察可能な形になっているか」と同一の到達点を指す（背骨衝突なし・最新 lesson 本文のコミット優先の規律で L15 の文言に接続）。内部用語（oracle/register）は学生本文に出していない。</p>
 <p><strong>実機確認が必要な点（授業前・G-C gate）</strong>: (1) <code class="docutils literal notranslate"><span class="pre">Intersect(平面,</span> <span class="pre">平面)</span></code> が 3D ビューで交線を返すこと
 （L12 の <code class="docutils literal notranslate"><span class="pre">IntersectConic</span></code> 引数順の轍。もし不可なら <code class="docutils literal notranslate"><span class="pre">IntersectPath(pk1,</span> <span class="pre">pl)</span></code> を試す）。(2) <code class="docutils literal notranslate"><span class="pre">Distance(点,</span> <span class="pre">直線)</span></code>
 の 3D 挙動。(3) 枕の 2D セルは「アプリの切り替え」で平面ビューに戻す必要があるか。</p>
@@ -873,7 +881,7 @@ inaugural を最終版として再出題、L14 冷間チェック → L15 発表
         },
         kernelOptions: {
             name: "julia-1.12",
-            path: "./chapters/12"
+            path: "./chapters/13"
         },
         predefinedOutput: true
     }
@@ -890,24 +898,6 @@ inaugural を最終版として再出題、L14 冷間チェック → L15 発表
                 <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
-    <a class="left-prev"
-       href="../13/lesson_15_feynman_circular_directrix.html"
-       title="previous page">
-      <i class="fa-solid fa-angle-left"></i>
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">第15回: Feynman の円と接線の束 — 古い道具の新しい画期、そして転生無双の発表会</p>
-      </div>
-    </a>
-    <a class="right-next"
-       href="lesson_14_tangent_discriminant.html"
-       title="next page">
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">第14回: 接線と判別式 — 「接する」とき交点は何個か（二千年かかった言語化）</p>
-      </div>
-      <i class="fa-solid fa-angle-right"></i>
-    </a>
 </div>
                 </footer>
               
