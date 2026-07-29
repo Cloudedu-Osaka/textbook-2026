@@ -1,0 +1,811 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>第16回 (最終回): 翼はなぜ飛ぶのか — 測った人から始め、生成させて監査する &#8212; プログラミングで遡る科学史</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=3c74b3bc" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css?v=8cd3d715" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=fab101a9"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'chapters/15/lesson_16_lift_lilienthal_audit';</script>
+    <link rel="canonical" href="https://cloudedu-osaka.github.io/textbook-2026/chapters/15/lesson_16_lift_lilienthal_audit.html" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="翼はなぜ飛ぶのか — 反証の先で、自分で考えるために" href="lecture_why-do-wings-fly_2026.html" />
+    <link rel="prev" title="第15回: Feynman の円と接線の束 — 古い道具の新しい画期、そして転生無双の発表会" href="../13/lesson_15_feynman_circular_directrix.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/vioras-logo.png" class="logo__image only-light" alt="プログラミングで遡る科学史 - Home"/>
+    <img src="../../_static/vioras-logo.png" class="logo__image only-dark pst-js-only" alt="プログラミングで遡る科学史 - Home"/>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">2026/07/29</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../13/lesson_15_feynman_circular_directrix.html">Feynman の円と接線の束 — 古い道具の新しい画期、そして転生無双の発表会</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">(最終回) 翼はなぜ飛ぶのか — 測った人から始め、生成させて監査する</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lecture_why-do-wings-fly_2026.html">翼はなぜ飛ぶのか — 反証の先で、自分で考えるために</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">2026/07/15</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../13/lesson_14_tangent_discriminant.html">接線と判別式 — 「接する」とき交点は何個か（二千年かかった言語化）</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">2026/07/08</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../12/lesson_13_directrix_eccentricity.html">準線と離心率 — 変わる二つの距離、変わらない一つの比（隠れた直線が立体から現れる）</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../12/lesson_14_tangent_discriminant.html">接線と判別式 — 「接する」とき交点は何個か（二千年かかった言語化）</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../12/lesson_15_feynman_circular_directrix.html">Feynman の円と接線の束 — 古い道具の新しい画期、そして転生無双の発表会</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">2026/07/01</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../11/lesson_11_conic_section_sympy.html">円錐の切断と方程式 — 楕円のもう一つの顔、観察を式へ（Descartes の画期）</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../11/lesson_12_dandelin_spheres.html">Dandelin 球 — 二焦点はなぜ二つあり、なぜ「距離の和が一定」なのか（円錐の中の必然）</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">2026/06/24</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../10/lesson_10_ellipse_foci.html">楕円と二焦点 — 三角形を離れ、二つの焦点の対称へ</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">2026/06/17</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../09/lesson_07_orthocenter_euler.html">垂心と Euler 線 — 三中心が一直線に並ぶ「隠れた構造」を有向グラフで見る</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../09/lesson_08_excenter_symmetry.html">傍心と四中心の対称性 — 内心の「双子」を依存構造の鏡像として見る</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../09/lesson_09_symmetry_selfgrade.html">内心と傍心の辺対称性 — 自分で発見し、構造で自己採点する</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../09/lesson_10_ellipse_foci.html">楕円と二焦点 — 三角形を離れ、二つの焦点の対称へ</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">2026/06/10</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../08/lesson_07_orthocenter_euler.html">垂心と Euler 線 — 三中心が一直線に並ぶ「隠れた構造」を有向グラフで見る</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../08/lesson_08_excenter_symmetry.html">傍心と四中心の対称性 — 内心の「双子」を依存構造の鏡像として見る</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">2026/06/03</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../07/lesson_06_incenter_mtric.html">内心と角の二等分線 — 計量が要る場面（重心のアフィンとの対比）</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">2026/05/27</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../06/lesson_05_centroid_dataframe.html">同じ点を三つの前提から導く — 重心と DataFrame 外部化</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">2026/05/20</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../05/lesson_04_thales_circumcenter.html">前提・発見・連鎖 — Thales の定理から外心へ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../05/lesson_05_centroid_dataframe.html">同じ点を三つの前提から導く — 重心と DataFrame 外部化</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">2026/05/13</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../04/lesson_00_about_this_textbook.html">この教材はどう作られているか — AI と人間の役割分担</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../04/lesson_04_thales_circumcenter.html">前提・発見・連鎖 — Thales の定理から外心へ</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">2026/05/08</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../03/03_01.html">第3回: 試験問題の記述とこの授業のルール</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../03/02_13.html">入試問題を解く (その2) 記述する・解答する 4</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../03/02_11.html">入試問題を解く (その2) 記述する・解答する 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../03/02_12.html">入試問題を解く (その2) 記述する・解答する 3</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">2026/04/22</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../02/02_01.html">入試問題を解く (その2) 記述する・解答する 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../02/02_11.html">入試問題を解く (その2) 記述する・解答する 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../02/02_12.html">入試問題を解く (その2) 記述する・解答する 3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../02/02_13.html">入試問題を解く (その2) 記述する・解答する 4</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../02/02_02.html">入試問題を解く (その2) 記述する・解答する 5</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">2026/04/15</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../01/01_00_intro.html">How to connect and use JupyterHub</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../01/01_01.html">入試問題を解く (その1) 記述する 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../01/01_02.html">入試問題を解く (その1) 記述する 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../01/01_03.html">入試問題を解く (その1) 記述する 3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../01/01_04.html">入試問題を解く (その1) 記述する 4</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../01/01_05.html">入試問題を解く (その1) 記述する 5</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../01/01_11.html">入試問題を解く (その1) 記述する 6</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../01/01_12.html">入試問題を解く (その1) 記述する 7</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../01/01_13.html">入試問題を解く (その1) 記述する 8</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+<a href="https://github.com/Cloudedu-Osaka/textbook-2026" target="_blank"
+   class="btn btn-sm btn-source-repository-button"
+   title="Source repository"
+   data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+
+</a>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/chapters/15/lesson_16_lift_lilienthal_audit.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button pst-navbar-icon"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm pst-navbar-icon" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>第16回 (最終回): 翼はなぜ飛ぶのか — 測った人から始め、生成させて監査する</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">0. 軸を替える — 証明の学期の、測定の最終回</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#newton">1. Newton の半歩先 — 板に当たった粒だけを数えた</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lilienthal-1889">2. 測った人 — Lilienthal 1889 と、最初の監査者ライト兄弟</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">3. 実行 — 130 年前の測定を、自分の計算機で再現する</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">3.1 予測を書く (走らせる前に)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">3.2 走らせる</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#oracle">3.3 照合する — 三つの主役 oracle</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">3.4 実装が教えてくれた、予定外の教訓</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ai">4. 生成・監査 — AI に説明を生成させ、自分の手で裁く</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">4.1 生成させる</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">4.2 監査する — チェックリスト</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">4.3 裁定する — 受領で終えない</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">5. 開いたままの問い — 答えは配らない</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">6. 失われた掌 — 錨はどこから来るのか</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#founding-questions">7. 卒業 — founding questions への最終回答</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">既知の限界 (正直に断っておく)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">教員向け運用メモ</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="id1">
+<h1>第16回 (最終回): 翼はなぜ飛ぶのか — 測った人から始め、生成させて監査する<a class="headerlink" href="#id1" title="Link to this heading">#</a></h1>
+<blockquote>
+<div><p><strong>著者註 (2027 年度想定・2026-07-28 改版)</strong></p>
+<ul class="simple">
+<li><p><strong>由来</strong>: 読み物「翼はなぜ飛ぶのか — 反証の先で、自分で考えるために」(2026-07-10、52.6 KB) の lesson 化。読み物は<strong>配布資料として存続</strong>させ、本 lesson は<strong>授業当日の実行と監査の台本</strong>に徹する。素材の所在は THREAD (&#64;Codex に lancedb-rag で「揚力 リリエンタール 教材群の所在」project=textbook)。</p></li>
+<li><p><strong>改版方針</strong> (2026-07-28 講評 §5.2「写経→生成・監査」の第一号標本):</p>
+<ol class="arabic simple">
+<li><p><strong>写経ゼロ</strong> — 完成した説明を配って読ませる回ではない。錨パック + 生成指示 + 受入試験の三点セット。</p></li>
+<li><p><strong>実行必須</strong> — predict-then-reveal を全員が一巡する (予測を書く → 走らせる → PASS/FAIL 照合)。期末レポート rubric v2 の「④(b) は書くものから走らせるものへ」の授業内リハーサル。</p></li>
+<li><p><strong>生成・監査</strong> — &#64;Codex に揚力の説明を白紙生成させ、学生が監査する。AI は教科書の 100 年の慣性を学習しているため、<strong>監査に値する誤りを実際に出しやすい</strong>題材 (読み物 §7)。生成・監査教材の初出として最適。</p></li>
+<li><p><strong>裁定要件</strong> — 監査で衝突した説明のどれが立つか、<strong>自分の裁定を一文</strong>書かせる (cold-check の受領で終えない)。</p></li>
+</ol>
+</li>
+<li><p><strong>縦軸上の位置</strong> (規律 4): L4–L15 は幾何の系譜 (証明の道具・robust construction)。最終回は軸を替え「<strong>測定から始める</strong>」。founding questions (画期はいかに起こるか / 停滞はなぜ続くか / なぜ歴史を遡るのか) の最終回答を、幾何でなく測定の側から与える。L15 で勝った Newton が L16 で誤る — 三部作の最終幕。</p></li>
+<li><p><strong>転生無双発表会との位置関係は運用判断</strong> (本年は L15 後半が発表会。来年 L16 を立てるなら発表会の置き場を先に決める)。</p></li>
+<li><p><strong>実行環境</strong>: <code class="docutils literal notranslate"><span class="pre">experiments/waterlily-lift/</span></code> (smoke 256×128・数分)。<strong>Mac で回す前に</strong> Metal 環境の注意 (&#64;Codex に lancedb-rag で「waterlily metal 環境 パッチ」project=conversations) を必ず踏むこと。教室展開時は教員が事前に環境検証を済ませ、oracle_report.json の期待値を手元に持つ (講評 §5.2: 教員は教材ごとに oracle を一つ持つ)。</p></li>
+</ul>
+</div></blockquote>
+<p><strong>主題</strong>: この学期の主役たち — Euclid、Apollonius、Newton — は<strong>証明する人</strong>だった。最終回は、系譜の外から来た<strong>測る人</strong>で締める。1889 年、Otto Lilienthal はただの平らな板が受ける力を測り、Newton 由来の衝突模型が揚力を<strong>桁で</strong>外していることを示した。飛行の画期は理論からではなく測定から来た。そして今日、皆さんは 130 年前のその測定を自分の計算機で再現し、さらに <strong>AI に揚力の説明を生成させて、自分の手で監査する</strong>。この授業が一学期かけて渡してきた道具 — 予測を先に書く、数値で確かめる、痛い一撃を探させる、そして最後は自分が裁定する — の卒業試験である。</p>
+<p><strong>学習目標</strong></p>
+<ol class="arabic simple">
+<li><p>Newton 衝突模型 <span class="math notranslate nohighlight">\(C_L \approx 2\sin^2\alpha\cos\alpha\)</span> と Lilienthal 実測の食い違いを、<strong>自分の計算</strong> (smoke run) で再現し、「実測は衝突模型の約 27 倍」を自分の数字として言えるようになる。</p></li>
+<li><p><strong>predict-then-reveal</strong> の作法を一巡できるようになる — 実行前に予測 (関係式と許容帯) を書き、走らせ、PASS/FAIL を照合する。</p></li>
+<li><p><strong>AI が生成した揚力の説明を監査</strong>できるようになる — 等時間通過説・「循環が揚力を生む」型の取り違えを、錨と実測で検出し、衝突する説明のどちらが立つか<strong>自分の裁定を一文</strong>で書ける。</p></li>
+<li><p>「便利な要約は原因ではない」(循環)、「帳簿は二つ、揚力は一つ」(圧力差 vs 反作用)、そして「<strong>式には管轄がある</strong>」(sin² 則が正しくなる世界) を、自分の言葉で言えるようになる。</p></li>
+</ol>
+<div class="note admonition">
+<p class="admonition-title">目標の確認 — &#64;Codex で達成目標を引く</p>
+<p>最終回の達成目標を &#64;Codex に lancedb-rag で確認する (L5 から運用)。
+（プロンプト例）&#64;Codex この回 (L16 揚力・生成監査) の達成目標を lancedb-rag で調べて、要点を整理して。
+今日の山場は §3 の実行と §4 の監査 — 「読む回」ではなく「走らせて裁く回」であることを最初に確認する。</p>
+</div>
+<hr class="docutils" />
+<section id="id2">
+<h2>0. 軸を替える — 証明の学期の、測定の最終回<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
+<p>L4 から L15 まで、この授業の背骨は<strong>幾何の証明</strong>だった。Thales の円、五心、円錐曲線、Dandelin、判別式 D=0、そして Feynman の円。どれも「正しさを構成で保証する」道具 — 作図が正しければ、ドラッグしても壊れない (robust)。</p>
+<p>最終回は、正しさの<strong>もう一つの根拠</strong>を扱う。<strong>測定</strong>である。</p>
+<p>こういう問いから入ろう — L15 で私たちは、Newton の重力法則から Feynman が楕円軌道を導くのを見た。Newton は力学と光学と微積分を作った、この系譜の最高峰である。<strong>その Newton が、桁で外した問題がある。</strong> それが今日の主題、揚力だ。</p>
+</section>
+<section id="newton">
+<h2>1. Newton の半歩先 — 板に当たった粒だけを数えた<a class="headerlink" href="#newton" title="Link to this heading">#</a></h2>
+<p>『プリンキピア』第 II 巻で Newton は、流体中の板が受ける力を「粒子が板に当たって跳ね返る」模型で扱った。この系譜の予言は、迎え角 <span class="math notranslate nohighlight">\(\alpha\)</span> の平板の揚力係数について</p>
+<div class="math notranslate nohighlight">
+\[ C_L \approx 2\sin^2\alpha\cos\alpha \]</div>
+<p>—「板の正面に飛び込んでくる空気の粒だけを数える」と、こうなる。小さい <span class="math notranslate nohighlight">\(\alpha\)</span> では <span class="math notranslate nohighlight">\(\sin\alpha \approx \alpha\)</span> だから <strong><span class="math notranslate nohighlight">\(\alpha\)</span> の 2 乗</strong>でしか立ち上がらない。<span class="math notranslate nohighlight">\(\alpha = 5°\)</span> で約 <strong>0.015</strong>。ほとんどゼロである。19 世紀、この式は「人が乗る重さを翼で持ち上げるのは非現実的」という<strong>停滞の根拠</strong>として働いた。</p>
+<p>転生無双の言葉で言えば、これが <strong>Newton の半歩先</strong>である。彼は作用・反作用を正しく持っていた (それは今も揚力の正しい原理だ)。見えなかったのは、<strong>板が押すのは当たった粒だけではない</strong>こと — 翼は圧力の場を通して、当たっていない広い範囲の空気まで下に曲げている。数え落とした空気の量が、桁違いに多かった。</p>
+<div class="note admonition">
+<p class="admonition-title">式には管轄がある — sin² 則は「間違い」ではなかった</p>
+<p>L14 で「接線 = 重解 (D=0)」が<strong>代数曲線の定理</strong>であって万能ではないことを見た (管轄境界)。同じことが
+ここでも起きる。sin² 衝突模型は、空気が連続体として振る舞う世界 (私たちが飛ぶ世界) では桁で外れるが、
+<strong>粒子がほぼ独立に飛ぶ世界</strong> — 超高層・極超音速 — では、ほぼそのまま正しい。実際、この「Newton 流衝突理論」は
+20 世紀後半、スペースシャトルの再突入設計で標準近似として<strong>復活</strong>した。式は死んでいなかった。
+<strong>管轄の外で使われていただけ</strong>である。「この式の管轄はどこまでか」— 期末レポートの④(a) で歴史主張の
+根拠を問うたのと同じ問いが、物理の式にもそのまま立つ。</p>
+</div>
+</section>
+<section id="lilienthal-1889">
+<h2>2. 測った人 — Lilienthal 1889 と、最初の監査者ライト兄弟<a class="headerlink" href="#lilienthal-1889" title="Link to this heading">#</a></h2>
+<p>Otto Lilienthal は理論から入らなかった。回転腕装置と自然の風で、<strong>ただの平らな板</strong>が受ける力を系統的に測り、1889 年『鳥の飛翔』にまとめた。平板を先に測ったのが賢い — 翼の「特別な形」の話を全部封じて、一番素朴な場合で理論と実測を対決させたからである。</p>
+<p>結果: 小さい迎え角で、揚力は <span class="math notranslate nohighlight">\(\alpha\)</span> の <strong>1 乗</strong>で立ち上がり、衝突模型よりはるかに大きい。付着した流れの理論値は後に</p>
+<div class="math notranslate nohighlight">
+\[ C_L = 2\pi\sin\alpha \]</div>
+<p>と分かる。<span class="math notranslate nohighlight">\(\alpha = 5°\)</span> で約 0.548 — 衝突模型の約 <strong>36 倍</strong>。この差は測定誤差ではない。<strong>理論の選び違い</strong>である。</p>
+<p>そして後日談が、今日の授業の言葉で読むと光る。ライト兄弟は Lilienthal のデータで設計したグライダーが思ったほど飛ばず、<strong>自分で風洞を作って測り直した</strong>。食い違いの主犯は Lilienthal の測定ミスではなく、みんなが共通で使っていた<strong>古い換算係数</strong>だった。 — 先人の結果を疑い、独立に測り直し、どこが正しくどこが違ったかを切り分ける。<strong>ライト兄弟は、飛ぶ前にまず監査者だった。</strong> 今日の §4 で皆さんがやることの、130 年前の原型である。</p>
+<p>読み物 (&#64;Codex に lancedb-rag で「翼はなぜ飛ぶのか 反証の先で」を引く) の §1–§2 に、この歴史と「いちばん有名なもっともらしい嘘」(等時間通過説) の反証まで書いてある。<strong>今日の授業前に読んでくること</strong> — 授業では読まない。走らせる。</p>
+</section>
+<section id="id3">
+<h2>3. 実行 — 130 年前の測定を、自分の計算機で再現する<a class="headerlink" href="#id3" title="Link to this heading">#</a></h2>
+<section id="id4">
+<h3>3.1 予測を書く (走らせる前に)<a class="headerlink" href="#id4" title="Link to this heading">#</a></h3>
+<div class="important admonition">
+<p class="admonition-title">予測を書き留める — 動かす前に</p>
+<p>これから平板 (迎え角 5°) まわりの流れを数値で解き、揚力係数を測る。実行する前に、三つ予測を書く:
+(1) 実測の C̄_L(5°) は、衝突模型の予言 0.015 の何倍くらいになるか。
+(2) 理想の付着流理論 2π sin 5° ≈ 0.548 と比べて、実測は上に出るか下に出るか。それはなぜか。
+(3) 「翼の表面の圧力を全部足した力」と「翼を囲む大きな箱の運動量の収支」— 二つの数え方は一致するはずか。
+予測なしに実行した結果は、何を見ても「そうなんだ」で終わる。予測が外れた場所だけが、学びの場所である。</p>
+</div>
+</section>
+<section id="id5">
+<h3>3.2 走らせる<a class="headerlink" href="#id5" title="Link to this heading">#</a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>experiments/waterlily-lift
+julia<span class="w"> </span>--project<span class="o">=</span>.<span class="w"> </span>-t<span class="w"> </span><span class="m">8</span><span class="w"> </span>run_suite.jl<span class="w"> </span>--smoke<span class="w">   </span><span class="c1"># 煙試験 256×128・数分</span>
+python<span class="w"> </span>plot_results.py<span class="w">                        </span><span class="c1"># 図の生成 (results/figs/)</span>
+</pre></div>
+</div>
+<p>harness は <strong>predict-then-reveal を出力形式で強制</strong>する — 各 oracle は実行前に予測 (関係式と許容帯) を宣言し、WaterLily.jl が流れの全場を解き、測定値と照合して PASS/FAIL を出す。結果は <code class="docutils literal notranslate"><span class="pre">results/oracle_report.json</span></code> に宣言順のまま書き出される。これは、この授業で加藤千幸先生の方法論として引いてきた「<strong>直観で当たりをつけ、必ず数値で確かめる</strong>」を、そのまま計算機の構造にしたものである。</p>
+</section>
+<section id="oracle">
+<h3>3.3 照合する — 三つの主役 oracle<a class="headerlink" href="#oracle" title="Link to this heading">#</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">oracle_report.json</span></code> を開き、自分の予測と照合する。主役は三つ:</p>
+<ol class="arabic simple">
+<li><p><strong>ORA-P2 (Lilienthal 判別)</strong> — 実測 <span class="math notranslate nohighlight">\(\bar{C}_L(5°) = 0.411\)</span>。衝突模型 0.015 の<strong>約 27 倍</strong>。130 年前に Lilienthal が板を測って見たものを、いま自分の計算が再現した。「理論がこう言うから」ではなく「<strong>測ったらこうだった</strong>」。</p></li>
+<li><p><strong>ORA-P4 (帳簿一致)</strong> — 表面応力の積分と検査体積の運動量収支が比 1.039 で一致。「圧力差で飛ぶ」も「空気を下に曲げた反作用で飛ぶ」も、<strong>同じ一つの力の別の数え方</strong>である (レシートで見るか、財布の減りで見るか)。どちらが本当の原因かという論争は範疇錯誤 — <strong>帳簿は二つ、揚力は一つ</strong>。</p></li>
+<li><p><strong>ORA-T16 (循環は要約)</strong> — 揚力係数を同じに揃えた平板と回転円柱で、循環 <span class="math notranslate nohighlight">\(\Gamma\)</span> はほぼ同じなのに近傍の流れは似ても似つかない。<strong>同じ数字で中身が違うなら、その数字が原因のはずがない</strong> — <span class="math notranslate nohighlight">\(\Gamma\)</span> は多対一の要約量であって、原因ではない。</p></li>
+</ol>
+<div class="tip admonition">
+<p class="admonition-title">予測どおりでなかった人へ (3.1 の (2))</p>
+<p>実測 0.411 は理想 0.548 より<strong>下</strong>にいる。これは失敗ではない — 粘性と板の厚みが理想からのズレを作る。
+「理論の直線」と「現実の点」のこのズレ自体が、理論の管轄 (§1 の言葉) を測っている。
+完璧に一致しないことに意味がある。</p>
+</div>
+<div class="tip admonition">
+<p class="admonition-title">進捗の確認 — 実行結果を &#64;Codex に読ませる</p>
+<p>oracle_report.json を &#64;Codex に読ませ (ファイルを貼るか、開いた状態で尋ねる)、3.1 の自分の予測と
+照合してもらう。（プロンプト例）&#64;Codex この oracle_report.json を読んで、私の予測 (1)(2)(3) と
+どこが合いどこがズレたか、具体的な oracle 名を挙げて整理して。
+ズレた予測こそ書き留める — それが §4 の監査で効く「自分の掌」になる。</p>
+</div>
+</section>
+<section id="id6">
+<h3>3.4 実装が教えてくれた、予定外の教訓<a class="headerlink" href="#id6" title="Link to this heading">#</a></h3>
+<p>この harness を作ったとき、<strong>力の符号の向き</strong> (「体→流体」か「流体→体」か) をドキュメントの精読では決めきれず、<strong>校正 oracle が初回実行で自動検出</strong>して決着した (<code class="docutils literal notranslate"><span class="pre">force_sign</span> <span class="pre">=</span> <span class="pre">−1</span></code>)。文書を読んで信じるのではなく、答えの分かっている場合を走らせて向きを確定する — <strong>仕様書より校正</strong>。皆さんが AI の説明を監査するときの型が、実装の現場にもそのまま出てきた実例である。</p>
+</section>
+</section>
+<section id="ai">
+<h2>4. 生成・監査 — AI に説明を生成させ、自分の手で裁く<a class="headerlink" href="#ai" title="Link to this heading">#</a></h2>
+<p>ここからが最終回の山場である。この授業は「AI に答えをもらう」使い方を一学期かけて避けてきた。最終回は一歩進めて、<strong>AI の答えを監査する</strong>。</p>
+<section id="id7">
+<h3>4.1 生成させる<a class="headerlink" href="#id7" title="Link to this heading">#</a></h3>
+<p>&#64;Codex に、<strong>何も文脈を与えずに</strong> (新しいセッションで) 尋ねる:</p>
+<blockquote>
+<div><p>「飛行機の翼はなぜ揚力を生むのか、高校生に分かるように説明して。」</p>
+</div></blockquote>
+<p>生成された説明を保存する。これが<strong>監査対象</strong>である。</p>
+</section>
+<section id="id8">
+<h3>4.2 監査する — チェックリスト<a class="headerlink" href="#id8" title="Link to this heading">#</a></h3>
+<p>生成された説明を、今日の錨と実測で監査する。見るべき点:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>#</p></th>
+<th class="head"><p>監査観点</p></th>
+<th class="head"><p>錨 (判定根拠)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>1</p></td>
+<td><p><strong>等時間通過説</strong>が混ざっていないか (「上面は道のりが長いから速い」「後縁で再会する」)</p></td>
+<td><p>実測: 上面の空気は先に着く。再会しない。読み物 §2</p></td>
+</tr>
+<tr class="row-odd"><td><p>2</p></td>
+<td><p>**「循環が揚力を生む」**と原因の座に置いていないか</p></td>
+<td><p>ORA-T16: Γ は多対一の要約量。同じ Γ で中身が別物</p></td>
+</tr>
+<tr class="row-even"><td><p>3</p></td>
+<td><p><strong>圧力差説と反作用説を対立</strong>させていないか</p></td>
+<td><p>ORA-P4: 帳簿は二つ、揚力は一つ (比 1.039)</p></td>
+</tr>
+<tr class="row-odd"><td><p>4</p></td>
+<td><p><strong>マグヌス効果</strong>を翼の説明の看板に使っていないか</p></td>
+<td><p>T16 の右側: 回転円柱は翼と別の仕組み (剥がれ方の左右差)</p></td>
+</tr>
+<tr class="row-even"><td><p>5</p></td>
+<td><p>「平板でも迎え角があれば飛ぶ」を説明できる形か (翼の形の魔法にしていないか)</p></td>
+<td><p>ORA-P2: 平板 5° で C̄_L = 0.411</p></td>
+</tr>
+<tr class="row-odd"><td><p>6</p></td>
+<td><p>隠れた仮定 (2 次元・定常・付着流) を<strong>明示</strong>しているか</p></td>
+<td><p>読み物 §6: 仮定は外して検算できる</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>AI は教科書の 100 年の慣性ごと学習しているから、観点 1・2 の取り違えは<strong>実際によく出る</strong>。出てきたら、それは AI が「壊れている」のではない — <strong>人間の教科書の停滞を忠実に映している</strong>のである。この授業の founding question「停滞はなぜ続くか」の、最新の実例が目の前に出てくる。</p>
+</section>
+<section id="id9">
+<h3>4.3 裁定する — 受領で終えない<a class="headerlink" href="#id9" title="Link to this heading">#</a></h3>
+<p>監査で食い違いが出たら (自分の理解と AI の説明、あるいは AI の説明 A と説明 B)、<strong>どちらが立つか、自分の裁定を一文で書く</strong>。判定根拠は必ず錨か実測 (oracle_report.json の具体的な数字) を指すこと。</p>
+<blockquote>
+<div><p>裁定の型: 「説明 X の『…』は、ORA-△△ の実測値 … と矛盾するので棄却する。立つのは『…』。ただし … の範囲では X にも管轄がある。」</p>
+</div></blockquote>
+<p>AI に痛いところを指摘させる (cold-check) ところまでは、期末レポートで皆さんの多くが既にやった。<strong>その先</strong> — 指摘を受領して並べたままにせず、裁定して閉じる — が今日の要求である。壁打ちと共創の差はここにある。</p>
+<div class="important admonition">
+<p class="admonition-title">最終評価 — 達成目標との自己照合</p>
+<p>自分の (1) 予測メモ (2) oracle_report.json (3) 生成された説明 (4) 監査表 (5) 裁定の一文 — 五点を
+&#64;Codex に読ませ、本回の達成目標 1–4 に照合して自己検証する。
+（プロンプト例）&#64;Codex この五点を読んで、達成目標のそれぞれに到達できているか誤魔化さず照合して。
+特に「裁定の一文」が、実測の具体的な数字を根拠に指せているかを厳しく見て。
+最終判断は自分で。&#64;Codex の照合は候補の提示であって、裁定は自分のものである。</p>
+</div>
+</section>
+</section>
+<section id="id10">
+<h2>5. 開いたままの問い — 答えは配らない<a class="headerlink" href="#id10" title="Link to this heading">#</a></h2>
+<p>読み物 §5 の二つの課題は、今日も答えを配らない。</p>
+<ul class="simple">
+<li><p><strong>課題 A: クマバチは本当に「理論上飛べない」のか</strong> — 「飛べないはず」の計算は、どんな翼を仮定していたか。それはクマバチに当てはまる仮定だったか (§1 の管轄の問いが、ここでも立つ)。</p></li>
+<li><p><strong>課題 B: バジリスクはなぜ水面を走れるのか</strong> — 飛行機は「定常」の住人、バジリスクは「非定常」の住人。同じ「流体を押した反作用」の、時間の使い方の違い。</p></li>
+</ul>
+<p>どちらも、まず自分で調べ、仮説を立て、それから AI に「<strong>私の仮説の穴を探して</strong>」と頼むこと。答えをもらうのではなく、砥石として使う。</p>
+</section>
+<section id="id11">
+<h2>6. 失われた掌 — 錨はどこから来るのか<a class="headerlink" href="#id11" title="Link to this heading">#</a></h2>
+<p>最後に、この授業が一番伝えたかったことを、揚力の言葉で言い直す。</p>
+<p>少し前の世代は、車の窓から手を出せば揚力を体で知っていた。平らな手のひらでも、傾ければ風が押し上げる — 等時間通過説を教わっても、<strong>掌の記憶がそれを黙って否定できた</strong>。教科書と体感がずれたとき、体感を信じ直す足がかりが、文字通り手元にあった。</p>
+<p>その掌が失われた世代では、嘘を疑うきっかけが体の側から供給されない。<strong>AI がどれだけ流暢に間違えても、違和感を持つための「自分の側の何か」がなければ、監査は始まらない。</strong> 今日、皆さんが自分で走らせた smoke run — 予測を書き、27 倍を自分の数字として出し、帳簿の一致を確かめたこと — は、失われた掌を計算機の中に作り直す作業だった。§4 の監査が回ったのは、皆さんの手元に<strong>錨</strong>があったからである。錨のない監査は、ただの multiple choice になる。</p>
+<p>この構造は揚力に限らない。この学期、Euclid の重解も、Dandelin の球も、D=0 も、すべて「自分で動かして確かめた具体物」として皆さんの在庫に入った。<strong>AI との共創の質は、この在庫— 検証可能な形で自分が所有している具体物の量 — で決まる。</strong> 在庫は、写して増えるものではない。走らせて増える。</p>
+</section>
+<section id="founding-questions">
+<h2>7. 卒業 — founding questions への最終回答<a class="headerlink" href="#founding-questions" title="Link to this heading">#</a></h2>
+<p>L4 §0 の三つの問いに、学期の言葉で答えて終わる。</p>
+<ul class="simple">
+<li><p><strong>画期はいかに起こるか</strong> — 測定から。Lilienthal は渦を描かず、平板を測って、飛んだ。理論の系譜の外から来た一撃が、系譜の最高峰の見落としを暴いた。</p></li>
+<li><p><strong>停滞はなぜ続くか</strong> — 説明の慣性で。揚力の物理は 1889 年にほぼ手に入っていた。その後の 100 年は、計算できない時代の便法 (循環) が原因の座に居座り、教科書が教科書を写して固定した — <strong>写経の 100 年</strong>である。そして AI はその教科書ごと学習した。停滞は、いまや AI の中に住んでいる。</p></li>
+<li><p><strong>なぜ歴史を遡るのか</strong> — 監査のためである。どこで便法が原因にすり替わったか、どの式にどの管轄があるか、誰が何を測って何を測らなかったか。それを知る者だけが、流暢な説明 (人間のものでも AI のものでも) を裁ける。<strong>歴史は教養ではない。監査能力である。</strong></p></li>
+</ul>
+<p>期末レポート「科学史転生無双」で皆さんがやること — 転生先が見られなかった半歩先を、その人の道具と現代の道具で見せ、自分の主張が偽なら何で分かるかを添え、<strong>できれば一つ走らせる</strong> — は、今日の授業の全部を一人でやることに他ならない。健闘を祈る。</p>
+<hr class="docutils" />
+<section id="id12">
+<h3>既知の限界 (正直に断っておく)<a class="headerlink" href="#id12" title="Link to this heading">#</a></h3>
+<p>本回の計算は 2 次元・<span class="math notranslate nohighlight">\(Re \sim 10^3\)</span> 域で、Lilienthal の実機スケール (<span class="math notranslate nohighlight">\(\sim 10^5\)</span>) には届かない。3 次元 (翼端渦・失速の三次元化) は読み物 §6 と凍結済みの 3D 計算 (&#64;Codex に lancedb-rag で「plate3d 3次元 後ろ姿」project=conversations) を参照。板厚 3 格子 — 「厚みゼロの平板」も理想化の一つである。<strong>この limitation の節自体が④の実演</strong>であることに気づいてほしい: 自分の計算がどこまで正直でどこから嘘になるかを、自分で言えること。</p>
+</section>
+<section id="id13">
+<h3>教員向け運用メモ<a class="headerlink" href="#id13" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>事前: Metal 環境検証 (該当 NOTE を MCP で)。oracle_report.json の期待値一式を手元に。smoke 実行時間を当日のマシンで実測しておく。</p></li>
+<li><p>§4.1 の生成は学生ごとに結果が違ってよい (むしろ違うほど監査の議論が立つ)。等時間通過が出なかった学生には「出るまで別の聞き方で誘ってみる」のも一興 — ただし誘導尋問と監査の違いは議論の種になる。</p></li>
+<li><p>相対評価の観点は期末 rubric と同じ: 監査表の検出数より、<strong>裁定の一文が実測の数字を指せているか</strong>。</p></li>
+<li><p>素材一式の所在: THREAD (lancedb-rag「揚力 リリエンタール 教材群の所在」project=textbook)。読み物・凍結 v1–v6・一次資料 (『鳥の飛翔』1889 原典)・実行系・DragInvariance probe (研究線・学生には出さない)。</p></li>
+</ul>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./chapters/15"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../13/lesson_15_feynman_circular_directrix.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">第15回: Feynman の円と接線の束 — 古い道具の新しい画期、そして転生無双の発表会</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="lecture_why-do-wings-fly_2026.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">翼はなぜ飛ぶのか — 反証の先で、自分で考えるために</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item"><div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">0. 軸を替える — 証明の学期の、測定の最終回</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#newton">1. Newton の半歩先 — 板に当たった粒だけを数えた</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lilienthal-1889">2. 測った人 — Lilienthal 1889 と、最初の監査者ライト兄弟</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">3. 実行 — 130 年前の測定を、自分の計算機で再現する</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">3.1 予測を書く (走らせる前に)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">3.2 走らせる</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#oracle">3.3 照合する — 三つの主役 oracle</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">3.4 実装が教えてくれた、予定外の教訓</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ai">4. 生成・監査 — AI に説明を生成させ、自分の手で裁く</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">4.1 生成させる</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">4.2 監査する — チェックリスト</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">4.3 裁定する — 受領で終えない</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">5. 開いたままの問い — 答えは配らない</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">6. 失われた掌 — 錨はどこから来るのか</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#founding-questions">7. 卒業 — founding questions への最終回答</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">既知の限界 (正直に断っておく)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">教員向け運用メモ</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Manabu Higashida, D3 Center, Osaka University, Japan
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2026.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
